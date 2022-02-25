@@ -15,7 +15,9 @@ export const ROUTES: RouteInfo[] = [
     { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
     { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
     { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
-    { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
+    { path: '/learning', title: 'Learning',  icon:'notifications', class: '' },
+    { path: '/ankhr-admin', title: 'Ankhr Admin',  icon:'notifications', class: '' },
+    { path: '/ankhr-employee', title: 'Ankhr Employee',  icon:'notifications', class: '' }
 ];
 
 @Component({
