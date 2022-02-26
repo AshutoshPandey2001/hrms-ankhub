@@ -37,11 +37,15 @@
         margin-right: 15px;
 
         img{
-            width: 35px;
+            width: 50px;
             top: 16px;
             position: absolute;
         }
     }
+    .hrms-heading{
+        font-weight: bold;
+    }
+
     .sidebar-wrapper{
         position: relative;
         height: calc(100vh - 75px);
