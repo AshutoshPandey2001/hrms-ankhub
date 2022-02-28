@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { DemoRoutingModule } from './demo-routing.module';
 import { ShubhamDemoComponent } from './shubham-demo/shubham-demo.component';
+import { AnkitJDemoComponent } from './ankit-j-demo/ankit-j-demo.component';
 
 @NgModule({
   declarations: [
-    ShubhamDemoComponent
+    ShubhamDemoComponent,
+    AnkitJDemoComponent
   ],
   imports: [
     DemoRoutingModule
