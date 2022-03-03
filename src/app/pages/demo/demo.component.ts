@@ -5,7 +5,8 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
   { path: 'shubham-demo', label: 'Shubham'},
-  { path: 'ankitJ-demo', label: 'AnkitJ'}
+  { path: 'ankitJ-demo', label: 'AnkitJ'},
+  { path: 'pooja-demo', label: 'Pooja'}
 ];
 
 @Component({
