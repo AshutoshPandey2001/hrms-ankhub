@@ -61,7 +61,7 @@
             </div>
             <div class="card-body">
                 <div>
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" [(ngModel)]="term">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
 
                 </div>
                 <div class="table-responsive" style="height: 580px;">
@@ -75,7 +75,7 @@
                             <th>Action</th>
                            </thead>
                         <tbody>
-                            <tr class *ngFor="let ashu of ashuarray |filter:term;">
+                            <tr class *ngFor="let ashu of ashuarray">
                                 <td>{{ashu.idd}}</td>
                                 <td>{{ashu.name}}</td>
                                 <td>{{ashu.country}}</td>

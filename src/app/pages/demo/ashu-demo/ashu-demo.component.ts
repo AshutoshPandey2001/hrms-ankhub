@@ -12,7 +12,7 @@ export class AshuDemoComponent implements OnInit {
   selectindex:any;
   editbtn=false;
   subBtn=false;
-  term='';
+
   constructor(private FormBuilder: FormBuilder) {
     this.ashuForm= FormBuilder.group({
       idd:['', [Validators.required]],
