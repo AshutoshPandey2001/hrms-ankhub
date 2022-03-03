@@ -4,14 +4,20 @@ import { CommonModule } from '@angular/common';
 import { DemoRoutingModule } from './demo-routing.module';
 import { ShubhamDemoComponent } from './shubham-demo/shubham-demo.component';
 import { AnkitJDemoComponent } from './ankit-j-demo/ankit-j-demo.component';
+import { KajalDDemoComponent } from './kajal-d-demo/kajal-d-demo.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     ShubhamDemoComponent,
-    AnkitJDemoComponent
+    AnkitJDemoComponent,
+    KajalDDemoComponent
   ],
   imports: [
-    DemoRoutingModule
+    DemoRoutingModule,
+    FormsModule,
+    CommonModule
+    
   ]
 })
 export class DemoModule { }
