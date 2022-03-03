@@ -20,6 +20,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     BrowserAnimationsModule,
     FormsModule,
+    // ReactiveFormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
