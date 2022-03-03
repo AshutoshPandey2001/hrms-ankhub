@@ -1,0 +1,115 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title ">Staff Table</h4>
+                    <p class="card-category"> Here is a subtitle for this table</p>
+                </div>
+                <div class="card-body">
+
+                    <div class="row text-center s9" >
+                        <div class="col-lg-4" style="margin-top: 30px; margin-bottom: 30px;">
+                          <!-- <h3 style="color: mintcream; background-color: springgreen;">  <i class="fas fa-chalkboard-teacher"></i> <b>Staffs</b> </h3> -->
+                          <form [formGroup]="staffForm">
+                          <div class="form-group">
+                            <label > <b>Staffs id:</b> </label>
+                            <input type="text" class="form-control input-color" placeholder="Enter Staffs id" formControlName="staffsId" 
+                            [ngClass]="{'is-invalid':submitted && f['staffsId'].errors}">
+                    
+                            <div *ngIf="submitted && f['staffsId'].errors" class="invalid-feedback">
+                              <div *ngIf="submitted && f['staffsId'].errors['required']">
+                                staff id is required...!
+                              </div>
+                              <div *ngIf="submitted && f['staffsId'].errors['minlength']">
+                                minimum 5 letters is required...!
+                              </div>
+                              <div *ngIf="submitted && f['staffsId'].errors['maxlength']">
+                                maximum 7 letters is required...!
+                              </div>
+                            </div>
+                    
+                          </div>
+                          <div class="form-group">
+                            <label> <b>Staffs timing:</b></label>
+                            <input type="tel" class="form-control input-color" placeholder="Enter Staffs timing" formControlName="staffsTiming"
+                            [ngClass]="{'is-invalid':submitted && f['staffsTiming'].errors}">
+                    
+                            <div *ngIf="submitted && f['staffsTiming'].errors" class="invalid-feedback">
+                              <div *ngIf="submitted && f['staffsTiming'].errors['required']">
+                                staff id is required...!
+                              </div>
+                              <div *ngIf="submitted && f['staffsTiming'].errors['minlength']">
+                                minimum 8 letters is required...!
+                              </div>
+                              <div *ngIf="submitted && f['staffsTiming'].errors['maxlength']">
+                                maximum 10 letters is required...!
+                              </div>
+                            </div>
+                    
+                    
+                          </div>
+                          <div class="form-group form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox"> <b> Remember me</b>
+                            </label>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                          <button *ngIf= "isasEnterSuccess == false" type="submit" class="btn btn-primary form-control" style="margin-bottom: 30px;" (click)="asEnter()" >
+                            <i class="fa fa-sign-in"></i>
+                            Enter
+                          </button>
+                        </div>
+                        <div class="col-lg-12">
+                          <button *ngIf= "isasEnterSuccess == true" type="asUpdate" class="btn btn-warning form-control" style="margin-bottom: 30px;" (click)="asUpdate()">
+                            Update
+                          </button>
+                          <!-- <button  type="reset" class="btn btn-warning form-control" style="margin-bottom: 30px;" (click)="clear()">
+                           clear
+                          </button> -->
+                        </div>
+                        </div>
+                        </form>
+                        </div>
+                      
+                        <div class="col-lg-8 s10" style="margin-top: 30px;  margin-bottom: 30px;">
+                          <div class="col-lg-12">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                              <input class="form-control form-control-sm ml-3 w-75 r1" type="text" placeholder="Search"
+                                aria-label="Search" [(ngModel)]="searchBar">
+                          </div>
+                          <div class="col-lg-12 table-responsive" style="height: 300px;">
+                    
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>Staffs id</th>
+                                <th>Staffs timing</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let stuf of   staffList|filter:searchBar; let idx = index">
+                                    <td>{{stuf.staffsId}}</td>
+                                    <td>{{stuf.staffsTiming}}</td>
+                                    <td>
+                                      <button type="submit" class="btn btn-warning" (click)="asEdit(idx,stuf)">
+                                        Edit</button>
+                                      <button type="submit" class="btn btn-danger"  (click)="asDelete(idx)">
+                                        Delete</button>
+                                    </td>
+                                  </tr>
+                                 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+         </div>
+  </div>
+</div>
+
+
