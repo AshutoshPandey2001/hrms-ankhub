@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AnkitJDemoComponent } from './ankit-j-demo/ankit-j-demo.component';
+import { AshuDemoComponent } from './ashu-demo/ashu-demo.component';
 import { DemoComponent } from './demo.component';
 import { KajalDDemoComponent } from './kajal-d-demo/kajal-d-demo.component';
 import { ShubhamDemoComponent } from './shubham-demo/shubham-demo.component';
@@ -22,6 +23,9 @@ const routes: Routes = [
       },
       {
         path: 'kajalD-demo', component: KajalDDemoComponent
+      },
+       {
+          path: 'ashu-demo', component: AshuDemoComponent
       }
     ]
   }
