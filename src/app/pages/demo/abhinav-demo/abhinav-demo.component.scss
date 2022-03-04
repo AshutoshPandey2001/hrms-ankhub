@@ -1,0 +1,45 @@
+
+
+.Edit {
+    border: solid rgb(114, 107, 2) 0.1px;
+    color: rgb(44, 44, 8);
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+.delete {
+    border: solid rgb(241, 21, 21) 0.1px;
+    color: rgb(240, 17, 17);
+background-color: #fff;
+border-radius: 6px;
+}
+
+.input-f{
+ border-bottom: rgb(247, 117, 66) solid;
+//  background-color: rgb(222, 226, 252);
+}
+
+.active-pink-2 input.form-control[type=text]:focus:not([readonly]) {
+    border-bottom: 2px solid rgb(131, 136, 134);
+    box-shadow: 0 1px 0 0 rgb(131, 136, 134);
+    border: 0px;
+    border-radius: 0%;
+  }
+  // .active-pink input.form-control[type=text] {
+  //   border-bottom: 2px solid rgb(19, 153, 113);
+  //   box-shadow: 0 2px 0 0 rgb(19, 153, 113);
+  //   border: 0px;
+  //   border-radius: 0%;
+  // }
+
+  .search-i{
+    width: 5%;
+    color: rgb(131, 136, 134);
+    margin-left: 20px;
+    background-color: #fff;
+    
+  }
+
+  .fa-user-o{
+    margin-right: 10px;
+  }
