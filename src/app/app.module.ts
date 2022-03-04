@@ -26,7 +26,8 @@ import { CommonModule } from '@angular/common';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+    
+    
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
