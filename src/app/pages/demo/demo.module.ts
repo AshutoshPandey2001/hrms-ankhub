@@ -25,7 +25,6 @@ import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
     ShivaniComponent,
     KajalDDemoComponent,
     AshuDemoComponent,
-    AshuDemoComponent,
     AbhijeetDemoComponent,  
   ],
   imports: [
