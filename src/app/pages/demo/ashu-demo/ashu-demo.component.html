@@ -1,0 +1,153 @@
+
+<div class="row">
+    <div class="class col-md-4">
+        <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">Registration Form</h4>
+              <p class="card-category">Employees Details</p>
+            </div>
+            <div class="card-body">
+        <form [formGroup]="ashuForm">
+        <div class="form-group">
+            <label class="txcol" ><b>ID:</b></label>
+            <input type="number" class="form-control" placeholder="Enter Id" formControlName="idd" [ngClass]="{'is-invalid':subBtn  && f['idd'].errors}">
+            <div *ngIf="subBtn && f['idd'].errors" class="invalid-feedback">
+              Id is Required.......!
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="txcol" ><b>NAME:</b></label>
+            <input type="text" class="form-control" placeholder="Enter Name" formControlName="name" [ngClass]="{'is-invalid':subBtn  && f['name'].errors}">
+            <div *ngIf="subBtn && f['name'].errors" class="invalid-feedback">
+              Name is Required.......!
+            </div> 
+          </div>
+          <div class="form-group">
+            <label class="txcol"><b>COUNTRY:</b></label>
+            <input type="text" class="form-control" placeholder="Enter Counrty" formControlName="country" [ngClass]="{'is-invalid':subBtn  && f['country'].errors}">
+            <div *ngIf="subBtn && f['country'].errors" class="invalid-feedback">
+              Country is Required.......!
+            </div> 
+          </div>
+          <div class="form-group">
+            <label class="txcol"><b>CITY:</b></label>
+            <input type="text" class="form-control" placeholder="Enter City" formControlName="city"[ngClass]="{'is-invalid':subBtn  && f['city'].errors}">
+            <div *ngIf="subBtn && f['city'].errors" class="invalid-feedback">
+              City is Required.......!
+            </div>  
+          </div>
+          <div class="form-group">
+            <label class="txcol" ><b>SALARY:</b></label>
+            <input type="text" class="form-control" placeholder="Enter Salary" formControlName="salary" [ngClass]="{'is-invalid':subBtn  && f['salary'].errors}">
+            <div *ngIf="subBtn && f['salary'].errors" class="invalid-feedback">
+              Salary is Required.......!
+            </div> 
+          </div>
+          
+          <button  *ngIf="editbtn==false" type="submit" class="btn btn-primary" (click)="formSubmit()">Submit</button>
+          <button *ngIf="editbtn==true"  class="btn btn-warning" (click)="formUpdate()">Update</button>
+
+        </form>
+    </div>
+</div>
+    </div>
+    <div class="col-md-8">
+        
+        
+        <div class="card" >
+            <div class="card-header card-header-danger">
+                <h4 class="card-title ">Table</h4>
+               <p class="card-category"> Details Table</p>
+            </div>
+            <div class="card-body">
+                <div>
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+
+                </div>
+                <div class="table-responsive" style="height: 580px;">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Country</th>
+                            <th>City</th>
+                            <th>Salary</th>
+                            <th>Action</th>
+                           </thead>
+                        <tbody>
+                            <tr class *ngFor="let ashu of ashuarray">
+                                <td>{{ashu.idd}}</td>
+                                <td>{{ashu.name}}</td>
+                                <td>{{ashu.country}}</td>
+                                <td>{{ashu.city}}</td>
+                                <td>{{ashu.salary}}</td>
+                                <td>
+                                    <button  class="btn btn-warning" (click)="update(ashu)">Edit</button>
+                                    <button class="btn btn-danger" (click)="delTb(ashu.id)">Delete </button>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="row">
+    <div class="col-lg-3"></div>
+    
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">Edit Profile</h4>
+              <p class="card-category">Complete your profile</p>
+            </div>
+            <div class="card-body">
+        <form [formGroup]="ashuForm">
+        <div class="form-group">
+            <label class="txcol" ><b>ID:</b></label>
+            <input type="number" class="form-control" placeholder="Enter Id" formControlName="idd" [ngClass]="{'is-invalid':subBtn  && f['idd'].errors}">
+            <div *ngIf="subBtn && f['idd'].errors" class="invalid-feedback">
+              Id is Required.......!
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="txcol" ><b>NAME:</b></label>
+            <input type="text" class="form-control" placeholder="Enter Name" formControlName="name" [ngClass]="{'is-invalid':subBtn  && f['name'].errors}">
+            <div *ngIf="subBtn && f['name'].errors" class="invalid-feedback">
+              Name is Required.......!
+            </div> 
+          </div>
+          <div class="form-group">
+            <label class="txcol"><b>COUNTRY:</b></label>
+            <input type="text" class="form-control" placeholder="Enter Counrty" formControlName="country" [ngClass]="{'is-invalid':subBtn  && f['country'].errors}">
+            <div *ngIf="subBtn && f['country'].errors" class="invalid-feedback">
+              Country is Required.......!
+            </div> 
+          </div>
+          <div class="form-group">
+            <label class="txcol"><b>CITY:</b></label>
+            <input type="text" class="form-control" placeholder="Enter City" formControlName="city"[ngClass]="{'is-invalid':subBtn  && f['city'].errors}">
+            <div *ngIf="subBtn && f['city'].errors" class="invalid-feedback">
+              City is Required.......!
+            </div>  
+          </div>
+          <div class="form-group">
+            <label class="txcol" ><b>SALARY:</b></label>
+            <input type="text" class="form-control" placeholder="Enter Salary" formControlName="salary" [ngClass]="{'is-invalid':subBtn  && f['salary'].errors}">
+            <div *ngIf="subBtn && f['salary'].errors" class="invalid-feedback">
+              Salary is Required.......!
+            </div> 
+          </div>
+          
+          <button  *ngIf="editbtn==false" type="submit" class="btn btn-primary" (click)="formSubmit()">Submit</button>
+          <button *ngIf="editbtn==true"  class="btn btn-warning" (click)="formUpdate()">Update</button>
+
+        </form>
+    </div>
+</div>
+    </div>
+    <div class="col-lg-3"></div>
+
+</div> -->
