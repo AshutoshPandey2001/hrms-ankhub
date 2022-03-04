@@ -1,0 +1,126 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title ">Staffs Details</h4>
+                    <p class="card-category"> Here is a subtitle for this table</p>
+                </div>
+                <div class="card-body">
+
+              <div class="row">
+                    <div class="col-lg-4 bg5 ">
+                        <form [formGroup]="staffForm">
+                        <div class="form-group">
+                          <label for="staffname">Staff Name :</label>
+                          <input type="text" class="form-control" placeholder="staffname" id="staffname" formControlName= "staffname"
+                          [ngClass]="{'is-invalid' : staffSubmit && f['staffname'].errors}">
+                  
+                          <div *ngIf="staffSubmit && f['staffname'].errors" class="invalid-feedback">
+                    
+                            <div *ngIf="staffSubmit && f['staffname'].errors['required']">
+                              Staff Name is required..!
+                            </div>
+                   
+                            <div *ngIf="staffSubmit && f['staffname'].errors['minlength']">
+                              min 6 laters is required
+                            </div>
+                   
+                            <div *ngIf="staffSubmit && f['staffname'].errors['maxlength']">
+                             max 10 laters is required
+                            </div>
+                   
+                          </div>
+                  
+                  
+                        </div>
+                  
+                  
+                        <div class="form-group">
+                          <label for="post">Post :</label>
+                          <input type="text" class="form-control" placeholder="post" id="post" formControlName= "post"
+                          [ngClass]="{'is-invalid' : staffSubmit && f['post'].errors}">
+                  
+                          <div *ngIf="staffSubmit && f['post'].errors" class="invalid-feedback">
+                    
+                            <div *ngIf="staffSubmit && f['post'].errors['required']">
+                              Post is required..!
+                            </div>
+                   
+                            <div *ngIf="staffSubmit && f['post'].errors['minlength']">
+                              min 6 laters is required
+                            </div>
+                   
+                            <div *ngIf="staffSubmit && f['post'].errors['maxlength']">
+                             max 10 laters is required
+                            </div>
+                   
+                          </div>
+                  
+                  
+                  
+                  
+                        </div>
+                        
+                        <button  type="submit" class="btn btn-primary bbtn1" (click)="onMove()">
+                          <i class="fa fa-thumbs-up"></i>  
+                          Submit
+                        </button>
+                        <!-- <button  type="reset" class="btn btn-primary bbtn1" (click)="onMove()">
+                          <i class="fa fa-thumbs-trash"></i>  
+                          Clear
+                        </button> -->
+                  
+                  
+                        <button *ngIf = "forLoginsuccess== true" type="submit" class="btn btn-warning btup" (click)="forUpdate()"><i class="fa fa-refresh"></i>Update</button>
+                  
+                      </form>
+                      </div>
+                  
+                  
+                      <div class="col-lg-8">
+                  
+                        <div class="col-lg-12" style="padding-bottom: 20px;">
+                          <input class="form-control mr-sm-2" type="text" placeholder="Search" [(ngModel)]="onsearchkey">
+                          
+                        </div>
+                  
+                        <div  class=" col-lg-12 table-responsive"  style="height: 250px;">
+                  
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>Staffname</th>
+                                <th>Post</th>
+                               
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <tr *ngFor="let stafs of staffList |filter:onsearchkey ;let idx=index">
+                                        <td>{{stafs.staffname}}</td>
+                                        <td>{{stafs.post}}</td>
+                                       
+                                        <td>
+                                          <button type="button" class="btn btn-warning" (click)="forEdit(idx,stafs)"><i class="fa fa-edit"></i>Edit</button>
+                                          <button type="button" class="btn btn-danger" (click)="onRefresh(idx)"><i class="fa fa-trash"></i>Delete</button>
+                            
+                              
+                              
+                                        </td>
+                              
+                                      
+                                </tr>
+                               
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
