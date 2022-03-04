@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AbhayDemoComponent } from './abhay-demo/abhay-demo.component';
 import { AnkitJDemoComponent } from './ankit-j-demo/ankit-j-demo.component';
 import { DemoComponent } from './demo.component';
 import { ShubhamDemoComponent } from './shubham-demo/shubham-demo.component';
@@ -18,6 +19,9 @@ const routes: Routes = [
       },
       {
         path: 'ankitJ-demo', component: AnkitJDemoComponent
+      },
+      {
+        path:'abhay-demo', component: AbhayDemoComponent
       }
     ]
   }

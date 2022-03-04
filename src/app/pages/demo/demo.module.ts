@@ -4,14 +4,24 @@ import { CommonModule } from '@angular/common';
 import { DemoRoutingModule } from './demo-routing.module';
 import { ShubhamDemoComponent } from './shubham-demo/shubham-demo.component';
 import { AnkitJDemoComponent } from './ankit-j-demo/ankit-j-demo.component';
+import { AbhayDemoComponent } from './abhay-demo/abhay-demo.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TagInputModule } from 'ngx-chips';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
     ShubhamDemoComponent,
-    AnkitJDemoComponent
+    AnkitJDemoComponent,
+    AbhayDemoComponent
   ],
   imports: [
-    DemoRoutingModule
+    //TagInputModule,
+    DemoRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    Ng2SearchPipeModule
   ]
 })
 export class DemoModule { }
