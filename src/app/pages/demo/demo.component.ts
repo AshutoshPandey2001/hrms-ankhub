@@ -6,6 +6,7 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
   { path: 'shubham-demo', label: 'Shubham'},
   { path: 'ankitJ-demo', label: 'AnkitJ'},
+  { path: 'abhay-demo', label: 'Abhay'},
   { path: 'mrunmayee-demo', label:'Mrunmayee'},
   { path: 'shraddha-demo', label: 'Shraddha'},
   { path: 'abhinav-demo', label: 'Abhinav'},

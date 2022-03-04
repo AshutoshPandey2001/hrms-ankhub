@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AbhayDemoComponent } from './abhay-demo/abhay-demo.component';
 import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
 import { AnkitJDemoComponent } from './ankit-j-demo/ankit-j-demo.component';
 import { AshuDemoComponent } from './ashu-demo/ashu-demo.component';
@@ -28,6 +29,15 @@ const routes: Routes = [
         path: 'ankitJ-demo', component: AnkitJDemoComponent
       },
       {
+        path:'abhay-demo', component: AbhayDemoComponent
+      },
+      {
+        path: 'kajalD-demo', component: KajalDDemoComponent
+      },
+      {
+        path: 'abhinav-demo', component: AbhinavDemoComponent
+      },
+      {
         path: 'mrunmayee-demo', component: MrunmayeeDemoComponent
       },
       {
@@ -44,12 +54,6 @@ const routes: Routes = [
       },
       {
         path: 'shivani', component: ShivaniComponent
-      },
-      {
-        path: 'kajalD-demo', component: KajalDDemoComponent
-      },
-      {
-        path: 'abhinav-demo', component: AbhinavDemoComponent
       }
     ]
   }
