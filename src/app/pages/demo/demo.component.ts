@@ -7,6 +7,8 @@ export const ROUTES: RouteInfo[] = [
   { path: 'shubham-demo', label: 'Shubham'},
   { path: 'ankitJ-demo', label: 'AnkitJ'},
   { path: 'pooja-demo', label: 'Pooja'},
+  { path: 'ashu-demo', label: 'Ashutosh'},
+  { path: 'abhijeet-demo', label: 'Abhijeet'},
   { path: 'shivani', label: 'Shivani'},
   { path: 'kajalD-demo', label: 'KajalD'},
   { path: 'ashu-demo', label: 'Ashutosh'}
