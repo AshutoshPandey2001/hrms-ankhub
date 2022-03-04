@@ -25,8 +25,8 @@ import { EmployeeComponent } from 'app/pages/employee/employee.component';
   ],
   imports: [
     CommonModule,
-    // FormsModule,
-    // ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     CommonLayoutRoutingModule
   ]
