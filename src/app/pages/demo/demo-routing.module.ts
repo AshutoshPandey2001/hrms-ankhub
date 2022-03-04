@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AbhinavDemoComponent } from './abhinav-demo/abhinav-demo.component';
+import { AbhayDemoComponent } from './abhay-demo/abhay-demo.component';
 import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
 import { AnkitJDemoComponent } from './ankit-j-demo/ankit-j-demo.component';
 import { AshuDemoComponent } from './ashu-demo/ashu-demo.component';
 import { DemoComponent } from './demo.component';
+import { MrunmayeeDemoComponent } from './mrunmayee-demo/mrunmayee-demo.component';
+import { ShraddhaDemoComponent } from './shraddha-demo/shraddha-demo.component';
 import { PoojazadeComponent } from './poojazade/poojazade.component';
 import { ShivaniComponent } from './shivani/shivani.component';
 import { KajalDDemoComponent } from './kajal-d-demo/kajal-d-demo.component';
 import { ShubhamDemoComponent } from './shubham-demo/shubham-demo.component';
+import { AbhinavDemoComponent } from './abhinav-demo/abhinav-demo.component';
 const routes: Routes = [
   {
     path: '',
@@ -26,13 +29,22 @@ const routes: Routes = [
         path: 'ankitJ-demo', component: AnkitJDemoComponent
       },
       {
+        path:'abhay-demo', component: AbhayDemoComponent
+      },
+      {
+        path: 'kajalD-demo', component: KajalDDemoComponent
+      },
+      {
         path: 'abhinav-demo', component: AbhinavDemoComponent
-       
+      },
+      {
+        path: 'mrunmayee-demo', component: MrunmayeeDemoComponent
+      },
+      {
+        path: 'shraddha-demo', component: ShraddhaDemoComponent
       },
       {
         path: 'pooja-demo', component: PoojazadeComponent
-
-       
       },
      
       {
