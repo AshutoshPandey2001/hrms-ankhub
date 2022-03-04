@@ -12,11 +12,7 @@ import { PoojazadeComponent } from './poojazade/poojazade.component';
 import { ShivaniComponent } from './shivani/shivani.component';
 import { KajalDDemoComponent } from './kajal-d-demo/kajal-d-demo.component';
 import { AshuDemoComponent } from './ashu-demo/ashu-demo.component';
-
-
 import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
-
-// import { Ng2SearchPipeModule } from "ng2-search-filter";
 
 @NgModule({
   declarations: [
