@@ -22,20 +22,21 @@ import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
     ShubhamDemoComponent,
     AnkitJDemoComponent,
     AbhinavDemoComponent,
-    PoojazadeComponent
+    PoojazadeComponent,
+    AbhijeetDemoComponent,
+    ShivaniComponent,
+    KajalDDemoComponent,
+    AshuDemoComponent
   ],
   imports: [
     DemoRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    Ng2SearchPipeModule,
+    Ng2SearchPipeModule
     
-    AshuDemoComponent,
-    AbhijeetDemoComponent,
-    ShivaniComponent,
-    KajalDDemoComponent,
-    AshuDemoComponent
+  
+   
     
   ],
  

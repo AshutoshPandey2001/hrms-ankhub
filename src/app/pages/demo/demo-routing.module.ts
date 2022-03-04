@@ -34,9 +34,7 @@ const routes: Routes = [
 
        
       },
-      {
-        path: 'ashu-demo', component: AshuDemoComponent
-      },
+     
       {
         path: 'abhijeet-demo', component: AbhijeetDemoComponent
       },
@@ -47,7 +45,7 @@ const routes: Routes = [
       {
         path: 'kajalD-demo', component: KajalDDemoComponent
       },
-       {
+      {
           path: 'ashu-demo', component: AshuDemoComponent
       }
     ]
