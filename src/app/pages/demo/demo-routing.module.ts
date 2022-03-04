@@ -4,6 +4,7 @@ import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
 import { AnkitJDemoComponent } from './ankit-j-demo/ankit-j-demo.component';
 import { AshuDemoComponent } from './ashu-demo/ashu-demo.component';
 import { DemoComponent } from './demo.component';
+import { PoojazadeComponent } from './poojazade/poojazade.component';
 import { ShivaniComponent } from './shivani/shivani.component';
 import { KajalDDemoComponent } from './kajal-d-demo/kajal-d-demo.component';
 import { ShubhamDemoComponent } from './shubham-demo/shubham-demo.component';
@@ -22,6 +23,11 @@ const routes: Routes = [
       },
       {
         path: 'ankitJ-demo', component: AnkitJDemoComponent
+      },
+      {
+        path: 'pooja-demo', component: PoojazadeComponent
+
+       
       },
       {
         path: 'ashu-demo', component: AshuDemoComponent
