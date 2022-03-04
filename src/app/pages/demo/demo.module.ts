@@ -5,30 +5,29 @@ import { ShubhamDemoComponent } from './shubham-demo/shubham-demo.component';
 import { AnkitJDemoComponent } from './ankit-j-demo/ankit-j-demo.component';
 import { AbhayDemoComponent } from './abhay-demo/abhay-demo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TagInputModule } from 'ngx-chips';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ShraddhaDemoComponent } from './shraddha-demo/shraddha-demo.component';
-
-
 import { AbhinavDemoComponent } from './abhinav-demo/abhinav-demo.component';
-
-
+import { MrunmayeeDemoComponent } from './mrunmayee-demo/mrunmayee-demo.component';
 import { PoojazadeComponent } from './poojazade/poojazade.component';
-
-
 import { ShivaniComponent } from './shivani/shivani.component';
 import { KajalDDemoComponent } from './kajal-d-demo/kajal-d-demo.component';
 import { AshuDemoComponent } from './ashu-demo/ashu-demo.component';
-
-
 import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
-// import { Ng2SearchPipeModule } from "ng2-search-filter";
 
 @NgModule({
   declarations: [
     ShubhamDemoComponent,
     AnkitJDemoComponent,
-    AbhayDemoComponent
+    AbhayDemoComponent,
+    MrunmayeeDemoComponent,
+    ShraddhaDemoComponent,
+    AbhinavDemoComponent,
+    PoojazadeComponent,
+    ShivaniComponent,
+    KajalDDemoComponent,
+    AshuDemoComponent,
+    AbhijeetDemoComponent,  
   ],
  
   imports: [
@@ -36,22 +35,7 @@ import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    Ng2SearchPipeModule,
-    ShraddhaDemoComponent,
-    AbhinavDemoComponent,
-    PoojazadeComponent,
-    AshuDemoComponent,
-    AbhijeetDemoComponent,
-    ShivaniComponent,
-    KajalDDemoComponent,
-    AshuDemoComponent
-    
-  ],
-
- 
-  
- 
-  
-  
+    Ng2SearchPipeModule 
+  ] 
 })
 export class DemoModule { }
