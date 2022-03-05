@@ -3,12 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { CommonLayoutComponent } from './components/common-layout/common-layout.component';
-
 import {
   AgmCoreModule
 } from '@agm/core';
@@ -17,10 +15,10 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
-    // CommonModule,
+    CommonModule,
     BrowserAnimationsModule,
-    // FormsModule,
-    // ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
     RouterModule,

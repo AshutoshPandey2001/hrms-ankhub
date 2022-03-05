@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title "><i class="fa fa-user-o" ></i> Employee</h4>
+                    <p class="card-category"> Employee details is here</p>
+                </div>
+                
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-4 col-sm-12">
+                          <div class="container  ">
+                    
+                    
+                              <form [formGroup]="empForm">
+                    
+                                <div class="form-group text-center">
+                                  <label for="email " class=" text-danger">Employee Name :</label>
+                                  <input type="email" class="form-control input-f" placeholder="Enter Employee name" formControlName="empName" 
+                                  [ngClass]="{'is-invalid' : empsub && f['empName'].errors }" >
+                                  <div *ngIf="empsub && f['empName'].errors" class="invalid-feedback">
+                                   
+                                    <div *ngIf="empsub && f['empName'].errors['required']" >
+                                      Employee name is required
+                                    </div>
+                        
+                                    <div *ngIf="empsub && f['empName'].errors['minlength']" >
+                                    Enter Minimum length 8 digit 
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center">
+                                  <label for="pwd" class=" text-danger">Salary :</label>
+                                  <input type="text" class="form-control input-f"placeholder="Enter Employee Salary" formControlName="salary"
+                                  [ngClass]="{'is-invalid' : empsub && f['salary'].errors }" >
+                                  <div *ngIf="empsub && f['salary'].errors" class="invalid-feedback">
+                                   
+                                    <div *ngIf="empsub && f['salary'].errors['required']" >
+                                      salary is required
+                                    </div>
+                        
+                                    <div *ngIf="empsub && f['salary'].errors['minlength']" >
+                                    Enter Minimum length 5 digit 
+                                    </div>
+                                    </div>
+                                </div>
+                              
+                             
+                                <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                  <button *ngIf="isupdateA==false" type="submit" class="btn btn-primary form-control"   (click)="empSubmit()"> <i class="fa fa-sign-in"></i>
+                                   Submit</button>
+                                   </div>
+                                   <div class="col-lg-12 form-group">
+                                   <button *ngIf="isupdateA==true" type="button" class="btn Edit form-control"  (click)="empUpdate()"> <i class="fa fa-refresh"></i>
+                                    Update</button>
+                           
+                                   </div>
+                                  </div>
+                                </form>
+                              </div>
+                           
+                        </div>
+                        <div class="col-lg-7 col-md-8 col-sm-12">
+                            <div class="  md-form active-pink active-pink-2 mb-3 mt-0">
+                              <i class="fa fa-search search-i" style="width: 5%; color: rgb(131, 136, 134);margin-left: 20px;" ></i>
+                              <input class="form-control" type="text" placeholder="Search..." aria-label="Search" style="width: 87%; display: inline-block;"  [(ngModel)]="searchkey">
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="height: 250px;">
+                    <!-- <div class="table-responsive"> -->
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th >Employee Name</th>
+                                <th >Salary</th>
+                                <th >Action</th>
+                            </thead>
+                            <tbody>
+                                <tr   *ngFor="let emp of empList |filter: searchkey ;let i=index">
+    
+                                    <td>{{emp.empName}}</td>
+                                    <td>{{emp.salary}}</td>
+                                    <td>
+                                      <div class="row">
+                                     <div class="col-lg-6 col-md-6 col-sm-12">   <button class="btn Edit form-control" (click)="empEdit(emp)"> <i class="fa fa-edit"></i> Edit</button></div>
+                                     <div class="col-lg-6 col-md-6 col-sm-12">        <button class="btn delete form-control" (click)="empDelete(emp.id)"> <i class="fa fa-trash-o"></i> Delete</button></div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+
+
+
