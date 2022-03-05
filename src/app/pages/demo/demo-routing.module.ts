@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AnkitJDemoComponent } from './ankit-j-demo/ankit-j-demo.component';
 import { DemoComponent } from './demo.component';
 import { ShubhamDemoComponent } from './shubham-demo/shubham-demo.component';
+import { UtkarshaDemoComponent } from './utkarsha-demo/utkarsha-demo.component';
 const routes: Routes = [
   {
     path: '',
@@ -15,6 +16,9 @@ const routes: Routes = [
       },
       {
         path: 'shubham-demo', component: ShubhamDemoComponent
+      },
+      {
+        path: 'Utkarsha-demo', component: UtkarshaDemoComponent
       },
       {
         path: 'ankitJ-demo', component: AnkitJDemoComponent

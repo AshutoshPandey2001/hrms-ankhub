@@ -14,6 +14,7 @@ import {
 } from '@agm/core';
 import { CommonModule } from '@angular/common';
 
+
 @NgModule({
   imports: [
     // CommonModule,
@@ -24,6 +25,8 @@ import { CommonModule } from '@angular/common';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    
+    CommonModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
