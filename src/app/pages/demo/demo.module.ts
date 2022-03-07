@@ -15,6 +15,7 @@ import { ShivaniComponent } from './shivani/shivani.component';
 import { KajalDDemoComponent } from './kajal-d-demo/kajal-d-demo.component';
 import { AshuDemoComponent } from './ashu-demo/ashu-demo.component';
 import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
+import { MaterialModule } from 'app/material.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MaterialModule
   ]  
 })
 export class DemoModule { }
