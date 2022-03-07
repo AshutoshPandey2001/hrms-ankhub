@@ -1,7 +1,2 @@
-<!-- <mat-tab-group [color]="'primary'" [backgroundColor]="'accent'">
-  <mat-tab [label]="[tabItem.label]" *ngFor="let tabItem of tabItems" [routerLink]="[tabItem.path]" routerLinkActive="active">
-  </mat-tab>
-</mat-tab-group> -->
-
-<button class="btn btn-success" *ngFor="let tabItem of tabItems" [routerLink]="[tabItem.path]">{{tabItem.label}}</button>
+<button class="btn btn-success" *ngFor="let tabItem of tabItems" [routerLink]="[tabItem.path]">{{tabItem.title}}</button>
 <router-outlet></router-outlet>
