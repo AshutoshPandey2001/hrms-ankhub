@@ -1,2 +1,14 @@
-<button class="btn btn-success" *ngFor="let tabItem of tabItems" [routerLink]="[tabItem.path]">{{tabItem.title}}</button>
-<router-outlet></router-outlet>
+<nav mat-tab-nav-bar class="tabs">
+  <a
+    mat-tab-link
+    [routerLink]="[tabItem.path]"
+    *ngFor="let tabItem of tabItems"
+    routerLinkActive="active-link"
+  >
+    <mat-icon class="example-tab-icon">{{ tabItem.icon }}</mat-icon>
+    {{ tabItem.title }}
+  </a>
+</nav>
+<div>
+  <router-outlet></router-outlet>
+</div>

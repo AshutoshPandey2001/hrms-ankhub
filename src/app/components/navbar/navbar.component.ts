@@ -118,8 +118,14 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  getTitle() {
+  getHeaderDetails(param) {
     let locationPath = this.location.path().split("/").pop();
-    return this.listTitles.find((route) => route.path == locationPath).title;
+    console.log('locationPath', locationPath)
+    let routeObj = this.listTitles.find((route) => route.path == locationPath);
+    if (param == "icon") {
+      return routeObj.icon;
+    } else if (param == "title") {
+      return routeObj.title;
+    }
   }
 }

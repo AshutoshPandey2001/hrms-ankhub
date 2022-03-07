@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DEMO_ROUTES } from 'app/shared/route.interface';
+export interface ExampleTab {
+  label: string;
+  content: string;
+}
 
 @Component({
   selector: 'app-demo',
@@ -7,6 +11,7 @@ import { DEMO_ROUTES } from 'app/shared/route.interface';
   styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent implements OnInit {
+  
   tabItems: any[];
 
   constructor() {
