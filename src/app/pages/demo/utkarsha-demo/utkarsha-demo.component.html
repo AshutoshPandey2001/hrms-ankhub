@@ -1,0 +1,209 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <button
+            type="button"
+            class="btn btn-success float-right"
+            data-toggle="modal"
+            data-target="#myModal"
+          >
+            Add
+          </button>
+
+          <h4 class="card-title">Empolyee Entry</h4>
+          <p class="card-category">Here is a List of Empolyee</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Action</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of empolyeeList; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.country }}</td>
+                  <td>{{ item.city }}</td>
+                  <td class="td-actions text-left">
+                    <button
+                      mat-raised-button
+                      type="button"
+                      matTooltip="Edit Task"
+                      [matTooltipPosition]="'above'"
+                      class="btn btn-primary btn-link btn-sm btn-just-icon"
+                      data-toggle="modal"
+                      data-target="#editModal"
+                    >
+                      <i class="material-icons" (click)="edit(i)">edit</i>
+                    </button>
+                    <button
+                      mat-raised-button
+                      type="button"
+                      matTooltip="Remove"
+                      [matTooltipPosition]="'above'"
+                      class="btn btn-danger btn-link btn-sm btn-just-icon"
+                    >
+                      <i class="material-icons" (click)="delete(i)">close</i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add Empolyee List</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form [formGroup]="empolyeeData">
+          <div class="form-group">
+            <label for="Name">Name:</label>
+            <input
+              type="name"
+              class="form-control"
+              id="name"
+              placeholder="Enter Name"
+              name="name"
+              formControlName="name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Name">Country:</label>
+            <input
+              type="name"
+              class="form-control"
+              id="name"
+              placeholder="Enter Country"
+              name="name"
+              formControlName="country"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Name">City:</label>
+            <input
+              type="name"
+              class="form-control"
+              id="name"
+              placeholder="Enter City"
+              name="name"
+              formControlName="city"
+            />
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-success"
+          data-dismiss="modal"
+          (click)="submit()"
+        >
+          Submit
+        </button>
+
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="editModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add Empolyee List</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" >
+        <form [formGroup]="empolyeeData" >
+          <div class="form-group">
+            <label for="Name">Name123:</label>
+            <input
+              type="name"
+              class="form-control"
+              id="name"
+              placeholder="Enter Name"
+              name="name"
+              formControlName="name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Name">Country:</label>
+            <input
+              type="name"
+              class="form-control"
+              id="name"
+              placeholder="Enter Country"
+              name="name"
+              formControlName="country"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Name">City:</label>
+            <input
+              type="name"
+              class="form-control"
+              id="name"
+              placeholder="Enter City"
+              name="name"
+              formControlName="city"
+            />
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-success"
+          data-dismiss="modal"
+          (click)="update()"
+        >
+          Update
+        </button>
+
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -11,6 +11,7 @@ import { PoojazadeComponent } from './poojazade/poojazade.component';
 import { ShivaniComponent } from './shivani/shivani.component';
 import { KajalDDemoComponent } from './kajal-d-demo/kajal-d-demo.component';
 import { ShubhamDemoComponent } from './shubham-demo/shubham-demo.component';
+import { UtkarshaDemoComponent } from './utkarsha-demo/utkarsha-demo.component';
 import { AbhinavDemoComponent } from './abhinav-demo/abhinav-demo.component';
 const routes: Routes = [
   {
@@ -24,6 +25,9 @@ const routes: Routes = [
       },
       {
         path: 'shubham-demo', component: ShubhamDemoComponent
+      },
+      {
+        path: 'Utkarsha-demo', component: UtkarshaDemoComponent
       },
       {
         path: 'ankitJ-demo', component: AnkitJDemoComponent

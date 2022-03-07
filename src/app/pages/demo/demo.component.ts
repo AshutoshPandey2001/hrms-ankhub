@@ -5,6 +5,7 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
   { path: 'shubham-demo', label: 'Shubham'},
+  { path: 'Utkarsha-demo', label: 'Utkarsha'},
   { path: 'ankitJ-demo', label: 'AnkitJ'},
   { path: 'abhay-demo', label: 'Abhay'},
   { path: 'mrunmayee-demo', label:'Mrunmayee'},
@@ -17,6 +18,7 @@ export const ROUTES: RouteInfo[] = [
   { path: 'kajalD-demo', label: 'KajalD'},
   { path: 'ashu-demo', label: 'Ashutosh'}
 ];
+  
 
 @Component({
   selector: 'app-demo',
