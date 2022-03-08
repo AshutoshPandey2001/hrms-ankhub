@@ -1,1 +1,88 @@
-<p>shubham-demo works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div
+          class="card-header card-header-danger d-flex justify-content-between align-center"
+        >
+          <h4 class="card-title">Employees</h4>
+          <button mat-raised-button mat-button color="primary" (click)="openDialog()">
+            <mat-icon>add</mat-icon>
+            Add Employee
+          </button>
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hove">
+              <thead class="text-primary">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Salary</th>
+                <th>Action</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Dakota Rice</td>
+                  <td>Niger</td>
+                  <td>Oud-Turnhout</td>
+                  <td class="text-primary">$36,738</td>
+                  <td class="td-actions text-left">
+                    <button
+                      mat-raised-button
+                      type="button"
+                      matTooltip="Edit Employee"
+                      [matTooltipPosition]="'above'"
+                      class="btn btn-primary btn-link btn-sm btn-just-icon"
+                    >
+                      <i class="material-icons">edit</i>
+                    </button>
+                    <button
+                      mat-raised-button
+                      type="button"
+                      matTooltip="Remove Employee"
+                      [matTooltipPosition]="'above'"
+                      class="btn btn-danger btn-link btn-sm btn-just-icon"
+                    >
+                      <i class="material-icons">delete</i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Minerva Hooper</td>
+                  <td>Curaçao</td>
+                  <td>Sinaai-Waas</td>
+                  <td class="text-primary">$23,789</td>
+                  <td class="td-actions text-left">
+                    <button
+                      mat-raised-button
+                      type="button"
+                      matTooltip="Edit Employee"
+                      [matTooltipPosition]="'above'"
+                      class="btn btn-primary btn-link btn-sm btn-just-icon"
+                    >
+                      <i class="material-icons">edit</i>
+                    </button>
+                    <button
+                      mat-raised-button
+                      type="button"
+                      matTooltip="Remove Employee"
+                      [matTooltipPosition]="'above'"
+                      class="btn btn-danger btn-link btn-sm btn-just-icon"
+                    >
+                      <i class="material-icons">delete</i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
