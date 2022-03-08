@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-12">
@@ -13,95 +12,104 @@
                             <form [formGroup]="employeeForm">
                                 <div class="form-group">
                                     <label>ID:</label>
-                                    <input type="text" class="form-control" placeholder="Enter ID" formControlName="Id" 
-                                    [ngClass]="{'is-invalid': submitted && f['Id'].errors}">
+                                    <input type="text" class="form-control" placeholder="Enter ID" formControlName="Id"
+                                        [ngClass]="{'is-invalid': submitted && f['Id'].errors}">
                                     <div *ngIf="submitted && f['Id'].errors" class="invalid-feedback">
                                         Id is rquired...!
-                              
-                                      </div>
+
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Name:</label>
-                                    <input type="text" class="form-control" placeholder="Enter Name" formControlName="Name"
-                                    [ngClass]="{'is-invalid': submitted && f['Id'].errors}">
+                                    <input type="text" class="form-control" placeholder="Enter Name"
+                                        formControlName="Name" [ngClass]="{'is-invalid': submitted && f['Id'].errors}">
                                     <div *ngIf="submitted && f['Id'].errors" class="invalid-feedback">
                                         Id is rquired...!
-                              
-                                      </div>
+
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Country:</label>
-                                    <input type="text" class="form-control" placeholder="Enter Country" formControlName="country"
-                                    [ngClass]="{'is-invalid': submitted && f['Id'].errors}">
+                                    <input type="text" class="form-control" placeholder="Enter Country"
+                                        formControlName="country"
+                                        [ngClass]="{'is-invalid': submitted && f['Id'].errors}">
                                     <div *ngIf="submitted && f['country'].errors" class="invalid-feedback">
                                         Country is rquired...!
-                              
-                                      </div>
+
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>City:</label>
-                                    <input type="text" class="form-control" placeholder="Enter City" formControlName="city"
-                                    [ngClass]="{'is-invalid': submitted && f['city'].errors}">
+                                    <input type="text" class="form-control" placeholder="Enter City"
+                                        formControlName="city"
+                                        [ngClass]="{'is-invalid': submitted && f['city'].errors}">
                                     <div *ngIf="submitted && f['city'].errors" class="invalid-feedback">
                                         City is rquired...!
-                              
-                                      </div>
+
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Salary:</label>
-                                    <input type="email" class="form-control" placeholder="Enter Salary" formControlName="salary"
-                                    [ngClass]="{'is-invalid': submitted && f['salary'].errors}">
+                                    <input type="email" class="form-control" placeholder="Enter Salary"
+                                        formControlName="salary"
+                                        [ngClass]="{'is-invalid': submitted && f['salary'].errors}">
                                     <div *ngIf="submitted && f['salary'].errors" class="invalid-feedback">
                                         Salary is rquired...!
-                              
-                                      </div>
+
+                                    </div>
                                 </div>
-                                <button type="submit"  class="btn btn-success" *ngIf="editoperation==false" style="border: 2px solid rgb(234, 237, 238);" (click)="Save()">Submit</button>
-                                <button type="button"  class="btn btn-warning" *ngIf="editoperation==true" style="border: 2px solid rgb(234, 237, 238);" (click)="Update()">Update</button>
-                               
+                                <button type="submit" class="btn btn-success" *ngIf="editoperation==false"
+                                    style="border: 2px solid rgb(234, 237, 238);" (click)="Save()">Submit</button>
+                                <button type="button" class="btn btn-warning" *ngIf="editoperation==true"
+                                    style="border: 2px solid rgb(234, 237, 238);" (click)="update()">Update</button>
+
                             </form>
-                             </div>
+                        </div>
                     </div>
                     <div class="col-lg-8 col-md-8 col-12">
                         <div class="card-header" style="background-color: red">
                             <h4 style="color: white;">Employee Details</h4>
-                            <p style="color: white;">Save  employee Detail in Table</p>
+                            <p style="color: white;">Save employee Detail in Table</p>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-12" style="padding-bottom: 1rem;">
                                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      
+
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-12 table-responsive">
                                     <table class="table">
                                         <thead>
-                                          <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Country</th>
-                                            <th>City</th>
-                                            <th>Salary</th>
-                                            <th>Action</th>
-                                          </tr>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Country</th>
+                                                <th>City</th>
+                                                <th>Salary</th>
+                                                <th>Action</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                          <tr *ngFor="let info of employeeList  ;let emp=index">
-                                            <td>{{info.Id}}</td>
-                                            <td>{{info.Name}}</td>
-                                            <td>{{info.country}}</td>
-                                            <td>{{info.city}}</td>
-                                            <td>{{info.salary}}</td>
-                                            <td>
-                                              <button type="button" class="btn btn-warning btn-sm" style="border: 2px solid #454d55;" (click)="edit(emp) "><i class="fa fa-edit"></i>Edit</button>
-                                              <button type="button" class="btn btn-danger btn-sm" style="border: 2px solid #454d55;" (click)="trash(emp,info) "><i class="fa fa-trash"></i>Delete</button>
-                                            </td>
-                                          </tr>
+                                            <tr *ngFor="let info of employeeList  ;let emp=index">
+                                                <td>{{info.Id}}</td>
+                                                <td>{{info.Name}}</td>
+                                                <td>{{info.country}}</td>
+                                                <td>{{info.city}}</td>
+                                                <td>{{info.salary}}</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning btn-sm"
+                                                        style="border: 2px solid #454d55;" (click)="edit(emp) "><i
+                                                            class="fa fa-edit"></i>Edit</button>
+                                                    <button type="button" class="btn btn-danger btn-sm"
+                                                        style="border: 2px solid #454d55;" (click)="trash(emp,info) "><i
+                                                            class="fa fa-trash"></i>Delete</button>
+                                                </td>
+                                            </tr>
                                         </tbody>
-                                      </table>
+                                    </table>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -110,3 +118,16 @@
 
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
