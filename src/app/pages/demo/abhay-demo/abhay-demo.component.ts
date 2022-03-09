@@ -251,8 +251,8 @@ export class AbhayDemoComponent implements OnInit {
   
    tabDelete(id:any,from,align){
     this.selectedIndexd = this.modlList.findIndex((xb:any)=>xb.id === id);
-      let box = prompt("Do you want to delete");
-      if(box !=null){
+      // let box = prompt("Do you want to delete");
+      if(confirm('Do you want to delet')==true){
         
         const type = ['','danger'];
 
