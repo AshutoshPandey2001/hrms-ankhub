@@ -11,5 +11,10 @@ export class ShubhamDemoComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
+  openDialog() {
+    console.log('openDialog')
+  
+  }
 
 }
