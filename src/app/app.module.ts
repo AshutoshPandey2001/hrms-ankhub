@@ -7,9 +7,6 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { CommonLayoutComponent } from './components/common-layout/common-layout.component';
-import {
-  AgmCoreModule
-} from '@agm/core';
 import { CommonModule } from '@angular/common';
 
 
@@ -22,12 +19,7 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule,
-    
-    CommonModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
