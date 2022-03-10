@@ -7,10 +7,10 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { CommonLayoutComponent } from './components/common-layout/common-layout.component';
-import {
-  AgmCoreModule
-} from '@agm/core';
 import { CommonModule } from '@angular/common';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -23,17 +23,20 @@ import { CommonModule } from '@angular/common';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    
-    CommonModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+    SweetAlert2Module,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: false,
+      progressBar:true,
+      progressAnimation:'decreasing'
     })
   ],
   declarations: [
     AppComponent,
     CommonLayoutComponent
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

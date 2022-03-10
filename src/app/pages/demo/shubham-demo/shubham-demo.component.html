@@ -5,9 +5,12 @@
         <div
           class="card-header card-header-danger d-flex justify-content-between align-center"
         >
-          <h4 class="card-title">Employees</h4>
-          <button mat-raised-button mat-button color="primary" (click)="openDialog()">
-            <mat-icon>add</mat-icon>
+          <h4 class="card-title">Sample CRUD Operation</h4>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="openModal(template)"
+          >
             Add Employee
           </button>
         </div>
@@ -84,5 +87,195 @@
         </div>
       </div>
     </div>
+
+    <div class="col-md-12">
+      <div class="card">
+        <div
+          class="card-header card-header-danger d-flex justify-content-between align-center"
+        >
+          <h4 class="card-title">Sample Button - [Bootstrap 5]</h4>
+        </div>
+
+        <div class="card-body">
+          <h4 class="card-title">Button Styles</h4>
+          <button type="button" class="btn btn-primary">
+            <i class="far fa-user pr-2" aria-hidden="true"></i>Primary Icon
+            Button
+          </button>
+          <button type="button" class="btn btn-secondary">Secondary</button>
+          <button type="button" class="btn btn-success">Success</button>
+          <button type="button" class="btn btn-info">Info</button>
+          <button type="button" class="btn btn-warning">Warning</button>
+          <button type="button" class="btn btn-danger">Danger</button>
+          <button type="button" class="btn btn-dark">Dark</button>
+          <button type="button" class="btn btn-light">Light</button>
+          <button type="button" class="btn btn-link">Link</button>
+
+          <mat-divider></mat-divider>
+
+          <h4 class="card-title">Button Outline</h4>
+
+          <button type="button" class="btn btn-outline-primary">Primary</button>
+          <button type="button" class="btn btn-outline-secondary">
+            Secondary
+          </button>
+          <button type="button" class="btn btn-outline-success">Success</button>
+          <button type="button" class="btn btn-outline-info">Info</button>
+          <button type="button" class="btn btn-outline-warning">Warning</button>
+          <button type="button" class="btn btn-outline-danger">Danger</button>
+          <button type="button" class="btn btn-outline-dark">Dark</button>
+          <button type="button" class="btn btn-outline-light text-dark">
+            Light
+          </button>
+
+          <mat-divider></mat-divider>
+
+          <h4 class="card-title">Button With Spinner</h4>
+          <button class="btn btn-info">
+            <span class="spinner-border spinner-border-sm"></span>
+          </button>
+
+          <button class="btn btn-success">
+            <span class="spinner-border spinner-border-sm"></span>
+            Loader with text..
+          </button>
+
+          <button class="btn btn-warning" disabled>
+            <span class="spinner-border spinner-border-sm"></span>
+            Loader with text and disabled..
+          </button>
+
+          <button class="btn btn-dark">
+            <span class="spinner-grow spinner-grow-sm"></span>
+            Fade In Out Effect..
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="card">
+        <div
+          class="card-header card-header-danger d-flex justify-content-between align-center"
+        >
+          <h4 class="card-title">Sample Modal - [ngx-bootstrap]</h4>
+        </div>
+
+        <div class="card-body">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="openModal(template)"
+          >
+            Open Modal
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="card">
+        <div
+          class="card-header card-header-danger d-flex justify-content-between align-center"
+        >
+          <h4 class="card-title">Sample Alert - [sweetalert2]</h4>
+        </div>
+
+        <div class="card-body">
+          <button type="button" class="btn btn-primary" (click)="showAlert()">
+            Show Alert
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="card">
+        <div
+          class="card-header card-header-danger d-flex justify-content-between align-center"
+        >
+          <h4 class="card-title">Sample Toaster - [ngx-toastr]</h4>
+        </div>
+
+        <div class="card-body">
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="showSuccessToaster()"
+          >
+            Success Toaster
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-info"
+            (click)="showInfoToaster()"
+          >
+            Info Toaster
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-warning"
+            (click)="showWarningToaster()"
+          >
+            Warning Toaster
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="showErrorToaster()"
+          >
+            Error Toaster
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="card">
+        <div
+          class="card-header card-header-danger d-flex justify-content-between align-center"
+        >
+          <h4 class="card-title">Sample Spinner/Loader - [ngx-spinner]</h4>
+        </div>
+
+        <div class="card-body">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="startSpinner()"
+          >
+            Start Spinner
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">This is a modal.</div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">
+      Cancle
+    </button>
+    <button type="button" class="btn btn-success" (click)="submitData()">
+      Submit
+    </button>
+  </div>
+</ng-template>
