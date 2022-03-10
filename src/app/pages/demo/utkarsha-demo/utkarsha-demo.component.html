@@ -2,55 +2,63 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header card-header-danger">
+        <div
+          class="card-header card-header-danger d-flex justify-content-between align-center"
+        >
+          <h4 class="card-title">Employees</h4>
           <button
-            type="button"
-            class="btn btn-success float-right"
-            data-toggle="modal"
-            data-target="#myModal"
+            mat-raised-button
+            mat-button
+            color="primary"
+            (click)="openModal(template)"
           >
-            Add
+            <mat-icon>add</mat-icon>
+            Add Employee
           </button>
-
-          <h4 class="card-title">Empolyee Entry</h4>
-          <p class="card-category">Here is a List of Empolyee</p>
         </div>
+
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table">
+            <table class="table table-hove">
               <thead class="text-primary">
                 <th>ID</th>
                 <th>Name</th>
-                <th>Country</th>
-                <th>City</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>Date Of Birth</th>
+                <th>Gender</th>
+                <th>Qualification</th>
                 <th>Action</th>
               </thead>
               <tbody>
-                <tr *ngFor="let item of empolyeeList; let i = index">
+                <tr *ngFor="let item of empList; let i = index">
                   <td>{{ i + 1 }}</td>
                   <td>{{ item.name }}</td>
-                  <td>{{ item.country }}</td>
-                  <td>{{ item.city }}</td>
+                  <td>{{ item.email }}</td>
+                  <td>{{ item.mobileNumber }}</td>
+                  <td>{{ item.dob | date: 'dd/MM/yyyy'}}</td>
+                  <td>{{ item.gender }}</td>
+                  <td>{{ item.qualification }}</td>
                   <td class="td-actions text-left">
                     <button
                       mat-raised-button
                       type="button"
-                      matTooltip="Edit Task"
+                      matTooltip="Edit Employee"
                       [matTooltipPosition]="'above'"
                       class="btn btn-primary btn-link btn-sm btn-just-icon"
-                      data-toggle="modal"
-                      data-target="#editModal"
+                      (click)="edit(template1,i)"
                     >
-                      <i class="material-icons" (click)="edit(i)">edit</i>
+                      <i class="material-icons">edit</i>
                     </button>
                     <button
                       mat-raised-button
                       type="button"
-                      matTooltip="Remove"
+                      matTooltip="Remove Employee"
                       [matTooltipPosition]="'above'"
                       class="btn btn-danger btn-link btn-sm btn-just-icon"
+                      (click)="delete(i)"
                     >
-                      <i class="material-icons" (click)="delete(i)">close</i>
+                      <i class="material-icons">delete</i>
                     </button>
                   </td>
                 </tr>
@@ -63,155 +71,317 @@
   </div>
 </div>
 
-<!-- The Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Add Empolyee List</h4>
-        <button type="button" class="close" #closebutton  data-dismiss="modal">
-          &times;
-        </button>
-      </div>
+<!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button> -->
 
-      <!-- Modal body -->
-      <div class="modal-body">
-        <form [formGroup]="empolyeeData">
-          <div class="form-group">
-            <label for="Name">Name:</label>
-            <input
-              type="name"
-              class="form-control"
-              id="name"
-              placeholder="Enter Name"
-              name="name"
-             
-              
-              formControlName="name"
-            />
-            <div *ngIf="submitted == true && f['name'].errors">
-              Name is Requried !!!
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="Name">Country:</label>
-            <input
-              type="name"
-              class="form-control"
-              id="name"
-              placeholder="Enter Country"
-              name="name"
-              formControlName="country"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="Name">City:</label>
-            <input
-              type="name"
-              class="form-control"
-              id="name"
-              placeholder="Enter City"
-              name="name"
-              formControlName="city"
-            />
-          </div>
-        </form>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-success"
-         
-          (click)="submit()"
-        >
-          Submit
-        </button>
-
-        <button type="button" class="btn btn-danger" data-dismiss="modal">
-          Close
-        </button>
-      </div>
-    </div>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left heading">Empolyee Data</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="close()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
   </div>
+  <div class="modal-body">
+    <form [formGroup]="empData">
+      <div class="form-group">
+        <label for="Name" class="style">Name:</label>
+        <input
+          type="name"
+          class="form-control"
+          id="name"
+          placeholder="Enter Name"
+          name="name"
+          [ngClass]="{ 'is-invalid': submitted == true && f['name'].errors }"
+          formControlName="name"
+        />
+        <div
+          *ngIf="submitted == true && f['name'].errors"
+          class="invalid-feedback"
+        >
+          Name is Requried !!!
+        </div>
+        `
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="style">Email:</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Enter Email"
+          name="email"
+          ngModel
+          email="true"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted == true && f['email'].errors }"
+        />
+        <div
+          *ngIf="submitted == true && f['email'].errors"
+          class="invalid-feedback"
+        >
+          Enter Email @gmail.com!!!
+        </div>
+        `
+      </div>
+
+      <div class="form-group">
+        <label for="mobileNumber" class="style">Mobile Number:</label>
+        <input
+          type="mobileNumber"
+          class="form-control"
+          id="mobileNumber"
+          placeholder="Enter Mobile No"
+          name="mobileNumber"
+          [ngClass]="{
+            'is-invalid': submitted == true && f['mobileNumber'].errors
+          }"
+          formControlName="mobileNumber"
+        />
+        <div
+          *ngIf="submitted == true && f['mobileNumber'].errors"
+          class="invalid-feedback"
+        >
+          Enter Correct Mobile Number!!!
+        </div>
+        `
+      </div>
+
+      <div class="form-group">
+        <label for="dob" class="style"> Date Of Birth:</label>
+        <input
+          type="text"
+          #dp="bsDatepicker"
+          placeholder="Datepicker"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted == true && f['dob'].errors }"
+          formControlName="dob"
+          bsDatepicker
+        />
+        <div
+          *ngIf="submitted == true && f['dob'].errors"
+          class="invalid-feedback"
+        >
+          Enter DOB!!!
+        </div>
+        `
+      </div>
+
+      <div class="form-group">
+        <label class="style">Gender</label>
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+          [ngClass]="{ 'is-invalid': submitted == true && f['gender'].errors }"
+          formControlName="gender"
+        >
+          <mat-radio-button
+            class="example-radio-button"
+            *ngFor="let season of seasons"
+            [value]="season"
+            class="invalid-feedback"
+          >
+            {{ season }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="form-group">
+        <label class="style">Qualification</label>
+        <mat-form-field appearance="dark">
+          <mat-label>Choose an option</mat-label>
+          <select matNativeControl  formControlName="qualification" >
+            <option value="" selected style="text-align: center;"></option>
+            <option value="Engineering" >Engineering</option>
+            <option value="MBBS" >MBBS</option>
+            <option value="BSC">BSC</option>
+            <option value="BA">BA</option>
+          </select>
+          </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-success"
+      data-dismiss="modal"
+      (click)="submit()"
+    >
+      Submit
+     
+    </button>
+    
+
+    <button
+      type="button"
+      class="btn btn-danger"
+      data-dismiss="modal"
+      (click)="close()"
+    >
+      Close
+    </button>
+  </div>
+
+</ng-template>
+<mat-spinner *ngIf="spin==true" class="spin"></mat-spinner>
+<div class="alert alert-success alert" role="alert"  *ngIf="alert==true">
+ Employee Data is Added successfully
 </div>
 
-<div class="modal" id="editModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Add Empolyee List</h4>
-        <button type="button" class="close" data-dismiss="modal">
-          &times;
-        </button>
-      </div>
 
-      <!-- Modal body -->
-      <div class="modal-body" >
-        <form [formGroup]="empolyeeData" >
-          <div class="form-group">
-            <label for="Name">Name:</label>
-            <input
-              type="name"
-              class="form-control"
-              id="name"
-              placeholder="Enter Name"
-              name="name"
-              formControlName="name"
-            />
-          </div>
-          <!-- <div *ngIf="submitted==true">
-            Name is Requried !!!
-          </div> -->
 
-          <div class="form-group">
-            <label for="Name">Country:</label>
-            <input
-              type="name"
-              class="form-control"
-              id="name"
-              placeholder="Enter Country"
-              name="name"
-              formControlName="country"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="Name">City:</label>
-            <input
-              type="name"
-              class="form-control"
-              id="name"
-              placeholder="Enter City"
-              name="name"
-              formControlName="city"
-            />
-          </div>
-        </form>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-success"
-          data-dismiss="modal"
-          (click)="update()"
-        >
-          Update
-        </button>
-
-        <button type="button" class="btn btn-danger" data-dismiss="modal">
-          Close
-        </button>
-      </div>
-    </div>
+<ng-template #template1>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left heading" > Edit Empolyee Data</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="close()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
   </div>
-</div>
+  <div class="modal-body">
+    <form [formGroup]="empData">
+      <div class="form-group">
+        <label for="Name" class="style">Name:</label>
+        <input
+          type="name"
+          class="form-control"
+          id="name"
+          placeholder="Enter Name"
+          name="name"
+          [ngClass]="{ 'is-invalid': submitted == true && f['name'].errors }"
+          formControlName="name"
+        />
+        <div
+          *ngIf="submitted == true && f['name'].errors"
+          class="invalid-feedback"
+        >
+          Name is Requried !!!
+        </div>
+        `
+      </div>
 
-<router-outlet></router-outlet>
+      <div class="form-group">
+        <label for="email" class="style">Email:</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Enter Email"
+          name="email"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted == true && f['email'].errors }"
+        />
+        <div
+          *ngIf="submitted == true && f['email'].errors"
+          class="invalid-feedback"
+        >
+          Enter Email @gmail.com!!!
+        </div>
+        
+      </div>
+
+      <div class="form-group">
+        <label for="mobileNumber" class="style">Mobile Number:</label>
+        <input
+          type="mobileNumber"
+          class="form-control"
+          id="mobileNumber"
+          placeholder="Enter Mobile No"
+          name="mobileNumber"
+          [ngClass]="{
+            'is-invalid': submitted == true && f['mobileNumber'].errors
+          }"
+          formControlName="mobileNumber"
+        />
+        <div
+          *ngIf="submitted == true && f['mobileNumber'].errors"
+          class="invalid-feedback"
+        >
+          Enter Correct Mobile Number!!!
+        </div>
+        `
+      </div>
+
+      <div class="form-group">
+        <label for="dob" class="style">Date Of Birth:</label>
+        <input
+          type="text"
+          #dp="bsDatepicker"
+          placeholder="Datepicker"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted == true && f['dob'].errors }"
+          formControlName="dob"
+          bsDatepicker
+        />
+        <div
+          *ngIf="submitted == true && f['dob'].errors"
+          class="invalid-feedback"
+        >
+          Enter DOB!!!
+        </div>
+        `
+      </div>
+
+      <div class="form-group">
+        <label class="style">Gender</label>
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+          [ngClass]="{ 'is-invalid': submitted == true && f['gender'].errors }"
+          formControlName="gender"
+        >
+          <mat-radio-button
+            class="example-radio-button"
+            *ngFor="let season of seasons"
+            [value]="season"
+            class="invalid-feedback"
+          >
+            {{ season }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="form-group">
+        <label class="style">Qualification</label>
+        <mat-form-field appearance="dark">
+          <mat-label>Choose an option</mat-label>
+          <select matNativeControl  formControlName="qualification" >
+            <option value="" selected style="text-align: center;"></option>
+            <option value="Engineering" >Engineering</option>
+            <option value="MBBS" >MBBS</option>
+            <option value="BSC">BSC</option>
+            <option value="BA">BA</option>
+          </select>
+          </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-success"
+      data-dismiss="modal"
+      (click)="update()"
+    >
+      Update
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-danger"
+      data-dismiss="modal"
+      (click)="close()"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>

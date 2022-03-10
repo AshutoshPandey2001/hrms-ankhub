@@ -16,6 +16,11 @@ import { KajalDDemoComponent } from './kajal-d-demo/kajal-d-demo.component';
 import { AshuDemoComponent } from './ashu-demo/ashu-demo.component';
 import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
 import { MaterialModule } from 'app/material.module';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,13 @@ import { MaterialModule } from 'app/material.module';
     FormsModule,
     CommonModule,
     Ng2SearchPipeModule,
-    MaterialModule
-  ]  
+    MaterialModule,
+    NgxSpinnerModule ,
+    BsDatepickerModule.forRoot(),
+  ]  ,
+
+  providers:[
+    BsModalService
+  ]
 })
 export class DemoModule { }

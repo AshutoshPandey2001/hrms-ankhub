@@ -19,7 +19,7 @@ export const MAIN_ROUTES: RouteInfo[] = [
 
 export const DEMO_ROUTES: RouteInfo[] = [
   { path: "shubham-demo", title: "Shubham", icon: "admin_panel_settings", class: "" },
-  { path: "Utkarsha-demo", title: "Utkarsha", icon: "laptop_mac", class: "" },
+  { path: "Utkarsha-demo", title: "Utkarsha", icon: "military_tech", class: "" },
   { path: "ankitJ-demo", title: "AnkitJ", icon: "laptop_mac", class: "" },
   { path: "abhay-demo", title: "Abhay", icon: "laptop_mac", class: "" },
   { path: "mrunmayee-demo", title: "Mrunmayee", icon: "laptop_mac", class: "" },
