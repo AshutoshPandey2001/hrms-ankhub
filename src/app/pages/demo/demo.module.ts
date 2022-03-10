@@ -16,11 +16,7 @@ import { KajalDDemoComponent } from './kajal-d-demo/kajal-d-demo.component';
 import { AshuDemoComponent } from './ashu-demo/ashu-demo.component';
 import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
 import { MaterialModule } from 'app/material.module';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { NgxSpinnerModule } from 'ngx-spinner';
+import { AllModule } from 'app/allModule.module';
 
 @NgModule({
   declarations: [
@@ -39,18 +35,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   ],
  
   imports: [
-    DemoRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    CommonModule,
-    Ng2SearchPipeModule,
-    MaterialModule,
-    NgxSpinnerModule ,
-    BsDatepickerModule.forRoot(),
-  ]  ,
-
-  providers:[
-    BsModalService
-  ]
+    AllModule,
+    DemoRoutingModule
+  ]  
 })
 export class DemoModule { }
