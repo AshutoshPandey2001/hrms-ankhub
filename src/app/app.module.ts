@@ -8,6 +8,7 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { CommonLayoutComponent } from './components/common-layout/common-layout.component';
 import { CommonModule } from '@angular/common';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { CommonModule } from '@angular/common';
     AppComponent,
     CommonLayoutComponent
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
