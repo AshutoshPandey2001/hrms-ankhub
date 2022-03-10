@@ -28,8 +28,8 @@ import { ToastrModule } from 'ngx-toastr';
       timeOut: 5000,
       positionClass: 'toast-top-right',
       preventDuplicates: false,
-      progressBar:true,
-      progressAnimation:'decreasing'
+      progressBar:false,
+      progressAnimation:'increasing'
     })
   ],
   declarations: [
