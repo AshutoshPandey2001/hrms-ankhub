@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef, ModalOptions } from "ngx-bootstrap/modal";
 import { ToastrService } from "ngx-toastr";
+import { NgxUiLoaderService } from "ngx-ui-loader";
 import Swal from 'sweetalert2'
 
 @Component({
@@ -17,9 +18,11 @@ export class ShubhamDemoComponent implements OnInit {
     animated: true, //Add animation on open close
   };
 
-  constructor(private modalService: BsModalService,private toastr: ToastrService) {}
+  constructor(private modalService: BsModalService,private toastr: ToastrService,private ngxService: NgxUiLoaderService) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.startSpinner(); 
+  }
 
   openDialog() {
     console.log("openDialog");
@@ -77,6 +80,9 @@ export class ShubhamDemoComponent implements OnInit {
   }
 
   startSpinner(){
-
+    this.ngxService.start(); 
+    setTimeout(() => {
+      this.ngxService.stop(); 
+    }, 2000);
   }
 }

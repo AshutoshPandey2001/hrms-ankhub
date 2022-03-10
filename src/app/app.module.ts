@@ -8,6 +8,13 @@ import { BsModalService } from "ngx-bootstrap/modal";
 import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 import { ToastrModule } from "ngx-toastr";
 import { AllModule } from "./allModule.module";
+import {
+  NgxUiLoaderModule,
+  NgxUiLoaderConfig,
+  SPINNER,
+  POSITION,
+  PB_DIRECTION,
+} from "ngx-ui-loader";
 
 @NgModule({
   imports: [
@@ -16,6 +23,15 @@ import { AllModule } from "./allModule.module";
     ComponentsModule,
     SweetAlert2Module,
     BrowserAnimationsModule,
+    NgxUiLoaderModule.forRoot({
+      // bgsColor: "red",
+      // bgsPosition: POSITION.bottomCenter,
+      // bgsSize: 40,
+      // bgsType: SPINNER.rectangleBounce, // background spinner type
+      // fgsType: SPINNER.chasingDots, // foreground spinner type
+      // pbDirection: PB_DIRECTION.leftToRight, // progress bar direction
+      // pbThickness: 5, // progress bar thickness
+    }),
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: "toast-top-right",
