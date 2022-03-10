@@ -1,5 +1,7 @@
 import { Component, OnInit, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef, ModalOptions } from "ngx-bootstrap/modal";
+import { ToastrService } from "ngx-toastr";
+import Swal from 'sweetalert2'
 
 @Component({
   selector: "app-shubham-demo",
@@ -15,7 +17,7 @@ export class ShubhamDemoComponent implements OnInit {
     animated: true, //Add animation on open close
   };
 
-  constructor(private modalService: BsModalService) {}
+  constructor(private modalService: BsModalService,private toastr: ToastrService) {}
 
   ngOnInit(): void {}
 
@@ -33,5 +35,48 @@ export class ShubhamDemoComponent implements OnInit {
 
   submitData() {
     console.log('You Clicked on Submit button')
+  }
+
+  showAlert(){
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      cancelButtonText:'Cancle'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+  }
+
+  showSuccessToaster(){
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }
+
+  showInfoToaster(){
+    this.toastr.info('Hello world!', 'Toastr fun!');
+  }
+
+  showWarningToaster(){
+    this.toastr.warning('Hello world!', 'Toastr fun!');
+  }
+
+  showErrorToaster(){
+    this.toastr.error('Hello world!', 'Toastr fun!');
+  }
+
+  startSpinner(){
+
   }
 }
