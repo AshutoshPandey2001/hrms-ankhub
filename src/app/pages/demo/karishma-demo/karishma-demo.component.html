@@ -71,8 +71,17 @@
                                         <input type="email" class="form-control"placeholder="Enter email" formControlName="email"
                                         [ngClass]="{'is-invalid': submitted && f['email'].errors}">
                                         <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-                                           Enter a valid email address...!
-                                        </div>
+
+                                            <div *ngIf="f['email'].errors['required']">
+                                              Email is required...!
+                                            </div>
+                                            
+                                            <div *ngIf="f['email'].errors['email']">
+                                              Please enter valid email id...!
+                                            </div>
+                                    
+                                          </div>
+                                       
                                     </div>
                                     <div class="form-group">
                                         <label>Mobile No.</label>
@@ -99,7 +108,7 @@
     
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group"  [ngClass]="{'is-invalid': submitted && f['gender'].errors}">
                                         <label>Gender</label>
                                         <div class="radio">
                                             <label><input type="radio" name="optradio" value="Male" formControlName="gender" checked>Male</label>
@@ -107,6 +116,12 @@
                                           <div class="radio">
                                             <label><input type="radio" name="optradio" value="Female" formControlName="gender">Female</label>
                                           </div>
+                                          <div *ngIf="submitted && f['gender'].errors" class="invalid-feedback">
+
+                                            <div *ngIf="f['gender'].errors['required']">
+                                              Gender is required!
+                                            </div>
+                                           </div>
                                     </div>
                                    <div class="form-group">
                                     <label for="text">Qualification</label>
@@ -133,7 +148,7 @@
                                 <button type="button" id="cancel" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button *ngIf="editoperation==false;" type="button" class="btn btn-primary" (click)=" Save()">Submit</button>
                                 
-                                <button *ngIf="editoperation==true;" type="button" id="cancel" class="btn btn-primary" (click)=" Update()">Update</button>
+                                <button *ngIf="editoperation==true;" type="button" id="cancel" class="btn btn-warning" (click)=" Update()">Update</button>
                             </div>
                         </div>
                     </div>
@@ -142,4 +157,6 @@
         </div>
     </div>
 </div>
+
+
 
