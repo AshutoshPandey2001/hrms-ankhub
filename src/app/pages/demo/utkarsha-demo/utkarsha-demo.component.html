@@ -36,7 +36,7 @@
                   <td>{{ item.name }}</td>
                   <td>{{ item.email }}</td>
                   <td>{{ item.mobileNumber }}</td>
-                  <td>{{ item.dob | date: 'dd/MM/yyyy'}}</td>
+                  <td>{{ item.dob | date: "dd/MM/yyyy" }}</td>
                   <td>{{ item.gender }}</td>
                   <td>{{ item.qualification }}</td>
                   <td class="td-actions text-left">
@@ -46,7 +46,7 @@
                       matTooltip="Edit Employee"
                       [matTooltipPosition]="'above'"
                       class="btn btn-primary btn-link btn-sm btn-just-icon"
-                      (click)="edit(template1,i)"
+                      (click)="edit(template1, i)"
                     >
                       <i class="material-icons">edit</i>
                     </button>
@@ -153,14 +153,14 @@
 
       <div class="form-group">
         <label for="dob" class="style"> Date Of Birth:</label>
+
         <input
           type="text"
-         
           placeholder="Datepicker"
           class="form-control"
           [ngClass]="{ 'is-invalid': submitted == true && f['dob'].errors }"
           formControlName="dob"
-          
+          bsDatepicker
         />
         <div
           *ngIf="submitted == true && f['dob'].errors"
@@ -194,14 +194,14 @@
         <label class="style">Qualification</label>
         <mat-form-field appearance="dark">
           <mat-label>Choose an option</mat-label>
-          <select matNativeControl  formControlName="qualification" >
-            <option value="" selected style="text-align: center;"></option>
-            <option value="Engineering" >Engineering</option>
-            <option value="MBBS" >MBBS</option>
+          <select matNativeControl formControlName="qualification">
+            <option value="" style="text-align: center"></option>
+            <option value="Engineering">Engineering</option>
+            <option value="MBBS">MBBS</option>
             <option value="BSC">BSC</option>
             <option value="BA">BA</option>
           </select>
-          </mat-form-field>
+        </mat-form-field>
       </div>
     </form>
   </div>
@@ -213,9 +213,7 @@
       (click)="submit()"
     >
       Submit
-     
     </button>
-    
 
     <button
       type="button"
@@ -226,18 +224,15 @@
       Close
     </button>
   </div>
-
 </ng-template>
-<mat-spinner *ngIf="spin==true" class="spin"></mat-spinner>
-<div class="alert alert-success alert" role="alert"  *ngIf="alert==true">
- Employee Data is Added successfully
+<mat-spinner *ngIf="spin == true" class="spin"></mat-spinner>
+<div class="alert alert-success alert" role="alert" *ngIf="alert == true">
+  Employee Data is Added successfully
 </div>
-
-
 
 <ng-template #template1>
   <div class="modal-header">
-    <h4 class="modal-title pull-left heading" > Edit Empolyee Data</h4>
+    <h4 class="modal-title pull-left heading">Edit Empolyee Data</h4>
     <button
       type="button"
       class="btn-close close pull-right"
@@ -286,7 +281,6 @@
         >
           Enter Email @gmail.com!!!
         </div>
-        
       </div>
 
       <div class="form-group">
@@ -315,12 +309,11 @@
         <label for="dob" class="style">Date Of Birth:</label>
         <input
           type="text"
-         
           placeholder="Datepicker"
           class="form-control"
           [ngClass]="{ 'is-invalid': submitted == true && f['dob'].errors }"
           formControlName="dob"
-          
+          bsDatepicker
         />
         <div
           *ngIf="submitted == true && f['dob'].errors"
@@ -354,14 +347,14 @@
         <label class="style">Qualification</label>
         <mat-form-field appearance="dark">
           <mat-label>Choose an option</mat-label>
-          <select matNativeControl  formControlName="qualification" >
-            <option value="" selected style="text-align: center;"></option>
-            <option value="Engineering" >Engineering</option>
-            <option value="MBBS" >MBBS</option>
+          <select matNativeControl formControlName="qualification">
+            <option value="" selected style="text-align: center"></option>
+            <option value="Engineering">Engineering</option>
+            <option value="MBBS">MBBS</option>
             <option value="BSC">BSC</option>
             <option value="BA">BA</option>
           </select>
-          </mat-form-field>
+        </mat-form-field>
       </div>
     </form>
   </div>

@@ -24,6 +24,8 @@ import { SdkToasterComponent } from './shubham-demo/sdk-toaster/sdk-toaster.comp
 import { SdkSpinnerComponent } from './shubham-demo/sdk-spinner/sdk-spinner.component';
 import { SdkMoreComponent } from './shubham-demo/sdk-more/sdk-more.component';
 import { SdkCrudComponent } from './shubham-demo/sdk-crud/sdk-crud.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { SdkDatepickerComponent } from './shubham-demo/sdk-datepicker/sdk-datepicker.component';
 
 @NgModule({
   declarations: [
@@ -45,12 +47,13 @@ import { SdkCrudComponent } from './shubham-demo/sdk-crud/sdk-crud.component';
     SdkToasterComponent,
     SdkSpinnerComponent,
     SdkMoreComponent,
-    SdkCrudComponent,  
+    SdkCrudComponent,
+    SdkDatepickerComponent,  
   ],
  
   imports: [
     AllModule,
-    DemoRoutingModule
+    DemoRoutingModule,
   ]  
 })
 export class DemoModule { }

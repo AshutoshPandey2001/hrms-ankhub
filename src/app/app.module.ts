@@ -16,6 +16,7 @@ import {
   PB_DIRECTION,
 } from "ngx-ui-loader";
 
+
 @NgModule({
   imports: [
     AllModule,
@@ -38,7 +39,7 @@ import {
       preventDuplicates: false,
       progressBar: false,
       progressAnimation: "increasing",
-    }),
+    })
   ],
   declarations: [AppComponent, CommonLayoutComponent],
   providers: [BsModalService],
