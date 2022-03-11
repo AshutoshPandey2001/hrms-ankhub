@@ -7,7 +7,7 @@
         <div class="card-header card-header-danger">
           <h4 class="card-title ">Simple Table</h4>
           <p class="card-category"> Here is a subtitle for this table</p>
-          <i class="fa fa-plus  float-right  "  data-toggle="modal" data-target="#myModal">
+          <i  matTooltip="Add" [matTooltipPosition]="'left'" class="fa fa-plus  float-right  "  data-toggle="modal" data-target="#myModal">
 
           </i>
 
@@ -71,7 +71,7 @@
                     <div class="form-group ">
                       <label for="text " class=" text-primary">Date Of Birth :</label>
                         
-                    <input type="date" name="begin"  class="form-control input-f" placeholder="Enter Date Of Birth" formControlName="dob" value="" min="1997-01-01" max="2030-12-31"
+                    <input type="date" name="begin"  class="form-control input-f" placeholder="Enter Date Of Birth" formControlName="dob"  data-date-format="dd-mm-yyyy"  min="01-01-1997" max="31-12-2030"
                     [ngClass]="{'is-invalid' : tablesub && t['dob'].errors }">
                     <div *ngIf="tablesub && t['dob'].errors" class="invalid-feedback">
 
@@ -136,7 +136,7 @@
                  
                   <!-- <div class="col-lg-12 col-md-12 col-sm-12 justify-content-left   form-group "> -->
                       
-                    <button data-dismiss="modal" *ngIf="isupdateB==false" type="button" class="btn submit  justify-content-left  "   (click)="tableSubmit()"> <i class="fa fa-sign-in"></i>
+                    <button data-dismiss="modal" *ngIf="isupdateB==false" type="button" class="btn submit  justify-content-left  " [disabled]="tableForm.value.fName == '' || tableForm.value.email == '' || tableForm.value.gender == ''|| tableForm.value.mobNo == '' || tableForm.value.dob == '' " (click)="tableSubmit()"> <i class="fa fa-sign-in"></i>
                       Submit</button>
                   <!-- </div> -->
                   <!-- <div class="col-lg-12 form-group"> -->
@@ -197,9 +197,9 @@
                  
                   <td>
                     <div class="row">
-                      <div class="col-lg-6 col-md-6 col-sm-12" data-toggle="modal" data-target="#myModal"> <i class="fa fa-edit edit " [disabled]="loading"   (click)="tableEdit(tab)"></i> </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12" data-toggle="modal" data-target="#myModal"> <i   matTooltip="Edit" [matTooltipPosition]="'below'" class="fa fa-edit edit " [disabled]="loading"   (click)="tableEdit(tab)"></i> </div>
                       <div class="col-lg-6 col-md-6 col-sm-12">
-                        <i class="fa fa-close delete " [disabled]="loading" (click)="tableDelete(tab.id)"></i></div>
+                        <i  matTooltip="Delete" [matTooltipPosition]="'below'" class="fa fa-close delete " [disabled]="loading" (click)="tableDelete(tab.id)"></i></div>
                     </div>
                   </td>
                 </tr>
@@ -303,10 +303,10 @@
                       <td>{{emp.salary}}</td>
                       <td>
                         <div class="row">
-                          <div class="col-lg-6 col-md-6 col-sm-12"> <button class="btn edit form-control"
+                          <div class="col-lg-6 col-md-6 col-sm-12"> <button class="btn btn-outline-warning form-control"
                               (click)="empEdit(emp)"> <i class="fa fa-edit"></i> Edit</button></div>
-                          <div class="col-lg-6 col-md-6 col-sm-12"> <button class="btn delete form-control"
-                              (click)="empDelete(emp.id)"> <i class="fa fa-trash-o"></i> Delete</button></div>
+                          <div class="col-lg-6 col-md-6 col-sm-12"> <button class="btn delete btn-outline-danger form-control"
+                              (click)="empDelete(emp.id)"> <i class="fa fa-trash"></i> Delete</button></div>
                         </div>
                       </td>
                     </tr>

@@ -14,7 +14,7 @@
 
 .input-f{
  border-bottom: rgb(247, 117, 66) solid;
-//  background-color: rgb(222, 226, 252);
+
 }
 
 .input-select{
@@ -28,12 +28,7 @@
     border: 0px;
     border-radius: 0%;
   }
-  // .active-pink input.form-control[type=text] {
-  //   border-bottom: 2px solid rgb(19, 153, 113);
-  //   box-shadow: 0 2px 0 0 rgb(19, 153, 113);
-  //   border: 0px;
-  //   border-radius: 0%;
-  // }
+  
 
   .search-i{
     width: 5%;
@@ -62,27 +57,6 @@
   }
 
  
-  // .loader {
-  //   border: 16px solid #f3f3f3;
-  //   border-radius: 50%;
-  //   border-top: 16px solid #3498db;
-  //   width: 120px;
-  //   height: 120px;
-  //   -webkit-animation: spin 2s linear infinite; /* Safari */
-  //   animation: spin 2s linear infinite;
-  // }
-  
-  // /* Safari */
-  // @-webkit-keyframes spin {
-  //   0% { -webkit-transform: rotate(0deg); }
-  //   100% { -webkit-transform: rotate(360deg); }
-  // }
-  
-  // @keyframes spin {
-  //   0% { transform: rotate(0deg); }
-  //   100% { transform: rotate(360deg); }
-  // }
-
   
 .submit{
   background-color:rgb(232,64,61) ;
@@ -90,47 +64,17 @@
   // padding-bottom: 25px;
   padding-left: 10px;
   
-  // float: left;
+ 
 }
 .update{
  color:rgb(232,64,61) ;
   background-color: #fff;
   border: solid rgb(241, 21, 21);
 
-  // padding-left: 10px;
-  
-  // float: left;
 }
 
-// .loader {
-//   display: none;
-//   top: 50%;
-//   left: 50%;
-//   position: absolute;
-//   transform: translate(-50%, -50%);
-// }
-
-// .loading {
-//   border: 2px solid #ccc;
-//   width: 60px;
-//   height: 60px;
-//   border-radius: 50%;
-//   border-top-color: #1ecd97;
-//   border-left-color:  #1ecd97;
-//   animation: spin 1s infinite ease-in;
-// }
-
-// @keyframes spin {
-//   0% {
-//       transform: rotate(0deg);
-//   }
-//   100% {
-//       transform: rotate(360deg);
-//   }
-// }
-
 @keyframes spinner {
-  // to {transform: rotate(360deg);}
+ 
   0% {
           transform: rotate(0deg);
       }

@@ -22,7 +22,7 @@ export class AbhinavDemoComponent implements OnInit {
   tableForm : FormGroup;
   tablesub = false;
   loading = false;
-modelClose = false
+
 
   empForm : FormGroup;
   empsub = false;
@@ -122,14 +122,26 @@ modelClose = false
 
 tableSubmit(){
   this.tablesub = true;
-  this.modelClose = true;
+  
   
   if (this.tableForm.valid){
-    this.tableForm.value.id = this.randomID();
-    this.tableList.push(this.tableForm.value)
+    
     this.loading = true;
+    
+  
+
+
 
     setTimeout(() => {  
+
+      
+    this.tableForm.value.id = this.randomID();
+    this.tableList.push(this.tableForm.value)
+    localStorage.setItem("Table_LIST", JSON.stringify(this.tableList));
+    console.log('table', this.tableList);
+   
+    this.tableClear()
+
       this.loading = false;
       const type = ['','success'];
 
@@ -163,10 +175,7 @@ tableSubmit(){
   
 
     // alert("Form is valid......submitted successfully !!!")
-    localStorage.setItem("Table_LIST", JSON.stringify(this.tableList));
-    console.log('table', this.tableList);
-   
-    this.tableClear()
+    
 }
 else {
   alert("Form is invalid......please try again !!!")
@@ -177,6 +186,18 @@ else {
 tableEdit(obj:any){
   this.loading = true;
   setTimeout(() => {  
+     
+  this.selectIndexB= this.tableList.findIndex((x : any )=> x.id === obj.id);
+ 
+  
+  this.tableForm.patchValue({
+    fName : obj.fName ,
+    email : obj.email,
+    mobNo : obj.mobNo,
+    dob : obj.dob,
+    gender : obj.gender,
+    quali : obj.quali
+  })
     this.loading = false;
 
     const type = ['','warning'];
@@ -207,18 +228,7 @@ tableEdit(obj:any){
     });
   }, 5000);
 
-  
-  this.selectIndexB= this.tableList.findIndex((x : any )=> x.id === obj.id);
  
-  
-  this.tableForm.patchValue({
-    fName : obj.fName ,
-    email : obj.email,
-    mobNo : obj.mobNo,
-    dob : obj.dob,
-    gender : obj.gender,
-    quali : obj.quali
-  })
 
 
 
@@ -229,18 +239,24 @@ tableEdit(obj:any){
 }
 
 tableUpdate(){
-  this.tableList[this.selectIndexB].fName = this.tableForm.value.fName;
-  this.tableList[this.selectIndexB].email = this.tableForm.value.email;
-  this.tableList[this.selectIndexB].mobNo = this.tableForm.value.mobNo;
-  this.tableList[this.selectIndexB].dob = this.tableForm.value.dob;
-  this.tableList[this.selectIndexB].gender = this.tableForm.value.gender;
-  this.tableList[this.selectIndexB].quali = this.tableForm.value.quali;
-    localStorage.setItem("Table_LIST", JSON.stringify(this.tableList));
-    this.tableClear()
-    this.isupdateB = false ;
+ 
     this.loading = true;
     setTimeout(() => {  
+
+
+      this.isupdateB = false ;
       this.loading = false;
+
+      this.tableList[this.selectIndexB].fName = this.tableForm.value.fName;
+      this.tableList[this.selectIndexB].email = this.tableForm.value.email;
+      this.tableList[this.selectIndexB].mobNo = this.tableForm.value.mobNo;
+      this.tableList[this.selectIndexB].dob = this.tableForm.value.dob;
+      this.tableList[this.selectIndexB].gender = this.tableForm.value.gender;
+      this.tableList[this.selectIndexB].quali = this.tableForm.value.quali;
+        localStorage.setItem("Table_LIST", JSON.stringify(this.tableList));
+        this.tableClear()
+    
+        
       const type = ['','info'];
 
       const color = Math.floor((Math.random() * 1) + 1);
@@ -273,13 +289,16 @@ tableUpdate(){
 }
 
 tableDelete(id:any){
-
+  this.selectIndexB= this.tableList.findIndex((x : any )=> x.id === id);
   if(confirm('You want to Delete info ?')==true){
     this.loading = true;
   setTimeout(() => {  
     this.loading = false;
 
 
+    this.tableList.splice(this.selectIndexB,1);
+    localStorage.setItem("Table_LIST", JSON.stringify(this.tableList));
+  
     const type = ['','danger'];
 
     const color = Math.floor((Math.random() * 1) + 1);
@@ -308,11 +327,8 @@ tableDelete(id:any){
     });
      
   }, 5000);
-  this.selectIndexB= this.tableList.findIndex((x : any )=> x.id === id);
+  
  
-  this.tableList.splice(this.selectIndexB,1);
-  localStorage.setItem("Table_LIST", JSON.stringify(this.tableList));
-
  
 
   

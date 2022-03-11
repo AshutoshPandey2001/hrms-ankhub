@@ -1,19 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MAIN_ROUTES } from 'app/shared/route.interface';
 declare const $: any;
-declare interface RouteInfo {
-  path: string;
-  title: string;
-  icon: string;
-  class: string;
-}
-export const ROUTES: RouteInfo[] = [
-  { path: '/demo', title: 'Demo', icon: 'laptop_mac', class: '' },
-  { path: '/employee', title: 'Employee', icon: 'work', class: '' },
-  { path: '/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' },
-  { path: '/table-list', title: 'Table List', icon: 'content_paste', class: '' },
-  { path: '/typography', title: 'Typography', icon: 'library_books', class: '' }
-];
 
 @Component({
   selector: 'app-sidebar',
@@ -26,7 +13,7 @@ export class SidebarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
+    this.menuItems = MAIN_ROUTES.filter(menuItem => menuItem.display);
   }
   
   isMobileMenu() {

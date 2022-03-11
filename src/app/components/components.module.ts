@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { MaterialModule } from 'app/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    MaterialModule
   ],
   declarations: [
     NavbarComponent,
