@@ -10,8 +10,6 @@ export const MAIN_ROUTES: RouteInfo[] = [
   { path: "demo", title: "Demo", icon: "laptop_mac", class: "", display:true },
   { path: "employee", title: "Employee", icon: "work", class: "", display:true },
   { path: "dashboard", title: "Dashboard", icon: "dashboard", class: "", display:true },
-  { path: "table-list", title: "Table List", icon: "content_paste", class: "", display:true },
-  { path: "typography", title: "Typography", icon: "library_books", class: "", display:true },
   { path: "icons", title: "Icons", icon: "library_books", class: "", display:false },
   { path: "notifications", title: "Notifications", icon: "library_books", class: "", display:false },
   { path: "user-profile", title: "User Profile", icon: "library_books", class: "", display:false }

@@ -17,6 +17,7 @@ import { MrunmayeeDemoComponent } from './mrunmayee-demo/mrunmayee-demo.componen
 import { PoojazadeComponent } from './poojazade/poojazade.component';
 import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
 import { MaterialModule } from 'app/material.module';
+import { AllModule } from 'app/allModule.module';
 
 
 
@@ -38,13 +39,8 @@ import { MaterialModule } from 'app/material.module';
   ],
 
   imports: [
-    DemoRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    CommonModule,
-    Ng2SearchPipeModule,
-    MaterialModule
-  ],
-
+    AllModule,
+    DemoRoutingModule
+  ]  
 })
 export class DemoModule { }
