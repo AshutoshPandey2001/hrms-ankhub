@@ -29,5 +29,6 @@ export const DEMO_ROUTES: RouteInfo[] = [
   { path: "ashu-demo", title: "Ashutosh", icon: "laptop_mac", class: "" },
   { path: "abhijeet-demo", title: "Abhijeet", icon: "laptop_mac", class: "" },
   { path: "shivani", title: "Shivani", icon: "laptop_mac", class: "" },
-  { path: "kajalD-demo", title: "KajalD", icon: "laptop_mac", class: "" }
+  { path: "kajalD-demo", title: "KajalD", icon: "laptop_mac", class: "" },
+  { path: "karishma-demo", title: "Karishma", icon: "important_devices", class: "" }
 ];
