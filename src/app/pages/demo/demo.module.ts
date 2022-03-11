@@ -16,6 +16,7 @@ import { KajalDDemoComponent } from './kajal-d-demo/kajal-d-demo.component';
 import { AshuDemoComponent } from './ashu-demo/ashu-demo.component';
 import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
 import { MaterialModule } from 'app/material.module';
+import { AllModule } from 'app/allModule.module';
 
 @NgModule({
   declarations: [
@@ -34,12 +35,8 @@ import { MaterialModule } from 'app/material.module';
   ],
  
   imports: [
-    DemoRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    CommonModule,
-    Ng2SearchPipeModule,
-    MaterialModule
+    AllModule,
+    DemoRoutingModule
   ]  
 })
 export class DemoModule { }
