@@ -48,7 +48,7 @@
                         <div *ngIf="submittedl && m['email'].errors" class="invalid-feedback">
 
 
-                          <div *ngIf="m['email'].errors['required']">
+                          <div *ngIf="m['email'].errors['email']">
                             Email is required...!
                           </div>
                           
@@ -77,7 +77,7 @@
                       <div class="form-group user11">
                         <label> Date Of Birth:</label>
                         <input type="date" name="start" class="form-control i1" placeholder="dd-mm-yyyy" value=""
-                          min="1997-01-01" max="2030-12-31" formControlName="dateob"
+                          min="01-01-1997" max="31-12-2030" formControlName="dateob"
                           [ngClass]="{'is-invalid': submittedl && m['dateob'].errors}">
 
                         <div *ngIf="submittedl && m['dateob'].errors" class="invalid-feedback">
@@ -126,6 +126,7 @@
                 </div>
 
                 <!-- Modal footer -->
+                <div [class.spinner]="loading" ></div>
                 <div class="modal-footer">
                   <button *ngIf="istableoperation == false" type="submit" class="btn btn-outline-primary "
                     (click)="tabSubmit('top','left')"  data-dismiss="modal">
@@ -150,6 +151,7 @@
 
   <div class="row">
     <div class="col-lg-12">
+      <i class="fa fa-search"></i>
       <input type="text" class="form-control" placeholder="Search" aria-label="Search" [(ngModel)]="searchingbox">
     </div>
     <div class="col-lg-12 col-md-12">
@@ -157,7 +159,7 @@
 
         <div class="card-body">
 
-          <div class="table-responsive" style="height:200px">
+          <div class="table-responsive" style="height:400px">
             <table class="table">
               <thead class=" text-primary">
 
@@ -184,6 +186,7 @@
                 </th>
               </thead>
               <tbody>
+                <div [class.spinner]="loading" ></div>
                 <tr *ngFor="let items of modlList|filter:searchingbox; let itab=index">
                   <td>
                     {{ items.fullname}}
@@ -204,12 +207,12 @@
                     {{ items.qualifi }}
                   </td>
                   <td>
-                    <button class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal"
+                    <button class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal" [disabled]="loading"
                       (click)="tabEdit(items,'bottom','left')">
                       <i class="fa fa-edit"></i>
 
                     </button>
-                    <button class="btn btn-outline-danger" (click)="tabDelete(items.id,'bottom','right')">
+                    <button class="btn btn-outline-danger" [disabled]="loading" (click)="tabDelete(items.id,'bottom','right')">
                       <i class="fa fa-trash"></i>
 
                     </button>
