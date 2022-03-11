@@ -8,97 +8,98 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class MrunmayeeDemoComponent implements OnInit {
 
-  demoForm:FormGroup;
-
-  demoList:any=[];
-
-  submitted=false;
-
-  isEditOperation=false;
-
-  selectedIndex:any;
-  selectedObj:any;
+  employeeForm:FormGroup
+  submitted:any=false;
+   editoperation=false;
+  selectedobj:any;
+  selectedindex:any;
+   employeeList:any=[];
+   showspinner = false;
   
+
   constructor(private formBuilder:FormBuilder) {
-    this.demoForm =this.formBuilder.group({
-      iD:['',[Validators.required]],
-      name:['',[Validators.required]],
-      country:['',[Validators.required]],
-      city:['',[Validators.required]],
-    }) 
-    let data = localStorage.getItem('Demo_List');
-    if(data){
-      this.demoList = JSON.parse(data);
+     this.employeeForm = this.formBuilder.group ({
+      name:['', [Validators.required]],
+      email:['' , [Validators.required]],
+      mobile:['', [Validators.required,Validators.maxLength(10),]],
+      dob:['',[Validators.required]],
+      gender:['',[Validators.required]],
+      qual:['',[Validators.required]]
+
+     })
+    let empdata = localStorage.getItem('EMPLOYEE_LIST');
+    if(empdata){
+      this.employeeList = JSON.parse(empdata);
     }
-    
-    }
+  
+   }
 
   ngOnInit(): void {
   }
 
-  submit(){
+  Save(){
     this.submitted=true;
 
-    if(this.demoForm.valid){
-      this.demoList.push(this.demoForm.value)
-      console.log("you clicked",this.demoForm.value)
-
-      localStorage.setItem("Demo_List",JSON.stringify(this.demoList))
-
-
-      alert("Submitted Successfully..!!")
-    }
-    else{
-      alert("Invalid..")
-    }
-    this.clear();
+    if(this.employeeForm.valid){
+      this.employeeList.push(this.employeeForm.value)
+      console.log("Submit Sucessfully",this.employeeForm.value);
+      alert(" Submitted Sucessfully...!")
+      let ref = document.getElementById('cancel')
+      ref?.click();
+   }
+   else{
+    alert("Form is not-valid....!")
+   }
+    this.employeeForm.reset();
    
+    localStorage.setItem("EMPLOYEE_LIST", JSON.stringify(this.employeeList))
   }
 
   Update(){
-    this.isEditOperation=false;
-   
-    this.demoList[this.selectedIndex].iD = this.demoForm.value.iD;
-    this.demoList[this.selectedIndex].name = this.demoForm.value.name;
-    this.demoList[this.selectedIndex].country = this.demoForm.value.country;
-    this.demoList[this.selectedIndex].city = this.demoForm.value.city;
-    alert("Details Updated Successfully..!!")
-    localStorage.setItem("Demo_List",JSON.stringify(this.demoList))
-  
+    this.editoperation=false;
+    let ref = document.getElementById('cancel')
+    ref?.click();
+    this.employeeList[this.selectedindex].name=this.employeeForm.value.name;
+    this.employeeList[this.selectedindex].email=this.employeeForm.value.email;
+    this.employeeList[this.selectedindex].mobile=this.employeeForm.value.mobile;
+    this.employeeList[this.selectedindex].dob=this.employeeForm.value.dob;
+    this.employeeList[this.selectedindex].gender=this.employeeForm.value.gender;
+    this.employeeList[this.selectedindex].qual=this.employeeForm.value.qual;
     this.clear();
   
+    localStorage.setItem("EMPLOYEE_LIST", JSON.stringify(this.employeeList))
   }
 
-  onEdit(index:any , obj:any){
-    this.isEditOperation=true;
-    this.selectedIndex=index;
-    this.selectedObj=obj;
-    console.log("selectedindex",this.demoForm.value.iD);
-    console.log("selectedindex" ,this.demoForm.value.name);
-    console.log("selectedindex" ,this.demoForm.value.country);
-    console.log("selectedindex" ,this.demoForm.value.city);
-    
-    this.demoForm.patchValue({
-      iD:obj.iD,
-      name:obj.name,
-      country:obj.country,
-      city:obj.city
+  edit(index:any,obj:any){
+    this.editoperation=true;
+    this.selectedindex=index;
+    this.selectedobj=obj;
+    console.log('this.selectedemployee', this.selectedobj)
 
-    })
+    this.employeeForm.patchValue({
+     name: obj.name,
+     email: obj.email,
+     mobile: obj.mobile,
+     dob: obj.dob,
+     gender: obj.gender,
+     qual: obj.qual
+})
   }
 
-  onDelete(index:any){
-  console.log("onDelete",index);
-  this.demoList.splice(index,1)
-}  
+  delete(index:any){
+    console.log("Delete",index);
+    this.employeeList.splice(index,1)
+  }
+  get f(){
+    return this.employeeForm.controls
+  }
+  
+  clear(){
+    this.employeeForm.reset();
+  }
+
+  
 
 
-get f(){
-  return this.demoForm.controls;
-}
-
-clear(){
-  this.demoForm.reset();
-}
 
 }
