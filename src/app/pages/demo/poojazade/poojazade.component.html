@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -37,21 +37,21 @@
                   
                   
                         <div class="form-group">
-                          <label for="post">Post :</label>
-                          <input type="text" class="form-control" placeholder="post" id="post" formControlName= "post"
-                          [ngClass]="{'is-invalid' : staffSubmit && f['post'].errors}">
+                          <label for="email">email :</label>
+                          <input type="text" class="form-control" placeholder="email" id="email" formControlName= "email"
+                          [ngClass]="{'is-invalid' : staffSubmit && f['email'].errors}">
                   
-                          <div *ngIf="staffSubmit && f['post'].errors" class="invalid-feedback">
+                          <div *ngIf="staffSubmit && f['email'].errors" class="invalid-feedback">
                     
-                            <div *ngIf="staffSubmit && f['post'].errors['required']">
-                              Post is required..!
+                            <div *ngIf="staffSubmit && f['email'].errors['required']">
+                              email is required..!
                             </div>
                    
-                            <div *ngIf="staffSubmit && f['post'].errors['minlength']">
+                            <div *ngIf="staffSubmit && f['email'].errors['minlength']">
                               min 6 laters is required
                             </div>
                    
-                            <div *ngIf="staffSubmit && f['post'].errors['maxlength']">
+                            <div *ngIf="staffSubmit && f['email'].errors['maxlength']">
                              max 10 laters is required
                             </div>
                    
@@ -66,13 +66,13 @@
                           <i class="fa fa-thumbs-up"></i>  
                           Submit
                         </button>
-                        <!-- <button  type="reset" class="btn btn-primary bbtn1" (click)="onMove()">
+                        <button  type="reset" class="btn btn-primary bbtn1" (click)="onMove()">
                           <i class="fa fa-thumbs-trash"></i>  
                           Clear
                         </button> -->
                   
                   
-                        <button *ngIf = "forLoginsuccess== true" type="submit" class="btn btn-warning btup" (click)="forUpdate()"><i class="fa fa-refresh"></i>Update</button>
+                        <!-- <button *ngIf = "forLoginsuccess== true" type="submit" class="btn btn-warning btup" (click)="forUpdate()"><i class="fa fa-refresh"></i>Update</button>
                   
                       </form>
                       </div>
@@ -92,7 +92,7 @@
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>Staffname</th>
-                                <th>Post</th>
+                                <th>email</th>
                                
                                 <th>Action</th>
                             </thead>
@@ -100,7 +100,7 @@
                                 <tr>
                                     <tr *ngFor="let stafs of staffList |filter:onsearchkey ;let idx=index">
                                         <td>{{stafs.staffname}}</td>
-                                        <td>{{stafs.post}}</td>
+                                        <td>{{stafs.email}}</td>
                                        
                                         <td>
                                           <button type="button" class="btn btn-warning" (click)="forEdit(idx,stafs)"><i class="fa fa-edit"></i>Edit</button>
@@ -123,4 +123,307 @@
 
     </div>
 </div>
+</div>  --> 
+
+
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="card-header card-header-danger">
+                  <h4 class="card-title"> <b>Personal Details</b></h4>
+                  <button type="button" class="btn btn-light btn-link btn-sm btn-just-icon float-right" data-toggle="modal" data-target="#myModal" >
+                    <i class="fa fa-plus" style="color: cornsilk;"></i>
+                  </button>
+              </div>
+              <div class="card-body">
+                <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" style="color: brown;"> <b>Add Details</b> </h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+
+          <div class="col-lg-12 bg5 ">
+            <form [formGroup]="staffForm">
+            <div class="form-group">
+              <label for="staffname" style="color: brown;"> <b>Full Name</b> </label>
+              <input type="text" class="form-control" placeholder="fullname"  formControlName= "fullname"
+              [ngClass]="{'is-invalid' : staffSubmit && f['fullname'].errors}">
+      
+              <div *ngIf="staffSubmit && f['fullname'].errors" class="invalid-feedback">
+        
+                <div *ngIf="staffSubmit && f['fullname'].errors['required']">
+                   Name is required..!
+                </div>
+       
+              </div>
+      
+            </div>
+            
+      
+      
+            <div class="form-group">
+              <label for="email" style="color: brown;"> <b>Email</b> </label>
+              <input type="text" class="form-control" placeholder="email"  formControlName= "email"
+              [ngClass]="{'is-invalid' : staffSubmit && f['email'].errors}">
+      
+              <div *ngIf="staffSubmit && f['email'].errors" class="invalid-feedback">
+        
+                <div *ngIf="staffSubmit && f['email'].errors['required']">
+                  email is required..!
+                </div>
+              </div>
+      
+            </div>
+               
+       
+              
+      
+      
+            
+
+            <div class="form-group">
+              <label for="number"  style="color: brown;"> <b> Mobile Number</b></label>
+              <input type="text" class="form-control" placeholder="number"  formControlName= "number"
+              [ngClass]="{'is-invalid' : staffSubmit && f['number'].errors}">
+      
+              <div *ngIf="staffSubmit && f['number'].errors" class="invalid-feedback">
+        
+                <div *ngIf="staffSubmit && f['number'].errors['required']">
+                  max digit 10 numbers required..
+                </div>
+              </div>
+            </div>
+               
+       
+              
+
+            <div class="form-group">
+              <label for="Date of Birth " style="color: brown;"><b> Date of Birth</b></label>
+              <input type="date" class="form-control" value="" min="1997-01-01" max="2030-12-31" placeholder="dd-mm-yyyy"  formControlName= "dateofbirth"
+              [ngClass]="{'is-invalid' : staffSubmit && f['dateofbirth'].errors}">
+      
+              <div *ngIf="staffSubmit && f['dateofbirth'].errors" class="invalid-feedback">
+        
+                <div *ngIf="staffSubmit && f['dateofbirth'].errors['required']">
+                  dateofbirth is required..!
+                </div>
+              </div>
+            </div>
+               
+       
+              
+
+            <div class="form-group">
+              <div class="row" style="padding-left: 18px;"> 
+                <label for="gender" style="color: brown;"><b> Gender</b></label>
+                <div class="col-lg-12">
+                  <input type="radio" class="" name="gender" value="male"  formControlName= "gender"
+                  [ngClass]="{'is-invalid' : staffSubmit && f['gender'].errors}">Male
+          
+                  <div *ngIf="staffSubmit && f['gender'].errors" class="invalid-feedback">
+            
+                    <div *ngIf="staffSubmit && f['gender'].errors['required']">
+                      gender is required..!
+                    </div>
+                  </div>
+                  
+                </div>
+
+                <div class="col-lg-12">
+
+                  <input type="radio" class="" name="gender" value="female"  formControlName= "gender"
+                  [ngClass]="{'is-invalid' : staffSubmit && f['gender'].errors}">Female
+
+                </div>
+
+              </div>
+            </div> 
+
+
+            <div class="form-group">
+              <label for="sel1" style="color: brown;"> <b>Qualification</b></label>
+              <select class="form-control" id="sel1" name="sellist1" formControlName= "qualification"
+              [ngClass]="{'is-invalid' : staffSubmit && f['qualification'].errors}">
+
+                <option>10th</option>
+                <option>12th</option>
+                <option>Graduation</option>
+                <option>Post-Graduation</option>
+              </select>
+              <br>
+
+              <div *ngIf="staffSubmit && f['qualification'].errors" class="invalid-feedback">
+        
+                <div *ngIf="staffSubmit && f['qualification'].errors['required']">
+                  qualification is required..!
+                </div>
+              </div>
+            </div>
+            
+            <button *ngIf = "forLoginsuccess== false" type="submit" class="btn btn-success" data-dismiss="modal" (click)="onMove('top','left')" style="width:75%;margin-left: 12%;">
+              <i class="fa fa-thumbs-up"></i>  
+              Submit
+            </button>
+
+            
+
+            <button *ngIf = "forLoginsuccess== true" type="button" class="btn btn-warning" (click)="forUpdate('top','right')"><i class="fa fa-refresh"></i>Update</button>
+      
+          </form>
+          </div>
+
+
+
+          
+        </div>
+        <div [class.spinner]="loading" >
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  
+                
+      <div class="col-lg-12" style="padding-bottom: 20px;">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" [(ngModel)]="onsearchkey">
+        
+      </div>
+
+      <div  class=" col-lg-12 table-responsive"  style="height: 250px;">
+
+
+     <div class="table-responsive">
+      <table class="table">
+          <thead class=" text-primary">
+              <th style="color: brown;"><b>Full Name</b> </th>
+              <th style="color: brown;"><b>Email</b></th>
+              <th style="color: brown;"><b>Mobile Number</b></th>
+              <th style="color: brown;"><b>Date of Birth</b></th>
+              <th style="color: brown;"><b>Gender</b></th>
+              <th style="color: brown;"><b>Qualification</b></th>
+              <th style="color: brown;"><b>Action</b></th>
+             
+              
+          </thead>
+          <tbody>
+            <div [class.spinner]="loading" >
+
+            </div>
+                  <tr *ngFor="let stafs of staffList |filter:onsearchkey ;let idx=index">
+                      <td>{{stafs.fullname}}</td>
+                      <td>{{stafs.email}}</td>
+                      <td>{{stafs.number}}</td>
+                      <td>{{stafs.dateofbirth}}</td>
+                      <td>{{stafs.gender}}</td>
+                      <td>{{stafs.qualification}}</td>
+                     
+                      <td>
+                        <div class="row">
+                          <div class="col-lg-6" >
+                            <button  class="btn btn-primary btn-link btn-sm btn-just-icon" data-toggle="modal" data-target="#myModal" (click)="forEdit(stafs,'bottom','left')"> 
+                              <i class="material-icons">edit</i>
+                            </button>
+
+                          </div>
+                          <div class="col-lg-6">
+                            <button  class="btn btn-danger btn-link btn-sm btn-just-icon"  (click)=" onRefresh(stafs.id,'bottom','right')"> 
+                              <i class="material-icons">delete</i>
+                            </button>
+
+                          </div>
+                        </div>
+                        
+
+                       
+
+                    
+          
+            
+            
+                  </td>
+        
+                
+          </tr>
+         
+          
+      </tbody>
+  </table>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>  
+
+
+
+             
+
+            
+               
+       
+              
+
+           
+
+
+
+
+            
+
+        
+
+           
+              
+
+                    
+                     
+        
+     
+        
+       
+
+
+                       
+                        
+
+                        
+                          
+                
+                        
+                         
+                 
+                        
+                
+                
+                
+                      
+                      
+                      
+                
+                
+                     
+                
+                
+  
+
