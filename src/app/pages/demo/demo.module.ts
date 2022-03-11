@@ -17,6 +17,13 @@ import { AshuDemoComponent } from './ashu-demo/ashu-demo.component';
 import { AbhijeetDemoComponent } from './abhijeet-demo/abhijeet-demo.component';
 import { MaterialModule } from 'app/material.module';
 import { AllModule } from 'app/allModule.module';
+import { SdkButtonComponent } from './shubham-demo/sdk-button/sdk-button.component';
+import { SdkModalComponent } from './shubham-demo/sdk-modal/sdk-modal.component';
+import { SdkAlertComponent } from './shubham-demo/sdk-alert/sdk-alert.component';
+import { SdkToasterComponent } from './shubham-demo/sdk-toaster/sdk-toaster.component';
+import { SdkSpinnerComponent } from './shubham-demo/sdk-spinner/sdk-spinner.component';
+import { SdkMoreComponent } from './shubham-demo/sdk-more/sdk-more.component';
+import { SdkCrudComponent } from './shubham-demo/sdk-crud/sdk-crud.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +38,14 @@ import { AllModule } from 'app/allModule.module';
     ShivaniComponent,
     KajalDDemoComponent,
     AshuDemoComponent,
-    AbhijeetDemoComponent,  
+    AbhijeetDemoComponent,
+    SdkButtonComponent,
+    SdkModalComponent,
+    SdkAlertComponent,
+    SdkToasterComponent,
+    SdkSpinnerComponent,
+    SdkMoreComponent,
+    SdkCrudComponent,  
   ],
  
   imports: [
