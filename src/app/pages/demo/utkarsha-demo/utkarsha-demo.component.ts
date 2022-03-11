@@ -10,8 +10,8 @@ import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
   styleUrls: ["./utkarsha-demo.component.scss"],
 })
 export class UtkarshaDemoComponent implements OnInit {
-  @ViewChild(BsDatepickerDirective, { static: false })
-  datepicker?: BsDatepickerDirective;
+  // @ViewChild(BsDatepickerDirective, { static: false })
+  // datepicker?: BsDatepickerDirective;
   modalRef?: BsModalRef;
   empData: FormGroup;
   empList = [];
