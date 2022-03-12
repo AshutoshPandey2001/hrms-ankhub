@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from "ngx-toastr";
+import Swal from 'sweetalert2';
+import { NgxUiLoaderService } from "ngx-ui-loader";
 
 @Component({
   selector: 'app-mrunmayee-demo',
@@ -8,19 +11,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class MrunmayeeDemoComponent implements OnInit {
 
+  
   employeeForm:FormGroup
-  submitted:any=false;
+  submitted:any=false; 
    editoperation=false;
   selectedobj:any;
   selectedindex:any;
    employeeList:any=[];
    showspinner = false;
+   
   
 
-  constructor(private formBuilder:FormBuilder) {
+  constructor(private formBuilder:FormBuilder,private toastr: ToastrService,private ngxService: NgxUiLoaderService) {
      this.employeeForm = this.formBuilder.group ({
       name:['', [Validators.required]],
-      email:['' , [Validators.required]],
+      email:['' , [Validators.required,Validators.email]],
       mobile:['', [Validators.required,Validators.maxLength(10),]],
       dob:['',[Validators.required]],
       gender:['',[Validators.required]],
@@ -35,28 +40,39 @@ export class MrunmayeeDemoComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.startSpinner(); 
   }
+  
 
-  Save(){
+  submit(){
     this.submitted=true;
+    this.ngxService.start(); 
+    setTimeout(() => {
+      this.ngxService.stop(); 
+    }, 2000);
 
     if(this.employeeForm.valid){
       this.employeeList.push(this.employeeForm.value)
       console.log("Submit Sucessfully",this.employeeForm.value);
-      alert(" Submitted Sucessfully...!")
+
+      this.toastr.success('Submitted!', 'Regisration Successfull!');
+      
       let ref = document.getElementById('cancel')
-      ref?.click();
+    ref?.click();
+     
    }
    else{
-    alert("Form is not-valid....!")
+    this.toastr.error('Try Again!', 'Form is Invalid!');
    }
     this.employeeForm.reset();
    
     localStorage.setItem("EMPLOYEE_LIST", JSON.stringify(this.employeeList))
+    this.clear();
   }
 
   Update(){
     this.editoperation=false;
+    this.toastr.success('Submitted!', 'Update Successfully!');
     let ref = document.getElementById('cancel')
     ref?.click();
     this.employeeList[this.selectedindex].name=this.employeeForm.value.name;
@@ -66,7 +82,7 @@ export class MrunmayeeDemoComponent implements OnInit {
     this.employeeList[this.selectedindex].gender=this.employeeForm.value.gender;
     this.employeeList[this.selectedindex].qual=this.employeeForm.value.qual;
     this.clear();
-  
+    this.startSpinner(); 
     localStorage.setItem("EMPLOYEE_LIST", JSON.stringify(this.employeeList))
   }
 
@@ -89,7 +105,30 @@ export class MrunmayeeDemoComponent implements OnInit {
   delete(index:any){
     console.log("Delete",index);
     this.employeeList.splice(index,1)
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+      showCancelButton: false,
+      cancelButtonColor: '#d33',
+      cancelButtonText:'Cancle'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+    localStorage.setItem("EMPLOYEE_LIST", JSON.stringify(this.employeeList)) 
   }
+ 
+
   get f(){
     return this.employeeForm.controls
   }
@@ -98,7 +137,12 @@ export class MrunmayeeDemoComponent implements OnInit {
     this.employeeForm.reset();
   }
 
-  
+  startSpinner(){
+    this.ngxService.start(); 
+    setTimeout(() => {
+      this.ngxService.stop(); 
+    }, 2000);
+  }
 
 
 
