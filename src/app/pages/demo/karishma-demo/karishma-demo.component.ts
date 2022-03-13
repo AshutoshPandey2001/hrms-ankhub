@@ -43,19 +43,21 @@ export class KarishmaDemoComponent implements OnInit {
 
   Save(){
     this.submitted=true;
-    {
-      this.ngxService.start(); 
-      setTimeout(() => {
-        this.ngxService.stop(); 
-      }, 2000);
-    }
+   
     if(this.employeeForm.valid){
       this.employeeList.push(this.employeeForm.value)
       console.log("Submit Sucessfully",this.employeeForm.value);
+      {
+        this.ngxService.start(); 
+        setTimeout(() => {
+          this.ngxService.stop(); 
+       
       this.toastr.success('Form is valid', ' Submitted sucessfully...!');
       let ref = document.getElementById('cancel')
       ref?.click();
-     
+    }, 2000);
+  }
+
    }
    else{
     this.toastr.error('Form is not valid', 'Please try again...!');
@@ -70,8 +72,7 @@ export class KarishmaDemoComponent implements OnInit {
       this.ngxService.start(); 
       setTimeout(() => {
         this.ngxService.stop(); 
-      }, 2000);
-    }
+     
     this.editoperation=false;
     let ref = document.getElementById('cancel')
     ref?.click();
@@ -83,7 +84,9 @@ export class KarishmaDemoComponent implements OnInit {
     this.employeeList[this.selectedindex].qual=this.employeeForm.value.qual;
     this.toastr.success('Form is valid', 'Details Update sucessfully...!');
     this.clear();
-   
+
+    }, 2000);
+  }
   
     localStorage.setItem("EMPLOYEE_LIST", JSON.stringify(this.employeeList))
   }
@@ -106,7 +109,7 @@ export class KarishmaDemoComponent implements OnInit {
 
   delete(index:any){
     console.log("Delete",index);
-    this.employeeList.splice(index,1);
+   
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't to delete this file..!",
@@ -126,6 +129,7 @@ export class KarishmaDemoComponent implements OnInit {
           'success'
         )
       }
+      this.employeeList.splice(index,1);
     })
     localStorage.setItem("EMPLOYEE_LIST", JSON.stringify(this.employeeList))
   }

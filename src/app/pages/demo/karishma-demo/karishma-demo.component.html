@@ -2,6 +2,7 @@
 
 
 <div class="container-fluid">
+    <!-- Table -->
     <div class="row">
         <div class="col-lg-12 col-md-12 col-12">
             <div class="card">
@@ -12,37 +13,38 @@
                             data-target="#exampleModal">Add</button>
                     </div>
                 </nav>
-                <table class="table mt-2 table-responsive">
-                    <thead>
-                        <tr>
-                            <th>Full Name</th>
-                            <th>Email</th>
-                            <th>Mobile No.</th>
-                            <th>Date of Birth</th>
-                            <th>Gender</th>
-                            <th>Qualification</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor=" let emp of employeeList; let idx=index ">
-                            <td>{{emp.name}}</td>
-                            <td>{{emp.email}}</td>
-                            <td>{{emp.mobile}}</td>
-                            <td>{{emp.dob}}</td>
-                            <td>{{emp.gender}}</td>
-                            <td>{{emp.qual}}</td>
-                            <td>
-                                <button mat-raised-button type="button" matTooltip="Edit Employee" [matTooltipPosition]="'above'"
-                                    class="btn btn-info btn-link btn-sm btn-just-icon"  (click)="edit(idx,emp)" data-toggle="modal"data-target="#exampleModal"><i class="material-icons">edit</i>
-                                </button>
-                                <button mat-raised-button type="button" matTooltip="Remove Employee" [matTooltipPosition]="'above'"
-                                    class="btn btn-danger btn-link btn-sm btn-just-icon" (click)="delete(idx)"><i _ngcontent-vbs-c335="" class="material-icons">close</i>
-                                </button>    
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <div _ngcontent-fvn-c360="" class="table-responsive">
+                        <table _ngcontent-fvn-c360="" class="table table-hove">
+                            <thead _ngcontent-fvn-c360="" class="text-primary">
+                                <th _ngcontent-fvn-c360="">Full Name</th>
+                                <th _ngcontent-fvn-c360="">Email</th>
+                                <th _ngcontent-fvn-c360="">Mobile No.</th>
+                                <th _ngcontent-fvn-c360="">Date of Birth</th>
+                                <th _ngcontent-fvn-c360="">Gender</th>
+                                <th _ngcontent-fvn-c360="">Qualification</th>
+                                <th _ngcontent-fvn-c360="">Action</th>
+                            </thead>
+                            <tbody _ngcontent-fvn-c360="">
+                                <tr _ngcontent-fvn-c360="" *ngFor=" let emp of employeeList; let idx=index ">
+                                <td _ngcontent-fvn-c360="">{{emp.name}}</td>
+                                <td _ngcontent-fvn-c360="">{{emp.email}}</td>
+                                <td _ngcontent-fvn-c360="">{{emp.mobile}}</td>
+                                <td _ngcontent-fvn-c360="">{{emp.dob}}</td>
+                                <td _ngcontent-fvn-c360="">{{emp.gender}}</td>
+                                <td _ngcontent-fvn-c360="">{{emp.qual}}</td>
+                                <td _ngcontent-fvn-c360="">
+                                    <button mat-raised-button type="button" matTooltip="Edit Employee" [matTooltipPosition]="'above'"
+                                        class="btn btn-info btn-link btn-sm btn-just-icon"  (click)="edit(idx,emp)" data-toggle="modal"data-target="#exampleModal"><i class="material-icons">edit</i>
+                                    </button>
+                                    <button mat-raised-button type="button" matTooltip="Remove Employee" [matTooltipPosition]="'above'"
+                                        class="btn btn-danger btn-link btn-sm btn-just-icon" (click)="delete(idx)"><i _ngcontent-vbs-c335="" class="material-icons">close</i>
+                                    </button>    
+                                </td>
+                                </tr>
+                             </tbody>
+                        </table>
+                    </div>
+                    
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
