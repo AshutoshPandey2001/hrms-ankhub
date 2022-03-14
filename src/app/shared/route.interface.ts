@@ -15,18 +15,6 @@ export const MAIN_ROUTES: RouteInfo[] = [
   { path: "user-profile", title: "User Profile", icon: "library_books", class: "", display:false }
 ];
 
-export const DEMO_ROUTES: RouteInfo[] = [
-  { path: "shubham-demo", title: "Shubham", icon: "admin_panel_settings", class: "" },
-  { path: "Utkarsha-demo", title: "Utkarsha", icon: "military_tech", class: "" },
-  { path: "ankitJ-demo", title: "AnkitJ", icon: "laptop_mac", class: "" },
-  { path: "abhay-demo", title: "Abhay", icon: "laptop_mac", class: "" },
-  { path: "mrunmayee-demo", title: "Mrunmayee", icon: "laptop_mac", class: "" },
-  { path: "shraddha-demo", title: "Shraddha", icon: "laptop_mac", class: "" },
-  { path: "abhinav-demo", title: "Abhinav", icon: "laptop_mac", class: "" },
-  { path: "pooja-demo", title: "Pooja", icon: "work_history", class: "" },
-  { path: "ashu-demo", title: "Ashutosh", icon: "laptop_mac", class: "" },
-  { path: "abhijeet-demo", title: "Abhijeet", icon: "laptop_mac", class: "" },
-  { path: "shivani", title: "Shivani", icon: "laptop_mac", class: "" },
-  { path: "kajalD-demo", title: "KajalD", icon: "laptop_mac", class: "" },
-  { path: "karishma-demo", title: "Karishma", icon: "important_devices", class: "" }
+export const SDK_ROUTES: RouteInfo[] = [
+  { path: "component", title: "COMPONENTS", icon: "admin_panel_settings", class: "" }
 ];

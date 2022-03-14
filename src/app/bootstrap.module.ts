@@ -4,11 +4,9 @@ import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 @NgModule({
   imports: [
     BsDatepickerModule.forRoot()
-
   ],
   exports: [
     BsDatepickerModule
-
   ]
 })
 export class BootstrapModule {}

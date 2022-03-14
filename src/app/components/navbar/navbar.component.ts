@@ -5,7 +5,7 @@ import {
   PathLocationStrategy,
 } from "@angular/common";
 import { Router } from "@angular/router";
-import { DEMO_ROUTES, MAIN_ROUTES } from "app/shared/route.interface";
+import { SDK_ROUTES, MAIN_ROUTES } from "app/shared/route.interface";
 
 @Component({
   selector: "app-navbar",
@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.listTitles = [...MAIN_ROUTES, ...DEMO_ROUTES];
+    this.listTitles = [...MAIN_ROUTES, ...SDK_ROUTES];
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName("navbar-toggler")[0];
     this.router.events.subscribe((event) => {

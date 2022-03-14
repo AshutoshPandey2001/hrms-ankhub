@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DEMO_ROUTES } from 'app/shared/route.interface';
+import { SDK_ROUTES } from 'app/shared/route.interface';
 export interface ExampleTab {
   label: string;
   content: string;
@@ -15,7 +15,7 @@ export class DemoComponent implements OnInit {
   tabItems: any[];
 
   constructor() {
-    this.tabItems = DEMO_ROUTES.filter(tabItem => tabItem);
+    this.tabItems = SDK_ROUTES.filter(tabItem => tabItem);
    }
 
   ngOnInit(): void {
