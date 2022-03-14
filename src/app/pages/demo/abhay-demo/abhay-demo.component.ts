@@ -177,12 +177,20 @@ export class AbhayDemoComponent implements OnInit {
 
   tabUpdate(from, align) {
     
-
-    this.istableoperation = false;
+    
+    //this.istableoperation = false;
     this.loading = true;
       setTimeout(() => {
         this.loading = false;
-
+        this.istableoperation = false;
+        this.modlList[this.selectedIndexd].fullname = this.modForm.value.fullname;
+        this.modlList[this.selectedIndexd].email = this.modForm.value.email;
+        this.modlList[this.selectedIndexd].mobileno = this.modForm.value.mobileno;
+        this.modlList[this.selectedIndexd].dateob = this.modForm.value.dateob;
+        this.modlList[this.selectedIndexd].gender = this.modForm.value.gender;
+        this.modlList[this.selectedIndexd].qualifi = this.modForm.value.qualifi;
+        this.tabclear();
+        localStorage.setItem("MODLIST", JSON.stringify(this.modlList));
     const type = ['', 'warning'];
 
     const color = Math.floor((Math.random() * 1) + 1);
@@ -210,31 +218,14 @@ export class AbhayDemoComponent implements OnInit {
           '<a href="{3}" target="{4}" data-notify="url"></a>' +
           '</div>'
       });
-    }, 5000);
-    this.modlList[this.selectedIndexd].fullname = this.modForm.value.fullname;
-    this.modlList[this.selectedIndexd].email = this.modForm.value.email;
-    this.modlList[this.selectedIndexd].mobileno = this.modForm.value.mobileno;
-    this.modlList[this.selectedIndexd].dateob = this.modForm.value.dateob;
-    this.modlList[this.selectedIndexd].gender = this.modForm.value.gender;
-    this.modlList[this.selectedIndexd].qualifi = this.modForm.value.qualifi;
-    this.tabclear();
+    }, 3000);
+    
   }
 
   tabEdit(obj: any, from, align) {
-    this.selectedIndexd = this.modlList.findIndex((xb: any) => xb.id === obj.id);
-    console.log('this.selectedIndexd', this.selectedIndexd)
-    //   this.selectedObject = obj;
-
-    this.istableoperation = true;
-    this.modForm.patchValue({
-      fullname: obj.fullname,
-      email: obj.email,
-      mobileno: obj.mobileno,
-      dateob: obj.dateob,
-      gender: obj.gender,
-      qualifi: obj.qualifi
-    })
-    
+    this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
     const type = ['', 'info'];
 
     const color = Math.floor((Math.random() * 1) + 1);
@@ -262,6 +253,21 @@ export class AbhayDemoComponent implements OnInit {
           '<a href="{3}" target="{4}" data-notify="url"></a>' +
           '</div>'
       });
+    }, 3000);
+    this.selectedIndexd = this.modlList.findIndex((xb: any) => xb.id === obj.id);
+    console.log('this.selectedIndexd', this.selectedIndexd)
+    //   this.selectedObject = obj;
+
+    this.istableoperation = true;
+    this.modForm.patchValue({
+      fullname: obj.fullname,
+      email: obj.email,
+      mobileno: obj.mobileno,
+      dateob: obj.dateob,
+      gender: obj.gender,
+      qualifi: obj.qualifi
+    })
+    
   }
 
   tabDelete(id: any, from, align) {
@@ -299,6 +305,7 @@ export class AbhayDemoComponent implements OnInit {
             '</div>'
         });
         this.modlList.splice(this.selectedIndexd, 1);
+        localStorage.setItem("MODLIST", JSON.stringify(this.modlList));
       }, 2000);
       
     } else {
@@ -331,7 +338,7 @@ export class AbhayDemoComponent implements OnInit {
         });
     }
 
-    localStorage.setItem("MODLIST", JSON.stringify(this.modlList));
+    
   }
 
   tabclear() {
