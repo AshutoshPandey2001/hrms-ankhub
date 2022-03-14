@@ -143,6 +143,7 @@ export class PoojazadeComponent implements OnInit {
   onsearchkey='';
 
 
+
   constructor(private formBuilder: FormBuilder) { 
     this.staffForm = formBuilder.group({
       fullname:['',[Validators.required]],
@@ -180,7 +181,7 @@ export class PoojazadeComponent implements OnInit {
       this.staffList.push(this.staffForm.value);
       localStorage.setItem("staff_list", JSON.stringify(this.staffList))
       this.loading = true;
-     setTimeout(() =>{
+      setTimeout(() =>{
       this.loading = false;
      
 
@@ -239,6 +240,8 @@ export class PoojazadeComponent implements OnInit {
   // }
 
   forUpdate(from,align){
+    
+    
     this.forLoginsuccess=false;
     this.staffList[this.forselectedIndex].fullname = this.staffForm.value.fullname;
     this.staffList[this.forselectedIndex].email= this.staffForm.value.email;
@@ -248,6 +251,9 @@ export class PoojazadeComponent implements OnInit {
     this.staffList[this.forselectedIndex].qualification= this.staffForm.value.qualification;
     localStorage.setItem("STAFF_LIST",JSON.stringify(this.staffList));
     console.log("forUpdate",this.staffList);
+    this.loading = true;
+    setTimeout(() =>{
+    this.loading = false;
     const type = ['','info'];
 
       const color = Math.floor((Math.random() * 1) + 1);
@@ -274,6 +280,7 @@ export class PoojazadeComponent implements OnInit {
             '<a href="{3}" target="{4}" data-notify="url"></a>' +
           '</div>'
       });
+    },5000);
 
    
     alert(" Updated submited successfully");
@@ -282,21 +289,13 @@ export class PoojazadeComponent implements OnInit {
 
   }
 
+
   
   forEdit( obj:any ,from,align){
-    this.forselectedIndex = this.staffList.findIndex((y:any)=>y.id===obj.id);
-    console.log('this.forselectedIndex', this.forselectedIndex);
-    this.forselectedObj = obj;
+
     
-    this.forLoginsuccess=true;
-    this.staffForm.patchValue({
-      fullname:obj.fullname,
-      email:obj.email,
-      number:obj.number,
-      dateofbirth:obj.dateofbirth,
-      gender :obj.gender,
-      qualification:obj.qualification,
-    })
+
+   
     const type = ['','info'];
 
       const color = Math.floor((Math.random() * 1) + 1);
@@ -323,6 +322,19 @@ export class PoojazadeComponent implements OnInit {
             '<a href="{3}" target="{4}" data-notify="url"></a>' +
           '</div>'
       });
+      this.forselectedIndex = this.staffList.findIndex((y:any)=>y.id===obj.id);
+      console.log('this.forselectedIndex', this.forselectedIndex);
+      this.forselectedObj = obj;
+      
+      this.forLoginsuccess=true;
+      this.staffForm.patchValue({
+        fullname:obj.fullname,
+        email:obj.email,
+        number:obj.number,
+        dateofbirth:obj.dateofbirth,
+        gender :obj.gender,
+        qualification:obj.qualification,
+      })
 
   console.log("forEdit");
 
@@ -333,12 +345,18 @@ export class PoojazadeComponent implements OnInit {
     
  
   onRefresh(id:any,from,align){
-    console.log("onRefresh")
+    
     this.forselectedIndex = this.staffList.findIndex((y:any)=>y.id===id);
     console.log('this.forselectedIndex', this.forselectedIndex);
-    localStorage.setItem("STAFF_LIST",JSON.stringify(this.staffList));
+    
     if(confirm('do you want delete')==true){
+      this.loading = true;
+      setTimeout(() =>{
+      this.loading = false;
+      
+      
       const type = ['','danger'];
+
 
       const color = Math.floor((Math.random() * 1) + 1);
 
@@ -364,6 +382,8 @@ export class PoojazadeComponent implements OnInit {
             '<a href="{3}" target="{4}" data-notify="url"></a>' +
           '</div>'
       });
+    },5000);
+
       this.staffList.splice(this.forselectedIndex,1)
       
     }else{
@@ -395,7 +415,7 @@ export class PoojazadeComponent implements OnInit {
       });
 
     }
-
+    localStorage.setItem("staff_list", JSON.stringify(this.staffList))
 
   }
 
@@ -408,9 +428,10 @@ export class PoojazadeComponent implements OnInit {
     return '_' + Math.random().toString(36).substr(2, 9);
   };
 
-  get f(){
+  get t(){
     return this.staffForm.controls;
   }
+ 
 
 
   
