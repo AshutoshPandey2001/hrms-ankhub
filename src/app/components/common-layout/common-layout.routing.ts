@@ -11,8 +11,38 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        redirectTo: "dashboard",
+        redirectTo: "admin",
         pathMatch: "full",
+      },
+      {
+        path: "admin",
+        loadChildren: () =>
+          import(`../../pages/admin/admin.module`).then((m) => m.AdminModule),
+      },
+      {
+        path: "human-resource",
+        loadChildren: () =>
+          import(`../../pages/human-resource/human-resource.module`).then(
+            (m) => m.HumanResourceModule
+          ),
+      },
+      {
+        path: "teleccaller",
+        loadChildren: () =>
+          import(`../../pages/telecaller/telecaller.module`).then(
+            (m) => m.TelecallerModule
+          ),
+      },
+      {
+        path: "finance",
+        loadChildren: () =>
+          import(`../../pages/finance/finance.module`).then(
+            (m) => m.FinanceModule
+          ),
+      },
+      {
+        path: "user-profile",
+        component: UserProfileComponent,
       },
       {
         path: "dashboard",
@@ -30,10 +60,6 @@ const routes: Routes = [
         loadChildren: () =>
           import(`../../pages/sdk/sdk.module`).then((m) => m.SdkModule),
       },
-      {
-        path: "user-profile",
-        component: UserProfileComponent,
-      }
     ],
   },
 ];
