@@ -46,20 +46,20 @@ export class MrunmayeeDemoComponent implements OnInit {
 
   submit(){
     this.submitted=true;
-    this.ngxService.start(); 
-    setTimeout(() => {
-      this.ngxService.stop(); 
-    }, 2000);
+    
 
     if(this.employeeForm.valid){
       this.employeeList.push(this.employeeForm.value)
       console.log("Submit Sucessfully",this.employeeForm.value);
-
+      this.ngxService.start(); 
+      setTimeout(() => {
+        this.ngxService.stop(); 
+     
       this.toastr.success('Submitted!', 'Regisration Successfull!');
       
       let ref = document.getElementById('cancel')
     ref?.click();
-     
+  }, 1000);
    }
    else{
     this.toastr.error('Try Again!', 'Form is Invalid!');
@@ -72,9 +72,13 @@ export class MrunmayeeDemoComponent implements OnInit {
 
   Update(){
     this.editoperation=false;
+    this.ngxService.start(); 
+    setTimeout(() => {
+      this.ngxService.stop();
     this.toastr.success('Submitted!', 'Update Successfully!');
     let ref = document.getElementById('cancel')
     ref?.click();
+  }, 1000);
     this.employeeList[this.selectedindex].name=this.employeeForm.value.name;
     this.employeeList[this.selectedindex].email=this.employeeForm.value.email;
     this.employeeList[this.selectedindex].mobile=this.employeeForm.value.mobile;
@@ -82,7 +86,7 @@ export class MrunmayeeDemoComponent implements OnInit {
     this.employeeList[this.selectedindex].gender=this.employeeForm.value.gender;
     this.employeeList[this.selectedindex].qual=this.employeeForm.value.qual;
     this.clear();
-    this.startSpinner(); 
+    // this.startSpinner(); 
     localStorage.setItem("EMPLOYEE_LIST", JSON.stringify(this.employeeList))
   }
 
@@ -104,7 +108,7 @@ export class MrunmayeeDemoComponent implements OnInit {
 
   delete(index:any){
     console.log("Delete",index);
-    this.employeeList.splice(index,1)
+   
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -124,7 +128,9 @@ export class MrunmayeeDemoComponent implements OnInit {
           'success'
         )
       }
+      this.employeeList.splice(index,1);
     })
+
     localStorage.setItem("EMPLOYEE_LIST", JSON.stringify(this.employeeList)) 
   }
  
