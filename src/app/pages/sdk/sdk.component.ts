@@ -6,11 +6,11 @@ export interface ExampleTab {
 }
 
 @Component({
-  selector: 'app-demo',
-  templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.scss']
+  selector: 'app-sdk',
+  templateUrl: './sdk.component.html',
+  styleUrls: ['./sdk.component.scss']
 })
-export class DemoComponent implements OnInit {
+export class SdkComponent implements OnInit {
   
   tabItems: any[];
 

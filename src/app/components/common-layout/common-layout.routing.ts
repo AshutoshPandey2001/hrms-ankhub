@@ -1,8 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "app/pages/dashboard/dashboard.component";
-import { IconsComponent } from "app/pages/icons/icons.component";
-import { NotificationsComponent } from "app/pages/notifications/notifications.component";
 import { UserProfileComponent } from "app/pages/user-profile/user-profile.component";
 import { CommonLayoutComponent } from "./common-layout.component";
 
@@ -13,13 +11,12 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        redirectTo: "demo",
+        redirectTo: "dashboard",
         pathMatch: "full",
       },
       {
-        path: "demo",
-        loadChildren: () =>
-          import(`../../pages/demo/demo.module`).then((m) => m.DemoModule),
+        path: "dashboard",
+        component: DashboardComponent,
       },
       {
         path: "employee",
@@ -29,21 +26,14 @@ const routes: Routes = [
           ),
       },
       {
-        path: "dashboard",
-        component: DashboardComponent,
+        path: "sdk",
+        loadChildren: () =>
+          import(`../../pages/sdk/sdk.module`).then((m) => m.SdkModule),
       },
       {
         path: "user-profile",
         component: UserProfileComponent,
-      },
-      {
-        path: "icons",
-        component: IconsComponent,
-      },
-      {
-        path: "notifications",
-        component: NotificationsComponent,
-      },
+      }
     ],
   },
 ];

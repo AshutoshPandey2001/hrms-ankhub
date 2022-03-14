@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SdkModule } from './sdk.module';
 
-import { ShubhamDemoComponent } from './shubham-demo.component';
 
-describe('ShubhamDemoComponent', () => {
-  let component: ShubhamDemoComponent;
-  let fixture: ComponentFixture<ShubhamDemoComponent>;
+describe('SdkModule', () => {
+  let component: SdkModule;
+  let fixture: ComponentFixture<SdkModule>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShubhamDemoComponent ]
+      declarations: [ SdkModule ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShubhamDemoComponent);
+    fixture = TestBed.createComponent(SdkModule);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
