@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HR_ROUTES } from 'app/shared/route.interface';
 
 @Component({
   selector: 'app-human-resource',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HumanResourceComponent implements OnInit {
 
-  constructor() { }
+  tabItems: any[];
+
+  constructor() {
+    this.tabItems = HR_ROUTES.filter(tabItem => tabItem);
+   }
 
   ngOnInit(): void {
   }
+
 
 }

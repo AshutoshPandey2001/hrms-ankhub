@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TELECALLER_ROUTES } from 'app/shared/route.interface';
 
 @Component({
   selector: 'app-telecaller',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TelecallerComponent implements OnInit {
 
-  constructor() { }
+  tabItems: any[];
+
+  constructor() {
+    this.tabItems = TELECALLER_ROUTES.filter(tabItem => tabItem);
+   }
 
   ngOnInit(): void {
   }
+
 
 }

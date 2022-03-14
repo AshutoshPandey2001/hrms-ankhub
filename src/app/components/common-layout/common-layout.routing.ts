@@ -27,7 +27,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: "teleccaller",
+        path: "telecaller",
         loadChildren: () =>
           import(`../../pages/telecaller/telecaller.module`).then(
             (m) => m.TelecallerModule
@@ -47,13 +47,6 @@ const routes: Routes = [
       {
         path: "dashboard",
         component: DashboardComponent,
-      },
-      {
-        path: "employee",
-        loadChildren: () =>
-          import(`../../pages/employee/employee.module`).then(
-            (m) => m.EmployeeModule
-          ),
       },
       {
         path: "sdk",

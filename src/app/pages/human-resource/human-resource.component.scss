@@ -1,0 +1,20 @@
+.mat-tab-link {
+    opacity: unset;
+    min-width: auto;
+    height: 36px;
+    padding: 0px 16px;
+  }
+  
+  .active-link {
+    color: #f44336;
+    background-color: #f44336;
+    box-shadow: 0 4px 20px 0px rgb(0 0 0 / 14%),
+      0 7px 10px -5px rgb(244 67 54 / 40%);
+    color: #fff;
+    border-radius: 3px;
+  }
+  
+  mat-icon {
+    margin-right: 5px;
+  }
+  

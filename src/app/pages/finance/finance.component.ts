@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FINANCE_ROUTES } from 'app/shared/route.interface';
 
 @Component({
   selector: 'app-finance',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinanceComponent implements OnInit {
 
-  constructor() { }
+  tabItems: any[];
+
+  constructor() {
+    this.tabItems = FINANCE_ROUTES.filter(tabItem => tabItem);
+   }
 
   ngOnInit(): void {
   }
+
 
 }

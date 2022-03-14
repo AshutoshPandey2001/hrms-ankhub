@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CandidateListComponent } from './candidate-list/candidate-list.component';
 import { TelecallerComponent } from './telecaller.component';
 
 const routes: Routes = [
@@ -7,14 +8,14 @@ const routes: Routes = [
     path: '',
     component: TelecallerComponent,
     children: [
-      // {
-      //   path: '',
-      //   redirectTo: 'shubham-demo',
-      //   pathMatch: 'full'
-      // },
-      // {
-      //   path: 'shubham-demo', component: SdkCompComponent
-      // }
+      {
+        path: '',
+        redirectTo: 'candidate-list',
+        pathMatch: 'full'
+      },
+      {
+        path: 'candidate-list', component: CandidateListComponent
+      }
     ]
   }
 ];
