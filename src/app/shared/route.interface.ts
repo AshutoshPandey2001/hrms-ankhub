@@ -23,7 +23,7 @@ export const DEMO_ROUTES: RouteInfo[] = [
   { path: "mrunmayee-demo", title: "Mrunmayee", icon: "laptop_mac", class: "" },
   { path: "shraddha-demo", title: "Shraddha", icon: "laptop_mac", class: "" },
   { path: "abhinav-demo", title: "Abhinav", icon: "laptop_mac", class: "" },
-  { path: "pooja-demo", title: "Pooja", icon: "laptop_mac", class: "" },
+  { path: "pooja-demo", title: "Pooja", icon: "work_history", class: "" },
   { path: "ashu-demo", title: "Ashutosh", icon: "laptop_mac", class: "" },
   { path: "abhijeet-demo", title: "Abhijeet", icon: "laptop_mac", class: "" },
   { path: "shivani", title: "Shivani", icon: "laptop_mac", class: "" },
