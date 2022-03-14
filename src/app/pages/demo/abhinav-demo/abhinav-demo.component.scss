@@ -1,23 +1,26 @@
 
 
-.Edit {
-    border: solid rgb(114, 107, 2) 0.1px;
-    color: rgb(44, 44, 8);
-    background-color: #fff;
-    border-radius: 6px;
+.edit {
+  
+    color: rgb(130, 41, 212);
+ 
 }
 
 .delete {
-    border: solid rgb(241, 21, 21) 0.1px;
-    color: rgb(240, 17, 17);
-background-color: #fff;
-border-radius: 6px;
+
+    color: rgb(232,64,61) ;
+
 }
 
 .input-f{
  border-bottom: rgb(247, 117, 66) solid;
-//  background-color: rgb(222, 226, 252);
+
 }
+
+.input-select{
+  border: rgb(247, 117, 66) solid;
+ 
+ }
 
 .active-pink-2 input.form-control[type=text]:focus:not([readonly]) {
     border-bottom: 2px solid rgb(131, 136, 134);
@@ -25,12 +28,7 @@ border-radius: 6px;
     border: 0px;
     border-radius: 0%;
   }
-  // .active-pink input.form-control[type=text] {
-  //   border-bottom: 2px solid rgb(19, 153, 113);
-  //   box-shadow: 0 2px 0 0 rgb(19, 153, 113);
-  //   border: 0px;
-  //   border-radius: 0%;
-  // }
+  
 
   .search-i{
     width: 5%;
@@ -43,3 +41,60 @@ border-radius: 6px;
   .fa-user-o{
     margin-right: 10px;
   }
+
+  .fa-plus{
+    margin-top: -50px;
+    font-size: 20px;
+
+  }
+
+  .icon-white{
+    color: #fff;
+  }
+
+  .gender{
+    padding-right: 10px;
+  }
+
+ 
+  
+.submit{
+  background-color:rgb(232,64,61) ;
+  color: #fff;
+  // padding-bottom: 25px;
+  padding-left: 10px;
+  
+ 
+}
+.update{
+ color:rgb(232,64,61) ;
+  background-color: #fff;
+  border: solid rgb(241, 21, 21);
+
+}
+
+@keyframes spinner {
+ 
+  0% {
+          transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+         }
+}
+ 
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  border-top-color: #7a7878;
+  animation: spinner .8s linear infinite;
+}

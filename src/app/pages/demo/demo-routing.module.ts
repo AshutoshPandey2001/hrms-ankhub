@@ -50,14 +50,19 @@ const routes: Routes = [
       {
         path: 'pooja-demo', component: PoojazadeComponent
       },
-      {
-        path: 'ashu-demo', component: AshuDemoComponent
-      },
+     
       {
         path: 'abhijeet-demo', component: AbhijeetDemoComponent
       },
       {
         path: 'shivani', component: ShivaniComponent
+
+      },
+      {
+        path: 'kajalD-demo', component: KajalDDemoComponent
+      },
+      {
+          path: 'ashu-demo', component: AshuDemoComponent
       }
     ]
   }

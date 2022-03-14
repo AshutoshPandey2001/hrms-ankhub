@@ -1,102 +1,325 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="card">
-                <div class="card-header card-header-danger">
-                    <h4 class="card-title "><i class="fa fa-user-o" ></i> Employee</h4>
-                    <p class="card-category"> Employee details is here</p>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title ">Simple Table</h4>
+          <p class="card-category"> Here is a subtitle for this table</p>
+          <i  matTooltip="Add" [matTooltipPosition]="'left'" class="fa fa-plus  float-right  "  data-toggle="modal" data-target="#myModal">
+
+          </i>
+
+
+        </div>
+        <div class="card-body">
+          <!-- The Modal -->
+          <div class="modal fade" id="myModal" >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header card-header-danger">
+                  <h4 class="modal-title text-center">Table</h4>
+                  <button type="button " class="close icon-white" data-dismiss="modal">&times;</button>
                 </div>
-                
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-4 col-sm-12">
-                          <div class="container  ">
-                    
-                    
-                              <form [formGroup]="empForm">
-                    
-                                <div class="form-group text-center">
-                                  <label for="email " class=" text-danger">Employee Name :</label>
-                                  <input type="email" class="form-control input-f" placeholder="Enter Employee name" formControlName="empName" 
-                                  [ngClass]="{'is-invalid' : empsub && f['empName'].errors }" >
-                                  <div *ngIf="empsub && f['empName'].errors" class="invalid-feedback">
-                                   
-                                    <div *ngIf="empsub && f['empName'].errors['required']" >
-                                      Employee name is required
-                                    </div>
-                        
-                                    <div *ngIf="empsub && f['empName'].errors['minlength']" >
-                                    Enter Minimum length 8 digit 
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="form-group text-center">
-                                  <label for="pwd" class=" text-danger">Salary :</label>
-                                  <input type="text" class="form-control input-f"placeholder="Enter Employee Salary" formControlName="salary"
-                                  [ngClass]="{'is-invalid' : empsub && f['salary'].errors }" >
-                                  <div *ngIf="empsub && f['salary'].errors" class="invalid-feedback">
-                                   
-                                    <div *ngIf="empsub && f['salary'].errors['required']" >
-                                      salary is required
-                                    </div>
-                        
-                                    <div *ngIf="empsub && f['salary'].errors['minlength']" >
-                                    Enter Minimum length 5 digit 
-                                    </div>
-                                    </div>
-                                </div>
-                              
-                             
-                                <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                  <button *ngIf="isupdateA==false" type="submit" class="btn btn-primary form-control"   (click)="empSubmit()"> <i class="fa fa-sign-in"></i>
-                                   Submit</button>
-                                   </div>
-                                   <div class="col-lg-12 form-group">
-                                   <button *ngIf="isupdateA==true" type="button" class="btn Edit form-control"  (click)="empUpdate()"> <i class="fa fa-refresh"></i>
-                                    Update</button>
-                           
-                                   </div>
-                                  </div>
-                                </form>
-                              </div>
-                           
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <form [formGroup]="tableForm">
+
+                    <div class="form-group ">
+                      <label for="text " class=" text-primary">Full Name :</label>
+                      <input type="text" class="form-control input-f" placeholder="Enter Full name" formControlName="fName"
+                      [ngClass]="{'is-invalid' : tablesub && t['fName'].errors }">
+                      <div *ngIf="tablesub && t['fName'].errors" class="invalid-feedback">
+
+                        <div *ngIf="tablesub && t['fName'].errors['required']">
+                          Full name is required
                         </div>
-                        <div class="col-lg-7 col-md-8 col-sm-12">
-                            <div class="  md-form active-pink active-pink-2 mb-3 mt-0">
-                              <i class="fa fa-search search-i" style="width: 5%; color: rgb(131, 136, 134);margin-left: 20px;" ></i>
-                              <input class="form-control" type="text" placeholder="Search..." aria-label="Search" style="width: 87%; display: inline-block;"  [(ngModel)]="searchkey">
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="height: 250px;">
-                    <!-- <div class="table-responsive"> -->
-                        <table class="table">
-                            <thead class=" text-primary">
-                                <th >Employee Name</th>
-                                <th >Salary</th>
-                                <th >Action</th>
-                            </thead>
-                            <tbody>
-                                <tr   *ngFor="let emp of empList |filter: searchkey ;let i=index">
-    
-                                    <td>{{emp.empName}}</td>
-                                    <td>{{emp.salary}}</td>
-                                    <td>
-                                      <div class="row">
-                                     <div class="col-lg-6 col-md-6 col-sm-12">   <button class="btn Edit form-control" (click)="empEdit(emp)"> <i class="fa fa-edit"></i> Edit</button></div>
-                                     <div class="col-lg-6 col-md-6 col-sm-12">        <button class="btn delete form-control" (click)="empDelete(emp.id)"> <i class="fa fa-trash-o"></i> Delete</button></div>
-                                      </div>
-                                    </td>
-                                  </tr>
-                              
-                            </tbody>
-                        </table>
+                        </div>
                     </div>
+
+                    <div class="form-group ">
+                      <label for="email " class=" text-primary">Email :</label>
+                      <input type="email" class="form-control input-f" placeholder="Enter Email" formControlName="email"
+                      [ngClass]="{'is-invalid' : tablesub && t['email'].errors }">
+                      <div *ngIf="tablesub && t['email'].errors" class="invalid-feedback">
+
+                        <div *ngIf="tablesub && t['email'].errors['email']">
+                          Email is required
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                      <label for="text " class=" text-primary">Mobile No. :</label>
+                      <input type="text" class="form-control input-f" placeholder="Enter Mobile no." formControlName="mobNo"
+                      [ngClass]="{'is-invalid' : tablesub && t['mobNo'].errors }">
+                      <div *ngIf="tablesub && t['mobNo'].errors" class="invalid-feedback">
+
+                        <div *ngIf="tablesub && t['mobNo'].errors['maxlength']">
+                          Only 10 digit mobile number required
+                        </div>
+                        <div *ngIf="tablesub && t['mobNo'].errors['minlength']">
+                          Only 10 digit mobile number required
+                         </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                      <label for="text " class=" text-primary">Date Of Birth :</label>
+                        
+                    <input type="date" name="begin"  class="form-control input-f" placeholder="Enter Date Of Birth" formControlName="dob"  data-date-format="dd-mm-yyyy"  min="01-01-1997" max="31-12-2030"
+                    [ngClass]="{'is-invalid' : tablesub && t['dob'].errors }">
+                    <div *ngIf="tablesub && t['dob'].errors" class="invalid-feedback">
+
+                      <div *ngIf="tablesub && t['dob'].errors['required']">
+                        Date of Birth is required
+                      </div>
+                      </div>
+
+
+                    </div>
+
+                    <div class="form-group text-center">
+                      <label for="text " class=" text-primary">Gender :</label>
+                      
+                   <div class="row">
+                      <div class="col-lg-6">
+                        <label for="text " class="gender ">Male  </label>
+                      <input type="radio" class=" " value="male" name="gender" formControlName="gender"
+                      [ngClass]="{'is-invalid' : tablesub && t['gender'].errors }">
+                      <div *ngIf="tablesub && t['gender'].errors" class="invalid-feedback">
+  
+                        <div class="text-left" *ngIf="tablesub && t['gender'].errors['required']">
+                          Gender is required
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <label for="text " class="gender">Female  </label>
+                      <input type="radio" class=" " value="Female" name="gender" formControlName="gender"
+                      [ngClass]="{'is-invalid' : tablesub && t['gender'].errors }">
+                  
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group " > 
+                    <label for="text " class=" text-primary"> Qualification :</label>
+                    <select  formControlName="quali"  class="form-control input-select " >
+                      <option [disabled]="true" [selected]="true">
+                              Qualification
+                          </option>
+                          <option value="10th">10th</option>
+                          <option value="12th">12th</option>
+                          <option value="Graduation">Graduation</option>
+                          <option value="Post Graduation">Post Graduation</option>
+                        </select>
+
+                    
+                  </div>
+                  </form>
                 </div>
+
+<div [class.spinner]="loading" >
+
+</div>
+
+
+                <!-- Modal footer -->
+                <div class="modal-footer d-flex justify-content-between">
+                  
+                 
+                 
+                  <!-- <div class="col-lg-12 col-md-12 col-sm-12 justify-content-left   form-group "> -->
+                      
+                    <button data-dismiss="modal" *ngIf="isupdateB==false" type="button" class="btn submit  justify-content-left  " [disabled]="tableForm.value.fName == '' || tableForm.value.email == '' || tableForm.value.gender == ''|| tableForm.value.mobNo == '' || tableForm.value.dob == '' " (click)="tableSubmit()"> <i class="fa fa-sign-in"></i>
+                      Submit</button>
+                  <!-- </div> -->
+                  <!-- <div class="col-lg-12 form-group"> -->
+                    <button data-dismiss="modal" *ngIf="isupdateB==true" type="button" class="btn update  "  (click)="tableUpdate()">
+                      Update</button>
+
+                  <!-- </div> -->
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              
+
+              </div>
             </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12" >
+            <div class="  md-form active-pink active-pink-2 mb-3 mt-0">
+              <i class="fa fa-search search-i" style="width: 5%; color: rgb(131, 136, 134);margin-left: 20px;"></i>
+              <input class="form-control" type="text" placeholder="Search..." aria-label="Search"
+                style="width: 90%; display: inline-block;" [(ngModel)]="searchkeyB">
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="height: 250px;">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  Full Name
+                </th>
+                <th>
+                 Email
+                </th>
+                <th>
+                 Mobile No.
+                </th>
+                <th>
+                  Date of Birth
+                </th>
+                <th>
+                Gender
+                </th>
+                <th>
+                  Qualification
+                </th>
+                <th>
+                  Action
+                </th>
+              </thead>
+              <tbody>
+                <div [class.spinner]="loading" >
+
+                </div>
+                <tr *ngFor="let tab of tableList |filter: searchkeyB ;let i=index">
+
+                  <td>{{tab.fName}}</td>
+                  <td>{{tab.email}}</td>
+                  <td>{{tab.mobNo}}</td>
+                  <td>{{tab.dob}}</td>
+                  <td>{{tab.gender}}</td>
+                  <td>{{tab.quali}}</td>
+                 
+                  <td>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-12" data-toggle="modal" data-target="#myModal"> <i   matTooltip="Edit" [matTooltipPosition]="'below'" class="fa fa-edit edit " [disabled]="loading"   (click)="tableEdit(tab)"></i> </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <i  matTooltip="Delete" [matTooltipPosition]="'below'" class="fa fa-close delete " [disabled]="loading" (click)="tableDelete(tab.id)"></i></div>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
         </div>
-        </div>
-        </div>
+      </div>
     </div>
+</div>
+  </div>
 
 
 
+
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title "><i class="fa fa-user-o"></i> Employee</h4>
+          <p class="card-category"> Employee details is here</p>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-5 col-md-4 col-sm-12">
+              <div class="container  ">
+
+
+                <form [formGroup]="empForm">
+
+                  <div class="form-group text-center">
+                    <label for="email " class=" text-danger">Employee Name :</label>
+                    <input type="email" class="form-control input-f" placeholder="Enter Employee name"
+                      formControlName="empName" [ngClass]="{'is-invalid' : empsub && f['empName'].errors }">
+                    <div *ngIf="empsub && f['empName'].errors" class="invalid-feedback">
+
+                      <div *ngIf="empsub && f['empName'].errors['required']">
+                        Employee name is required
+                      </div>
+
+                      <div *ngIf="empsub && f['empName'].errors['minlength']">
+                        Enter Minimum length 8 digit
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group text-center">
+                    <label for="pwd" class=" text-danger">Salary :</label>
+                    <input type="text" class="form-control input-f" placeholder="Enter Employee Salary"
+                      formControlName="salary" [ngClass]="{'is-invalid' : empsub && f['salary'].errors }">
+                    <div *ngIf="empsub && f['salary'].errors" class="invalid-feedback">
+
+                      <div *ngIf="empsub && f['salary'].errors['required']">
+                        salary is required
+                      </div>
+
+                      <div *ngIf="empsub && f['salary'].errors['minlength']">
+                        Enter Minimum length 5 digit
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                      <button *ngIf="isupdateA==false" type="submit" class="btn btn-primary form-control"
+                        (click)="empSubmit()"> <i class="fa fa-sign-in"></i>
+                        Submit</button>
+                    </div>
+                    <div class="col-lg-12 form-group">
+                      <button *ngIf="isupdateA==true" type="button" class="btn Edit form-control" (click)="empUpdate()">
+                        <i class="fa fa-refresh"></i>
+                        Update</button>
+
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+            <div class="col-lg-7 col-md-8 col-sm-12">
+              <div class="  md-form active-pink active-pink-2 mb-3 mt-0">
+                <i class="fa fa-search search-i" style="width: 5%; color: rgb(131, 136, 134);margin-left: 20px;"></i>
+                <input class="form-control" type="text" placeholder="Search..." aria-label="Search"
+                  style="width: 87%; display: inline-block;" [(ngModel)]="searchkey">
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="height: 250px;">
+                <!-- <div class="table-responsive"> -->
+                <table class="table">
+                  <thead class=" text-primary">
+                    <th>Employee Name</th>
+                    <th>Salary</th>
+                    <th>Action</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let emp of empList |filter: searchkey ;let i=index">
+
+                      <td>{{emp.empName}}</td>
+                      <td>{{emp.salary}}</td>
+                      <td>
+                        <div class="row">
+                          <div class="col-lg-6 col-md-6 col-sm-12"> <button class="btn btn-outline-warning form-control"
+                              (click)="empEdit(emp)"> <i class="fa fa-edit"></i> Edit</button></div>
+                          <div class="col-lg-6 col-md-6 col-sm-12"> <button class="btn delete btn-outline-danger form-control"
+                              (click)="empDelete(emp.id)"> <i class="fa fa-trash"></i> Delete</button></div>
+                        </div>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
