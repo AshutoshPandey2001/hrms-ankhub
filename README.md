@@ -13,12 +13,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 **Branching model:**
 
-* Master [This is the main branch of depoloyement]
-* Development [This is the development branch which is base branch for all the developer]
+* Master [This is the main branch of Deployment]
+* Development [This is the development branch which is base branch for all the developers]
 
 **Step to create new branch:**
 
 * Switch to Development Branch.
+* Run in terminal: ```git pull```
 * Run in terminal: ```git checkout -b firstname_modulename_yourtask``` [ ex: ```git checkout -b shubham_admin_technologyCRUD```]
 * Continue your work and at the time of push select `YES` to upstream branch.
 
