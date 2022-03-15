@@ -4,7 +4,7 @@
   >
     <h4 class="card-title">Sample CRUD Operation</h4>
     <button type="button" class="btn btn-primary" (click)="openModal(template)">
-      Add Employee
+      <i class="bi bi-plus-lg"></i> Add Employee
     </button>
   </div>
 
@@ -27,23 +27,12 @@
             <td>Oud-Turnhout</td>
             <td class="text-primary">$36,738</td>
             <td class="td-actions text-left">
-              <button
-                mat-raised-button
-                type="button"
-                matTooltip="Edit Employee"
-                [matTooltipPosition]="'above'"
-                class="btn btn-primary btn-link btn-sm btn-just-icon"
-              >
-                <i class="material-icons">edit</i>
+              <button type="button" class="btn btn-warning btn-link btn-just-icon">
+                <i class="bi bi-pencil-fill" style="font-size:16px"></i>
               </button>
-              <button
-                mat-raised-button
-                type="button"
-                matTooltip="Remove Employee"
-                [matTooltipPosition]="'above'"
-                class="btn btn-danger btn-link btn-sm btn-just-icon"
-              >
-                <i class="material-icons">delete</i>
+          
+              <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                <i class="bi bi-trash3-fill" style="font-size:16px"></i>
               </button>
             </td>
           </tr>
@@ -54,23 +43,12 @@
             <td>Sinaai-Waas</td>
             <td class="text-primary">$23,789</td>
             <td class="td-actions text-left">
-              <button
-                mat-raised-button
-                type="button"
-                matTooltip="Edit Employee"
-                [matTooltipPosition]="'above'"
-                class="btn btn-primary btn-link btn-sm btn-just-icon"
-              >
-                <i class="material-icons">edit</i>
+              <button type="button" class="btn btn-warning btn-link btn-just-icon">
+                <i class="bi bi-pencil-fill" style="font-size:16px"></i>
               </button>
-              <button
-                mat-raised-button
-                type="button"
-                matTooltip="Remove Employee"
-                [matTooltipPosition]="'above'"
-                class="btn btn-danger btn-link btn-sm btn-just-icon"
-              >
-                <i class="material-icons">delete</i>
+          
+              <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                <i class="bi bi-trash3-fill" style="font-size:16px"></i>
               </button>
             </td>
           </tr>
