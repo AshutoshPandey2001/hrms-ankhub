@@ -20,6 +20,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 * Switch to Development Branch.
 * Run in terminal: ```git pull```
+* Run in terminal: ```npm install```
 * Run in terminal: ```git checkout -b firstname_modulename_yourtask``` [ ex: ```git checkout -b shubham_admin_technologyCRUD```]
 * Continue your work and at the time of push select `YES` to upstream branch.
 
