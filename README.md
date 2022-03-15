@@ -1,15 +1,8 @@
-## Download Required Software
-
-Quick start options:
-
-- [Download from Github](https://github.com/tiniestory/material-dashboard-angular2/archive/master.zip).
-- [Download from Creative Tim](http://www.creative-tim.com/product/material-dashboard-angular2).
-
 ## Step to Install & Run project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0 and angular 4.x.
 
-1. Install NodeJs from [NodeJs Official Page](https://nodejs.org/en).
+1. Install NodeJs from [NodeJs v14.15.0](https://nodejs.org/download/release/v14.15.0/).
 2. Open Terminal
 3. Go to your file project
 4. Make sure you have installed [Angular CLI](https://github.com/angular/angular-cli) already. If not, please install.
@@ -28,27 +21,26 @@ Branching model:
 Step to create new branch:
 
 * Switch to Development Branch.
-* Open new terminal.
-* Run the command: git checkout -b firstname_modulename_yourtask. [ for ex: git checkout -b shubham_admin_technologyCRUD]
-* Continue your work and at the time of push select YES to upstream branch.
+* Run in terminal: ```git checkout -b firstname_modulename_yourtask``` [ for ex: git checkout -b shubham_admin_technologyCRUD]
+* Continue your work and at the time of push select `YES` to upstream branch.
 
 Step to add your code to GIT:
 
-* git status [if all are in Red, execute next command]
-* git add .
-* git status [if all are in Green, execute next command]
-* git commit -m "Enter your message here"
-* git pull origin Development [if no more conflict, execute next command]
-* git push
+* Run in terminal: ```git status``` [if all are in Red, execute next command]
+* Run in terminal: ```git add .```
+* Run in terminal: ```git status``` [if all are in Green, execute next command]
+* Run in terminal: ```git commit -m "Enter your message here"```
+* Run in terminal: ```git pull origin Development``` [if no more conflict, execute next command]
+* Run in terminal: ```git push```
 * Go to the bitbucket and create pull request, make sure left side branch slection is your own branch and right side branch selection should be Development always.
 
 ## Development Guidline
 
-* git status [if all are in Red, execute next command]
+* Function and Variable name should always in camelCase.
 
 ## Project Structure
 
-Within the download you'll find the following directories and files:
+Within the project you'll find the following directories and files:
 
 ```
 material-dashboard-angular
