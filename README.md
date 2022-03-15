@@ -22,7 +22,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 * Run in terminal: ```git pull```
 * Run in terminal: ```npm install```
 * Run in terminal: ```git checkout -b firstname_modulename_yourtask``` [ ex: ```git checkout -b shubham_admin_technologyCRUD```]
-* Continue your work and at the time of push select `YES` to upstream branch.
+* Continue your work and at the time of pull/push select `YES` to upstream branch.
 
 **Step to add your code to GIT:**
 
@@ -36,14 +36,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Development Guidline
 
-* Function and Variable name should always in camelCase.
+* Function and Variable name should always in camelCase before push.
+* Remove all console before push.
+* Removed extra spaces before push.
+* Removed Unused / commented code before push.
 
 ## Project Structure
 
-**Within the project you'll find the following directories and files:**
-
 ```
-material-dashboard-angular
+HRMS
 ├── CHANGELOG.md
 ├── LICENSE.md
 ├── README.md
