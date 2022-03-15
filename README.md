@@ -18,7 +18,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## GIT Commands
+## GIT & Bitbucket
+
+Branching model:
+
+* Master [This is the main branch of depoloyement]
+* Development [This is the development branch which is base branch for all the developer]
+
+Step to create new branch:
+
+* Switch to Development Branch.
+* Open new terminal.
+* Run the command: git checkout -b firstname_modulename_yourtask. [ for ex: git checkout -b shubham_admin_technologyCRUD]
+* Continue your work and at the time of push select YES to upstream branch.
+
+Step to add your code to GIT:
 
 * git status [if all are in Red, execute next command]
 * git add .
@@ -28,15 +42,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 * git push
 * Go to the bitbucket and create pull request, make sure left side branch slection is your own branch and right side branch selection should be Development always.
 
-## Branching model
-
-* git status [if all are in Red, execute next command]
-
 ## Development Guidline
 
 * git status [if all are in Red, execute next command]
 
-### Project Structure
+## Project Structure
 
 Within the download you'll find the following directories and files:
 
