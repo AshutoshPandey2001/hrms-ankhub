@@ -1,35 +1,11 @@
-## GIT Commands
-
-* git status [if all are in Red, execute next command]
-* git add .
-* git status [if all are in Green, execute next command]
-* git commit -m "Enter your message here"
-* git pull origin Development [if no more conflict, execute next command]
-* git push
-* Go to the bitbucket and create pull request, make sure left side branch slection is your own branch and right side branch selection should be Development always.
-
-## Table of Contents
-
-* [Versions](#versions)
-* [Demo](#demo)
-* [Quick Start](#quick-start)
-* [Documentation](#documentation)
-* [File Structure](#file-structure)
-* [Browser Support](#browser-support)
-* [Resources](#resources)
-* [Reporting Issues](#reporting-issues)
-* [Technical Support or Questions](#technical-support-or-questions)
-* [Licensing](#licensing)
-* [Useful Links](#useful-links)
-
-## Quick start
+## Project Required Softwares
 
 Quick start options:
 
 - [Download from Github](https://github.com/tiniestory/material-dashboard-angular2/archive/master.zip).
 - [Download from Creative Tim](http://www.creative-tim.com/product/material-dashboard-angular2).
 
-## Terminal Commands
+## Step to run project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0 and angular 4.x.
 
@@ -42,12 +18,32 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-### What's included
+## Branching model
+
+* Create Branch 
+
+## Development Guidline
+
+* Create Branch 
+
+## GIT Commands
+##### Follow step to add your code to bitbucket
+
+* git status [if all are in Red, execute next command]
+* git add .
+* git status [if all are in Green, execute next command]
+* git commit -m "Enter your message here"
+* git pull origin Development [if no more conflict, execute next command]
+* git push
+* Go to the bitbucket and create pull request, make sure left side branch slection is your own branch and right side branch selection should be Development always.
+
+
+## Project Structure
 
 Within the download you'll find the following directories and files:
 
 ```
-material-dashboard-angular
+HRMS
 ├── CHANGELOG.md
 ├── LICENSE.md
 ├── README.md
@@ -153,7 +149,3 @@ material-dashboard-angular
 └── typings
 
 ```
-
-
-## Resources
-- Demo: <https://demos.creative-tim.com/material-dashboard-angular2/#/dashboard>
