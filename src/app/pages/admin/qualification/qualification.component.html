@@ -1,0 +1,80 @@
+
+<div class="card">
+    <div
+      class="card-header card-header-danger d-flex justify-content-between align-center">
+      <h4 class="card-title">Qualification CRUD Operation</h4>
+      <button type="button" class="btn btn-primary" (click)="openModal(template)">
+        <i class="bi bi-plus-lg"></i> Add Qualification
+      </button>
+    </div>
+  
+    <div class="card-body">
+      <div class="table-responsive " style="height: 400px; width: auto;">
+        <table class="table table-hove ">
+          <thead class="text-primary">
+           <th>ID</th>
+            <th>Qualification</th>
+           <th >Action</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let qual of qualificationlist; let i=index">
+              <td>#0{{i+1}}</td>
+              <td>{{qual.qualification}}</td>             
+              <td>
+                <button class="btn btn-warning btn-link btn-just-icon" (click)="edit(qual);openModal(template)">
+                  <i class="bi bi-pencil-fill" style="font-size:16px"></i>
+                </button>
+            
+                <button  class="btn btn-danger btn-link btn-just-icon" (click)="delqual(qual.id)">
+                  <i class="bi bi-trash3-fill" style="font-size:16px"></i>
+                </button>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add Qualification</h4>
+      <button
+        type="button"
+        class="btn-close close pull-right"
+        aria-label="Close"
+        (click)="closeModal()"
+      >
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+  
+    <div class="modal-body">
+        <form [formGroup]="qualificationForm">
+            <div class="form-group">
+                <label class="text-danger"><b>Add Qualification:</b></label>
+                <input type="text" class="form-control" placeholder="Enter Qualification" formControlName="qualification" [ngClass]="{'is-invalid': subBtn && f['qualification'].errors}">
+                <div *ngIf="subBtn && f['qualification'].errors"  class="invalid-feedback">
+                  <div *ngIf="f['qualification'].errors['required']">
+                    Qualification Is required
+                  </div>
+                  
+                </div>
+              </div>
+        </form>
+    </div>
+  
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">
+        Cancle
+      </button>
+      <button *ngIf="editbtn==false" type="button" class="btn btn-success" (click)="submitData()">
+        Submit
+      </button>
+      <button *ngIf="editbtn==true" type="button" class="btn btn-warning" (click)="UpdateData()">
+        Update
+      </button>
+    </div>
+  </ng-template>
+  
