@@ -1,0 +1,119 @@
+
+.header{
+  
+margin-bottom: -10px;
+    margin-top: 50px;
+}
+
+.t-header{
+
+    margin-top: 20px;
+}
+
+.icon-header{
+    margin-left: -5px;
+    width: 50px;
+}
+
+.btn-header{
+    background-color: #dce1f0;
+    border: solid #dce1f0;
+    color: #3b4566;
+    width: 10%;
+    margin-left: 5px;
+}
+
+
+.btn-header-2{
+    background-color: #3366ff;
+    border: solid #3366ff;
+    color:#fff;
+    width: 10%;
+    margin-left: 5px;
+}
+
+.search{
+    margin-left: 30px;
+    width: 20%; 
+    display: inline-block;
+ height: 35px;
+    border: solid #C1C1C1 0.1px;
+    border-radius: 6px;
+    color: #C1C1C1;
+}
+.search::placeholder{
+    color: #C1C1C1;
+} 
+
+.tab-head{
+    color: #3b4566;
+    font-weight: 900;
+}
+.edit{
+    background-color: #3366ff;
+    color: white;
+    width: 100%;
+    height: 100%;
+padding-top: 5px;
+padding-left: 5px;
+padding-bottom: 3px;
+padding-right: 5px;
+    border-radius: 6px ;
+}
+
+.delete{
+    background-color: #F7284A;
+    color: white;
+    width: 100%;
+    height: 100%;
+padding-top: 5px;
+padding-left: 5px;
+padding-bottom: 3px;
+padding-right: 5px;
+    border-radius: 6px ;
+}
+
+.mod-input{
+    width: 100%; 
+    display: inline-block;
+ height: 35px;
+    border: solid #C1C1C1 0.1px;
+    border-radius: 6px;
+   color: #3b4566;
+}
+.mod-input::placeholder{
+    color: #C1C1C1;
+    font-size: 14px;
+    padding-left: 10px;
+} 
+
+
+.close-btn{
+    background-color: #fff;
+    border: #3366ff solid 2px;
+    color: #3366ff;
+    
+}
+
+.submit-btn{
+    margin-left: 10px;
+    background-color: #3366ff;
+    border: #3366ff solid 2px;
+    color: #fff;
+    
+}
+
+.select{
+    width: 5%; 
+    display: inline-block;
+ height: 35px;
+    border: solid #C1C1C1 0.1px;
+    border-radius: 6px;
+    color: #3b4566;
+    padding-left: 14px;
+    font-size: 14px;
+}
+.select::placeholder{
+    color: #3b4566;
+    padding-left: 10px;
+} 
