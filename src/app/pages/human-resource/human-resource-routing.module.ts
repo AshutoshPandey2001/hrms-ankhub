@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HumanResourceComponent } from './human-resource.component';
+import { LeaveRequestComponent } from './leave-request/leave-request.component';
 import { PayslipComponent } from './payslip/payslip.component';
 
 const routes: Routes = [
@@ -15,6 +16,9 @@ const routes: Routes = [
       },
       {
         path: 'payslip', component: PayslipComponent
+      },
+      {
+        path:'leave-request', component: LeaveRequestComponent
       }
     ]
   }
