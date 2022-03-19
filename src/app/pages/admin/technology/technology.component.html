@@ -1,8 +1,10 @@
 
   <div class="row header">
-    <div class="col-lg-8 col-md-6 col-sm-5"> <h4 class=" tab-head t-header">Technology</h4></div>
-   <div class="col-lg-4 col-md-6  col-sm-7  justify-content-end">
-    <button type="button" class="btn submit-btn" (click)="openModal(template)">
+    <div class=" col-lg-8 col-md-5 col-sm-4"> 
+     
+    </div>
+   <div class="col-lg-4 col-md-7  col-sm-8  justify-content-end ">
+    <button type="button" class="btn submit-btn"   (click)="openModal(template)">
       <i class="bi bi-plus-lg "></i> Add Technology
     </button>
     <button type="button" class="btn btn-header" >
@@ -13,7 +15,7 @@
       <i class="bi bi-telephone icon-header" ></i> 
     </button>
 
-    <button type="button" class="btn btn-header-2" >
+    <button type="button" class="btn btn-header-2"  >
       <i class="bi bi-info-circle icon-header" ></i> 
     </button>
   </div>
@@ -24,8 +26,8 @@
   
     <div class="card-body">
         
-      <div class="row  md-form active-pink active-pink-2 mb-3 mt-0 ">
-       <div class="col-lg-9"  >
+      <div class="row ">
+       <div class="col-lg-9 col-md-9 col-sm-5"  >
       <h6 class="tab-head" style="font-weight: 500;">Show 
         <select name="" id="" class="select">
           <option value="5">05</option>
@@ -36,10 +38,13 @@
         
         entries</h6>
       </div>
+      <div class="col-lg-3 col-md-3 col-sm-7"  >
         <input class=" search" type="search" placeholder="Search..." aria-label="Search"
            [(ngModel)]="searchKey">
-      
       </div>
+      </div>
+
+
       <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="height: 250px;">
         <table class="table table-hove">
           <thead class="" >

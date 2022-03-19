@@ -94,7 +94,7 @@ editData(obj:any , template: TemplateRef<any>){
   setTimeout(() => {  
     this.ngxService.stop();
     this.modalRef = this.modalService.show(template, this.config);
-    this.toastr.warning('Your Response', 'Edit');
+    this.toastr.info('Your Response', 'Edit');
   }, 2000);
 
   this.selectIndex= this.technoList.findIndex((x : any )=> x.id === obj.id);
@@ -116,7 +116,7 @@ updateData(){
       this.technoClear()
       this.ngxService.stop();
       this.isUpdate = false ;
-      this.toastr.info('Successfully', 'Updated');
+      this.toastr.success('Successfully', 'Updated');
     }, 2000);
 }
 
@@ -150,7 +150,7 @@ deleteData(id:any){
       this.selectIndex= this.technoList.findIndex((x : any )=> x.id === id);    
       this.technoList.splice(this.selectIndex,1);
       localStorage.setItem("TECHNOLOGY", JSON.stringify(this.technoList));
-      this.toastr.error('Successfully', 'Deleted');
+      this.toastr.success('Successfully', 'Deleted');
       }, 2000);
     
     }
