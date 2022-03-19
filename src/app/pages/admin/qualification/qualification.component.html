@@ -1,14 +1,50 @@
 
-<div class="card">
-    <div
+
+  <div class="row header">
+    <div class="col-lg-8 col-md-5 col-sm-5"> </div>
+   <div class="col-lg-4 col-md-7 col-sm-7  justify-content-end">
+    <button type="button" class="btn submit-btn btn btn-primary" (click)="openModal(template)">
+      <i class="bi bi-plus-lg "></i> Add Qualification
+    </button>
+    <button type="button" class="btn btn-header" >
+      <i class="bi bi-envelope icon-header" ></i> 
+    </button>
+
+    <button type="button" class="btn btn-header" >
+      <i class="bi bi-telephone icon-header" ></i> 
+    </button>
+
+    <button type="button" class="btn btn btn-primary" >
+      <i class="bi bi-info-circle icon-header" ></i> 
+    </button>
+  </div>
+</div>
+    <!-- <div
       class="card-header card-header-danger d-flex justify-content-between align-center">
       <h4 class="card-title">Qualification CRUD Operation</h4>
       <button type="button" class="btn btn-primary" (click)="openModal(template)">
         <i class="bi bi-plus-lg"></i> Add Qualification
       </button>
-    </div>
-  
+    </div> -->
+    <div class="card">
     <div class="card-body">
+      <div class="row  md-form active-pink active-pink-2 mb-3 mt-0 ">
+        <div class="col-lg-8 col-md-7 col-sm-12" >
+       <h6 class="tab-head" style="font-weight: 500;">Show 
+         <select name="" id="" class="select">
+           <option value="5">05</option>
+           <option value="10">10</option>
+           <option value="15">15</option>
+           <option value="20">20</option>
+         </select>
+         
+         entries</h6>
+       </div>
+       <div class="col-lg-4 col-md-5 col-sm-12">
+         <input class=" search" type="search" placeholder="Search..." aria-label="Search"
+            [(ngModel)]="searchitem">
+       </div>
+       </div>
       <div class="table-responsive " style="height: 400px; width: auto;">
         <table class="table table-hove ">
           <thead class="text-primary">
@@ -17,7 +53,7 @@
            <th >Action</th>
           </thead>
           <tbody>
-            <tr *ngFor="let qual of qualificationlist; let i=index">
+            <tr *ngFor="let qual of qualificationlist  |filter:searchitem; let i=index">
               <td>#0{{i+1}}</td>
               <td>{{qual.qualification}}</td>             
               <td>
@@ -66,7 +102,7 @@
     </div>
   
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="closeModal()">
+      <button type="button"  class="btn btn-outline-primary" (click)="closeModal()">
         Cancle
       </button>
       <button *ngIf="editbtn==false" type="button" class="btn btn-success" (click)="submitData()">

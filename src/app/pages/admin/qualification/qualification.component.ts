@@ -18,6 +18,7 @@ export class QualificationComponent implements OnInit {
   subBtn=false;
   editbtn=false;
   selectobj:any;
+  searchitem='';
   
   modalRef: BsModalRef;
   config: ModalOptions = {
@@ -53,19 +54,25 @@ export class QualificationComponent implements OnInit {
   submitData() {
     this.subBtn=true;
     if(this.qualificationForm.valid){
-    this.qualificationForm.value.id=this.randomID();
+    
+     this.closeModal();
+      this.ngxService.start(); 
+      setTimeout(() => {
+        this.qualificationForm.value.id=this.randomID();
     this.qualificationlist.push(this.qualificationForm.value);
     localStorage.setItem("Qualification_LIST" , JSON.stringify(this.qualificationlist));
       this.clear();
-      this.modalRef.hide();
-      this.ngxService.start(); 
-      setTimeout(() => {
-        this.ngxService.stop(); 
-      }, 2000);
       this.toastr.success('Submitted Successfully!', 'Details Valid!');
 
+        this.ngxService.stop(); 
+      }, 2000);
+     
     }else{
-      this.toastr.error('Please Enter Correct Details!', 'Details invalid!');;
+      Swal.fire(          
+        'Invalid!',
+        'Pleasr Enter Correct Details.',
+        'warning'
+      )
     }
   }
 
@@ -74,22 +81,30 @@ export class QualificationComponent implements OnInit {
     this.subBtn=true;
     if(this.qualificationForm.valid){
     this.editbtn=false;
-   this.qualificationlist[this.selectobj].qualification=this.qualificationForm.value.qualification; 
-   localStorage.setItem("Qualification_LIST" , JSON.stringify(this.qualificationlist));
-   this.toastr.warning('Updated Successfully!', 'Details Valid!');
-   this.modalRef.hide();
-   this.clear();
+    this.closeModal();
    this.ngxService.start(); 
    setTimeout(() => {
+    this.qualificationlist[this.selectobj].qualification=this.qualificationForm.value.qualification; 
+    localStorage.setItem("Qualification_LIST" , JSON.stringify(this.qualificationlist));
+    this.toastr.success('Updated Successfully!', 'Details Valid!');
+    
+    this.clear();
      this.ngxService.stop(); 
    }, 2000);
   }else{
-    this.toastr.error('Please Enter Correct Details!', 'Details invalid!');;
+    Swal.fire(
+          
+      'Invalid!',
+      'Pleasr Enter Correct Details.',
+      'warning'
+    )
+   
   }
   }
 
 
   edit(obj:any){
+    
     this.editbtn=true;
     this.selectobj=this.qualificationlist.findIndex((x: any) => x.id === obj.id);
     this.qualificationForm.patchValue({
