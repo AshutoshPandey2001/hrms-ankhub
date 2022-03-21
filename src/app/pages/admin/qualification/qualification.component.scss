@@ -18,9 +18,9 @@
 
     .search{
     margin-left: 30px;
-    width: auto;
+    width: 20%;
     display: inline-block;
- height: 35px;
+    height: 35px;
     border: solid #C1C1C1 0.1px;
     border-radius: 6px;
     color: #C1C1C1;
@@ -35,6 +35,25 @@
 }
 @media screen and (max-width: 600px) {
     .search{
-        margin: 0px;
+        margin: 10px;
+        width: 80%;
     }
   }
+
+  
+
+  .select{
+      text-align: center;
+    width: 5%; 
+    display: inline-block;
+ height: auto;
+    border: solid #C1C1C1 0.1px;
+    border-radius: 6px;
+    color: #3b4566;
+   
+    font-size: 14px;
+}
+.select::placeholder{
+    color: #3b4566;
+    padding-left: 10px;
+}
