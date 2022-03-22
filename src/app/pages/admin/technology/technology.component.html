@@ -1,0 +1,126 @@
+
+  <div class="row header">
+    <div class=" col-lg-8 col-md-5 col-sm-4"> 
+     
+    </div>
+   <div class="col-lg-4 col-md-7  col-sm-8  justify-content-end ">
+    <button type="button" class="btn submit-btn"   (click)="openModal(template)">
+      <i class="bi bi-plus-lg "></i> Add Technology
+    </button>
+    <button type="button" class="btn btn-header" >
+      <i class="bi bi-envelope icon-header" ></i> 
+    </button>
+
+    <button type="button" class="btn btn-header" >
+      <i class="bi bi-telephone icon-header" ></i> 
+    </button>
+
+    <button type="button" class="btn btn-header-2"  >
+      <i class="bi bi-info-circle icon-header" ></i> 
+    </button>
+  </div>
+</div>
+
+<div class="card">
+   
+  
+    <div class="card-body">
+        
+      <div class="row ">
+       <div class="col-lg-9 col-md-9 col-sm-5"  >
+      <h6 class="tab-head" style="font-weight: 500;">Show 
+        <select name="" id="" class="select">
+          <option value="5">05</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+        
+        entries</h6>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-7"  >
+        <input class=" search" type="search" placeholder="Search..." aria-label="Search"
+           [(ngModel)]="searchKey">
+      </div>
+      </div>
+
+
+      <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="height: 250px;">
+        <table class="table table-hove">
+          <thead class="" >
+            
+            <th class="col-lg-8 tab-head">Technology</th>
+          
+            <th class="col-lg-4 tab-head">Actions</th>
+          </thead>
+          <tbody>
+           
+                <tr *ngFor="let tab of technoList |filter:searchKey ;let i=index">
+
+                    <td>{{tab.technoText}}</td>
+               
+              <td class="td-actions text-left">
+                <button type="button" class="btn btn btn-link btn-just-icon" (click)="editData(tab,template)">
+                  <i class="bi bi-pencil-square edit" style="font-size:16px"></i>
+                </button>
+            
+                <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                  <i class="bi bi-trash3-fill delete" style="font-size:16px" (click)="deleteData(tab.id)"></i>
+                </button>
+              </td>
+            </tr>
+           
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left tab-head">Technology</h4>
+      <button
+        type="button"
+        class="btn-close close pull-right"
+        aria-label="Close"
+        (click)="closeModal()"
+      >
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+  
+    <div class="modal-body">
+        <form [formGroup]="technoForm">
+
+            <div class="form-group ">
+              <label for="text " class=" tab-head">Type text</label>
+              <div>
+              <input type="text" class="mod-input" placeholder="Enter Text" formControlName="technoText"
+              [ngClass]="{'is-invalid' : technoSub && t['technoText'].errors }">
+              <div *ngIf="technoSub && t['technoText'].errors" class="invalid-feedback">
+
+                <div *ngIf="technoSub && t['technoText'].errors['required']">
+                  Text is required
+                </div>
+                </div>
+              </div>
+            </div>
+
+
+          </form>
+    </div>
+  
+    <div class="modal-footer">
+      <button type="button" class="btn close-btn" (click)="closeModal()">
+        Close
+      </button>
+      <button type="button" *ngIf="isUpdate==false" class="btn submit-btn" (click)="submitData()">
+        Submit
+      </button>
+      <button type="button"  *ngIf="isUpdate==true" class="btn submit-btn" (click)="updateData()">
+        Update
+      </button>
+    </div>
+  </ng-template>
+  
