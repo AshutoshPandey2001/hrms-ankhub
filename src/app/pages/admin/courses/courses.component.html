@@ -1,1 +1,227 @@
-<p>courses works!</p>
+<div class="row">
+  <div class="col-lg-7 col-md-5 col-sm-4"> 
+    <h2 class="card-title"><b>Courses Details</b></h2>
+  </div>
+  <div class="col-lg-5 col-md-7 col-sm-8  justify-content-end headerbtn">
+    <button type="button" class="btn a1" (click)="openModal(template)" >
+      <i class="bi bi-plus-lg"></i> Add Courses
+    </button>
+    <button type="button" class="btn btn-light"><i class="bi bi-envelope"></i></button>
+    <button type="button" class="btn btn-light"><i class="bi bi-telephone"></i></button>
+    <button type="button" class="btn a1"><i class="bi bi-exclamation-circle-fill"></i></button>
+
+  </div>
+
+</div>
+<div class="card">
+  <div class="card-body">
+    <div class="row  md-form active-pink active-pink-2 mb-3 mt-0 ">
+      <div class="col-lg-9 col-md-9 col-sm-5" >
+        <div style="margin-bottom: 20px;">
+          <h3 class="card-title"><b>Courses Summary</b></h3>
+        </div>
+
+        <h6 class="tab-head" style="font-weight: 500;">Show 
+ 
+          <select name="" id="" class="select">
+ 
+            <option value="5">05</option>
+ 
+            <option value="10">10</option>
+ 
+            <option value="15">15</option>
+ 
+            <option value="20">20</option>
+ 
+          </select>
+ 
+          
+ 
+          entries</h6>
+ 
+        </div>
+        <input class="search" type="search" placeholder="Search..." aria-label="Search"
+        [(ngModel)]="onsearchkey">
+      </div>
+      <div class="table-responsive ">
+        <table class="table mt-3">
+          <thead class="text-primary ">
+            <th> <b>Internship Name</b> </th>
+            <th> <b>Amount</b> </th>
+            <th> <b>Duration</b></th>
+            <th> <b>Technology & Tools</b></th>
+            <th><b>Action</b></th>
+            
+          </thead>
+          <tbody >
+            <tr *ngFor="let cours of courseList  | filter:onsearchkey;let idx=index">
+              <td>{{cours.internname}}</td>
+              <td>{{cours.amount}}</td>
+              <td>{{cours.duration}}</td>
+              <td>{{cours.tools}}</td>
+              
+              <td class="td-actions text-left">
+                <!-- <button type="button" class="btn btn btn-link btn-just-icon a1" (click)="editData(cours,template)" >
+                  <i class="bi bi-pencil-square edit edit-btn"></i>
+                </button>
+               
+                
+            
+                <button type="button" class="btn btn-danger" (click)="deleteData(cours.id)">
+                  <i class="bi bi-trash3-fill del-btn" ></i>
+                </button> -->
+                <button type="button" class="btn btn-md edit-btn" (click)="editData(cours,template)" style="margin-right:5px;">
+                  <i class="bi bi-pencil-square edit" style="font-size:16px"></i>
+                </button>
+            
+                <button type="button" class="btn btn-sm del-btn">
+                  <i class="bi bi-trash3-fill delete" style="font-size:16px" (click)="deleteData(cours.id)"></i>
+                </button>
+              </td>
+            </tr>
+           
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div> 
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add Courses Details</h4>
+      <button
+        type="button"
+        class="btn-close close pull-right"
+        aria-label="Close"
+        (click)="closeModal()"
+      >
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+  
+    <div class="modal-body">
+      <div class="col-lg-12">
+        <form [formGroup]= "courseForm">
+        <div class="form-group">
+          <label for="Internship Name">Internship Name </label>
+          <input type="text" class="form-control" placeholder="internname"  formControlName= "internname"
+          [ngClass]="{'is-invalid' : courseSubmit && f['internname'].errors}">
+  
+          <div *ngIf="courseSubmit && f['internname'].errors" class="invalid-feedback">
+    
+            <div *ngIf="courseSubmit && f['internname'].errors['required']">
+              Internship Name is required..!
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Amount">Amount</label>
+          <input type="text" class="form-control" placeholder="amount"  formControlName= "amount"
+          [ngClass]="{'is-invalid' : courseSubmit && f['amount'].errors}">
+  
+          <div *ngIf="courseSubmit && f['amount'].errors" class="invalid-feedback">
+    
+            <div *ngIf="courseSubmit && f['amount'].errors['required']">
+              Amount is required..!
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="Duration">Duration</label>
+          <input type="text" class="form-control" placeholder="duration"  formControlName= "duration"
+          [ngClass]="{'is-invalid' : courseSubmit && f['duration'].errors}">
+  
+          <div *ngIf="courseSubmit && f['duration'].errors" class="invalid-feedback">
+    
+            <div *ngIf="courseSubmit && f['duration'].errors['required']">
+              Duration is required..!
+            </div>
+          </div>
+        </div>
+
+         
+        <div class="form-group " > 
+         
+           <select  formControlName="tools"  class="form-control input-select " 
+          [ngClass]="{'is-invalid' : courseSubmit && f['duration'].errors}">
+            <option [disabled]="true" [selected]="true">
+              Technology & Tools
+                </option>
+                <option value="Vs code">Vs code</option>
+                <option value="Trello">Trello</option>
+                <option value="NPM">NPM</option>
+                <option value="Bitbucket">Bitbucket</option>
+              </select>
+          <div *ngIf="courseSubmit && f['tools'].errors" class="invalid-feedback">
+    
+            <div *ngIf="courseSubmit && f['tools'].errors['required']">
+              Technology & Tools is required..!
+            </div>
+          </div>
+  
+         
+        </div>
+          
+      </form>
+    </div>
+    </div> 
+     
+    <div class="modal-footer">
+      <button *ngIf = "forLoginsuccess==true" type="submit" class="btn btn-warning btup" (click)="updateData();startSpinner();showWarningToaster()"><i class="fa fa-refresh"></i>Update</button>
+      <button type="button" class="btn btn-outline-info" style="color: #3366FF;"   (click)="closeModal()">
+        Cancle
+      </button>
+      <button  *ngIf = "forLoginsuccess==false" type="button" class="btn a1" (click)="submitData();startSpinner();showSuccessToaster()">
+        Submit
+      </button>
+    </div>
+  </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+  
+
+     
+  
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+       
+  
+        
+            
+   
+          
+  
+  
+        
+        
+        
+  
+  
+       
