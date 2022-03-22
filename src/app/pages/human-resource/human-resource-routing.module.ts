@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EventOrganizationComponent } from './event-organization/event-organization.component';
 import { HumanResourceComponent } from './human-resource.component';
 import { PayslipComponent } from './payslip/payslip.component';
 
@@ -15,6 +16,9 @@ const routes: Routes = [
       },
       {
         path: 'payslip', component: PayslipComponent
+      },
+      {
+        path: 'event-organization', component: EventOrganizationComponent
       }
     ]
   }
