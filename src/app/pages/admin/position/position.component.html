@@ -1,0 +1,212 @@
+
+<div class="row">
+  
+    <div class="col-md-6 mt-4">
+        <h3><b>Position</b></h3>
+        </div>
+        <div class="col-6 text-right mt-5">
+         <button type="button " class="btn  btn-sm mr-2" style="background-color:rgb(70, 70, 243); font-size:16px"  (click)="openModal(template)">
+
+          <i class="bi bi-plus-lg"></i> Add Employee
+        </button>
+        <button type="button" class="btn btn-secondary  btn-sm mr-2">
+          <i class="bi bi-envelope" style="font-size:16px"></i>
+        </button>
+        <button type="button" class="btn btn-secondary  btn-sm mr-2">
+          <i class="bi bi-telephone" style="font-size:16px"></i>       
+         </button>
+         <button type="button" class="btn btn-sm mr-2"  style="background-color:rgb(70, 70, 243);">
+         <i class="bi bi-info-circle" style="font-size:16px"></i>    
+         </button>
+      </div>
+      <div class="col-12">
+      <div class="card" >
+            <div class=" col-12 card-header  d-flex justify-content-between align-center">
+              <h4 class="card-title"><b>Position CRUD Operation</b></h4>
+            </div>
+            <div class="row">
+            <div class="col-8">
+              
+              </div>
+              <div class="col-3">
+                <input class="form-control" type="text" placeholder="Search" formaction="Search">
+                </div>
+                <div class="col-1">
+                <button type="button" class="btn btn-sm" style="background-color:black;">
+                  <i class="bi bi-gear" style="font-size:14px"></i>                 
+                 </button>
+                </div>
+              </div>
+            <div class="card-body">
+            
+                    <table class="table table-bordered">
+                        <thead class=" text-primary">
+                            <th>ID</th>
+                            <th>Employee Position Name</th>
+                            <th>Employee Type</th>
+                            <th>Action</th>
+                           </thead>
+                        <tbody>
+                          <!-- <tr class="pagination-row">
+                            <td colspan="3"></td>
+                            <td>1st</td>
+                            <td>2st</td>
+                            <td>3st</td>
+                            
+                          </tr>-->
+                            <tr class *ngFor="let employee of employeearray | paginate: { itemsPerPage: 10, currentPage: page }">
+                                <td>{{employee.idd}}</td>
+                                <td>{{employee.name}}</td>
+                                <td>{{employee.employee}}</td>
+                                <td class="td-actions text-left">
+                                    <button type="button" class="btn btn-link btn-just-icon" style="color: blue;" (click)="edit(employee)">
+                                      <i class="bi bi-pencil-square" style="font-size:16px;"></i>
+                                    </button>
+                                
+                                           <button type="button" class="btn btn-link btn-just-icon"  style="color:red;" (click)="delete(employee.id)">
+                                      <i class="bi bi-trash3-fill" style="font-size:16px"></i>
+                                    </button>
+                                  </td>
+                                </tr>   
+                        </tbody>
+                       
+                    </table>
+                     <pagination-controls (pageChange)="page = $event"></pagination-controls> 
+                </div>
+            </div>  
+        </div>
+      </div>
+  
+    <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Modal</h4>
+          <button
+            type="button"
+            class="btn-close close pull-right"
+            aria-label="Close"
+            (click)="closeModal()"
+          >
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+          </button>
+        </div>
+      
+        <div class="modal-body">
+            <form [formGroup]="employeeForm">
+                <div class="form-group">
+                    <label class="col" ><b>ID:</b></label>
+                    <input type="number" class="form-control" placeholder="Enter Id" formControlName="idd" [ngClass]="{'is-invalid':subBtn  && f['idd'].errors}">
+                    <div *ngIf="subBtn && f['idd'].errors" class="invalid-feedback">
+                      Id is Required.......!
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col" ><b>Employee Position:</b></label>
+                    <input type="text" class="form-control" placeholder="Enter Employee Position" formControlName="name" [ngClass]="{'is-invalid':subBtn  && f['name'].errors}">
+                    <div *ngIf="subBtn && f['name'].errors" class="invalid-feedback">
+                      Name is Required.......!
+                    </div> 
+                  </div>
+                
+                  <div class="form-group">
+                    <label class="col"><b>Employee Type:</b></label>
+                    <select class="form-select"  formControlName="employee">
+                        <option *ngFor="let c of emp" [ngValue]="c">{{ c }}</option>
+                    </select>
+                    </div>
+                    </form>
+        </div>
+      
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">
+            Cancle
+          </button>
+          <button type="button" class="btn btn-success" (click)="Submit()">
+            Submit
+          </button>
+        </div>
+      </ng-template>
+      <!-- <ng-template #new>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Modal</h4>
+          <button
+            type="button"
+            class="btn-close close pull-right"
+            aria-label="Close"
+            (click)="closeModal()"
+          >
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+          </button>
+        </div>
+      
+        <div class="modal-body">
+            <form [formGroup]="employeeForm">
+                <div class="form-group">
+                    <label class="col" ><b>ID:</b></label>
+                    <input type="number" class="form-control" placeholder="Enter Id" formControlName="idd" [ngClass]="{'is-invalid':subBtn  && f['idd'].errors}">
+                    <div *ngIf="subBtn && f['idd'].errors" class="invalid-feedback">
+                      Id is Required.......!
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col" ><b>Employee Position:</b></label>
+                    <input type="text" class="form-control" placeholder="Enter Employee Position" formControlName="name" [ngClass]="{'is-invalid':subBtn  && f['name'].errors}">
+                    <div *ngIf="subBtn && f['name'].errors" class="invalid-feedback">
+                      Name is Required.......!
+                    </div> 
+                  </div>
+                
+                  <div class="form-group">
+                    <label class="col"><b>Employee Type:</b></label>
+                    <select class="form-select"  formControlName="employee">
+                        <option *ngFor="let c of emp" [ngValue]="c">{{ c }}</option>
+                    </select>
+                    </div>
+                    </form>
+        </div>
+      
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">
+            Cancle
+          </button>
+          <button type="button" class="btn btn-success" (click)="Update()">
+            Update
+          </button>
+        </div>
+      </ng-template>
+                    <!-- <form [formGroup]="employeeForm">
+                    <div class="form-group">
+                        <label class="col" ><b>ID:</b></label>
+                        <input type="number" class="form-control" placeholder="Enter Id" formControlName="idd" [ngClass]="{'is-invalid':subBtn  && f['idd'].errors}">
+                        <div *ngIf="subBtn && f['idd'].errors" class="invalid-feedback">
+                          Id is Required.......!
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col" ><b>Employee Position:</b></label>
+                        <input type="text" class="form-control" placeholder="Enter Employee Position" formControlName="name" [ngClass]="{'is-invalid':subBtn  && f['name'].errors}">
+                        <div *ngIf="subBtn && f['name'].errors" class="invalid-feedback">
+                          Name is Required.......!
+                        </div> 
+                      </div>
+                    
+                      <div class="form-group">
+                        <label class="col"><b>Employee Type:</b></label>
+                        <select class="form-select"  formControlName="employee">
+                            <option *ngFor="let c of emp" [ngValue]="c">{{ c }}</option>
+                        </select>
+                 -->
+                        <!-- <input type="text" class="form-control" placeholder="Enter Counrty" formControlName="" [ngClass]="{'is-invalid':subBtn  && f['country'].errors}">
+                        <div *ngIf="subBtn && f['country'].errors" class="invalid-feedback">
+                          Country is Required.......!
+                        </div>  -->
+                     
+                     
+                      <!-- <button *ngIf="editbtn==true"  class="btn btn-warning" (click)="formUpdate()">Update</button> -->
+            
+                  
+             
+            
+               
+          
+        
+   
