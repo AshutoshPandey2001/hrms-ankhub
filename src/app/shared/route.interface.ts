@@ -48,5 +48,5 @@ export const TELECALLER_ROUTES: RouteInfo[] = [
 
 export const FINANCE_ROUTES: RouteInfo[] = [
   { path: "shares", title: "Accounts", icon: "account_balance_wallet", class: "" },
-  { path: "finance-report", title: "Accounting Report", icon: "analytics", class: "" }
+  { path: "accountingreport", title: "Accounting Report", icon: "analytics", class: "" }
 ];
