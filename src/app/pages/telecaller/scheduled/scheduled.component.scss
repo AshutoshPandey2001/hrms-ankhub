@@ -1,0 +1,25 @@
+#top label{
+    color: black;
+    font-size: 15px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#top input{
+    font-size: 15px;
+    border-radius: 5px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.pagination {
+    border: 1px  grey;
+}
+#body td{
+    color: rgb(133, 133, 172);
+    font-style: bold;
+}
+
+#forms {
+    ::placeholder { 
+        padding-left: 15px;
+      }
+      
+}
+

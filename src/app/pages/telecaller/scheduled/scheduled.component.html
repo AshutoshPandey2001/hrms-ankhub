@@ -1,0 +1,235 @@
+<div class="card " style="border-radius: 10px;">
+  <div class="card-header">
+    <div class="row"><h3 style="color: rgb(27, 27, 119); margin-top: 50px; margin-left: 50px; margin-bottom: 30px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Scheduled List</b></h3></div>
+   
+   
+    <div class="row" id="top">
+      <div class="col-lg-3 col-md-6 form-group mb-3"  >
+        <label for="from"><b>From :</b></label>
+        <div class="input-group mb-3" id="forms"  style="width:345px ; border: 1px solid rgb(204, 204, 221); border-radius: 5px;">
+          <span class="input-group-text" style="border: 1px solid rgb(204, 204, 221);  background-color: rgb(204, 204, 221); "><i class="bi bi-calendar"></i></span>
+          <input type="text"
+          placeholder="DD-MM-YYYY"
+          class="form-control"
+          bsDatepicker  >
+          </div>
+      </div>
+  
+      <div class="col-lg-3 col-md-6 form-group mb-3">
+        <label for="from" ><b>To :</b></label>
+        <div class="input-group mb-3" id="forms" style="width:345px ; border: 1px solid rgb(204, 204, 221); border-radius: 5px;">
+          <span class="input-group-text" style="border: 1px solid rgb(204, 204, 221);  background-color: rgb(204, 204, 221);"><i class="bi bi-calendar"></i></span>
+          <input type="text"
+          placeholder="DD-MM-YYYY"
+          class="form-control"
+          bsDatepicker  >
+          </div>
+      </div>
+  
+      <div  class="col-lg-3 col-md-12 form-group mb-3">
+        <label for="to"><b>Select Status :</b></label>
+        <select name="cars" class="form-select" style="width: 345px; border-radius: 5px;">
+          <option selected> Select Status</option>
+          <option value="volvo">Volvo</option>
+          <option value="fiat">Fiat</option>
+          <option value="audi">Audi</option>
+        </select>
+      
+      </div>
+  
+      <div class="col-lg-3 col-md-3">
+        <button type="button" class="btn" style=" background-color:  rgb(72, 72, 236); width: 150px; padding: 0 20px; height: 40px; margin-top: 35px;font-size: 16px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+          <b>Search</b>
+        </button>
+      </div>
+      
+      <hr style="border: 1px  gray;"> 
+     
+    </div>
+  </div>
+    <div class="card-body">
+        <div class="container-fluid"> 
+          <div class="row" style="margin-bottom: 30px;">
+            <div class="col-3">
+              <p style="font-size: 20px;color: rgb(133, 133, 172); font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">show  
+                  <select name="select" class="custom-select" style="width: 50px; border-radius: 5px; text-align: center; ">
+                    <option selected > 6</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                  </select>
+                 entries
+              </p>
+
+            </div>  
+            <div class="col-3 offset-6" >
+              <form action="/action_page.php">
+                <input class="form-control"  type="text" placeholder="Search...." style="border:1px solid rgb(184, 175, 175); border-radius: 5px; width: 220px; margin-left: 120px; ">
+              </form>
+              
+      <form action="/action_page.php">
+        
+    
+        
+      </form>
+              </div>
+          </div>        
+       <div class="row">
+           <div class="col">
+            <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                     <th style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black;font-weight: 700;"><b>ID <i class="bi bi-arrow-down-up " style="float: right;" ></i></b></th>
+                    <th style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black; font-weight: 700;"><b>Name <i class="bi bi-arrow-down-up"  style="float: right;" ></i></b>  </th>
+                    <th style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black; font-weight: 700;"><b>Email <i class="bi bi-arrow-down-up"  style="float: right;" ></i></b></th>
+                    <th style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black; font-weight: 700;"><b>Projects <i class="bi bi-arrow-down-up"  style="float: right;" ></i></b></th>
+                    <th style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black; font-weight: 700;"><b>Status <i class="bi bi-arrow-down-up"  style="float: right;" ></i></b> </th>
+                    <th style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black; font-weight: 700;"><b>Actions</b></th>
+                  </tr>
+                </thead>
+                <tbody id="body">
+                  <tr>
+                    <td>1</td>
+                    <td style="font-weight: 700;"> <img src="/assets/img/scheduled img/emp 3.jpg" class=" avatar rounded-circle" alt="Avatar" width="65px" height="55px"  alt="" style="margin-right: 15px;"> Shivani Chhatre</td>
+                    <td style="font-size: 16px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>shivani@example.com</b></td>
+                    <td >2</td>
+                    <td class="label" ><b style="border-radius: 10px; color: green; background-color:lightgreen; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 16px; padding: 0 28px 0;display: inline-flex; margin-top: 22px; margin-left: 10%;"> Active</b></td>
+                    <td>
+                      <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                        <i class="bi bi-eye" style=" color: blue; font-size:18px; border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                      <button type="button" class="btn btn-link btn-just-icon">
+                        <i class="bi bi-pencil-fill" style="font-size:16px; color: green;  border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                  
+                      <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                        <i class="bi bi-trash3-fill" style="font-size:16px; border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td style="font-weight: 700;"> <img src="/assets/img/scheduled img/emp 2.jpg" class="avatar rounded-circle" alt="Avatar"  width="65px" height="55px"  alt="" style="margin-right: 15px;">
+                       January Aweaome
+                    </td>
+                    <td>january@example.com</td>
+                    <td>0</td>
+                    <td class="label" ><b style="border-radius: 10px; color: red; background-color: pink; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 16px; padding: 0 28px 0;display: inline-flex; margin-top: 20px; margin-left: 10%;">Inactive</b></td>
+                    <td>
+                      <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                        <i class="bi bi-eye" style=" color: blue; font-size:18px; border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                      <button type="button" class="btn btn-link btn-just-icon">
+                        <i class="bi bi-pencil-fill" style="font-size:16px; color: green;  border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                  
+                      <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                        <i class="bi bi-trash3-fill" style="font-size:16px; border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td >3</td>
+                    <td style="font-weight: 700;"> <img src="/assets/img/scheduled img/emp1.jpg" class="avatar rounded-circle" alt="Avatar" width="65px" height="55px"  alt="" style="margin-right: 15px;"> 
+                      July Autum
+                    </td>
+                    <td>july@example.com</td>
+                    <td style="font-weight: 700;">1</td>
+                    <td class="label" ><b style="border-radius: 10px; color: green; background-color: lightgreen; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 16px; padding: 0 28px 0;display: inline-flex; margin-top: 20px; margin-left:10%;">Active</b></td>
+                    <td>
+                      <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                        <i class="bi bi-eye" style=" color: blue; font-size:18px; border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                      <button type="button" class="btn btn-link btn-just-icon">
+                        <i class="bi bi-pencil-fill" style="font-size:16px; color: green;  border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                  
+                      <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                        <i class="bi bi-trash3-fill" style="font-size:16px; border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td  style="font-weight: 700;"> <img src="/assets/img/scheduled img/emp 2.jpg" class="avatar rounded-circle" alt="Avatar"  width="65px" height="55px"  alt="" style="margin-right: 15px; ">
+                       Mary Com
+                    </td>
+                    <td>mary@example.com</td>
+                    <td>0</td>
+                    <td class="label" ><b style="border-radius: 10px; color: red; background-color: pink; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 16px; padding: 0 28px 0;display: inline-flex; margin-top: 20px; margin-left: 10%;">Inactive</b></td>
+                    <td>
+                      <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                        <i class="bi bi-eye" style=" color: blue; font-size:18px; border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                      <button type="button" class="btn btn-link btn-just-icon">
+                        <i class="bi bi-pencil-fill" style="font-size:16px; color: green;  border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                  
+                      <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                        <i class="bi bi-trash3-fill" style="font-size:16px; border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td style="font-weight: 700;"> <img src="/assets/img/scheduled img/emp1.jpg" class="avatar rounded-circle" alt="Avatar"  width="65px" height="55px"  alt="" style="margin-right: 15px;"> 
+                      October Thirteen
+                    </td>
+                    <td>october@example.com</td>
+                    <td>1</td>
+                    <td class="label" ><b style="border-radius: 10px; color: green; background-color: lightgreen; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 16px; padding: 0 28px 0;display: inline-flex; margin-top: 20px; margin-left: 10%;">Active</b></td>
+                    <td>
+                      <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                        <i class="bi bi-eye" style=" color: blue; font-size:18px; border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                      <button type="button" class="btn btn-link btn-just-icon">
+                        <i class="bi bi-pencil-fill" style="font-size:16px; color: green;  border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                  
+                      <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                        <i class="bi bi-trash3-fill" style="font-size:16px; border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td style="font-weight: 700;"> <img src="/assets/img/scheduled img/emp 3.jpg" class="rounded-circle" alt="Avatar"  width="65px" height="55px"  alt="" style="margin-right: 15px;"> 
+                      Lily Flower
+                    </td>
+                    <td style="font-size: 16px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Lily@example.com</b></td>
+                    <td>2</td>
+                    <td class="label" ><b style="border-radius: 10px; color: green; background-color: lightgreen; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 16px; padding: 0 28px 0;display: inline-flex; margin-top: 20px; margin-left: 10%;">Active</b></td>
+                    <td>
+                      <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                        <i class="bi bi-eye" style=" color: blue; font-size:18px; border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                      <button type="button" class="btn btn-link btn-just-icon">
+                        <i class="bi bi-pencil-fill" style="font-size:16px; color: green;  border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                  
+                      <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                        <i class="bi bi-trash3-fill" style="font-size:16px; border: 1px solid rgb(235, 229, 229); padding: 5px 5px ; border-radius: 10px;"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+           </div>
+       </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <p style="font-size: 20px;color: rgb(133, 133, 172); font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-bottom: 40px; margin-left: 25px;"><b>showing 1 to 6 entries</b></p>
+      <ul class="pagination" style="border: 1px solid rgb(212, 199, 199); border-color: 1px grey; border-radius: 5px; margin-right: 75px;" >
+        <li class="page-item" ><a class="page-link" style="color: rgb(133, 133, 172); font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" href="#"><b>Previous</b></a></li>
+        <li class="page-item active" ><a class="page-link" style="color: rgb(133, 133, 172); font-size: 20px; background-color: rgb(72, 72, 236); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" href="#"><b>1</b></a></li>
+        <li class="page-item" ><a class="page-link" href="#" style="color: rgb(133, 133, 172); font-size: 20px ; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"><b>Next</b></a></li>
+      </ul>
+
+    </div>
+  </div>
