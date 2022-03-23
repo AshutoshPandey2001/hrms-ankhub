@@ -1,0 +1,293 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8 col-md-5"></div>
+    <div
+      class="col-lg-4 col-md-7 justify-content-end"
+      style="padding-left: 50px"
+    >
+      <div style="margin-left: 10px; margin-top: 40px">
+        <button
+          type="button"
+          class="btn"
+          (click)="openModal(template)"
+          style="background-color: #3366ff"
+        >
+          <i class="bi bi-plus-lg"></i> Add Grade-Level
+        </button>
+        <button
+          type="button"
+          class="btn icon"
+          style="background-color: #dee5f7"
+        >
+          <i class="bi bi-envelope" style="color: black"></i>
+        </button>
+        <button
+          type="button"
+          class="btn icon"
+          style="background-color: #dee5f7"
+        >
+          <i class="bi bi-telephone" style="color: black"></i>
+        </button>
+        <button
+          type="button"
+          class="btn icon"
+          style="background-color: #3366ff"
+        >
+          <i class="bi bi-info-circle"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="line">
+            <h4 class="header"><b>Grade-Level Summary</b></h4>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-5">
+              <p class="tab-head" style="font-weight: 500">
+                Show
+                <select
+                  name=""
+                  id=""
+                  class="dropdown"
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  style="
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    border: #e7e5e5 solid 2px;
+                    border-radius: 6px;
+                  "
+                >
+                  <option value="5">05</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                </select>
+                Entries
+              </p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-7">
+              <div>
+                <input
+                  type="search"
+                  class="form-control"
+                  placeholder="Search"
+                  aria-label="Search"
+                  [(ngModel)]="terms"
+                  style="
+                    border: #dad5d5 solid 2px;
+                    border-radius: 5px;
+                    padding-left: 10px;
+                  "
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div
+            class="table-responsive"
+            style="max-height: 348px; overflow: auto"
+          >
+            <table
+              class="table table-bordered table-hove"
+              style="border: #dad5d5 solid 2px"
+            >
+              <thead>
+                <th>#ID</th>
+                <th>Grade Name</th>
+                <th>Grade value</th>
+                <th>Technology</th>
+                <th>Action</th>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let candidate of GradeList | filter: terms;
+                    let idx = index
+                  "
+                  class="center"
+                >
+                  <td>{{ candidate.id }}</td>
+                  <td>{{ candidate.gradeName }}</td>
+                  <td>{{ candidate.gradeValue }}</td>
+                  <td>{{ candidate.tech }}</td>
+                  <td class="td-actions text-left">
+                    <button
+                      type="button"
+                      [matTooltipPosition]="above"
+                      class="btn btn btn-link btn-just-icon"
+                      (click)="openModal(template)"
+                      (click)="edit(idx, candidate)"
+                    >
+                      <i
+                        class="bi bi-pencil-square edit-icon"
+                        style="font-size: 16px"
+                      ></i>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="btn btn-danger btn-link btn-just-icon"
+                    >
+                      <i
+                        class="bi bi-trash3-fill delete-icon"
+                        style="font-size: 16px"
+                        (click)="delete(idx)"
+                      ></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Grade-Level</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="GradeForm">
+      <div class="form-group">
+        <label class="text-color">#ID:</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter ID"
+          formControlName="id"
+          [ngClass]="{ 'is-invalid': submitted && f['id'].errors }"
+          style="
+            border: #f7f1f1 solid 2px;
+            border-radius: 5px;
+            padding-left: 10px;
+          "
+        />
+        <div *ngIf="submitted && f['id'].errors" class="invalid-feedback">
+          ID is required...!
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="text-color">Grade Name: </label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Grade Name"
+          formControlName="gradeName"
+          style="
+            border: #f7f1f1 solid 2px;
+            border-radius: 5px;
+            padding-left: 10px;
+          "
+          [ngClass]="{ 'is-invalid': submitted && f['gradeName'].errors }"
+        />
+        <div
+          *ngIf="submitted && f['gradeName'].errors"
+          class="invalid-feedback"
+        >
+          Grade Name is required...!
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="text-color">Grade Value:</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Grade Value"
+          formControlName="gradeValue"
+          style="
+            border: #f7f1f1 solid 2px;
+            border-radius: 5px;
+            padding-left: 10px;
+          "
+          [ngClass]="{ 'is-invalid': submitted && f['gradeValue'].errors }"
+        />
+        <div
+          *ngIf="submitted && f['gradeValue'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['gradeValue'].errors['required']">
+            Grade value is required...!
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="Sel1" class="text-color">Select Technology:</label>
+        <select
+          class="form-control"
+          id="Sel1"
+          placeholder="Select Technology"
+          formControlName="tech"
+          style="
+            border: #f7f1f1 solid 2px;
+            border-radius: 5px;
+            padding-left: 10px;
+          "
+          [ngClass]="{ 'is-invalid': submitted && f['tech'].errors }"
+        >
+          <option>HTML/CSS</option>
+          <option>Bootstrap</option>
+          <option>Angular</option>
+          <option>Ionic</option>
+        </select>
+        <div *ngIf="submitted && f['tech'].errors" class="invalid-feedback">
+          <div *ngIf="f['tech'].errors['required']">
+            Technology is required!
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      id="cancel"
+      class="btn btn-secondary"
+      data-dismiss="modal"
+      (click)="closeModal()"
+    >
+      Close
+    </button>
+    <button
+      *ngIf="editoperation == false"
+      type="button"
+      class="btn"
+      style="background-color: #3366ff"
+      (click)="Save()"
+    >
+      Submit
+    </button>
+    <button
+      *ngIf="editoperation == true"
+      type="button"
+      id="cancel"
+      class="btn"
+      style="background-color: #3366ff"
+      (click)="Update()"
+    >
+      Update
+    </button>
+  </div>
+</ng-template>
