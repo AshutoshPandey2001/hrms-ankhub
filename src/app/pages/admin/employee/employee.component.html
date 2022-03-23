@@ -1,0 +1,520 @@
+<!-- <div class="card">
+  <div
+    class="card-header card-header-danger d-flex justify-content-between align-center"
+  >
+  <div class="row">
+    <div class="col-lg-8">
+      <h4 class="card-title">Courses Details</h4>
+    </div>
+    <div class="col-lg-4">
+      
+      <button type="button" class="btn btn-info" (click)="openModal(template)">
+        <i class="bi bi-plus-lg"></i> Add Courses
+      </button>
+      <button type="button" class="btn btn-light"><i class="bi bi-envelope"></i></button>
+      <button type="button" class="btn btn-light"><i class="bi bi-telephone"></i></button>
+      <button type="button" class="btn btn-info"><i class="bi bi-exclamation-circle-fill"></i></button>
+      
+    </div>
+  </div>
+  </div> 
+    
+  
+
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hove">
+        <thead class="text-primary">
+          <th>Internship Name</th>
+          <th>Amount</th>
+          <th>Duration</th>
+          <th>Technology & Tools</th>
+          <th>Action</th>
+          
+        </thead>
+        <tbody>
+          <tr *ngFor="let cours of courseList  |filter:onsearchkey;let idx=index">
+            <td>{{cours.internname}}</td>
+            <td>{{cours.amount}}</td>
+            <td>{{cours.duration}}</td>
+            <td>{{cours.tools}}</td>
+            
+            <td class="td-actions text-left">
+              <button type="button" class="btn btn-warning btn-link btn-just-icon" (click)="editData(idx,cours)">
+                <i class="bi bi-pencil-fill" style="font-size:16px"></i>
+              </button>
+          
+              <button type="button" class="btn btn-danger btn-link btn-just-icon" (click)="deleteData(idx)">
+                <i class="bi bi-trash3-fill" style="font-size:16px"></i>
+              </button>
+            </td>
+          </tr>
+         
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Courses Details</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="col-lg-12">
+      <form [formGroup]="courseForm">
+      <div class="form-group">
+        <label for="Internship Name">Internship Name </label>
+        <input type="text" class="form-control" placeholder="internname"  formControlName= "internname"
+        [ngClass]="{'is-invalid' : courseSubmit && f['internname'].errors}">
+
+        <div *ngIf="courseSubmit && f['internname'].errors" class="invalid-feedback">
+  
+          <div *ngIf="courseSubmit && f['internname'].errors['required']">
+            Internship Name is required..!
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Amount">Amount</label>
+        <input type="text" class="form-control" placeholder="amount"  formControlName= "amount"
+        [ngClass]="{'is-invalid' : courseSubmit && f['amount'].errors}">
+
+        <div *ngIf="courseSubmit && f['amount'].errors" class="invalid-feedback">
+  
+          <div *ngIf="courseSubmit && f['amount'].errors['required']">
+            Amount is required..!
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="Duration">Duration</label>
+        <div class="row">
+          <div class="col-lg-12">
+            <input class="form-control" #drp="bsDaterangepicker" bsDaterangepicker [(ngModel)]="bsRangeValue">
+          </div>
+          <div class="col-lg-12">
+            <button class="btn btn-success" (click)="drp.toggle()" [attr.aria-expanded]="drp.isOpen" type="button">Course Duration</button>
+          </div>
+        </div>
+      </div>
+
+        
+
+
+
+
+        
+      
+     
+      <div class="form-group " > 
+        <label for="Technology & Tools " >Technology & Tools</label>
+        <select  formControlName="quali"  class="form-control input-select " >
+          <option [disabled]="true" [selected]="true">
+            Technology & Tools
+              </option>
+              <option value="Vs code">Vs code</option>
+              <option value="Trello">Trello</option>
+              <option value="NPM">NPM</option>
+              <option value="Bitbucket">Bitbucket</option>
+            </select>
+      </div>
+        
+    </form>
+  </div>
+</div> 
+      
+
+    
+
+  <div class="modal-footer">
+    <button *ngIf = "forLoginsuccess== true" type="submit" class="btn btn-warning btup" (click)="updateData()"><i class="fa fa-refresh"></i>Update</button>
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">
+      Cancle
+    </button>
+    <button type="button" class="btn btn-success" (click)="submitData()">
+      Submit
+    </button>
+  </div>
+</ng-template> -->
+
+ <div class="card">
+  <!--<div
+    class="card-header card-header-secondary d-flex justify-content-between align-center"
+  >
+    <h4 class="card-title" style="margin-top: 40px;"><b style="color: black; font-size: 25px;">Employees</b></h4>
+    <button type="button" class="btn btn-info c1"  (click)="openModal(template)">
+      <i class="bi bi-plus-lg"></i> Add New Employee
+    </button>
+    <button type="button" class="btn btn-light btn-sm btn-just-icon" style="margin-top: 40px;">
+      <i class="bi bi-envelope"></i> 
+    </button>
+    <button type="button" class="btn btn-light btn-sm btn-just-icon" style="margin-top: 40px;">
+      <i class="bi bi-telephone"></i> 
+    </button>
+    <button type="button" class="btn btn-info btn-sm btn-just-icon c2" style="margin-top: 40px;">
+      <i class="bi bi-info-circle"></i> 
+    </button>
+   
+  </div> -->
+  <div class="row c3">
+    <div class="col-lg-8 r1">
+      <h2 class="card-title heading1" >Employees</h2>
+    </div>
+  
+    <div class="col-lg-4 col-sm-12 r1">
+      <button type="button" class="btn btn-md c2 c5 "  (click)="openModal(template)">
+        <i class="bi bi-plus-lg"></i> Add New Employee
+      </button>
+   
+     
+      <button type="button" class="btn btn-sm c4 c5" >
+        <i class="bi bi-envelope" style="font-size:16px; "></i> 
+      </button>
+   
+   
+      <button type="button" class="btn btn-sm c4 c5" >
+        <i class="bi bi-telephone" style="font-size:16px"></i> 
+      </button>
+  
+      <button type="button" class="btn btn-sm c2" >
+        <i class="bi bi-info-circle" style="font-size:16px"></i> 
+      </button> 
+    </div>
+  
+  </div>
+
+  <div class="row s9">
+    <div class="col-lg-3">
+      <div class="card card1">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-8">
+              <h5 class="heading2">Total Employees </h5>
+              <h3 class="heading3">5,678</h3>
+            </div>
+            <div class="col-lg-4 ">
+              <button type="button" class="btn s8">
+                <i class="bi bi-person i1"></i>
+              </button>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card card1">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-8">
+              <h5 class="heading2">Total Male Employees </h5>
+              <h3 class="heading4">5,678</h3>
+            </div>
+            <div class="col-lg-4 ">
+              <button type="button" class="btn s10">
+                <i class="bi bi-person i1"></i>
+              </button>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card card1">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-8">
+              <h5 class="heading2">Total Female Employees </h5>
+              <h3 class="heading5">3,876</h3>
+            </div>
+            <div class="col-lg-4 ">
+              <button type="button" class="btn s11">
+                <i class="bi bi-person i1"></i>
+              </button>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card card1">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-8">
+              <h5 class="heading2">Total New Employees </h5>
+              <h3 class="heading6">5,678</h3>
+            </div>
+            <div class="col-lg-4 ">
+              <button type="button" class="btn s12">
+                <i class="bi bi-person i1"></i>
+              </button>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <div class="card-body">
+
+    <div class="row">
+      <div class="col-lg-12 e1">
+        <div class="vertical-line">
+
+        </div>
+        <h3 class="card-title heading11">Employee List</h3>
+      </div>
+    </div>
+
+    <div class="row s3">
+      <div class="col-lg-8">
+        <h5 class="tab-head" style="font-weight: 500;">Show 
+ 
+          <select name="" id="" class="select">
+ 
+            <option value="5">05</option>
+ 
+            <option value="10">10</option>
+ 
+            <option value="15">15</option>
+ 
+            <option value="20">20</option>
+ 
+          </select>
+ 
+          
+ 
+          entries</h5>
+      </div>
+      <div class="col-lg-4">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+          aria-label="Search" [(ngModel)]="searchBar">
+        </div>
+    </div>
+    <div class="table-responsive  table-bordered" style="height: 400px; width: auto;">
+      <table class="table table-hove">
+        <thead class="text-primary">
+          <th class="t1"><b>First Name</b></th>
+          <th class="t1"><b>Last Name</b></th>
+          <th class="t1"><b>Mobile</b></th>
+          <th class="t1"><b>Email</b></th>
+          <th class="t1"><b>Date of Birth</b></th>
+          <th class="t1"><b>Gender</b></th>
+          <th class="t1"><b>Qualifications</b></th>
+          <th class="t1"><b>Address</b></th>
+          <th class="t1"><b>Status</b></th>
+          <th class="t1"><b>Action</b></th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of empList| filter:searchBar; let idx=index">
+            <td>{{emp.firstName}}</td>
+            <td>{{emp.lastName}}</td>
+            <td>{{emp.no}}</td>
+            <td>{{emp.email}}</td>
+            <td>{{emp.dateofBirth}}</td>
+            <td>{{emp.gender}}</td>
+            <td>{{emp.qualifications}}</td>
+            <td>{{emp.address}}</td>
+            <td class="td-actions text-left">
+              <button type="button" class="btn b3"  (click)="active()" >
+               active
+              </button>
+            </td>
+            <td >
+              <button type="button" class="btn btn-sm b1" (click)="openModal(template)" (click)="edit(emp)">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+          
+              <button type="button" class="btn btn-sm b2" (click)="delte(idx.id)">
+                <i class="bi bi-trash3-fill" ></i>
+              </button>
+            </td>
+          </tr>
+        
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="col-lg-9 s1">
+<b>Showing 1 to 10 of 16 entries</b>
+    </div>
+    <div class="col-lg-3">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </div>
+  </div> -->
+
+  <div class="row">
+    <div class="col-lg-9 s1">
+      <b>Showing 1 to 10 of 16 entries</b>
+    </div>
+    <div class="col-lg-3">
+      <ul class="pagination">
+        <li ><a class="page-link" href="">Previous</a></li>
+        <li ><a class="page-link" href="">1</a></li>
+        <li><a class="page-link" href="">2</a></li>
+        <li ><a class="page-link" href="">3</a></li>
+        <li><a class="page-link" href="">Next</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form  [formGroup]="empForm">
+      <div>
+        <label> FIRST NAME:</label>
+        <input type="text" class="form-control"  placeholder="Enter name" formControlName="firstName"
+       [ngClass]="{'is-invalid': courseSubmit && f['firstName'].errors}">
+        <div *ngIf="courseSubmit && f['firstName'].errors">
+          <div *ngIf="courseSubmit && f['firstName'].errors['required']" class="invalid-feedback">
+            first name is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label >LAST NAME:</label>
+        <input type="text" class="form-control"  placeholder="Enter name" formControlName="lastName"
+        [ngClass]="{'is-invalid': courseSubmit && f['lastName'].errors}">
+        <div *ngIf="courseSubmit && f['lastName'].errors">
+          <div *ngIf="courseSubmit && f['lastName'].errors['required']" class="invalid-feedback">
+            Last name is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>MOBILE:</label>
+        <input type="tel" class="form-control"  placeholder="Enter no" formControlName="no"
+        [ngClass]="{'is-invalid': courseSubmit && f['no'].errors}">
+        <div *ngIf="courseSubmit && f['no'].errors">
+          <div *ngIf="courseSubmit && f['no'].errors['maxlength']" class="invalid-feedback">
+            Maximum 10 numbers are required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" class="form-control"  placeholder="Enter email" formControlName="email"
+        [ngClass]="{'is-invalid': courseSubmit && f['email'].errors}">
+        <div *ngIf="courseSubmit && f['email'].errors">
+          <div *ngIf="courseSubmit && f['email'].errors['email']" class="invalid-feedback">
+          Email is  required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label >DATE OF BIRTH:</label>
+        <input type="text" class="form-control"  placeholder="Datepicker" formControlName="dateofBirth" bsDatepicker
+        [ngClass]="{'is-invalid': courseSubmit && f['dateofBirth'].errors}">
+        <div *ngIf="courseSubmit && f['dateofBirth'].errors">
+          <div *ngIf="courseSubmit && f['dateofBirth'].errors['required']" class="invalid-feedback">
+          date of birth is  required.
+          </div>
+       
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-lg-6">
+        <label for="text ">Male:</label>
+        <input type="radio"   value="male" name="gender" formControlName="gender"
+        [ngClass]="{'is-invalid': courseSubmit && f['gender'].errors}">
+        <div *ngIf="courseSubmit && f['gender'].errors">
+          <div *ngIf="courseSubmit && f['gender'].errors['required']" class="invalid-feedback">
+          gender is  required.
+          </div>
+       
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <label for="text " >Female:</label>
+        <input type="radio"   value="female" name="gender" formControlName="gender">
+      </div>
+      
+      </div>
+      <div class="form-group">
+        <label>QUALIFICATION:</label>
+       
+        <select  formControlName="qualifications"  class="form-control input-select " 
+        [ngClass]="{'is-invalid': courseSubmit && f['qualifications'].errors}">
+        <div *ngIf="courseSubmit && f['qualifications'].errors">
+          <div *ngIf="courseSubmit && f['qualifications'].errors['required']" class="invalid-feedback">
+            qualifications is  required.
+          </div>
+       
+        </div>
+          <option [disabled]="true" [selected]="true">
+                  Qualification
+              </option>
+              <option value="B.TECH">B.TECH</option>
+              <option value="BCA">BCA</option>
+              <option value="BCA">BCOM</option>
+              <option value="BSC">BSC</option>
+            </select>
+
+      </div>
+      <div class="form-group">
+        <label >ADDRESS:</label>
+        <input type="text" class="form-control"  placeholder="Enter Address" formControlName="address"
+        [ngClass]="{'is-invalid': courseSubmit && f['address'].errors}">
+        <div *ngIf="courseSubmit && f['address'].errors">
+          <div *ngIf="courseSubmit && f['address'].errors['required']" class="invalid-feedback">
+            address is  required.
+          </div>
+       
+        </div>
+      </div>
+    
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" id="cancel" class="btn btn-secondary" (click)="closeModal()">
+      Cancle
+    </button>
+    <button *ngIf = "forLoginsuccess== false" type="button" class="btn btn-success" (click)="submitData();startSpinner();showSuccessToaster()">
+      Submit
+    </button>
+    <button *ngIf = "forLoginsuccess== true" type="button" class="btn s17" (click)="update();startSpinner();showSuccessToaster()">
+      update
+    </button>
+  </div>
+</ng-template>
