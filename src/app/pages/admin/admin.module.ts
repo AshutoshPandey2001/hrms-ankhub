@@ -9,7 +9,7 @@ import { TechnologyComponent } from './technology/technology.component';
 @NgModule({
   declarations: [
     CoursesComponent,
-    QualificationComponent
+    QualificationComponent,
     TechnologyComponent
   ],
   imports: [

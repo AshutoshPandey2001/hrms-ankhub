@@ -20,8 +20,11 @@ const routes: Routes = [
       },
       {
         path: 'qualification', component: QualificationComponent
+       
+      },
+      {
         path: 'technology', component: TechnologyComponent
-      }
+      },
     ]
   }
 ];
