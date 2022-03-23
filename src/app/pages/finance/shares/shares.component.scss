@@ -1,0 +1,32 @@
+.input{
+    color: black;
+}
+
+mat-radio-button{
+color: black;
+  label{
+    color: black !important;
+  }
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+
+  .hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .heading2 {
+    border-left-style: solid;
+    border-left-color: #283A9E;
+    color: #283A9E;
+    font-size: 18px;
+    font-weight: 700;
+    padding-left: 15px;
+    padding-top: 5px;
+    margin-left: -20px;
+}

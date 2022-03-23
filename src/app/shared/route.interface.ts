@@ -10,7 +10,7 @@ export const MAIN_ROUTES: RouteInfo[] = [
   { path: "admin", title: "Admin", icon: "admin_panel_settings", class: "", display:true },
   { path: "human-resource", title: "HR", icon: "groups", class: "", display:true },
   { path: "telecaller", title: "Telecaller", icon: "support_agent", class: "", display:true },
-  { path: "finance", title: "Finance", icon: "calculate", class: "", display:true },
+  { path: "finance", title: "Finance", icon: "savings", class: "", display:true },
   { path: "user-profile", title: "User Profile", icon: "", class: "", display:false },
   { path: "dashboard", title: "Dashboard", icon: "dashboard", class: "", display:true },
   { path: "sdk", title: "SDK", icon: "code", class: "", display:true },
@@ -47,6 +47,6 @@ export const TELECALLER_ROUTES: RouteInfo[] = [
 ];
 
 export const FINANCE_ROUTES: RouteInfo[] = [
-  { path: "shares", title: "Shares", icon: "share", class: "" },
-  { path: "finance-report", title: "Finance Report", icon: "summarize", class: "" }
+  { path: "shares", title: "Accounts", icon: "account_balance_wallet", class: "" },
+  { path: "finance-report", title: "Accounting Report", icon: "analytics", class: "" }
 ];

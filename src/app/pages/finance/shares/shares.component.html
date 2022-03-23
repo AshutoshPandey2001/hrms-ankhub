@@ -1,1 +1,279 @@
-<p>shares works!</p>
+<div class="container-fluid">
+  <div>
+    <div class="row">
+      <div class="col-lg-4">
+        <h3><b>Accounts</b></h3>
+      </div>
+      <div class="col-lg-3"></div>
+      <div class="col-lg-5" style="margin-top: 20px">
+        <button type="button" class="btn btn-warning">
+          <i class="bi bi-receipt-cutoff"></i> Download Montly Excel Report
+        </button>
+
+        <button type="button" class="btn">
+          <i class="bi bi-envelope"></i>
+        </button>
+        <button type="button" class="btn">
+          <i class="bi bi-telephone-outbound"></i>
+        </button>
+        <button type="button" class="btn" style="background-color: blue">
+          <i class="bi bi-exclamation-circle"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <form action="/action_page.php">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label for="usr" class="input">Empolyee Name:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="usr"
+                name="username"
+              />
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label class="input">Month:</label>
+              <select class="form-select" aria-label="Default select example">
+                <option hidden>Select Month</option>
+                <option value="1">Jan</option>
+                <option value="2">Feb</option>
+                <option value="3">Mar</option>
+                <option value="3">Apr</option>
+                <option value="3">May</option>
+                <option value="3">Jun</option>
+                <option value="3">Jul</option>
+                <option value="3">Aug</option>
+                <option value="3">Sep</option>
+                <option value="3">Oct</option>
+                <option value="3">Nov</option>
+                <option value="3">Dec</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label class="input">Year:</label>
+              <select class="form-select" aria-label="Default select example">
+                <option hidden>Select Year</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="form-group">
+              <button
+                type="submit"
+                class="btn"
+                style="
+                  width: 200px;
+                  background-color: rgb(62, 43, 235);
+                  margin-top: 27px;
+                "
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="heading2"><b>Salary Information</b></h4>
+      <br />
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Basic Salary:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <p></p>
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Expense Claim:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <p></p>
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Status:</label>
+        </div>
+        <div class="col-lg-8">
+          <mat-radio-group aria-label="Select an option" >
+            <mat-radio-button value="1" >Paid</mat-radio-button>
+            <mat-radio-button value="2" >Unpaid</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <hr />
+      <h4 class="heading2"><b>Allowance</b></h4>
+      <br />
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Expense Claim:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <p></p>
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Expense Claim:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <p></p>
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Expense Claim:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <p></p>
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Expense Claim:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"> 
+            <button class="btn" style="background-color: rgb(42, 184, 42);"><i class="bi bi-plus"></i>Add</button>
+        </div>
+      </div>
+      <hr>
+      <h4 class="heading2"><b>Deduction</b></h4>
+      <br />
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Expense Claim:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <p></p>
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Expense Claim:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <p></p>
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Expense Claim:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <p></p>
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Expense Claim:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"> 
+            <button class="btn" style="background-color: rgb(42, 184, 42);"><i class="bi bi-plus"></i>Add</button>
+        </div>
+      </div>
+      <hr>
+      <h4 class="heading2"><b>Gross Salary</b></h4>
+      <br />
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Expense Claim:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <p></p>
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Expense Claim:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <p></p>
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Expense Claim:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <p></p>
+      <div class="row">
+        <div class="col-lg-2">
+          <label class="input">Expense Claim:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="usr" />
+        </div>
+        <div class="col-lg-2"> 
+           
+        </div>
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="col-lg-2">
+         
+        </div>
+        <div class="col-lg-6">
+            
+        </div>
+        <div class="col-lg-4"> 
+          <button type="button" class="btn" style="background-color: blue">Save</button>
+          <button type="button" class="btn btn-danger">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
