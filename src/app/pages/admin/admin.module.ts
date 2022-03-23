@@ -1,16 +1,29 @@
 import { NgModule } from '@angular/core';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AllModule } from 'app/allModule.module';
-import { CoursesComponent } from './courses/courses.component';
+import {  CoursesComponent } from './courses/courses.component';
+import {  EmployeeComponent } from './employee/employee.component';
 
 
 @NgModule({
   declarations: [
-    CoursesComponent
+    CoursesComponent,
+    EmployeeComponent
+    
   ],
+
   imports: [
     AllModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+   
   ]
 })
 export class AdminModule { }
+
+
+// BrowserModule,
+// AppRoutingModule,
+// FormsModule,
+// ReactiveFormsModule,
+// TagInputModule,
+// Ng2SearchPipeModule
