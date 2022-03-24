@@ -24,13 +24,12 @@ employeeList : any = [];
   employeeForm : FormGroup;
   dataSub = false;
   loaDing = false;
-  emp = ['Select','Fresher','Junior Software Engineer', 'Senior Software Engineer'];
-    technoBox: string = 'Select';
+   
   
   constructor(private FormBuilder: FormBuilder,private modalService: BsModalService,private ngxService: NgxUiLoaderService,private toastr: ToastrService) {
     this.employeeForm = FormBuilder.group({
       employeePosition : ['',[Validators .required]],
-      employeeType:''
+      employeeType:['',[Validators .required]]
     })
     let data1 = localStorage.getItem('EMPLOYEE');
     if(data1){
@@ -42,12 +41,7 @@ employeeList : any = [];
   ngOnInit(): void {
   }
  openModal(template: TemplateRef<any>) {
-  this.ngxService.start();
-
-  setTimeout(() => {  
-    this.ngxService.stop();
-    this.modalRef = this.modalService.show(template, this.config);
-  }, 1000);
+this.modalRef = this.modalService.show(template, this.config);
   }
 
   closeModal() {
@@ -70,23 +64,17 @@ employeeList : any = [];
       console.log('table', this.employeeList);
      
       this.employeeClear()
-      Swal.fire(
-        'Submitted',
-        'Your file has been Submitted Sucessfully.',
-        'success'
-      )
+      this.toastr.success("Thank you !", "Your Data is Submitted Sucessfully..!");
     }, 2000);
    
 }
 else {
-  this.toastr.warning('Warning', 'Invalid!');
+  this.toastr.error("Please try again..!", "Invalid  Data !");
  }
 
 }
 
 Edit(obj:any , template: TemplateRef<any>){
-  this.toastr.info('Your Response', 'Edit');
-
     this.modalRef = this.modalService.show(template, this.config);
   this.selectIndex= this.employeeList.findIndex((x : any )=> x.id === obj.id);
   this.employeeForm.patchValue({
@@ -108,11 +96,9 @@ Update(){
       this.employeeClear()
       this.ngxService.stop();
       this.isUpdate = false ;
-      Swal.fire(
-        'Updated',
-        'Your file has been Updated Sucessfully.',
-        'success'
-      )
+    
+      this.toastr.success("Thank you !", "Your Data is Updated Sucessfully..!");
+      
     }, 2000);
 }
 
@@ -135,11 +121,8 @@ Delete(id:any){
       setTimeout(() => {  
  
         setTimeout(() => {  
-        Swal.fire(
-        'Deleted!',
-        'Your file has been deleted.',
-        'success'
-      )
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          this.toastr.success(" Deleted Sucessfully..!");
     }, 1000);
    
       this.ngxService.stop();
