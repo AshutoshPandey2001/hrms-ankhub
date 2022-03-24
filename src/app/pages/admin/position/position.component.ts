@@ -24,12 +24,12 @@ employeeList : any = [];
   employeeForm : FormGroup;
   dataSub = false;
   loaDing = false;
-   
-  
+  types=['Fresher','Junior Software Engineer','Senior Software Engineer'] 
+
   constructor(private FormBuilder: FormBuilder,private modalService: BsModalService,private ngxService: NgxUiLoaderService,private toastr: ToastrService) {
     this.employeeForm = FormBuilder.group({
       employeePosition : ['',[Validators .required]],
-      employeeType:['',[Validators .required]]
+      type:['',[Validators .required]]
     })
     let data1 = localStorage.getItem('EMPLOYEE');
     if(data1){
@@ -46,6 +46,7 @@ this.modalRef = this.modalService.show(template, this.config);
 
   closeModal() {
     this.modalRef.hide();
+    this.employeeClear()
   }
 
   Submit(){
@@ -79,7 +80,7 @@ Edit(obj:any , template: TemplateRef<any>){
   this.selectIndex= this.employeeList.findIndex((x : any )=> x.id === obj.id);
   this.employeeForm.patchValue({
     employeePosition : obj.employeePosition ,
-    employeeType: obj.employeeType
+    type: obj.type
   })
 
       this.isUpdate = true;
@@ -91,7 +92,7 @@ Update(){
     this.ngxService.start();
     setTimeout(() => { 
       this.employeeList[this.selectIndex].employeePosition = this.employeeForm.value.employeePosition;
-      this.employeeList[this.selectIndex].employeeType = this.employeeForm.value.employeeType;
+      this.employeeList[this.selectIndex].type = this.employeeForm.value.type;
       localStorage.setItem("EMPLOYEE", JSON.stringify(this.employeeList));
       this.employeeClear()
       this.ngxService.stop();
