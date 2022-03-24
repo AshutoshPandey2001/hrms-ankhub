@@ -46,7 +46,6 @@ this.modalRef = this.modalService.show(template, this.config);
 
   closeModal() {
     this.modalRef.hide();
-    this.employeeClear()
   }
 
   Submit(){
