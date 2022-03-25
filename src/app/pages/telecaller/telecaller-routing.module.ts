@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CandidateListComponent } from './candidate-list/candidate-list.component';
+import { OnHoldComponent } from './on-hold/on-hold.component';
 import { TelecallerComponent } from './telecaller.component';
 
 const routes: Routes = [
@@ -15,6 +16,9 @@ const routes: Routes = [
       },
       {
         path: 'candidate-list', component: CandidateListComponent
+      },
+      {
+        path: 'on-hold', component: OnHoldComponent
       }
     ]
   }
