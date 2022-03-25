@@ -7,16 +7,19 @@ import { AllModule } from 'app/allModule.module';
 import { CandidateListComponent } from './candidate-list/candidate-list.component';
 import { OnHoldComponent } from './on-hold/on-hold.component';
 
+import { ScheduledComponent } from './scheduled/scheduled.component';
 
 @NgModule({
   declarations: [
   
     CandidateListComponent,
-        OnHoldComponent
+        OnHoldComponent,
+        ScheduledComponent
   ],
   imports: [
     AllModule,
-    TelecallerRoutingModule
+    TelecallerRoutingModule,
+  
   ]
 })
 export class TelecallerModule { }
