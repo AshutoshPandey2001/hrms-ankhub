@@ -1,14 +1,14 @@
 <div class="row">
-  <div class="col-lg-7 col-md-5 col-sm-4"> 
+  <div class="col-lg-7 col-md-5 col-sm-4" style="margin-top: 30px;"> 
     <h2 class="card-title"><b>Courses Details</b></h2>
   </div>
-  <div class="col-lg-5 col-md-7 col-sm-8  justify-content-end headerbtn">
+  <div class="col-lg-5 col-md-7 col-sm-8  justify-content-end headerbtn" style="padding-left:10%;">
     <button type="button" class="btn a1" (click)="openModal(template)" >
       <i class="bi bi-plus-lg"></i> Add Courses
     </button>
-    <button type="button" class="btn btn-light"><i class="bi bi-envelope"></i></button>
-    <button type="button" class="btn btn-light"><i class="bi bi-telephone"></i></button>
-    <button type="button" class="btn a1"><i class="bi bi-exclamation-circle-fill"></i></button>
+    <button type="button" class="btn" style="background-color: #b0c2f0"><i class="bi bi-envelope"></i></button>
+    <button type="button" class="btn" style="background-color: #b0c2f0"><i class="bi bi-telephone"></i></button>
+    <button type="button" class="btn a1" ><i class="bi bi-exclamation-circle-fill"></i></button>
 
   </div>
 
@@ -61,16 +61,8 @@
               <td>{{cours.tools}}</td>
               
               <td class="td-actions text-left">
-                <!-- <button type="button" class="btn btn btn-link btn-just-icon a1" (click)="editData(cours,template)" >
-                  <i class="bi bi-pencil-square edit edit-btn"></i>
-                </button>
-               
                 
-            
-                <button type="button" class="btn btn-danger" (click)="deleteData(cours.id)">
-                  <i class="bi bi-trash3-fill del-btn" ></i>
-                </button> -->
-                <button type="button" class="btn btn-md edit-btn" (click)="editData(cours,template)" style="margin-right:5px;">
+                <button type="button" class="btn btn-sm edit-btn" (click)="editData(cours,template)" style="margin-right:5px;">
                   <i class="bi bi-pencil-square edit" style="font-size:16px"></i>
                 </button>
             
@@ -132,6 +124,7 @@
           <label for="Duration">Duration</label>
           <input type="text" class="form-control" placeholder="duration"  formControlName= "duration"
           [ngClass]="{'is-invalid' : courseSubmit && f['duration'].errors}">
+          
   
           <div *ngIf="courseSubmit && f['duration'].errors" class="invalid-feedback">
     
@@ -169,12 +162,15 @@
     </div> 
      
     <div class="modal-footer">
-      <button *ngIf = "forLoginsuccess==true" type="submit" class="btn btn-warning btup" (click)="updateData();startSpinner();showWarningToaster()"><i class="fa fa-refresh"></i>Update</button>
+      
       <button type="button" class="btn btn-outline-info" style="color: #3366FF;"   (click)="closeModal()">
-        Cancle
+        Cancel
       </button>
       <button  *ngIf = "forLoginsuccess==false" type="button" class="btn a1" (click)="submitData();startSpinner();showSuccessToaster()">
         Submit
+      </button>
+      <button *ngIf = "forLoginsuccess==true" type="submit" class="btn btn-warning btup" (click)="updateData();startSpinner();showWarningToaster()">
+       Update
       </button>
     </div>
   </ng-template>

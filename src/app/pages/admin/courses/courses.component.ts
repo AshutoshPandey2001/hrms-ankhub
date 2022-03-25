@@ -66,16 +66,14 @@ export class CoursesComponent implements OnInit {
         this.courseForm.value.id=this.randomID();
         this.courseList.push(this.courseForm.value);
         localStorage.setItem("course_list", JSON.stringify(this.courseList));
-        this.toastr.success('Hello world!', 'Toastr fun!');
+        this.toastr.success('Hello world!', 'Submitted Successfully');
         // alert("form is valid submitted successfully")
      //   this.showSuccessToaster();
         this.clearData()
-        this.toastr.success('Hello world!', 'Toastr fun!');
+        
 
       }, 2000);
-     
-     
-      
+    
     }
     else{
       alert("form is not-valid try again")
@@ -94,10 +92,10 @@ export class CoursesComponent implements OnInit {
       this.courseList[this.selectedIndex].tools = this.courseForm.value.tools;
       this.clearData() 
       this.ngxService.stop();
-      this.courseSubmit = false;
+      this.forLoginsuccess = false;
       localStorage.setItem("course_list", JSON.stringify(this.courseList))
       console.log("for update data",this.courseList);
-      this.toastr.warning('Hello world!', 'Toastr fun!');
+      this.toastr.success('Hello world!', 'Updated Successfully !');
     }, 2000);
     
     }
@@ -183,16 +181,7 @@ export class CoursesComponent implements OnInit {
       this.ngxService.stop(); 
     }, 2000);
   }
-  // showSuccessToaster(){
-  //   this.toastr.success('Hello world!', 'Toastr fun!');
-  // }
-  // showWarningToaster(){
-  //   this.toastr.warning('Hello world!', 'Toastr fun!');
-  // }
-  // showInfoToaster(){
-  //   this.toastr.info('Hello world!', 'Toastr fun!');
-  // }
-
+ 
    
 
 
