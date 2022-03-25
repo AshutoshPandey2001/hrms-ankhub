@@ -5,12 +5,14 @@ import { TelecallerRoutingModule } from './telecaller-routing.module';
 import { TelecallerComponent } from './telecaller.component';
 import { AllModule } from 'app/allModule.module';
 import { CandidateListComponent } from './candidate-list/candidate-list.component';
+import { IntrestedComponent } from './intrested/intrested.component';
 
 
 @NgModule({
   declarations: [
   
-    CandidateListComponent
+    CandidateListComponent,
+        IntrestedComponent
   ],
   imports: [
     AllModule,
