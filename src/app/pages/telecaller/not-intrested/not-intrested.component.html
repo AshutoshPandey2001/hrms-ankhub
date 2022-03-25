@@ -190,13 +190,13 @@
     </div>
   
     <div class="modal-footer">
-      <button type="button"  class="btn btn-outline-primary" (click)="closeModal()">
+      <button  type="button"  class="btn btn-outline-primary" (click)="closeModal()">
         Cancle
       </button>
       <button *ngIf="editbtn==false" type="button" class="btn btn-success" (click)="submitData()">
         Submit
       </button>
-      <button *ngIf="editbtn==true" type="button" class="btn btn-warning" (click)="UpdateData()">
+      <button *ngIf="editbtn==true" type="button" class="btn btn-success" (click)="UpdateData()">
         Update
       </button>
     </div>

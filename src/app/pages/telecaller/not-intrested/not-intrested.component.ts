@@ -51,6 +51,8 @@ export class NotIntrestedComponent implements OnInit {
 
   closeModal() {
     this.modalRef.hide();
+    this.editbtn=false;
+    this.clear();
   }
 
 
