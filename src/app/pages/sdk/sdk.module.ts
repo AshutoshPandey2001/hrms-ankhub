@@ -12,6 +12,7 @@ import { SdkToasterComponent } from './sdk-comp/sdk-toaster/sdk-toaster.componen
 import { SdkRoutingModule } from './sdk-routing.module';
 import { SdkPluginsComponent } from './sdk-plugins/sdk-plugins.component';
 import { SdkIconsComponent } from './sdk-icons/sdk-icons.component';
+import { SdkDatatableComponent } from './sdk-comp/sdk-datatable/sdk-datatable.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SdkIconsComponent } from './sdk-icons/sdk-icons.component';
     SdkCrudComponent,
     SdkDatepickerComponent,
     SdkPluginsComponent,
-    SdkIconsComponent
+    SdkIconsComponent,
+    SdkDatatableComponent
   ],
   imports: [
     AllModule,
