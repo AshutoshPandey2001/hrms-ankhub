@@ -6,6 +6,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { QualificationComponent } from './qualification/qualification.component';
 import { GradeLevelComponent } from './grade-level/grade-level.component';
 import { TechnologyComponent } from './technology/technology.component';
+import { PositionComponent } from './position/position.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,9 @@ const routes: Routes = [
       },
       {
         path: 'qualification', component: QualificationComponent     
+      },
+      {
+        path: 'position', component: PositionComponent
       },
       {
         path: 'technology', component: TechnologyComponent
