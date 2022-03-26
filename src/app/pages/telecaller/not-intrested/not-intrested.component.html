@@ -27,8 +27,42 @@
             </div>
             <br>
             <br>
-            <form>
-                <div class="row">
+            
+              <div class="row" id="top">
+                <div class="col-lg-4 col-md-6 col-12 form-group mb-3">
+                  <label for="from"><b>From :</b></label>
+                  <div class="input-group mb-3" id="forms">
+                    <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                    <input type="text" placeholder="DD-MM-YYYY" class="form-control" bsDatepicker>
+                  </div>
+                </div>
+          
+                <div class="col-lg-4 col-md-6 col-12 form-group mb-3">
+                  <label for="from"><b>To :</b></label>
+                  <div class="input-group mb-3" id="forms">
+                    <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                    <input type="text" placeholder="DD-MM-YYYY" class="form-control" bsDatepicker>
+                  </div>
+                </div>
+          
+                <div class="col-lg-3 col-md-6 col-12  form-group mb-3">
+                  <label for="to"><b>Select Status :</b></label>
+                  <select name="cars" class="form-select" style="border-radius: 5px;">
+                    <option selected> Select Status</option>
+                    <option value="Active">Active</option>
+                    <option value="InActive">InActive</option>
+                  </select>
+          
+                </div>
+          
+                <div class="col-lg-1 col-md-12 col-12 ">
+                  <button type="button" class="btn searchbtn">
+                    <b>Search</b>
+                  </button>
+                </div>
+          
+              </div>
+                <!-- <div class="row">
                   <div class="col-lg-3 col-md-3 col-sm-3">
                     <label class="font-color">Form:</label>
                    <input type="date" placeholder="DD-MM-YYYY" class="form-control">
@@ -48,8 +82,8 @@
                   <div class="col-lg-3 col-md-3 col-sm-3">
                     <button type="button" class="btn btn-block"  style="background-color: #3366FF; padding-left: 5px;padding-right: 5px;">Search</button>
                   </div>
-                </div>
-            </form>
+                </div> -->
+            
         </div>
 
       <div class="row rowmar md-form active-pink active-pink-2 mb-3 mt-0 ">
