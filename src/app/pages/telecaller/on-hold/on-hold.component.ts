@@ -48,11 +48,14 @@ export class OnHoldComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>) {
+    this.submitted = false;
     this.modalRef = this.modalService.show(template, this.config);
+    this.clear();
   }
 
   closeModal() {
     this.modalRef.hide();
+    this.clear();
   }
   Save() {
     this.submitted = true;
@@ -65,13 +68,13 @@ export class OnHoldComponent implements OnInit {
         setTimeout(() => {
           this.holdonForm.value.id = this.randomId();
           this.ngxService.stop(); 
-          this.toastr.success('Thank you !', 'Submitted Sucessfully..!');
+          this.toastr.success( 'Client Added Sucessfully..!');
         }, 2000);
         this.closeModal();
       }
     }
     else {
-      this.toastr.error('Try again !', 'Inavalid Form !');
+      this.toastr.error('Try again !', 'All Field Requried!');
     }
     this.clear();
     localStorage.setItem("HOLD_LIST", JSON.stringify(this.holdList))
@@ -84,7 +87,7 @@ export class OnHoldComponent implements OnInit {
       this.ngxService.start();
       setTimeout(() => {
         this.ngxService.stop();
-        this.toastr.success('Thank you !', 'Updated Sucessfully..!');
+        this.toastr.success( 'Updated Sucessfully..!');
       }, 2000);
     }
     this.holdList[this.selectedobj].Id = this.holdonForm.value.Id;

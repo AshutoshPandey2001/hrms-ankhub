@@ -33,25 +33,37 @@
                         <br>
                         <form>
                             <div class="row">
-                                <div class="col-lg-3 col-md-3 col-6">
-                                    <label class="font-color">Form:</label>
-                                    <input type="date" placeholder="DD-MM-YYYY" class="form-control">
+                                <div class="col-lg-3 col-md-3 col-12" style="margin: inherit; margin-right: 12px;">
+                                    <label for="from" style="margin-left: 15px; color: black;"><b>From :</b></label>
+                                    <div class="input-group mb-3 " id="forms">
+                                        <span class="input-group-text "><i class="bi bi-calendar2"
+                                                style="margin: 0%;"></i></span>
+                                        <input type="text" placeholder="DD-MM-YYYY" class="form-control pl-1"
+                                            style="border: 1px solid rgb(190, 184, 184); border-radius: 5px;border-bottom: none;"
+                                            bsDatepicker>
+                                    </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-6">
-                                    <label class="font-color">To:</label>
-                                    <input type="date" placeholder="DD-MM-YYYY" class="form-control">
+                                <div class="col-lg-3 col-md-3 col-12" style="margin: inherit; margin-right: 12px;">
+                                    <label for="from" style="margin-left: 15px; color: black;"><b>To :</b></label>
+                                    <div class="input-group mb-3" id="forms">
+                                        <span class="input-group-text"><i class="bi bi-calendar2"></i></span>
+                                        <input type="text" placeholder="DD-MM-YYYY" class="form-control pl-1"
+                                            bsDatepicker
+                                            style="border: 1px solid rgb(190, 184, 184); border-radius: 5px;border-bottom: none; ">
+                                    </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-6">
-                                    <label class="font-color">Select Status:</label>
-                                    <select class="form-control" placeholder="Select status">
+                                <div class="col-lg-3 col-md-3 col-12">
+                                    <label for="to" style=" color: black;"><b>Select Status :</b></label>
+                                    <select class="form-control pl-3 " placeholder="Select status"
+                                        style="border: 1px solid rgb(190, 184, 184); border-radius: 5px; border-bottom: none;">
                                         <option>Select Status</option>
                                         <option>Active</option>
                                         <option>InActive</option>
                                     </select>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-6">
-                                    <button type="button" class="btn btn-block"
-                                        style="background-color: #3366FF; padding-left: 5px;padding-right: 5px;">Search</button>
+                                <div class="col-lg-3 col-md-3 col-12">
+                                    <button type="button" class="btn btn-block mt-4 btn-md"
+                                        style="background-color: #3366FF; padding-left: 5px;padding-right: 5px;  ">Search</button>
                                 </div>
                             </div>
                         </form>
@@ -73,7 +85,9 @@
                             </div>
                             <div class="col-lg-3 col-md-3 col-7">
                                 <div>
-                                    <input type="search" class="form-control" placeholder="Search" aria-label="Search"
+                                    <input type="search" class="form-control pl-3" placeholder="Search"
+                                        aria-label="Search"
+                                        style=" border: 1px solid rgb(190, 184, 184); border-radius: 5px; border-bottom: none;"
                                         [(ngModel)]="terms">
                                 </div>
                             </div>
@@ -101,7 +115,12 @@
                                         <td _ngcontent-ykx-c357="" class="td-actions text-left">
                                             <button mat-raised-button="" type="button" matTooltip="Remove Employee"
                                                 [matTooltipPosition]="'above'"
-                                                class="btn btn-success btn-link btn-sm btn-just-icon"
+                                                class="btn btn-primary btn-link btn-sm btn-just-icon ">
+                                                <i class="bi bi-eye" style="font-size:17px;"></i>
+                                            </button>
+                                            <button mat-raised-button="" type="button" matTooltip="Remove Employee"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-success btn-link btn-sm btn-just-icon "
                                                 (click)="openModal(template)" (click)="edit(hold)">
                                                 <i class="bi bi-pen" style="font-size:17px"></i>
                                             </button>
