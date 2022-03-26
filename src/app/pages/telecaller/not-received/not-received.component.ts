@@ -51,6 +51,8 @@ export class NotReceivedComponent implements OnInit {
 
   closeModal() {
     this.modalRef.hide();
+    this.clear();
+    this.submitTed=false;
   }
 
   submitData() {
@@ -64,7 +66,7 @@ export class NotReceivedComponent implements OnInit {
         setTimeout(() => {
           this.ngxService.stop();
 
-          this.toastr.success('Thank you !', 'Data Stored Sucessfully..!');
+          this.toastr.success('Thank you !', 'Submitted Sucessfully..!');
           let ref = document.getElementById('cancel')
           ref?.click();
         }, 2000);
@@ -84,7 +86,7 @@ export class NotReceivedComponent implements OnInit {
       this.ngxService.start();
       setTimeout(() => {
         this.ngxService.stop();
-        this.toastr.success('Updated !', ' Update Sucessfully..!');
+        this.toastr.success('Updated !', ' Updated Sucessfully..!');
         let ref = document.getElementById('cancel')
         ref?.click();
        

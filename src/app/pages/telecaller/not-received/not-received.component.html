@@ -1,28 +1,25 @@
 <body style="background-color: #F1F4FB;">
     <br>
-    <div class="row">
-        <div class="col-lg-8 col-md-6 col-sm-5">
-            <h3 style="font-size: 30px; font-weight: 300;color: black;"><b>Not-Received List</b></h3>
+    <div class="row header1">
+        <div class="col-lg-8 col-md-5 col-sm-5"> 
+            <h3 id="header2">Not-Received List</h3>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-7 justify-content-end"
-            style="padding-top: 20px; padding-bottom: 20px;padding-left: 60px;">
-
-            <button type="button" class="btn submit-btn" style="background-color: #3366FF;"
-                (click)="openModal(template)">
-                <i class="bi bi-plus-lg"></i> Add Member
-            </button>
-            <button type="button" class="btn btn-header bg-1">
-                <i class="bi bi-envelope icon-header color"></i>
-            </button>
-            <button type="button" class="btn btn-header bg-1">
-                <i class="bi bi-telephone icon-header color"></i>
-            </button>
-            <button type="button" class="btn btn-header"
-                style="background-color: #3366FF;padding-left: 13px; padding-right: 15px; margin-left: 5px;">
-                <i class="bi bi-info-circle icon-header"></i>
-            </button>
-
-        </div>
+       <div class="col-lg-4 col-md-7 col-sm-7  justify-content-end">
+        <button type="button" class="btn submit-btn " (click)="openModal(template)">
+          <i class="bi bi-plus-lg "></i> Add Candidate
+        </button>
+        <button type="button" class="btn btn-header" >
+          <i class="bi bi-envelope icon-header" ></i> 
+        </button>
+    
+        <button type="button" class="btn btn-header" >
+          <i class="bi bi-telephone icon-header" ></i> 
+        </button>
+    
+        <button type="button" class="btn btn-header-2" >
+          <i class="bi bi-info-circle icon-header" ></i> 
+        </button>
+      </div>
     </div>
 
     <div class="container-fluid">
@@ -40,14 +37,14 @@
                                     <label for="from" style="color: black;"><b>From :</b></label>
                                     <div class="input-group mb-3 froms" id="forms">
                                         <span class="input-group-text" style="background-color: gainsboro;"><i class="bi bi-calendar"></i></span>
-                                        <input type="text" placeholder="     DD-MM-YYYY " class="form-control" bsDatepicker>
+                                        <input type="text" placeholder="   DD-MM-YYYY " class="form-control" bsDatepicker>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3">
                                     <label for="from" style="color: black;"><b>To :</b></label>
                                     <div class="input-group mb-3 froms" id="forms">
                                         <span class="input-group-text" style="background-color: gainsboro;"><i class="bi bi-calendar"></i></span>
-                                        <input type="text" placeholder="     DD-MM-YYYY" class="form-control" bsDatepicker>
+                                        <input type="text" placeholder="   DD-MM-YYYY" class="form-control" bsDatepicker>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3">
@@ -110,8 +107,8 @@
                                         <td _ngcontent-ykx-c357="" class="td-actions text-left">
                                             <button mat-raised-button="" type="button" matTooltip="seen"
                                                 [matTooltipPosition]="'above'"
-                                                class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                                <i class="bi bi-eye" style="font-size:16px"></i>
+                                                class="btn btn-link btn-sm btn-just-icon">
+                                                <i class="bi bi-eye"  style="font-size:16px; color: #3366FF;"></i>
                                             </button>
                                             <button mat-raised-button="" type="button" matTooltip="Edit"
                                                 [matTooltipPosition]="'above'"
