@@ -148,6 +148,12 @@
    border: 1px solid rgb(204, 204, 221); 
    background-color: rgb(204, 204, 221); 
 }
+#forms {
+    ::placeholder { 
+        padding-left: 15px;
+      }
+      
+}
 
 .searchbtn {
     background-color:#3366ff; 
