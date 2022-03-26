@@ -46,13 +46,16 @@ export class NotIntrestedComponent implements OnInit {
   ngOnInit(): void {
   }
   openModal(template: TemplateRef<any>) {
+    this.subBtn=false;
+    this.clear();
     this.modalRef = this.modalService.show(template, this.config);
+
   }
 
   closeModal() {
     this.modalRef.hide();
     this.editbtn=false;
-    this.clear();
+    
   }
 
 
@@ -113,15 +116,8 @@ export class NotIntrestedComponent implements OnInit {
 
 
   edit(obj:any , template: TemplateRef<any>){
-    this.editbtn=true;
-
-    
-    this.ngxService.start(); 
-    setTimeout(() => {
-      this.modalRef = this.modalService.show(template, this.config);
-
-      this.ngxService.stop(); 
-    }, 2000);
+    this.editbtn=true;   
+          this.modalRef = this.modalService.show(template, this.config);      
     this.selectobj=this.notIntrestedcandidatelist.findIndex((x: any) => x.id === obj.id);
       this.notIntrestedForm.patchValue({
         name:obj.name,
