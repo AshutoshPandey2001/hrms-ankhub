@@ -139,14 +139,14 @@ export class NotReceivedComponent implements OnInit {
               'Your file has been deleted.',
               'success'
             )
-            this.toastr.success('Deleted !', ' Deleted Sucessfully..!');
+           
             localStorage.setItem("CANDIDATE_LIST", JSON.stringify(this.CandidateList))
           }, 1000);
           this.ngxService.stop();
           this.CandidateList.splice(index, 1);
         }, 2000);
       }
-
+      this.toastr.success('Deleted !', ' Deleted Sucessfully..!');
     })
 
   }

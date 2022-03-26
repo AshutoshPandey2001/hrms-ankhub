@@ -6,6 +6,7 @@ import {  EmployeeComponent } from './employee/employee.component';
 import { QualificationComponent } from './qualification/qualification.component';
 import { GradeLevelComponent } from './grade-level/grade-level.component';
 import { TechnologyComponent } from './technology/technology.component';
+import { PositionComponent } from './position/position.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { TechnologyComponent } from './technology/technology.component';
     EmployeeComponent,
     QualificationComponent,
     GradeLevelComponent,
-    TechnologyComponent
+    TechnologyComponent,
+    PositionComponent
   ],
 
   imports: [

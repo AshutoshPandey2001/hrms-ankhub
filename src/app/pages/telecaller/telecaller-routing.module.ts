@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CandidateListComponent } from './candidate-list/candidate-list.component';
 import { NotReceivedComponent } from './not-received/not-received.component';
+import { ScheduledComponent } from './scheduled/scheduled.component';
 import { TelecallerComponent } from './telecaller.component';
 
 const routes: Routes = [
@@ -19,6 +20,9 @@ const routes: Routes = [
       },
       {
         path: 'not-recived', component: NotReceivedComponent
+      },
+      {
+        path: 'scheduled', component: ScheduledComponent
       }
     ]
   }

@@ -1,4 +1,3 @@
-
 <body style="background-color: #F1F4FB;">
     <br>
     <div class="row">
@@ -6,7 +5,7 @@
             <h3 style="font-size: 30px; font-weight: 300;color: black;"><b>Not-Received List</b></h3>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-7 justify-content-end"
-            style="padding-top: 20px; padding-bottom: 20px;padding-left: 40px;">
+            style="padding-top: 20px; padding-bottom: 20px;padding-left: 60px;">
 
             <button type="button" class="btn submit-btn" style="background-color: #3366FF;"
                 (click)="openModal(template)">
@@ -19,7 +18,7 @@
                 <i class="bi bi-telephone icon-header color"></i>
             </button>
             <button type="button" class="btn btn-header"
-                style="background-color: #3366FF;padding-left: 13px; padding-right: 13px; margin-left: 5px;">
+                style="background-color: #3366FF;padding-left: 13px; padding-right: 15px; margin-left: 5px;">
                 <i class="bi bi-info-circle icon-header"></i>
             </button>
 
@@ -38,24 +37,30 @@
                         <form>
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-3">
-                                    <label class="font-color">Form:</label>
-                                    <input type="date" placeholder="DD-MM-YYYY" class="form-control">
+                                    <label for="from" style="color: black;"><b>From :</b></label>
+                                    <div class="input-group mb-3 froms" id="forms">
+                                        <span class="input-group-text" style="background-color: gainsboro;"><i class="bi bi-calendar"></i></span>
+                                        <input type="text" placeholder="     DD-MM-YYYY " class="form-control" bsDatepicker>
+                                    </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3">
-                                    <label class="font-color">To:</label>
-                                    <input type="date" placeholder="DD-MM-YYYY" class="form-control">
+                                    <label for="from" style="color: black;"><b>To :</b></label>
+                                    <div class="input-group mb-3 froms" id="forms">
+                                        <span class="input-group-text" style="background-color: gainsboro;"><i class="bi bi-calendar"></i></span>
+                                        <input type="text" placeholder="     DD-MM-YYYY" class="form-control" bsDatepicker>
+                                    </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3">
-                                    <label class="font-color">Select Status:</label>
-                                    <select class="form-control" placeholder="Select status">
-                                        <option>Select Status</option>
-                                        <option>Active</option>
-                                        <option>InActive</option>
+                                    <label for="to" style="color: black;"><b>Select Status :</b></label>
+                                    <select name="cars" class="form-select froms" style="border-radius: 5px;">
+                                        <option selected> Select Status</option>
+                                        <option value="Active">Active</option>
+                                        <option value="InActive">InActive</option>
                                     </select>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-top: 22px;">
                                     <button type="button" class="btn btn-block"
-                                        style="background-color: #3366FF; padding-left: 5px;padding-right: 5px;">Search</button>
+                                    style="background-color: #3366FF; padding-left: 5px; padding-right: 5px;">Search</button>
                                 </div>
                             </div>
                         </form>
@@ -75,7 +80,7 @@
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-7">
                                 <div>
-                                    <input type="search" class="form-control" placeholder="Search" aria-label="Search"
+                                    <input type="search" class="form-control froms" placeholder="Search..." aria-label="Search"
                                         [(ngModel)]="terms">
                                 </div>
                             </div>
@@ -104,10 +109,10 @@
                                         <td _ngcontent-ykx-c357="">{{candidate.StaTus}}</td>
                                         <td _ngcontent-ykx-c357="" class="td-actions text-left">
                                             <button mat-raised-button="" type="button" matTooltip="seen"
-                                            [matTooltipPosition]="'above'"
-                                            class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                            <i class="bi bi-eye" style="font-size:16px"></i>
-                                        </button>
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="bi bi-eye" style="font-size:16px"></i>
+                                            </button>
                                             <button mat-raised-button="" type="button" matTooltip="Edit"
                                                 [matTooltipPosition]="'above'"
                                                 class="btn btn-success btn-link btn-sm btn-just-icon"
@@ -128,10 +133,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-9 col-md-7 col-5">
+                        <div class="col-lg-9 col-md-8 col-5">
                             <p style="padding-left: 20px;"><b>Showing 1 to 8 of 8 entries</b></p>
                         </div>
-                        <div class="col-lg-3 col-md-5 col-7">
+                        <div class="col-lg-3 col-md-4 col-7">
                             <button type="button" class="btn btn-sm"
                                 style="background-color: white; color: black;">Previous</button>
                             <button type="button" class="btn btn-sm"
@@ -157,7 +162,7 @@
             <form [formGroup]="CandidateForm">
                 <div class="form-group">
                     <label>#ID:</label>
-                    <input type="text" class="form-control" placeholder="Enter ID" formControlName="iD"
+                    <input type="text" class="form-control froms" placeholder="Enter ID" formControlName="iD"
                         [ngClass]="{'is-invalid': submitted && f['iD'].errors}">
                     <div *ngIf="submitted && f['iD'].errors" class="invalid-feedback">
                         ID is required...!
@@ -165,7 +170,7 @@
                 </div>
                 <div class="form-group">
                     <label>Name:</label>
-                    <input type="text" class="form-control" placeholder="Enter Full Name" formControlName="naMe"
+                    <input type="text" class="form-control froms" placeholder="Enter Full Name" formControlName="naMe"
                         [ngClass]="{'is-invalid': submitted && f['naMe'].errors}">
                     <div *ngIf="submitted && f['naMe'].errors" class="invalid-feedback">
                         Full Name is required...!
@@ -173,7 +178,7 @@
                 </div>
                 <div class="form-group">
                     <label>Email:</label>
-                    <input type="email" class="form-control" placeholder="Enter Email" formControlName="eMail"
+                    <input type="email" class="form-control froms" placeholder="Enter Email" formControlName="eMail"
                         [ngClass]="{'is-invalid': submitted && f['eMail'].errors}">
                     <div *ngIf="submitted && f['eMail'].errors" class="invalid-feedback">
 
@@ -189,7 +194,7 @@
                 </div>
                 <div class="form-group">
                     <label>Mobile No:</label>
-                    <input type="text" class="form-control" placeholder="Mobile No." formControlName="moBile"
+                    <input type="text" class="form-control froms" placeholder="Mobile No." formControlName="moBile"
                         [ngClass]="{'is-invalid': submitted && f['moBile'].errors}">
                     <div *ngIf="submitted && f['moBile'].errors" class="invalid-feedback">
 
@@ -205,7 +210,7 @@
                 </div>
                 <div class="form-group">
                     <label>Select Status:</label>
-                    <select class="form-control" placeholder="Select status" formControlName="StaTus"
+                    <select class="form-control froms" placeholder="Select status" formControlName="StaTus"
                         [ngClass]="{'is-invalid': submitted && f['StaTus'].errors}">
                         <option>Select Status</option>
                         <option>Active</option>
@@ -224,11 +229,9 @@
 
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
-            <button *ngIf="editOperation==false;" type="button" class="btn btn-success"
-                (click)="submitData()">Submit
+            <button *ngIf="editOperation==false;" type="button" class="btn btn-success" (click)="submitData()">Submit
             </button>
-            <button *ngIf="editOperation==true;" type="button" class="btn btn-success"
-                (click)="updateData()">Update
+            <button *ngIf="editOperation==true;" type="button" class="btn btn-success" (click)="updateData()">Update
             </button>
         </div>
     </ng-template>
