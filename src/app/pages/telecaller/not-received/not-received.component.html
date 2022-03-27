@@ -97,13 +97,13 @@
                                 </thead>
                                 <tbody _ngcontent-ykx-c357="">
                                     <tr _ngcontent-ykx-c357=""
-                                        *ngFor=" let candidate of CandidateList |filter:terms ; let i=index"
+                                        *ngFor=" let candiDate of CandidateList |filter:terms ; let i=index"
                                         class="center">
-                                        <td _ngcontent-ykx-c357="">{{candidate.iD}}</td>
-                                        <td _ngcontent-ykx-c357="">{{candidate.naMe}}</td>
-                                        <td _ngcontent-ykx-c357="">{{candidate.eMail}}</td>
-                                        <td _ngcontent-ykx-c357="">{{candidate.moBile}}</td>
-                                        <td _ngcontent-ykx-c357="">{{candidate.StaTus}}</td>
+                                        <td _ngcontent-ykx-c357="">{{candiDate.iD}}</td>
+                                        <td _ngcontent-ykx-c357="">{{candiDate.naMe}}</td>
+                                        <td _ngcontent-ykx-c357="">{{candiDate.eMail}}</td>
+                                        <td _ngcontent-ykx-c357="">{{candiDate.moBile}}</td>
+                                        <td _ngcontent-ykx-c357="">{{candiDate.StaTus}}</td>
                                         <td _ngcontent-ykx-c357="" class="td-actions text-left">
                                             <button mat-raised-button="" type="button" matTooltip="seen"
                                                 [matTooltipPosition]="'above'"
@@ -113,7 +113,7 @@
                                             <button mat-raised-button="" type="button" matTooltip="Edit"
                                                 [matTooltipPosition]="'above'"
                                                 class="btn btn-success btn-link btn-sm btn-just-icon"
-                                                (click)="openModal(template)" (click)="editData(i,candidate)">
+                                                (click)="openModal(template)" (click)="editData(i,candiDate)">
                                                 <i class="bi bi-pen" style="font-size:16px"></i>
                                             </button>
                                             <button mat-raised-button="" type="button" matTooltip="Remove"

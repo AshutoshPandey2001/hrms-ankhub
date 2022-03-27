@@ -36,9 +36,9 @@ export class NotReceivedComponent implements OnInit {
       StaTus: ['', [Validators.required]]
 
     })
-    let data = localStorage.getItem('CANDIDATE_LIST');
-    if (data) {
-      this.CandidateList = JSON.parse(data);
+    let localdata = localStorage.getItem('Not-received');
+    if (localdata) {
+      this.CandidateList = JSON.parse(localdata);
     }
   }
 
@@ -77,7 +77,7 @@ export class NotReceivedComponent implements OnInit {
     }
     this.clear();
     this.closeModal();
-    localStorage.setItem("CANDIDATE_LIST", JSON.stringify(this.CandidateList))
+    localStorage.setItem("Not-received", JSON.stringify(this.CandidateList))
   }
 
   updateData() {
@@ -99,7 +99,7 @@ export class NotReceivedComponent implements OnInit {
     this.CandidateList[this.selectedIndex].StaTus = this.CandidateForm.value.StaTus;
     this.clear();
     this.closeModal();
-    localStorage.setItem("CANDIDATE_LIST", JSON.stringify(this.CandidateList))
+    localStorage.setItem("Not-received", JSON.stringify(this.CandidateList))
   }
 
   editData(index: any, obj: any) {
@@ -133,6 +133,9 @@ export class NotReceivedComponent implements OnInit {
     }).then((result) => {
 
       if (result.isConfirmed) {
+
+        this.CandidateList.splice(index, 1);
+        localStorage.setItem("Not-received", JSON.stringify(this.CandidateList));
         this.ngxService.start();
         setTimeout(() => {
           setTimeout(() => {
@@ -142,10 +145,9 @@ export class NotReceivedComponent implements OnInit {
               'success'
             )
            
-            localStorage.setItem("CANDIDATE_LIST", JSON.stringify(this.CandidateList))
           }, 1000);
           this.ngxService.stop();
-          this.CandidateList.splice(index, 1);
+        
         }, 2000);
       }
       this.toastr.success('Deleted !', ' Deleted Sucessfully..!');
