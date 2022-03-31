@@ -13,6 +13,7 @@ import { SdkRoutingModule } from './sdk-routing.module';
 import { SdkPluginsComponent } from './sdk-plugins/sdk-plugins.component';
 import { SdkIconsComponent } from './sdk-icons/sdk-icons.component';
 import { SdkDatatableComponent } from './sdk-comp/sdk-datatable/sdk-datatable.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SdkDatatableComponent } from './sdk-comp/sdk-datatable/sdk-datatable.co
   imports: [
     AllModule,
     SdkRoutingModule,
+    DataTablesModule
   ]  
 })
 export class SdkModule { }
