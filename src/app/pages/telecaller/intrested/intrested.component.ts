@@ -50,6 +50,8 @@ export class IntrestedComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);
+    this.isUpdate = false;
+    this.clear();
   }
 
   closeModal() {
@@ -67,7 +69,7 @@ export class IntrestedComponent implements OnInit {
           this.intrestedForm.value.id = this.randomId();
           this.ngxService.stop();
           
-          this.toastr.success('Sucessfully..!', 'dataSub ');
+          this.toastr.success('Sucessfully..!', 'Submitted ');
          
         }, 2000);
         this.closeModal();
@@ -107,14 +109,13 @@ export class IntrestedComponent implements OnInit {
 
   dataEdit(obj: any, template: TemplateRef<any>) {
     this.isUpdate = true;
-    this.ngxService.start();
-    setTimeout(() => {  
-      this.ngxService.stop();
+ 
+   
       this.modalRef = this.modalService.show(template, this.config);
-      this.toastr.info('Your Response', 'Edit');
+    
     
     this.selectedindex = obj;
-    console.log('this.selectedindex', this.selectedindex)
+ 
     this.selectedindex = this.intrestedList.findIndex((x: any) => x.id === obj.id);
     this.intrestedForm.patchValue({
       Id: obj.Id,
@@ -123,7 +124,7 @@ export class IntrestedComponent implements OnInit {
       mobile: obj.mobile,
       Status: obj.Status,
     })
-  }, 2000);
+
   }
 
   dataDelete(index: any) {

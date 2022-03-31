@@ -166,3 +166,39 @@ padding-right: 5px;
     color: black;
     font-weight: bold;
 }
+
+.date-input{
+    background-color: rgb(255, 255, 255);
+    color: #b5bed6;
+    border: solid 0.1px #b5bed6;
+}
+
+
+ 
+.addschedule {
+    background-color:rgb(62, 43, 235);
+    border: solid rgb(62, 43, 235);
+    color: #fff;
+  }
+  
+#top label{
+    color: black;
+    font-size: 15px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#top input{
+    font-size: 15px;
+    border-radius: 5px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#forms {
+     border: 1px solid rgb(204, 204, 221);
+     border-radius: 5px;
+}
+
+#forms span{
+    border: 1px solid rgb(204, 204, 221); 
+    background-color: rgb(204, 204, 221); 
+}

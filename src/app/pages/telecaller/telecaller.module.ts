@@ -19,6 +19,7 @@ import { ScheduledComponent } from './scheduled/scheduled.component';
   imports: [
     AllModule,
     TelecallerRoutingModule,
+   
   
   ]
 })

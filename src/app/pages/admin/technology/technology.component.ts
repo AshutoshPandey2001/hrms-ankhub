@@ -90,7 +90,12 @@ else {
 
 editData(obj:any , template: TemplateRef<any>){
 
-
+  this.ngxService.start();
+  setTimeout(() => {  
+    this.ngxService.stop();
+    this.modalRef = this.modalService.show(template, this.config);
+    this.toastr.info('Your Response', 'Edit');
+  }, 2000);
 
   this.selectIndex= this.technoList.findIndex((x : any )=> x.id === obj.id);
   this.technoForm.patchValue({
@@ -138,7 +143,7 @@ deleteData(id:any){
         'Deleted!',
         'Your file has been deleted.',
         'success'
-      ) 
+      )
     }, 1000);
    
       this.ngxService.stop();
