@@ -14,6 +14,8 @@ import { SdkPluginsComponent } from './sdk-plugins/sdk-plugins.component';
 import { SdkIconsComponent } from './sdk-icons/sdk-icons.component';
 import { SdkDatatableComponent } from './sdk-comp/sdk-datatable/sdk-datatable.component';
 import { DataTablesModule } from 'angular-datatables';
+import { SdkImageuploaderComponent } from './sdk-comp/sdk-imageuploader/sdk-imageuploader.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,12 +30,15 @@ import { DataTablesModule } from 'angular-datatables';
     SdkDatepickerComponent,
     SdkPluginsComponent,
     SdkIconsComponent,
-    SdkDatatableComponent
+    SdkDatatableComponent,
+    SdkImageuploaderComponent
+    
   ],
   imports: [
     AllModule,
     SdkRoutingModule,
-    DataTablesModule
+    DataTablesModule,
+    HttpClientModule
   ]  
 })
 export class SdkModule { }

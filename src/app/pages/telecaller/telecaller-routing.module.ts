@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CandidateListComponent } from './candidate-list/candidate-list.component';
+import { NotReceivedComponent } from './not-received/not-received.component';
+import { OnHoldComponent } from './on-hold/on-hold.component';
 import { NotIntrestedComponent } from './not-intrested/not-intrested.component';
 import { ScheduledComponent } from './scheduled/scheduled.component';
 import { TelecallerComponent } from './telecaller.component';
@@ -17,6 +19,12 @@ const routes: Routes = [
       },
       {
         path: 'candidate-list', component: CandidateListComponent
+      },
+      {
+        path: 'not-recived', component: NotReceivedComponent
+      },
+      {
+        path: 'on-hold', component: OnHoldComponent
       },
       {
         path: 'not-intrested', component: NotIntrestedComponent
