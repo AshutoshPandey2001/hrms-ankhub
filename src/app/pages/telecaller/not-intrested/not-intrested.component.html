@@ -1,0 +1,218 @@
+<div class="row header">
+    <div class="col-lg-8 col-md-5 col-sm-5"> </div>
+   <div class="col-lg-4 col-md-7 col-sm-7  justify-content-end">
+    <button type="button" class="btn submit-btn " (click)="openModal(template)">
+      <i class="bi bi-plus-lg "></i> Add Candidate
+    </button>
+    <button type="button" class="btn btn-header" >
+      <i class="bi bi-envelope icon-header" ></i> 
+    </button>
+
+    <button type="button" class="btn btn-header" >
+      <i class="bi bi-telephone icon-header" ></i> 
+    </button>
+
+    <button type="button" class="btn btn-header-2" >
+      <i class="bi bi-info-circle icon-header" ></i> 
+    </button>
+  </div>
+</div>
+    
+    <div class="card">
+        
+    <div class="card-body">
+        <div class="row rowbodr">
+            <div class="line">
+                <h4 class="hheader"><b>Candidate Summary</b></h4>
+            </div>
+            <br>
+            <br>
+            
+              <div class="row" id="top">
+                <div class="col-lg-4 col-md-6 col-12 form-group mb-3">
+                  <label for="from"><b>From :</b></label>
+                  <div class="input-group mb-3" id="forms">
+                    <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                    <input type="text" placeholder="DD-MM-YYYY" class="form-control" bsDatepicker>
+                  </div>
+                </div>
+          
+                <div class="col-lg-4 col-md-6 col-12 form-group mb-3">
+                  <label for="from"><b>To :</b></label>
+                  <div class="input-group mb-3" id="forms">
+                    <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                    <input type="text" placeholder="DD-MM-YYYY" class="form-control" bsDatepicker>
+                  </div>
+                </div>
+          
+                <div class="col-lg-3 col-md-6 col-12  form-group mb-3">
+                  <label for="to"><b>Select Status :</b></label>
+                  <select name="cars" class="form-select" style="border-radius: 5px;">
+                    <option selected> Select Status</option>
+                    <option value="Active">Active</option>
+                    <option value="InActive">InActive</option>
+                  </select>
+          
+                </div>
+          
+                <div class="col-lg-1 col-md-12 col-12 ">
+                  <button type="button" class="btn searchbtn">
+                    Search
+                  </button>
+                </div>
+          
+              </div>
+               
+            
+        </div>
+
+      <div class="row rowmar md-form active-pink active-pink-2 mb-3 mt-0 ">
+        <div class="col-lg-9 col-md-7 col-sm-12" >
+       <h6 class="tab-head" style="font-weight: 500;">Show 
+         <select name="" id="" class="select">
+           <option value="5">05</option>
+           <option value="10">10</option>
+           <option value="15">15</option>
+           <option value="20">20</option>
+         </select>
+         
+         entries</h6>
+       </div>
+      
+         <input class=" search" type="search" placeholder="Search..." aria-label="Search"
+            [(ngModel)]="searchitem">
+       
+       </div>
+      <div class="table-responsive table-bordered " style="height: 250px; width: auto;">
+        <table class="table table-hove  ">
+          <thead class="text-primary">
+           <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile NO.</th>
+            <th>Status</th>
+           <th >Action</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let candidate of notIntrestedcandidatelist  |filter:searchitem; let i=index">
+              <td>#0{{i+1}}</td>
+              <td>{{candidate.name}}</td>
+              <td>{{candidate.email}}</td>
+              <td>{{candidate.mobile}}</td>
+              <td>{{candidate.Status}}</td>             
+              <td>
+                <button class="btn  btn-link btn-just-icon vbtnclr"> <b><i class="bi bi-eye " style="font-size:18px"></i></b></button>
+                <button class="btn btn-info btn-link btn-just-icon" (click)="edit(candidate, template)">
+                  <i class="bi bi-pencil " style="font-size:18px"></i>
+                </button>
+            
+                <button  class="btn btn-danger btn-link btn-just-icon" (click)="delqual(candidate.id)">
+                  <i class="bi bi-trash3-fill " style="font-size:18px"></i>
+                </button>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+        
+      </div>
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-3">
+            <p style="padding-left: 20px;"><b>Showing 1 to 8 of 8 entries</b></p>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-9">
+           <button type="button" class="btn btn-sm" style="background-color: white; color: black;">Previous</button>
+           <button type="button" class="btn btn-sm" style="background-color: #3366FF;padding-left: 15px; padding-right: 15px;">1</button>
+           <button type="button" class="btn btn-sm" style="background-color: white; color: black;">Next</button>
+        </div>
+    </div>
+    </div>
+  </div>
+  
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add Candidate Deatails</h4>
+      <button
+        type="button"
+        class="btn-close close pull-right"
+        aria-label="Close"
+        (click)="closeModal()"
+      >
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+  
+    <div class="modal-body">
+        <form [formGroup]="notIntrestedForm">
+            
+              <div class="form-group">
+                <label class="tcol"><b>Name:</b></label>
+                <input type="text" class="form-control" placeholder="Enter Full Name" formControlName="name"
+                    [ngClass]="{'is-invalid': subBtn && f['name'].errors}">
+                <div *ngIf="subBtn && f['name'].errors" class="invalid-feedback">
+                     Full Name is required...!
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="tcol"><b>Email:</b></label>
+                <input type="email" class="form-control" placeholder="Enter Email"formControlName="email"
+                [ngClass]="{'is-invalid': subBtn && f['email'].errors}">
+                <div *ngIf="subBtn && f['email'].errors" class="invalid-feedback">
+    
+                    <div *ngIf="f['email'].errors['required']">
+                     Email is required...!
+                    </div>
+                    
+                    <div *ngIf="f['email'].errors['email']">
+                      Please enter valid email...!
+                    </div>
+            
+                  </div>
+            </div>
+            <div class="form-group">
+                <label class="tcol"><b>Mobile No:</b></label>
+                <input type="text" class="form-control" placeholder="Mobile No."formControlName="mobile"
+                [ngClass]="{'is-invalid': subBtn && f['mobile'].errors}">
+                <div *ngIf="subBtn && f['mobile'].errors" class="invalid-feedback">
+    
+                    <div *ngIf="f['mobile'].errors['required']">
+                      Mobile Number is required...!
+                    </div>
+                    
+                    <div *ngIf="f['mobile'].errors['maxlength']">
+                      Please enter only 10 digit mobile number...!
+                    </div>
+            
+                  </div>
+            </div>
+            <div class="form-group">
+                <label class="tcol"><b>Select Status:</b></label>
+                    <select class="form-control"  formControlName="Status"
+                    [ngClass]="{'is-invalid': subBtn && f['Status'].errors}">
+                        <option [disabled]="true" [selected]="true"> Select Status</option>
+                        <option>Active</option>
+                        <option>InActive</option>
+                    </select>
+                     <div *ngIf="subBtn && f['Status'].errors" class="invalid-feedback">
+    
+                    <div *ngIf="f['Status'].errors['required']">
+                      Status is required!
+                    </div>
+                   </div>
+            </div>
+        </form>
+    </div>
+  
+    <div class="modal-footer">
+      <button  type="button"  class="btn btn-outline-primary" (click)="closeModal()">
+        Cancle
+      </button>
+      <button *ngIf="editbtn==false" type="button" class="btn btn-success" (click)="submitData()">
+        Submit
+      </button>
+      <button *ngIf="editbtn==true" type="button" class="btn btn-success" (click)="UpdateData()">
+        Update
+      </button>
+    </div>
+  </ng-template>
+  

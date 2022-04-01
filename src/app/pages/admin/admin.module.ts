@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AllModule } from 'app/allModule.module';
-import {  CoursesComponent } from './courses/courses.component';
+import { CoursesComponent } from './courses/courses.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {  EmployeeComponent } from './employee/employee.component';
 import { QualificationComponent } from './qualification/qualification.component';
 import { GradeLevelComponent } from './grade-level/grade-level.component';
@@ -22,6 +23,7 @@ import { PositionComponent } from './position/position.component';
   imports: [
     AllModule,
     AdminRoutingModule,
+    Ng2SearchPipeModule
    
   ]
 })
