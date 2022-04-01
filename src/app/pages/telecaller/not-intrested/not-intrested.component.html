@@ -29,7 +29,7 @@
             <br>
             
               <div class="row" id="top">
-                <div class="col-lg-4 col-md-6 col-12 form-group mb-3">
+                <div class="col-lg-3 col-md-6 col-12 form-group mb-3">
                   <label for="from"><b>From :</b></label>
                   <div class="input-group mb-3" id="forms">
                     <span class="input-group-text"><i class="bi bi-calendar"></i></span>
@@ -37,7 +37,7 @@
                   </div>
                 </div>
           
-                <div class="col-lg-4 col-md-6 col-12 form-group mb-3">
+                <div class="col-lg-3 col-md-6 col-12 form-group mb-3">
                   <label for="from"><b>To :</b></label>
                   <div class="input-group mb-3" id="forms">
                     <span class="input-group-text"><i class="bi bi-calendar"></i></span>
@@ -55,8 +55,8 @@
           
                 </div>
           
-                <div class="col-lg-1 col-md-12 col-12 ">
-                  <button type="button" class="btn searchbtn">
+                <div class="col-lg-3 col-md-6 col-12 ">
+                  <button type="button " class="btn searchbtn btn-block">
                     Search
                   </button>
                 </div>
@@ -84,16 +84,16 @@
        
        </div>
       <div class="table-responsive table-bordered " style="height: 250px; width: auto;">
-        <table class="table table-hove  ">
-          <thead class="text-primary">
-           <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Mobile NO.</th>
-            <th>Status</th>
-           <th >Action</th>
+        <table class="table table-hove">
+          <thead class="tcol text-center" >
+           <th><b>ID</b></th>
+            <th><b>Name</b></th>
+            <th><b>Email</b></th>
+            <th><b>Mobile NO.</b></th>
+            <th><b>Status</b></th>
+           <th ><b>Action</b></th>
           </thead>
-          <tbody>
+          <tbody class="text-center">
             <tr *ngFor="let candidate of notIntrestedcandidatelist  |filter:searchitem; let i=index">
               <td>#0{{i+1}}</td>
               <td>{{candidate.name}}</td>
@@ -131,7 +131,7 @@
   
   <ng-template #template>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Add Candidate Deatails</h4>
+      <h4 class="modal-title pull-left tcol"><b>Add Candidate Deatails</b></h4>
       <button
         type="button"
         class="btn-close close pull-right"
