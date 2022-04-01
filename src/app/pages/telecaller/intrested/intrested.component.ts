@@ -1,25 +1,25 @@
+import { Template } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService, ModalOptions } from "ngx-bootstrap/modal";
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-candidate-list',
-  templateUrl: './candidate-list.component.html',
-  styleUrls: ['./candidate-list.component.scss']
+  selector: 'app-intrested',
+  templateUrl: './intrested.component.html',
+  styleUrls: ['./intrested.component.scss']
 })
-export class CandidateListComponent implements OnInit {
+export class IntrestedComponent implements OnInit {
 
-
-  candidateForm: FormGroup
-  submitted: any = false;
-  editoperation = false;
-  selectedobj: any;
+  intrestedForm: FormGroup
+  dataSub: any = false;
+  isUpdate = false;
   selectedindex: any;
-  candidateList: any = [];
-  terms = '';
+  
+  intrestedList: any = [];
+  searchKey = '';
 
   modalRef: BsModalRef;
   config: ModalOptions = {
@@ -30,7 +30,7 @@ export class CandidateListComponent implements OnInit {
   };
 
   constructor(private formBuilder: FormBuilder, private modalService: BsModalService, private ngxService: NgxUiLoaderService, private toastr: ToastrService) {
-    this.candidateForm = this.formBuilder.group({
+    this.intrestedForm = this.formBuilder.group({
       Id: ['', [Validators.required]],
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -38,9 +38,9 @@ export class CandidateListComponent implements OnInit {
       Status: ['', [Validators.required]]
 
     })
-    let data = localStorage.getItem('CANDIDATE_LIST');
+    let data = localStorage.getItem('INTRESTED_LIST');
     if (data) {
-      this.candidateList = JSON.parse(data);
+      this.intrestedList = JSON.parse(data);
     }
 
   }
@@ -50,26 +50,26 @@ export class CandidateListComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);
+    this.isUpdate = false;
+    this.clear();
   }
 
   closeModal() {
     this.modalRef.hide();
-    this.clear();
-    this.submitted=false;
   }
-  Save() {
-    this.submitted = true;
+  submitData() {
+    this.dataSub = true;
 
-    if (this.candidateForm.valid) {
-      this.candidateList.push(this.candidateForm.value)
-      console.log("Submit Sucessfully", this.candidateForm.value);
+    if (this.intrestedForm.valid) {
+      this.intrestedList.push(this.intrestedForm.value)
+      console.log("Submit Sucessfully", this.intrestedForm.value);
       {
         this.ngxService.start();
         setTimeout(() => {
-          this.candidateForm.value.id = this.randomId();
+          this.intrestedForm.value.id = this.randomId();
           this.ngxService.stop();
           
-          this.toastr.success('Thank you !', 'Submitted Sucessfully..!');
+          this.toastr.success('Sucessfully..!', 'Submitted ');
          
         }, 2000);
         this.closeModal();
@@ -79,50 +79,55 @@ export class CandidateListComponent implements OnInit {
       this.toastr.error('Please try again !', 'Inavalid input data !');
     }
     this.clear();
-    
-    localStorage.setItem("CANDIDATE_LIST", JSON.stringify(this.candidateList))
+    localStorage.setItem("INTRESTED_LIST", JSON.stringify(this.intrestedList))
   }
 
 
-  Update() {
-    this.editoperation = false;
-    console.log("update", this.candidateForm.value);
+  dataUpdate() {
+    this.isUpdate = false;
+
    
-    {
+    
       this.ngxService.start();
       setTimeout(() => {
         this.ngxService.stop();
 
-        this.toastr.success('Updated !', ' Updated Sucessfully..!');
+        this.toastr.success('Sucessfully..!', ' Updated ');
        
-      }, 2000);
-    }
-    this.candidateList[this.selectedobj].Id = this.candidateForm.value.Id;
-    this.candidateList[this.selectedobj].name = this.candidateForm.value.name;
-    this.candidateList[this.selectedobj].email = this.candidateForm.value.email;
-    this.candidateList[this.selectedobj].mobile = this.candidateForm.value.mobile;
-    this.candidateList[this.selectedobj].Status = this.candidateForm.value.Status;
+   
+    
+    this.intrestedList[this.selectedindex].Id = this.intrestedForm.value.Id;
+    this.intrestedList[this.selectedindex].name = this.intrestedForm.value.name;
+    this.intrestedList[this.selectedindex].email = this.intrestedForm.value.email;
+    this.intrestedList[this.selectedindex].mobile = this.intrestedForm.value.mobile;
+    this.intrestedList[this.selectedindex].Status = this.intrestedForm.value.Status;
     this.closeModal();
     this.clear();
-    localStorage.setItem("CANDIDATE_LIST", JSON.stringify(this.candidateList));
+    localStorage.setItem("INTRESTED_LIST", JSON.stringify(this.intrestedList));
+  }, 2000);
   }
 
-  edit(obj: any) {
-    this.editoperation = true;
-
-    this.selectedobj = obj;
-    console.log('this.selectedobj', this.selectedobj)
-    this.selectedobj = this.candidateList.findIndex((x: any) => x.id === obj.id);
-    this.candidateForm.patchValue({
+  dataEdit(obj: any, template: TemplateRef<any>) {
+    this.isUpdate = true;
+ 
+   
+      this.modalRef = this.modalService.show(template, this.config);
+    
+    
+    this.selectedindex = obj;
+ 
+    this.selectedindex = this.intrestedList.findIndex((x: any) => x.id === obj.id);
+    this.intrestedForm.patchValue({
       Id: obj.Id,
       name: obj.name,
       email: obj.email,
       mobile: obj.mobile,
       Status: obj.Status,
     })
+
   }
 
-  delete(index: any) {
+  dataDelete(index: any) {
 
     Swal.fire({
       
@@ -141,9 +146,7 @@ export class CandidateListComponent implements OnInit {
       if (result.isConfirmed) {
 
        
-        this.candidateList.splice(index,1);
-        console.log("delete",index);
-        localStorage.setItem("CANDIDATE_LIST", JSON.stringify(this.candidateList))
+     
         this.ngxService.start();
         setTimeout(() => {
           setTimeout(() => {
@@ -153,10 +156,12 @@ export class CandidateListComponent implements OnInit {
               'success'
             )
            
-            this.toastr.success('Deleted !', 'Deleted Sucessfully..!');
+            this.toastr.success('Sucessfully..!', 'Deleted  ');
           }, 1000);
           this.ngxService.stop();
-
+          this.intrestedList.splice(index,1);
+        
+          localStorage.setItem("INTRESTED_LIST", JSON.stringify(this.intrestedList))
         }, 2000);
        
       }
@@ -169,10 +174,11 @@ export class CandidateListComponent implements OnInit {
   }
 
   get f() {
-    return this.candidateForm.controls
+    return this.intrestedForm.controls
   }
 
   clear() {
-    this.candidateForm.reset();
+    this.intrestedForm.reset();
   }
+
 }

@@ -1,8 +1,13 @@
 .bg-1 {
     background-color: #DEE5F7;
     border: 1px solid #F1F4FB;
-    padding: 11.2px;
-    margin-left: 5px;
+    padding-left: 13px;
+    padding-right: 13px; 
+    margin-left: 4px;
+}
+
+.color{
+    color: black;
 }
 
 .header {
@@ -28,7 +33,6 @@
 }
 
 .header1 {
-
     margin-bottom: -10px;
     margin-top: 15px;
 }
@@ -42,8 +46,14 @@
     background-color: #dce1f0;
     border: solid #dce1f0;
     color: #3b4566;
-    width: 10%;
     margin-left: 5px;
+}
+
+.bg-color{
+    background-color: #3366ff;
+    color: white;
+    padding: 14px 15px 14px 15px;
+    border-radius: 5px;
 }
 
 .btn-header-2{
@@ -56,11 +66,9 @@
 }
 
 .submit-btn{
-    margin-left: 10px;
     background-color: #3366ff;
     border: #3366ff solid 2px;
     color: #fff;
-    
 }
 
 #header2{
