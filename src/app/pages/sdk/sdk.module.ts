@@ -14,6 +14,7 @@ import { SdkPluginsComponent } from './sdk-plugins/sdk-plugins.component';
 import { SdkIconsComponent } from './sdk-icons/sdk-icons.component';
 import { SdkImageuploaderComponent } from './sdk-comp/sdk-imageuploader/sdk-imageuploader.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SdkMultiplefileComponent } from './sdk-comp/sdk-multiplefile/sdk-multiplefile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     SdkDatepickerComponent,
     SdkPluginsComponent,
     SdkIconsComponent,
-    SdkImageuploaderComponent
+    SdkImageuploaderComponent,
+    SdkMultiplefileComponent,
     
   ],
   imports: [
