@@ -54,6 +54,8 @@ export class CandidateListComponent implements OnInit {
 
   closeModal() {
     this.modalRef.hide();
+    this.clear();
+    this.submitted=false;
   }
   Save() {
     this.submitted = true;
@@ -67,7 +69,7 @@ export class CandidateListComponent implements OnInit {
           this.candidateForm.value.id = this.randomId();
           this.ngxService.stop();
           
-          this.toastr.success('Thank you !', 'Data Stored Sucessfully..!');
+          this.toastr.success('Thank you !', 'Submitted Sucessfully..!');
          
         }, 2000);
         this.closeModal();
@@ -77,6 +79,7 @@ export class CandidateListComponent implements OnInit {
       this.toastr.error('Please try again !', 'Inavalid input data !');
     }
     this.clear();
+    
     localStorage.setItem("CANDIDATE_LIST", JSON.stringify(this.candidateList))
   }
 
@@ -90,7 +93,7 @@ export class CandidateListComponent implements OnInit {
       setTimeout(() => {
         this.ngxService.stop();
 
-        this.toastr.success('Thank you !', 'Data Updated Sucessfully..!');
+        this.toastr.success('Updated !', ' Updated Sucessfully..!');
        
       }, 2000);
     }
