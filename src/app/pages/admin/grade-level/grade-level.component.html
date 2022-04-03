@@ -148,6 +148,18 @@
               </tbody>
             </table>
           </div>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-9 col-md-8 col-sm-3">
+                  <p style="padding-left: 20px;"><b>Showing 1 to 8 of 8 entries</b></p>
+              </div>
+              <div class="col-lg-3 col-md-4 col-sm-9 justify-content-end" >
+                 <button type="button" class="btn btn-md" style="background-color: white; color: #918484;">Previous</button>
+                 <button type="button" class="btn btn-md" style="background-color: #3366FF;padding-left: 15px; padding-right: 15px;">1</button>
+                 <button type="button" class="btn btn-md" style="background-color: white; color: #918484;">Next</button>
+              </div>
+          </div>
+          </div><br>
         </div>
       </div>
     </div>
@@ -273,8 +285,7 @@
     <button
       *ngIf="editoperation == false"
       type="button"
-      class="btn"
-      style="background-color: #3366ff"
+      class="btn btn-success"
       (click)="Save()"
     >
       Submit
@@ -283,8 +294,7 @@
       *ngIf="editoperation == true"
       type="button"
       id="cancel"
-      class="btn"
-      style="background-color: #3366ff"
+      class="btn btn-success"
       (click)="Update()"
     >
       Update
