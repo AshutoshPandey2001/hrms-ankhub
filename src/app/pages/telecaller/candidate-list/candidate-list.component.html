@@ -15,7 +15,7 @@
             <button type="button" class="btn btn-header bg-1" >
                 <i class="bi bi-telephone icon-header color" ></i> 
             </button>
-            <button type="button" class="btn btn-header" style="background-color: #3366FF;padding-left: 13px; padding-right: 13px; margin-left: 5px;" >
+            <button type="button" class="btn btn-header header1" >
                 <i class="bi bi-info-circle icon-header" ></i> 
             </button>
         
@@ -33,23 +33,29 @@
                     <br>  
                     <form>
                         <div class="row">
-                          <div class="col-lg-3 col-md-3 col-sm-3">
-                            <label class="font-color">Form:</label>
-                           <input type="date" placeholder="DD-MM-YYYY" class="form-control">
-                          </div>
-                          <div class="col-lg-3 col-md-3 col-sm-3">
-                            <label class="font-color">To:</label>
-                            <input type="date" placeholder="DD-MM-YYYY" class="form-control">
-                          </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <label for="from" style="color: black;"><b>From :</b></label>
+                                <div class="input-group mb-3 froms" id="forms">
+                                    <span class="input-group-text" style="background-color: gainsboro;"><i class="bi bi-calendar"></i></span>
+                                    <input type="text" placeholder="   DD-MM-YYYY " class="form-control" bsDatepicker>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <label for="from" style="color: black;"><b>From :</b></label>
+                                <div class="input-group mb-3 froms" id="forms">
+                                    <span class="input-group-text" style="background-color: gainsboro;"><i class="bi bi-calendar"></i></span>
+                                    <input type="text" placeholder="   DD-MM-YYYY " class="form-control" bsDatepicker>
+                                </div>
+                            </div>
                           <div class="col-lg-3 col-md-3 col-sm-3">
                                 <label class="font-color">Select Status:</label>
-                                <select class="form-control" placeholder="Select status">
+                                <select class="form-control froms" placeholder="Select status">
                                     <option>Select Status</option>
                                   <option>Active</option>
                                   <option>InActive</option>
                                 </select>
                           </div>
-                          <div class="col-lg-3 col-md-3 col-sm-3">
+                          <div class="col-lg-3 col-md-3 col-sm-3" style="padding-top: 22px;">
                             <button type="button" class="btn btn-block"  style="background-color: #3366FF; padding-left: 5px;padding-right: 5px;">Search</button>
                           </div>
                         </div>
@@ -69,7 +75,7 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-7"  >
                            <div>      
-                               <input type="search" class="form-control" placeholder="Search" aria-label="Search" [(ngModel)]="terms">
+                               <input type="search" class="form-control froms" placeholder="Search..." aria-label="Search" [(ngModel)]="terms">
                             </div>            
                         </div>                
                     </div>
@@ -125,14 +131,14 @@
 
 <ng-template #template>
     <div class="modal-header">
-        <h4 class="modal-title pull-left">Candidate Details</h4>
+        <h4 class="modal-title pull-left">Candidate Form</h4>
         <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="closeModal()">
             <span aria-hidden="true" class="visually-hidden">&times;</span>
         </button>
     </div>
 
     <div class="modal-body">
-<form [formGroup]="candidateForm" > 
+<form [formGroup]="candidateForm"> 
         <div class="form-group">
             <label>#ID:</label>
             <input type="text" class="form-control" placeholder="Enter ID" formControlName="Id"
@@ -202,8 +208,8 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
-                <button *ngIf="editoperation==false;" type="button" class="btn btn-primary" (click)=" Save()">Submit</button>
-                <button *ngIf="editoperation==true;" type="button" class="btn btn-primary" (click)=" Update()">Update</button>
+                <button *ngIf="editoperation==false;" type="button" class="btn btn-success" (click)=" Save()">Submit</button>
+                <button *ngIf="editoperation==true;" type="button" class="btn btn-success" (click)=" Update()">Update</button>
             </div>
 </ng-template>
 </body>
