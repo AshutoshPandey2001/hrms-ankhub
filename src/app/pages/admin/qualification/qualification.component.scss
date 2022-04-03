@@ -12,7 +12,7 @@
         background-color: #dce1f0;
         border: solid #dce1f0;
         color: #3b4566;
-        width: 10%;
+        width: 5%;
         margin-left: 5px;
     }
 
@@ -20,9 +20,9 @@
         background-color: #3366ff;
         border: solid #3366ff;
         color:#fff;
-        width: 10%;
+        width: 5%;
         margin-left: 5px;
-        margin-right: -60PX;
+        // margin-right: 10px;
     }
     .submit-btn{
         margin-left: 10px;
@@ -95,4 +95,24 @@
 .select::placeholder{
     color: #3b4566;
     padding-left: 10px;
+}
+.line {
+
+    border-left: 5px solid;
+    border-color: #3366ff;
+    height: 25px;
+    margin-left: -20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+}
+.hheader{
+    font-size: 20px;
+    padding-left: 20px;
+    font-weight: bolder;
+}
+
+.tcol{
+    color: black;
+    font-weight: bolder;
 }

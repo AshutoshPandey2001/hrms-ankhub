@@ -43,10 +43,13 @@ export class QualificationComponent implements OnInit {
   ngOnInit(): void {
   }
   openModal(template: TemplateRef<any>) {
+    this.subBtn=false;
+    this.clear();
     this.modalRef = this.modalService.show(template, this.config);
   }
 
   closeModal() {
+    this.editbtn=false;
     this.modalRef.hide();
   }
 
@@ -103,9 +106,11 @@ export class QualificationComponent implements OnInit {
   }
 
 
-  edit(obj:any){
+  edit(obj:any , template: TemplateRef<any>){
     
     this.editbtn=true;
+    this.modalRef = this.modalService.show(template, this.config);
+
     this.selectobj=this.qualificationlist.findIndex((x: any) => x.id === obj.id);
     this.qualificationForm.patchValue({
       qualification:obj.qualification
@@ -127,15 +132,23 @@ export class QualificationComponent implements OnInit {
       cancelButtonText:'Cancle'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.selectobj=this.qualificationlist.findIndex((x: any) => x.id === id);
-        this.qualificationlist.splice(this.selectobj,1);
-    localStorage.setItem("Qualification_LIST" , JSON.stringify(this.qualificationlist));
-        Swal.fire(
+        this.ngxService.start(); 
+   setTimeout(() => {
+    this.selectobj=this.qualificationlist.findIndex((x: any) => x.id === id);
+    this.qualificationlist.splice(this.selectobj,1);
+localStorage.setItem("Qualification_LIST" , JSON.stringify(this.qualificationlist));
+    this.ngxService.stop(); 
+    Swal.fire(
           
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+    this.toastr.success('Deleted Successfully!', 'Entry!');
+
+  }, 2000);
+       
+       
       }
     })
     
