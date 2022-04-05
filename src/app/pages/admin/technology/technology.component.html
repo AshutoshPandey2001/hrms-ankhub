@@ -3,7 +3,7 @@
     <div class=" col-lg-8 col-md-5 col-sm-4"> 
      
     </div>
-   <div class="col-lg-4 col-md-7  col-sm-8  justify-content-end ">
+   <div class="col-lg-4 col-md-7  col-sm-8  justify-content-end header-btn">
     <button type="button" class="btn submit-btn"   (click)="openModal(template)">
       <i class="bi bi-plus-lg "></i> Add Technology
     </button>
@@ -94,9 +94,9 @@
         <form [formGroup]="technoForm">
 
             <div class="form-group ">
-              <label for="text " class=" tab-head">Type text</label>
+              <label for="text " class=" tab-head">Technology</label>
               <div>
-              <input type="text" class="mod-input" placeholder="Enter Text" formControlName="technoText"
+              <input type="text" class="mod-input" placeholder="Technology" formControlName="technoText"
               [ngClass]="{'is-invalid' : technoSub && t['technoText'].errors }">
               <div *ngIf="technoSub && t['technoText'].errors" class="invalid-feedback">
 
