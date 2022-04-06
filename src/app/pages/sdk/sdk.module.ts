@@ -12,6 +12,8 @@ import { SdkToasterComponent } from './sdk-comp/sdk-toaster/sdk-toaster.componen
 import { SdkRoutingModule } from './sdk-routing.module';
 import { SdkPluginsComponent } from './sdk-plugins/sdk-plugins.component';
 import { SdkIconsComponent } from './sdk-icons/sdk-icons.component';
+import { SdkDatatableComponent } from './sdk-comp/sdk-datatable/sdk-datatable.component';
+import { DataTablesModule } from 'angular-datatables';
 import { SdkImageuploaderComponent } from './sdk-comp/sdk-imageuploader/sdk-imageuploader.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SdkMultiplefileComponent } from './sdk-comp/sdk-multiplefile/sdk-multiplefile.component';
@@ -29,13 +31,15 @@ import { SdkMultiplefileComponent } from './sdk-comp/sdk-multiplefile/sdk-multip
     SdkDatepickerComponent,
     SdkPluginsComponent,
     SdkIconsComponent,
+    SdkDatatableComponent,
     SdkImageuploaderComponent,
-    SdkMultiplefileComponent,
-    
+    SdkMultiplefileComponent    
   ],
+  
   imports: [
     AllModule,
     SdkRoutingModule,
+    DataTablesModule,
     HttpClientModule
   ]  
 })
