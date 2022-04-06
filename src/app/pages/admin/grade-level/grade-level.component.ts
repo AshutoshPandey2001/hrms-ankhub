@@ -53,6 +53,8 @@ export class GradeLevelComponent implements OnInit {
 
   closeModal() {
     this.modalRef.hide();
+    this.clear();
+    this.submitted=true;
   }
   Save() {
     this.submitted = true;
