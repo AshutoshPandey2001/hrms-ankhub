@@ -1,0 +1,30 @@
+<!-- <p>sdk-datatable works!</p> -->
+<div class="card">
+    <div class="card-header card-header-danger d-flex justify-content-between align-center">
+      <h4 class="card-title">Sample Data table</h4>
+    </div>
+    <div class="card-body">
+     
+       
+      
+      
+      
+      <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Website</th>
+          </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let group of dataList">
+               <td>{{group.name}}</td>
+               <td>{{group.email}}</td>
+               <td>{{group.website}}</td>
+           </tr>
+        </tbody>
+      </table>
+       </div>
+     </div>
+
