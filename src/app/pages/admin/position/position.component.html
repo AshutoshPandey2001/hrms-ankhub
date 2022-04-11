@@ -1,9 +1,9 @@
-
-      <div class="row header">
-        <div class=" col-lg-7 col-md-5 col-sm-4"> 
-          <h3><b>Position</b></h3>
+<div class="fluid-container">
+<div class="row">
+        <div class=" col-lg-8 col-md-6 col-sm-12"> 
+          <h4 class="size mt-4" style="margin-left:3%;"><b>Position</b></h4>
         </div>
-       <div class="col-lg-5 col-md-7  col-sm-8  justify-content-end mt-3">
+       <div class="col-lg-4 col-md-6  col-sm-6  justify-content-end mt-3">
         <button type="button" class="btn submit-btn"   (click)="openModal(template)">
           <i class="bi bi-plus-lg "></i> Add Position
         </button>
@@ -20,6 +20,139 @@
         </button>
       </div>
     </div>
+  <div class="card">
+      
+  <div class="card-body">
+          <div class="line">
+              <h4 class="header"><b>Position Summary</b></h4>
+          </div>
+         
+
+    <div class="row rowmar mb-3 ">
+      <div class="col-lg-9 col-md-7 col-sm-12" >
+     <h5 class="tab-head" >Show 
+       <select name="" id="" class="select">
+         <option value="5">05</option>
+         <option value="10">10</option>
+         <option value="15">15</option>
+         <option value="20">20</option>
+       </select>
+       
+       entries</h5>
+     </div>
+    
+       <input class=" search" type="search" placeholder="Search..." aria-label="Search"
+          [(ngModel)]="searchitem">
+     
+     </div>
+    <div class=" table-responsive table-bordered" style="height:300px" >
+      <table class="table table-hove  ">
+        <thead class="text-Black">
+         <th><b>#ID</b></th>
+          <th><b>Employee Position</b></th>
+          <th><b>Employee Type</b></th>
+         <th ><b>Action</b></th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employeeList  |filter:searchitem; let i=index">
+            <td>#0{{i+1}}</td>
+            <td>{{employee.employeePosition}}</td>
+            <td>{{employee.type}}</td>   
+            <td class="td-actions text-left">
+              <button type="button" class="btn btn btn-link btn-just-icon" (click)="Edit(employee, template)">
+                <i class="bi bi-pencil-square edit" style="font-size:16px"></i>
+              </button>
+          
+              <button type="button" class="btn btn-danger btn-link btn-just-icon">
+                <i class="bi bi-trash3-fill delete" style="font-size:16px" (click)="Delete(employee.id)"></i>
+              </button>
+            </td>          
+          </tr>
+          
+        </tbody>
+      </table>
+      
+    </div>
+    <div class="row mt-4">
+      <div class="col-lg-9 col-md-8 col-sm-3">
+          <p style="padding-left: 20px;"><b>Showing 1 to 8 of 8 entries</b></p>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-9">
+         <button type="button" class="btn btn-sm" style="background-color: white; color: black;">Previous</button>
+         <button type="button" class="btn btn-sm" style="background-color: #3366FF;padding-left: 15px; padding-right: 15px;">1</button>
+         <button type="button" class="btn btn-sm" style="background-color: white; color: black;">Next</button>
+      </div>
+  </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Employee Deatails</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+      <form [formGroup]="employeeForm">
+          
+            <div class="form-group">
+              <label class="tcol"><b>Employee Position:</b></label>
+              <input type="text" class="mod-input" placeholder="Employee Position Name" formControlName="employeePosition"
+                  [ngClass]="{'is-invalid': subBtn && f['employeePosition'].errors}">
+              <div *ngIf="subBtn && f['employeePosition'].errors" class="invalid-feedback">
+
+                <div *ngIf="f['employeePosition'].errors['required']">
+                  Employee position is required...!                
+                </div>
+                
+                <!-- <div *ngIf="f['employeePosition'].errors['pattern=[A-Za-z]+$']">
+                   only Alphbate is required...!  
+                </div> -->
+              </div>
+              
+          </div>
+          <div class="form-group">
+              <label class="tcol"><b>Employee Type:</b></label>
+                  <select class="custom-select pl-2" formControlName="type"
+                  [ngClass]="{'is-invalid': subBtn && f['type'].errors}">
+                      <option [disabled]="true" [selected]="true"> Select</option>
+                      <option>Fresher</option>
+                      <option>Junior Software Engineer</option>
+                      <option>Senior Software Engineer</option>
+                  </select>
+                   <div *ngIf="subBtn && f['type'].errors" class="invalid-feedback">
+  
+                  <div *ngIf="f['type'].errors['required']">
+                    Employee type is required!
+                  </div>
+                 </div>
+          </div>
+      </form>
+  </div>
+
+  <div class="modal-footer">
+    <button  type="button"  class="btn close-btn" (click)="closeModal()">
+      Cancle
+    </button>
+    <button *ngIf="editbtn==false" type="button" class="btn sub-btn" (click)="Submit()">
+      Submit
+    </button>
+    <button *ngIf="editbtn==true" type="button" class="btn sub-btn" (click)="Update()">
+      Update
+    </button>
+  </div>
+</ng-template>
+
+</div>
+<!-- 
+      <
 
 <div class="card mt-4">
    <div class="card-header mt-4">
@@ -73,10 +206,10 @@
       </div>
     </div>
   </div>
-  
+
   <ng-template #template>
-    <div class="modal-header">
-      <h4 class="modal-title pull-left tab-head">Technology</h4>
+    <div class="modal-header" style="text-align: center;">
+      <h4 class="modal-title tab-head" >Position</h4>
       <button
         type="button"
         class="btn-close close pull-right"
@@ -89,7 +222,8 @@
   
     <div class="modal-body">
         <form [formGroup]="employeeForm">
-
+           <img [src]="url" class="i1"><br>
+            <input type="file" class="mt-1" (change)="onselectFile($event)">
             <div class="form-group ">
               <label for="text " class=" tab-head">Employee Position</label>
               <div>
@@ -97,7 +231,8 @@
               </div>
               </div>
               <div class="form-group">
-                <select class="custom-select pl-2" name="type" placeholder="Enter Employee Type"  formControlName="type" >
+                <label for="text " class=" tab-head">Employee Type</label>
+                <select class="custom-select pl-2" name="type" placeholder="Enter Employee Type"  formControlName="type"  style="font-size: 15px;">
                   <option value="">Select Employee Type</option>
                   <option *ngFor="let type of types">{{type}}</option>
                 </select>
@@ -107,6 +242,7 @@
 
           </form>
     </div>
+    
   
     <div class="modal-footer">
       <button type="button" class="btn close-btn" (click)="closeModal()">
@@ -120,4 +256,4 @@
       </button>
     </div>
   </ng-template>
-  
+   -->
