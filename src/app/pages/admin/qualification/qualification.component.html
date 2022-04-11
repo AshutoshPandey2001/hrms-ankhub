@@ -22,6 +22,9 @@
     
     <div class="card">
     <div class="card-body">
+      <div class="line">
+        <h4 class="hheader"><b>Qualification Summary</b></h4>
+    </div>
       <div class="row  md-form active-pink active-pink-2 mb-3 mt-0 ">
         <div class="col-lg-9 col-md-7 col-sm-12" >
        <h6 class="tab-head" style="font-weight: 500;">Show 
@@ -39,19 +42,19 @@
             [(ngModel)]="searchitem">
        
        </div>
-      <div class="table-responsive " style="height: 400px; width: auto;">
-        <table class="table table-hove ">
-          <thead class="text-primary">
-           <th>ID</th>
-            <th>Qualification</th>
-           <th >Action</th>
+      <div class="table-responsive table-bordered " style="height: 300px; width: auto;">
+        <table class="table table-hove   ">
+          <thead class="text tcol">
+           <th class="col-lg-1 col-md-1 col-4">ID</th>
+            <th class="col-lg-8 col-md-8 col-4">Qualification</th>
+           <th class="col-lg-3 col-md-3 col-4">Action</th>
           </thead>
           <tbody>
             <tr *ngFor="let qual of qualificationlist  |filter:searchitem; let i=index">
               <td>#0{{i+1}}</td>
               <td>{{qual.qualification}}</td>             
               <td>
-                <button class="btn btn-warning btn-link btn-just-icon" (click)="edit(qual);openModal(template)">
+                <button class="btn btn-warning btn-link btn-just-icon" (click)="edit(qual, template)">
                   <i class="bi bi-pencil-square edit" style="font-size:16px"></i>
                 </button>
             
@@ -64,12 +67,22 @@
           </tbody>
         </table>
       </div>
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-12">
+            <p style="padding-left: 20px;"><b>Showing 1 to 8 of 8 entries</b></p>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12">
+           <button type="button" class="btn btn-sm" style="background-color: white; color: black;">Previous</button>
+           <button type="button" class="btn btn-sm" style="background-color: #3366FF;padding-left: 15px; padding-right: 15px;">1</button>
+           <button type="button" class="btn btn-sm" style="background-color: white; color: black;">Next</button>
+        </div>
+    </div>
     </div>
   </div>
   
   <ng-template #template>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Add Qualification</h4>
+      <h4 class="modal-title pull-left tcol">Add Qualification</h4>
       <button
         type="button"
         class="btn-close close pull-right"
@@ -83,7 +96,7 @@
     <div class="modal-body">
         <form [formGroup]="qualificationForm">
             <div class="form-group">
-                <label class="text-danger"><b>Add Qualification:</b></label>
+                <label class="tcol"><b>Add Qualification:</b></label>
                 <input type="text" class="form-control" placeholder="Enter Qualification" formControlName="qualification" [ngClass]="{'is-invalid': subBtn && f['qualification'].errors}">
                 <div *ngIf="subBtn && f['qualification'].errors"  class="invalid-feedback">
                   <div *ngIf="f['qualification'].errors['required']">
@@ -96,13 +109,13 @@
     </div>
   
     <div class="modal-footer">
-      <button type="button"  class="btn btn-outline-primary" (click)="closeModal()">
-        Cancle
+      <button  type="button"  class="btn btn-outline-primary" (click)="closeModal()">
+        Close
       </button>
       <button *ngIf="editbtn==false" type="button" class="btn btn-success" (click)="submitData()">
         Submit
       </button>
-      <button *ngIf="editbtn==true" type="button" class="btn btn-warning" (click)="UpdateData()">
+      <button *ngIf="editbtn==true" type="button" class="btn btn-success" (click)="UpdateData()">
         Update
       </button>
     </div>
