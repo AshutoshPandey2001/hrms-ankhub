@@ -18,9 +18,10 @@ export const ADMIN_ROUTES: RouteInfo[] = [
 ];
 
 export const SDK_ROUTES: RouteInfo[] = [
+  { path: "layout-structure", title: "Layout Structure", icon: "integration_instructions", class: "" },
   { path: "sdk-comp", title: "COMPONENTS", icon: "widgets", class: "" },
+  { path: "sdk-icons", title: "ICONS", icon: "insert_emoticon", class: "" },
   { path: "sdk-plugins", title: "PLUGINS", icon: "extension", class: "" },
-  { path: "sdk-icons", title: "ICONS", icon: "insert_emoticon", class: "" }
 ];
 
 
