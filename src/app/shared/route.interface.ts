@@ -4,23 +4,9 @@ declare interface RouteInfo {
   icon?: string;
   class?: string;
   display?: boolean;
+  children?:Array<any>;
+  showChildren?:boolean;
 }
-
-export const MAIN_ROUTES: RouteInfo[] = [
-  { path: "admin", title: "Admin", icon: "admin_panel_settings", class: "", display:true },
-  { path: "human-resource", title: "HR", icon: "groups", class: "", display:true },
-  { path: "telecaller", title: "Telecaller", icon: "support_agent", class: "", display:true },
-  { path: "finance", title: "Finance", icon: "savings", class: "", display:true },
-  { path: "user-profile", title: "User Profile", icon: "", class: "", display:false },
-  { path: "dashboard", title: "Dashboard", icon: "dashboard", class: "", display:true },
-  { path: "sdk", title: "SDK", icon: "code", class: "", display:true },
-];
-
-export const SDK_ROUTES: RouteInfo[] = [
-  { path: "sdk-comp", title: "COMPONENTS", icon: "widgets", class: "" },
-  { path: "sdk-plugins", title: "PLUGINS", icon: "extension", class: "" },
-  { path: "sdk-icons", title: "ICONS", icon: "insert_emoticon", class: "" }
-];
 
 export const ADMIN_ROUTES: RouteInfo[] = [
   { path: "courses", title: "Courses", icon: "dvr", class: "" },
@@ -30,6 +16,13 @@ export const ADMIN_ROUTES: RouteInfo[] = [
   { path: "technology", title: "Technology", icon: "biotech", class: "" },
   { path: "qualification", title: "Qualification", icon: "school", class: "" }
 ];
+
+export const SDK_ROUTES: RouteInfo[] = [
+  { path: "sdk-comp", title: "COMPONENTS", icon: "widgets", class: "" },
+  { path: "sdk-plugins", title: "PLUGINS", icon: "extension", class: "" },
+  { path: "sdk-icons", title: "ICONS", icon: "insert_emoticon", class: "" }
+];
+
 
 export const HR_ROUTES: RouteInfo[] = [
   { path: "payslip", title: "Payslip", icon: "receipt", class: "" },
@@ -49,4 +42,14 @@ export const TELECALLER_ROUTES: RouteInfo[] = [
 export const FINANCE_ROUTES: RouteInfo[] = [
   { path: "shares", title: "Accounts", icon: "account_balance_wallet", class: "" },
   { path: "accountingreport", title: "Accounting Report", icon: "analytics", class: "" }
+];
+
+export const MAIN_ROUTES: RouteInfo[] = [
+  { path: "admin", title: "Admin", icon: "admin_panel_settings", class: "", display:true, children:ADMIN_ROUTES, showChildren:false},
+  { path: "human-resource", title: "HR", icon: "groups", class: "", display:true, children:HR_ROUTES, showChildren:false },
+  { path: "telecaller", title: "Telecaller", icon: "support_agent", class: "", display:true, children:TELECALLER_ROUTES, showChildren:false  },
+  { path: "finance", title: "Finance", icon: "savings", class: "", display:true, children:FINANCE_ROUTES, showChildren:false  },
+  { path: "dashboard", title: "Dashboard", icon: "dashboard", class: "", display:true, children:[], showChildren:false  },
+  { path: "sdk", title: "SDK", icon: "code", class: "", display:true, children:SDK_ROUTES, showChildren:false },
+  { path: "user-profile", title: "User Profile", icon: "person", class: "", display:true, children:[], showChildren:false },
 ];
