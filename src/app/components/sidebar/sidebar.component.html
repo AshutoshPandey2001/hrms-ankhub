@@ -24,11 +24,11 @@
         <p>{{ menuItem.title }}</p>
         
       </a>
-      <div *ngIf="menuItem.showChildren" class="sub-menu">
+      <div *ngIf="menuItem.showChildren" class="sub-menu-div">
         <li
           routerLinkActive="active-submenu"
           *ngFor="let subMenu of menuItem.children"
-          class="{{ subMenu.class }} nav-item"
+          class="{{ subMenu.class }} nav-item sub-menu"
         >
           <a
             class="nav-link"

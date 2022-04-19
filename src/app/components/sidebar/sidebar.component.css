@@ -1,8 +1,8 @@
-.sub-menu {
+.sub-menu-div {
   padding-left: 30px;
 }
 
-.sub-menu > li > a:hover {
+.sub-menu-div > li > a:hover {
   background-color: transparent;
   color: #4680ff;
 }
