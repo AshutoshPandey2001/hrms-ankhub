@@ -1,7 +1,24 @@
 .sub-menu {
   padding-left: 30px;
 }
+.sub-menu > li>  a:hover {
+  background-color: transparent;
 
+}
 .active-submenu > a {
   background-color: #eee !important;
 }
+
+.open-menu:before {
+  font-family: 'Material Icons';
+  content: "\e5ce";
+  font-size: 22px;
+  float: right;
+  transition: all 0.5s;
+}
+
+.close-menu:before {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	transform: rotate(180deg);
+} 
