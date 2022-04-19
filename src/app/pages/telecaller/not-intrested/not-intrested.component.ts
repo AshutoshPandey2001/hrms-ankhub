@@ -4,6 +4,7 @@ import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -19,6 +20,15 @@ export class NotIntrestedComponent implements OnInit {
   editbtn=false;
   selectobj:any;
   searchitem='';
+  myFiles:string [] = [];
+  sMsg:string = '';
+
+  selectedFiles = null;
+public imagePath;
+  imgURL: any = "";
+  
+  public message: string;
+
   
   modalRef: BsModalRef;
   config: ModalOptions = {
@@ -27,10 +37,19 @@ export class NotIntrestedComponent implements OnInit {
     ignoreBackdropClick: true, 
     animated: true, 
   };
+  apiDataEmployee: any =[];
+  baseurl="https://hrms-dev-server.herokuapp.com/api/";
+
   
-  constructor(private modalService: BsModalService , private FormBuilder:FormBuilder , private toastr: ToastrService ,private ngxService: NgxUiLoaderService) { 
+  constructor(
+    private modalService: BsModalService , 
+    private FormBuilder:FormBuilder , 
+    private toastr: ToastrService ,
+    private ngxService: NgxUiLoaderService,
+    private httpClient:HttpClient
+    ) { 
     this.notIntrestedForm=this.FormBuilder.group({
-      name:['',[Validators.required]],
+      fname:['',[Validators.required]],
       email:['',[Validators.required ,Validators.email]],
       mobile:['',[Validators.required ,Validators.maxLength(10)]],
       Status:['',[Validators.required]]
@@ -44,6 +63,18 @@ export class NotIntrestedComponent implements OnInit {
   
 
   ngOnInit(): void {
+   this.getAllEmployees()
+  }
+  getAllEmployees(){
+ this.httpClient.get(this.baseurl + 'employee').subscribe(
+   (response)=>{
+     console.log('response', response);
+     this.apiDataEmployee = response["data"];
+   },
+   (error)=>{
+     console.log('error', error);     
+  },
+ )
   }
   openModal(template: TemplateRef<any>) {
     this.subBtn=false;
@@ -58,6 +89,33 @@ export class NotIntrestedComponent implements OnInit {
     
   }
 
+  // getFileDetails (e) {
+  //   //console.log (e.target.files);
+  //   for (var i = 0; i < e.target.files.length; i++) { 
+  //     this.myFiles.push(e.target.files[i]);
+  //   }
+  // }
+
+  // delete(i){
+  //   this.myFiles.splice(i,1);
+  // }
+  // preview(files) {
+  //   if (files.length === 0)
+  //     return;
+  
+  //   var mimeType = files[0].type;
+  //   if (mimeType.match(/image\/*/) == null) {
+  //     this.message = "Only images are supported.";
+  //     return;
+  //   }
+  
+  //   var reader = new FileReader();
+  //   this.imagePath = files;
+  //   reader.readAsDataURL(files[0]); 
+  //   reader.onload = (_event) => { 
+  //     this.imgURL = reader.result; 
+  //   }
+  // }
 
   submitData() {
     this.subBtn=true;
@@ -66,9 +124,10 @@ export class NotIntrestedComponent implements OnInit {
      this.closeModal();
       this.ngxService.start(); 
       setTimeout(() => {
-        this.notIntrestedForm.value.id=this.randomID();
+        this.notIntrestedForm.value.id=this.randomID();      
     this.notIntrestedcandidatelist.push(this.notIntrestedForm.value);
     localStorage.setItem("notIntrestCandidate_LIST" , JSON.stringify(this.notIntrestedcandidatelist));
+    this.createEmployee(this.notIntrestedForm.value)
       this.clear();
       this.toastr.success('Submitted Successfully!', 'Details Valid!');
 
@@ -83,6 +142,55 @@ export class NotIntrestedComponent implements OnInit {
       )
     }
   }
+  createEmployee(value){
+    console.log('value', value)
+    let sendData={
+      employeeID: value.id,
+      employeeName: value.fname,
+      employeeStatus: true
+    }
+    this.httpClient.post(this.baseurl + 'employee',sendData ).subscribe(
+      (response)=>{
+        console.log('response', response)
+        this.getAllEmployees();
+
+      },
+      (error)=>{
+        console.log('error', error)
+
+      },
+    )
+
+  }
+  editemp(data){
+    let sendUrl = this.baseurl + 'employee/' + data._id;
+    console.log('sendUrl', sendUrl)
+    console.log('data', data)
+     this.httpClient.put(sendUrl , {employeeID : "#5"}).subscribe(
+      (response)=>{
+        console.log('response', response)
+        this.getAllEmployees();
+      },
+      (error)=>{
+        console.log('error', error)
+
+      },
+     )
+
+  }
+  delemp(data){
+    let sendUrl = this.baseurl + 'employee/' + data._id;
+    console.log('data', data)
+    this.httpClient.delete(sendUrl).subscribe(
+      (response)=>{
+        console.log('response', response)
+        this.getAllEmployees();
+      },
+      (error)=>{
+        console.log('error', error)
+      },
+     )
+  }
 
 
   UpdateData(){
@@ -92,7 +200,7 @@ export class NotIntrestedComponent implements OnInit {
     this.closeModal();
    this.ngxService.start(); 
    setTimeout(() => {
-    this.notIntrestedcandidatelist[this.selectobj].name=this.notIntrestedForm.value.name; 
+    this.notIntrestedcandidatelist[this.selectobj].fname=this.notIntrestedForm.value.fname; 
     this.notIntrestedcandidatelist[this.selectobj].email=this.notIntrestedForm.value.email; 
     this.notIntrestedcandidatelist[this.selectobj].mobile=this.notIntrestedForm.value.mobile; 
     this.notIntrestedcandidatelist[this.selectobj].Status=this.notIntrestedForm.value.Status; 
@@ -120,7 +228,7 @@ export class NotIntrestedComponent implements OnInit {
           this.modalRef = this.modalService.show(template, this.config);      
     this.selectobj=this.notIntrestedcandidatelist.findIndex((x: any) => x.id === obj.id);
       this.notIntrestedForm.patchValue({
-        name:obj.name,
+        fname:obj.fname,
         email:obj.email,
         mobile:obj.mobile,
         Status:obj.Status

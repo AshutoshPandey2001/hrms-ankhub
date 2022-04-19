@@ -120,7 +120,7 @@ export class NavbarComponent implements OnInit {
 
   getHeaderDetails(param) {
     let locationPath = this.location.path().split("/").pop();
-    console.log('locationPath', locationPath)
+    // console.log('locationPath', locationPath)
     let routeObj = this.listTitles.find((route) => route.path == locationPath);
     if (param == "icon") {
       return routeObj.icon;
