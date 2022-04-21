@@ -55,13 +55,14 @@ export class TechnologyComponent implements OnInit {
 
   closeModal() {
     this.modalRef.hide();
+    this.technoClear()
   }
 
   submitData(){
   this.dataSub = true;
 
   if (this.technoForm.valid){
- this.closeModal();
+    this.modalRef.hide();
    
     this.ngxService.start();
 
@@ -73,7 +74,7 @@ export class TechnologyComponent implements OnInit {
       console.log('table', this.technoList);
      
       this.technoClear()
-      this.toastr.success('sucessfully', 'Submitted');
+      this.toastr.success('sucessfully', ' Technology submitted');
     }, 2000);
    
 }
@@ -81,7 +82,7 @@ else {
  
   Swal.fire(
     'Invalid!',
-    'please try again !!!.',
+    'Pleasr Enter Correct Details!!!.',
     'warning'
   )
  }
@@ -90,12 +91,8 @@ else {
 
 editData(obj:any , template: TemplateRef<any>){
 
-  this.ngxService.start();
-  setTimeout(() => {  
-    this.ngxService.stop();
+
     this.modalRef = this.modalService.show(template, this.config);
-    this.toastr.info('Your Response', 'Edit');
-  }, 2000);
 
   this.selectIndex= this.technoList.findIndex((x : any )=> x.id === obj.id);
   this.technoForm.patchValue({
@@ -116,7 +113,7 @@ updateData(){
       this.technoClear()
       this.ngxService.stop();
       this.isUpdate = false ;
-      this.toastr.success('Successfully', 'Updated');
+      this.toastr.success('Successfully', 'Technology updated');
     }, 2000);
 }
 

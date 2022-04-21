@@ -1,0 +1,8 @@
+[
+    {"id" : 102, "name" : "October Lily" ,"email":"october@gmail.com", "project" : "HRMS", "Status" : "Active"} ,
+    {"id" : 333, "name" : "Jasmine Sheikh" , "email":"jasmine@gmail.com", "project" : "AnkhR", "Status" : "InActive"} ,
+    {"id" : 222, "name" : "hello world" ,"email":"hello@gmail.com",  "project" : "Swiggy", "Status" : "Active"} ,
+    {"id" : 222, "name" : "Marie John" ,"email":"marie@gmail.com",  "project" : "HRMS", "Status" : "InActive"} ,
+    {"id" : 222, "name" : "Coursel Owl" ,"email":"coursel@gmail.com",  "project" : "AnkhR", "Status" : "Active"} 
+]
+
