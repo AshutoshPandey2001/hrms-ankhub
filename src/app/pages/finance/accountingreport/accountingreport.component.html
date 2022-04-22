@@ -1,305 +1,237 @@
-<div class="row header">
-  <div class="col-lg-8 col-md-5 col-sm-4">
-    <h3><b>Client List</b></h3>
+<div class="container-fluid">
+  <div class="row header">
+    <div class="col-lg-8 col-md-5 col-sm-4">
+      <h3><b>Client List</b></h3>
+    </div>
+    <div class="col-lg-4 col-md-7 col-sm-8 justify-content-end down">
+      <button type="button" class="btn btn-submit" (click)="openModal(template)">
+        <i class="bi bi-plus-lg"></i> Add New Client
+      </button>
+      <button type="button" class="btn btn-header">
+        <i class="bi bi-envelope icon-header"></i>
+      </button>
+
+      <button type="button" class="btn btn-header">
+        <i class="bi bi-telephone icon-header"></i>
+      </button>
+
+      <button type="button" class="btn btn-header-2">
+        <i class="bi bi-info-circle icon-header"></i>
+      </button>
+    </div>
   </div>
-  <div class="col-lg-4 col-md-7 col-sm-8 justify-content-end down">
-    <button type="button" class="btn btn-submit">
-      <i class="bi bi-plus-lg"></i> Add New Client
-    </button>
-    <button type="button" class="btn btn-header">
-      <i class="bi bi-envelope icon-header"></i>
-    </button>
 
-    <button type="button" class="btn btn-header">
-      <i class="bi bi-telephone icon-header"></i>
-    </button>
-
-    <button type="button" class="btn btn-header-2">
-      <i class="bi bi-info-circle icon-header"></i>
-    </button>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-body">
-    <h3 class="heading2"><b>Client Summary</b></h3>
-    <form >
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="form-group">
-            <label for="usr" class="input">From:</label>
-            <div class="row">
-              <div class="col-lg-3">
-                <button type="button" class="btn btn-header1">
-                  <i class="bi bi-calendar2 icon-header"> </i>
-                </button>
-              </div>
-              <div class="col-lg-9">
-                <input
-                  type="text"
-                  placeholder="Datepicker"
-                  class="form-control dbt"
-                  bsDatepicker
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="form-group">
-            <label class="input">To:</label>
-            <div class="row">
-              <div class="col-lg-3">
-                <button type="button" class="btn btn-header1">
-                  <i class="bi bi-calendar2 icon-header"> </i>
-                </button>
-              </div>
-              <div class="col-lg-9">
-                <input
-                  class="input-field"
-                  type="text"
-                  placeholder="Datepicker"
-                  class="form-control dbt"
-                  bsDatepicker
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3">
-          <div class="form-group">
-            <label class="input">Select Status:</label>
-            <select class="form-select dbt" aria-label="Default select example">
-              <option hidden>Select Status</option>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="col-lg-3 dbt1">
-          <div class="form-group">
-            <button type="submit" class="btn btn1">Search</button>
-          </div>
-        </div>
-      </div>
-    </form>
-    <hr />
-
-    <div class="row">
-      <div class="col-lg-4 col-md-4 col-4">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="heading2"><b>Client Summary</b></h3>
+      <form>
         <div class="row">
-          <div class="col-lg-4 col-md-4 col-4">Show</div>
-          <div class="col-lg-3 col-md-4 col-4 select">
-            <select class="form-select" aria-label="Default select example">
-              <option hidden>10</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label for="usr" class="input">From:</label>
+              <div class="row">
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-header1">
+                    <i class="bi bi-calendar2 icon-header"> </i>
+                  </button>
+                </div>
+                <div class="col-lg-9">
+                  <input
+                    type="text"
+                    placeholder="Datepicker"
+                    class="form-control dbt"
+                    bsDatepicker
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-lg-4 col-md-4 col-4 font">Entries</div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label class="input">To:</label>
+              <div class="row">
+                <div class="col-lg-3">
+                  <button type="button" class="btn btn-header1">
+                    <i class="bi bi-calendar2 icon-header"> </i>
+                  </button>
+                </div>
+                <div class="col-lg-9">
+                  <input
+                    class="input-field"
+                    type="text"
+                    placeholder="Datepicker"
+                    class="form-control dbt"
+                    bsDatepicker
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label class="input">Select Status:</label>
+              <select
+                class="form-select dbt"
+                aria-label="Default select example"
+              >
+                <option hidden>Select Status</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-lg-3 dbt1">
+            <div class="form-group">
+              <button type="submit" class="btn btn1">Search</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <hr />
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-4">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-4">Show</div>
+            <div class="col-lg-3 col-md-4 col-4 select">
+              <select class="form-select" aria-label="Default select example">
+                <option hidden>10</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="col-lg-4 col-md-4 col-4 font">Entries</div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-4 col-4"></div>
+        <div class="col-lg-3 col-md-4 col-4">
+          <input class="input-field Search" type="text" placeholder="Search" />
         </div>
       </div>
-      <div class="col-lg-5 col-md-4 col-4"></div>
-      <div class="col-lg-3 col-md-4 col-4">
-        <input class="input-field Search" type="text" placeholder="Search" />
-      </div>
+      <br />
+      <table class="table table-bordered table-responsive-sm">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of empolyeeList; let i = index">
+            <td>{{list.employeeID}}</td>
+            <td>{{list.employeeName}}</td>
+            <td>{{list.employeeStatus}}</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-primary btn-link btn-just-icon"
+              >
+                <i class="bi bi-eye-fill" style="font-size: 16px"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-warning btn-link btn-just-icon" (click)="edit(i,list._id,template1)"
+              >
+                <i class="bi bi-pencil-fill" style="font-size: 16px"></i>
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-danger btn-link btn-just-icon" (click)="delete(list._id)"
+              >
+                <i class="bi bi-trash3-fill" style="font-size: 16px"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <br />
-    <table class="table table-bordered table-responsive-sm">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Email ID</th>
-          <th scope="col">Project</th>
-          <th scope="col">Status</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td><img src="../../../../assets/img/img_avatar2.png" alt="Avatar" class="avatar">Utkarsha Nakhate</td>
-          <td>utkarsha@gmail.com</td>
-          <td>1</td>
-          <td><a class="badge badge-success">Paid</a></td>
-          <td>
-            <button type="button" class="btn btn-primary btn-link btn-just-icon">
-              <i class="bi bi-eye-fill" style="font-size:16px"></i>
-            </button>
-
-            <button type="button" class="btn btn-warning btn-link btn-just-icon">
-      <i class="bi bi-pencil-fill" style="font-size:16px"></i>
-    </button>
-
-    <button type="button" class="btn btn-danger btn-link btn-just-icon">
-      <i class="bi bi-trash3-fill" style="font-size:16px"></i>
-    </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td><img src="../../../../assets/img/img_avatar.png" alt="Avatar" class="avatar">Shubham Ramtekkar</td>
-          <td>Shubham@gmail.com</td>
-          <td>2</td>
-          <td><a class="badge badge-danger">Unpaid</a></td>
-          <td>
-            <button type="button" class="btn btn-primary btn-link btn-just-icon">
-              <i class="bi bi-eye-fill" style="font-size:16px"></i>
-            </button>
-            <button type="button" class="btn btn-warning btn-link btn-just-icon">
-      <i class="bi bi-pencil-fill" style="font-size:16px"></i>
-    </button>
-
-    <button type="button" class="btn btn-danger btn-link btn-just-icon">
-      <i class="bi bi-trash3-fill" style="font-size:16px"></i>
-    </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td><img src="../../../../assets/img/img_avatar.png" alt="Avatar" class="avatar">Shubham Ramtekkar</td>
-          <td>Shubham@gmail.com</td>
-          <td>2</td>
-          <td><a class="badge badge-danger">Unpaid</a></td>
-          <td>
-            <button type="button" class="btn btn-primary btn-link btn-just-icon">
-              <i class="bi bi-eye-fill" style="font-size:16px"></i>
-            </button>
-            <button type="button" class="btn btn-warning btn-link btn-just-icon">
-      <i class="bi bi-pencil-fill" style="font-size:16px"></i>
-    </button>
-
-    <button type="button" class="btn btn-danger btn-link btn-just-icon">
-      <i class="bi bi-trash3-fill" style="font-size:16px"></i>
-    </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td><img src="../../../../assets/img/img_avatar2.png" alt="Avatar" class="avatar">Utkarsha Nakhate</td>
-          <td>utkarsha@gmail.com</td>
-          <td>2</td>
-          <td><a class="badge badge-success">paid</a></td>
-          <td>
-            <button type="button" class="btn btn-primary btn-link btn-just-icon">
-              <i class="bi bi-eye-fill" style="font-size:16px"></i>
-            </button>
-            <button type="button" class="btn btn-warning btn-link btn-just-icon">
-      <i class="bi bi-pencil-fill" style="font-size:16px"></i>
-    </button>
-
-    <button type="button" class="btn btn-danger btn-link btn-just-icon">
-      <i class="bi bi-trash3-fill" style="font-size:16px"></i>
-    </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td><img src="../../../../assets/img/img_avatar.png" alt="Avatar" class="avatar">Shubham Ramtekkar</td>
-          <td>Shubham@gmail.com</td>
-          <td>2</td>
-          <td><a class="badge badge-danger">Unpaid</a></td>
-          <td>
-            <button type="button" class="btn btn-primary btn-link btn-just-icon">
-              <i class="bi bi-eye-fill" style="font-size:16px"></i>
-            </button>
-            <button type="button" class="btn btn-warning btn-link btn-just-icon">
-      <i class="bi bi-pencil-fill" style="font-size:16px"></i>
-    </button>
-
-    <button type="button" class="btn btn-danger btn-link btn-just-icon">
-      <i class="bi bi-trash3-fill" style="font-size:16px"></i>
-    </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td><img src="../../../../assets/img/img_avatar2.png" alt="Avatar" class="avatar">Utkarsha Nakhate</td>
-          <td>utkarsha@gmail.com</td>
-          <td>2</td>
-          <td><a class="badge badge-success">paid</a></td>
-          <td>
-            <button type="button" class="btn btn-primary btn-link btn-just-icon">
-              <i class="bi bi-eye-fill" style="font-size:16px"></i>
-            </button>
-            <button type="button" class="btn btn-warning btn-link btn-just-icon">
-      <i class="bi bi-pencil-fill" style="font-size:16px"></i>
-    </button>
-
-    <button type="button" class="btn btn-danger btn-link btn-just-icon">
-      <i class="bi bi-trash3-fill" style="font-size:16px"></i>
-    </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td><img src="../../../../assets/img/img_avatar.png" alt="Avatar" class="avatar">Shubham Ramtekkar</td>
-          <td>Shubham@gmail.com</td>
-          <td>2</td>
-          <td><a class="badge badge-danger">Unpaid</a></td>
-          <td>
-            <button type="button" class="btn btn-primary btn-link btn-just-icon">
-              <i class="bi bi-eye-fill" style="font-size:16px"></i>
-            </button>
-            <button type="button" class="btn btn-warning btn-link btn-just-icon">
-      <i class="bi bi-pencil-fill" style="font-size:16px"></i>
-    </button>
-
-    <button type="button" class="btn btn-danger btn-link btn-just-icon">
-      <i class="bi bi-trash3-fill" style="font-size:16px"></i>
-    </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td><img src="../../../../assets/img/img_avatar2.png" alt="Avatar" class="avatar">Utkarsha Nakhate</td>
-          <td>utkarsha@gmail.com</td>
-          <td>2</td>
-          <td><a class="badge badge-success">paid</a></td>
-          <td>
-            <button type="button" class="btn btn-primary btn-link btn-just-icon">
-              <i class="bi bi-eye-fill" style="font-size:16px"></i>
-            </button>
-            <button type="button" class="btn btn-warning btn-link btn-just-icon">
-      <i class="bi bi-pencil-fill" style="font-size:16px"></i>
-    </button>
-
-    <button type="button" class="btn btn-danger btn-link btn-just-icon">
-      <i class="bi bi-trash3-fill" style="font-size:16px"></i>
-    </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="row">
-      <div class="col-lg-2">
-<label>Showing 1 to 8 of entry</label>
-      </div>
-      <div class="col-lg-5">
-        
-      </div>
-      <div class="col-lg-5" style="margin-left: 945px;margin-top: -35px;">
-        
-        <button type="button" class="btn btn-next" style="width: 100px;">
-          <label>Pervious</label>
-        </button>
-    
-        <button type="button" class="btn" style="background-color: blue;  height: 70%; ">
-          <label style="color: white;">1</label>
-        </button>
-    
-        <button type="button" class="btn btn-next " style="width: 90px;">
-          <label>Next</label>
-        </button>
-      </div>
-    </div>
-
   </div>
 </div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="empolyeeData">
+      <div class="form-group">
+        <label for="usr">ID:</label>
+        <input type="text" class="form-control" id="usr" name="username" formControlName="employeeID">
+      </div>
+      <div class="form-group">
+        <label for="text">Name:</label>
+        <input type="text" class="form-control" id="text" name="name" formControlName="employeeName">
+      </div>
+      <div class="form-group">
+        <label for="text">Status:</label>
+        <input type="text" class="form-control" id="text" name="name" formControlName="employeeStatus">
+      </div>
+      </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">
+      Cancle
+    </button>
+    <button type="button" class="btn btn-success" (click)="submitData()">
+      Submit
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #template1>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Modal</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="empolyeeData">
+      <div class="form-group">
+        <label for="usr">ID:</label>
+        <input type="text" class="form-control" id="usr" name="username" formControlName="employeeID">
+      </div>
+      <div class="form-group">
+        <label for="text">Name:</label>
+        <input type="text" class="form-control" id="text" name="name" formControlName="employeeName">
+      </div>
+      <div class="form-group">
+        <label for="text">Status:</label>
+        <input type="text" class="form-control" id="text" name="name" formControlName="employeeStatus">
+      </div>
+      </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">
+      Cancle
+    </button>
+    <button type="button" class="btn btn-success" (click)="updateData()">
+      Update
+    </button>
+  </div>
+</ng-template>
