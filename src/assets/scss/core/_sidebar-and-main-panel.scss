@@ -163,7 +163,8 @@
             }
 
             &.active > a,
-            &.active > a i{
+            &.active > a i,
+            &.active > a::before{
                 color: $white-color;
             }
 

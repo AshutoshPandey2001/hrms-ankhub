@@ -17,6 +17,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { SdkImageuploaderComponent } from './sdk-comp/sdk-imageuploader/sdk-imageuploader.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SdkMultiplefileComponent } from './sdk-comp/sdk-multiplefile/sdk-multiplefile.component';
+import { FinalStructureComponent } from './final-structure/final-structure.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SdkMultiplefileComponent } from './sdk-comp/sdk-multiplefile/sdk-multip
     SdkIconsComponent,
     SdkDatatableComponent,
     SdkImageuploaderComponent,
-    SdkMultiplefileComponent    
+    SdkMultiplefileComponent,
+    FinalStructureComponent    
   ],
   
   imports: [

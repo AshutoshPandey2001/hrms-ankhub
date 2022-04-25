@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  <div class="row pb-3">
+    <div class="col-lg-12 bg-white border border-white rounded p-3">
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-12 my-auto pb-lg-0 pb-md-0 pb-2">
+          <select class="form-select" id="sel1" name="sellist1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-12 my-auto pb-lg-0 pb-md-0 pb-2">
+          <select class="form-select" id="sel1" name="sellist1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-12 my-auto pb-lg-0 pb-md-0 pb-2">
+          <select class="form-select" id="sel1" name="sellist1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </div>
+
+        <div class="col-lg-3 col-md-12 col-12 my-auto">
+          <button type="button" class="btn btn-primary float-right" (click)="openModal(template)">
+            <i class="bi bi-plus-lg"></i> Add Data
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pb-3">
+    <div class="col-lg-12 p-3">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-12 my-auto">
+          <button type="button" class="btn btn-info float-right">
+            <i class="bi bi-info"></i> 
+          </button>
+          <button type="button" class="btn btn-success float-right">
+            <i class="bi bi-telephone"></i> 
+          </button>
+          <button type="button" class="btn btn-danger float-right">
+            <i class="bi bi-envelope"></i> 
+          </button>
+          <button type="button" class="btn btn-primary float-right" (click)="openModal(template)">
+            <i class="bi bi-plus"></i> Add Data
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 bg-white border border-white rounded p-3">
+      <app-sdk-crud></app-sdk-crud>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button
+      type="button"
+      class="btn btn-danger pull-right"
+      aria-label="Close"
+      (click)="closeModal()"
+    >
+      Close
+    </button>
+  </div>
+
+  <div class="modal-body">This is a modal.</div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">
+      Cancle
+    </button>
+    <button type="button" class="btn btn-success" (click)="submitData()">
+      Submit
+    </button>
+  </div>
+</ng-template>

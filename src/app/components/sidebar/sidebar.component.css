@@ -1,0 +1,34 @@
+.sub-menu-div {
+  padding-left: 30px;
+}
+
+.sub-menu-div > li > a:hover {
+  background-color: transparent;
+  color: #4680ff;
+}
+
+.active-submenu > a {
+  color: #4680ff;
+  font-weight: bold;
+  background: transparent;
+}
+
+.active-submenu > a > i {
+  color: #4680ff !important;
+}
+
+.open-menu:before {
+  font-family: "Material Icons";
+  content: "\e313";
+  font-size: 22px;
+  color: gray;
+  float: right;
+  transition: all 0.5s;
+}
+
+.close-menu:before {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
