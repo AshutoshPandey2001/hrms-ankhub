@@ -1,23 +1,16 @@
 
-  <div class="row header">
-    <div class=" col-lg-8 col-md-5 col-sm-4"> 
-     
+
+
+<div class="row pt-2">
+  <div class="col-lg-12 pt-2">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-12 my-auto">
+       
+        <button type="button" class="btn btn-primary float-right" (click)="openModal(template)">
+          <i class="bi bi-plus"></i> Add Data
+        </button>
+      </div>
     </div>
-   <div class="col-lg-4 col-md-7  col-sm-8  justify-content-end header-btn">
-    <button type="button" class="btn submit-btn"   (click)="openModal(template)">
-      <i class="bi bi-plus-lg "></i> Add Technology
-    </button>
-    <button type="button" class="btn btn-header" >
-      <i class="bi bi-envelope icon-header" ></i> 
-    </button>
-
-    <button type="button" class="btn btn-header" >
-      <i class="bi bi-telephone icon-header" ></i> 
-    </button>
-
-    <button type="button" class="btn btn-header-2"  >
-      <i class="bi bi-info-circle icon-header" ></i> 
-    </button>
   </div>
 </div>
 
@@ -26,101 +19,97 @@
   
     <div class="card-body">
         
-      <div class="row ">
-       <div class="col-lg-9 col-md-9 col-sm-5"  >
-      <h6 class="tab-head" style="font-weight: 500;">Show 
-        <select name="" id="" class="select">
-          <option value="5">05</option>
-          <option value="10">10</option>
-          <option value="15">15</option>
-          <option value="20">20</option>
-        </select>
-        
-        entries</h6>
-      </div>
-      <div class="col-lg-3 col-md-3 col-sm-7"  >
-        <input class=" search" type="search" placeholder="Search..." aria-label="Search"
-           [(ngModel)]="searchKey">
-      </div>
-      </div>
-
-
-      <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="height: 250px;">
+   
+      <div class="table-responsive" style="height: 250px;">
         <table class="table table-hove">
-          <thead class="" >
-            
-            <th class="col-lg-8 tab-head">Technology</th>
-          
-            <th class="col-lg-4 tab-head">Actions</th>
+          <thead class="text-primary">
+            <th class="col-lg-4 col-md-4 col-4">ID</th>
+            <th class="col-lg-4 col-md-4 col-4">Technology</th>
+            <th class="col-lg-4 col-md-4 col-4">Action</th>
+           
           </thead>
           <tbody>
-           
-                <tr *ngFor="let tab of technoList |filter:searchKey ;let i=index">
-
-                    <td>{{tab.technoText}}</td>
-               
+            <tr *ngFor="let tab of technoList;let i=index">
+              <td >{{tab.technologyID}}</td>
+              <td >{{tab.technologyName}}</td>
+             
+            
               <td class="td-actions text-left">
-                <button type="button" class="btn btn btn-link btn-just-icon" (click)="editData(tab,template)">
-                  <i class="bi bi-pencil-square edit" style="font-size:16px"></i>
+                <button type="button" class="btn btn-warning btn-link btn-just-icon" (click)="edit(i,tab._id,template)">
+                  <i class="bi bi-pencil-fill" style="font-size:16px"></i>
                 </button>
             
-                <button type="button" class="btn btn-danger btn-link btn-just-icon">
-                  <i class="bi bi-trash3-fill delete" style="font-size:16px" (click)="deleteData(tab.id)"></i>
+                <button type="button" class="btn btn-danger btn-link btn-just-icon" (click)="delete(tab._id)">
+                  <i class="bi bi-trash3-fill" style="font-size:16px"></i>
                 </button>
               </td>
             </tr>
-           
-            
+     
           </tbody>
         </table>
       </div>
+
     </div>
   </div>
   
   <ng-template #template>
+  
     <div class="modal-header">
-      <h4 class="modal-title pull-left tab-head">Technology</h4>
-      <button
-        type="button"
-        class="btn-close close pull-right"
-        aria-label="Close"
-        (click)="closeModal()"
-      >
-        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      <h4 class="modal-title pull-left">Technology</h4>
+      <button type="button" class="btn btn-danger pull-right" aria-label="Close" (click)="closeModal()"  (click)="technoClear()">
+        Close
       </button>
     </div>
-  
+
     <div class="modal-body">
         <form [formGroup]="technoForm">
+          <div class="form-group ">
+            <label for="text " class=" tab-head">ID</label>
+            <div>
+            <input type="text" class="mod-input" placeholder="ID" formControlName="technologyID"
+            [ngClass]="{'is-invalid' : technoSub && t['technologyID'].errors }">
+            <div *ngIf="technoSub && t['technologyID'].errors" class="invalid-feedback">
+
+              <div *ngIf="technoSub && t['technologyID'].errors['required']">
+                Text is required
+              </div>
+              </div>
+            </div>
+          </div>
 
             <div class="form-group ">
               <label for="text " class=" tab-head">Technology</label>
               <div>
-              <input type="text" class="mod-input" placeholder="Technology" formControlName="technoText"
-              [ngClass]="{'is-invalid' : technoSub && t['technoText'].errors }">
-              <div *ngIf="technoSub && t['technoText'].errors" class="invalid-feedback">
+              <input type="text" class="mod-input" placeholder="Technology" formControlName="technologyName"
+              [ngClass]="{'is-invalid' : technoSub && t['technologyName'].errors }">
+              <div *ngIf="technoSub && t['technologyName'].errors" class="invalid-feedback">
 
-                <div *ngIf="technoSub && t['technoText'].errors['required']">
+                <div *ngIf="technoSub && t['technologyName'].errors['required']">
                   Text is required
                 </div>
                 </div>
               </div>
             </div>
 
-
+       
           </form>
     </div>
+
+
+
+  
   
     <div class="modal-footer">
-      <button type="button" class="btn close-btn" (click)="closeModal()">
-        Close
+      <button type="button" class="btn btn-secondary" (click)="closeModal()" (click)="technoClear()">
+        Cancle
       </button>
-      <button type="button" *ngIf="isUpdate==false" class="btn submit-btn" (click)="submitData()">
+      <button type="button" *ngIf="isUpdate==false" class="btn btn-success" (click)="submitData()">
         Submit
       </button>
-      <button type="button"  *ngIf="isUpdate==true" class="btn submit-btn" (click)="updateData()">
+      <button type="button"  *ngIf="isUpdate==true" class="btn btn-success" (click)="updateData(i)">
         Update
       </button>
     </div>
+    
   </ng-template>
   
