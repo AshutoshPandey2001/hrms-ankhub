@@ -37,8 +37,17 @@
             <p class="d-inline-block">
               {{ subMenu.title }}
             </p>
-            <span class="badge bg-success ms-2" [ngClass]="{'bg-danger': subMenu.apiStatus === 'todo', 'bg-warning' : subMenu.apiStatus === 'inprogress', 'bg-success' : subMenu.apiStatus === 'done' }"
-            >API</span>
+            <span
+              class="badge bg-success ms-2"
+              [ngClass]="{
+                'bg-secondary': subMenu.apiStatus === 0,
+                'bg-primary': subMenu.apiStatus === 1,
+                'bg-success': subMenu.apiStatus === 2,
+                'bg-warning': subMenu.apiStatus === 3,
+                'bg-danger': subMenu.apiStatus === 4
+              }"
+              >API</span
+            >
           </a>
         </li>
       </div>

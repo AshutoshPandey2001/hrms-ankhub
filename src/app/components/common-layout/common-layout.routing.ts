@@ -20,17 +20,17 @@ const routes: Routes = [
           import(`../../pages/admin/admin.module`).then((m) => m.AdminModule),
       },
       {
-        path: "human-resource",
-        loadChildren: () =>
-          import(`../../pages/human-resource/human-resource.module`).then(
-            (m) => m.HumanResourceModule
-          ),
-      },
-      {
         path: "telecaller",
         loadChildren: () =>
           import(`../../pages/telecaller/telecaller.module`).then(
             (m) => m.TelecallerModule
+          ),
+      },
+      {
+        path: "human-resource",
+        loadChildren: () =>
+          import(`../../pages/human-resource/human-resource.module`).then(
+            (m) => m.HumanResourceModule
           ),
       },
       {
