@@ -34,10 +34,13 @@ export class PositionComponent implements OnInit {
 //   types=['Fresher','Junior Software Engineer','Senior Software Engineer'] 
 
    constructor(private FormBuilder: FormBuilder,private modalService: BsModalService,private ngxService: NgxUiLoaderService,private toastr: ToastrService,private http: HttpClient) {
-    this.employeeForm=this.FormBuilder.group({
-      PositionID:['',[Validators.required]],
-      positionName:['',[Validators.required]],
-      positionStatus:['',[Validators.required]]
+    // this.employeeForm=this.FormBuilder.group({
+    //   PositionID:['',[Validators.required]],
+    //   positionName:['',[Validators.required]],
+    //   positionStatus:['',[Validators.required]]
+    this.employeeForm = FormBuilder.group({
+            employeePosition : ['',[Validators .required]],
+            type:['',[Validators .required]]
     })
     let data= localStorage.getItem("Employee_LIST");
     if(data){
@@ -56,18 +59,18 @@ export class PositionComponent implements OnInit {
 //    }
 
  ngOnInit(): void {
-  this.getAllemployee();
+  // this.getAllemployee();
   }
-  getAllemployee() {
-    this.http.get("https://hrms-dev-server.herokuapp.com/api/position").subscribe(
-        (response: any) => {
-          this.employeeList = response.data;
-        },
-        (error) => {
-          console.log("error", error);
-        }
-      );
-  }
+  // getAllemployee() {
+  //   this.http.get("https://hrms-dev-server.herokuapp.com/api/position").subscribe(
+  //       (response: any) => {
+  //         this.employeeList = response.data;
+  //       },
+  //       (error) => {
+  //         console.log("error", error);
+  //       }
+  //     );
+  // }
 
   openModal(template: TemplateRef<any>) {
     this.subBtn=false;
