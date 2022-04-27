@@ -1,4 +1,137 @@
-<div class="fluid-container">
+<div class="container-fluid">
+  <div class="row pb-3">
+    <div class="col-lg-12 bg-white border border-white rounded p-3">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-12 my-auto">
+          <button type="button" class="btn btn-primary float-right"  (click)="openModal(template)">
+            <i class="bi bi-plus-lg"></i> Add Data
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pb-3">
+    <div class="col-lg-12 p-3">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-12 my-auto">
+          <button type="button" class="btn btn-info float-right">
+            <i class="bi bi-info"></i> 
+          </button>
+          <button type="button" class="btn btn-success float-right">
+            <i class="bi bi-telephone"></i> 
+          </button>
+          <button type="button" class="btn btn-danger float-right">
+            <i class="bi bi-envelope"></i> 
+          </button>
+          <button type="button" class="btn btn-primary float-right"  (click)="openModal(template)">
+            <i class="bi bi-plus"></i> Add Data
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 bg-white border border-white rounded p-3">
+      <!-- <app-sdk-crud></app-sdk-crud> -->
+      <div class=" table-responsive table-bordered" style="height:300px" >
+        <table class="table table-hove  ">
+          <thead class="text-Black">
+           <th><b>#ID</b></th>
+            <th><b>Employee Position</b></th>
+            <th><b>Employee Type</b></th>
+           <th ><b>Action</b></th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employeeList  |filter:searchitem; let i=index">
+              <td>#0{{i+1}}</td>
+              <td>{{employee.employeePosition}}</td>
+              <td>{{employee.type}}</td>   
+              <td class="td-actions text-left">
+                <button type="button" class="btn btn btn-link btn-just-icon" (click)="Edit(employee, template)">
+                  <i class="bi bi-pencil-square edit" style="font-size:16px"></i>
+                </button>
+            
+                <button type="button" class="btn btn-danger btn-link btn-just-icon mt-3">
+                  <i class="bi bi-trash3-fill delete" style="font-size:16px" (click)="Delete(employee.id)"></i>
+                </button>
+              </td>          
+            </tr>
+            
+          </tbody>
+        </table>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Employee Deatails</h4>
+    <button
+      type="button"
+      class="btn btn-danger pull-right"
+      aria-label="Close"
+      (click)="closeModal()"
+    >
+     Close
+    </button>
+  </div>
+
+  <div class="modal-body">
+      <form [formGroup]="employeeForm">
+          
+            <div class="form-group">
+              <label class="tcol"><b>Employee Position:</b></label>
+              <input type="text" class="mod-input" placeholder="Employee Position Name" formControlName="employeePosition"
+                  [ngClass]="{'is-invalid': subBtn && f['employeePosition'].errors}">
+              <div *ngIf="subBtn && f['employeePosition'].errors" class="invalid-feedback">
+
+                <div *ngIf="f['employeePosition'].errors['required']">
+                  Employee position is required...!                
+                </div>
+                
+                <!-- <div *ngIf="f['employeePosition'].errors['pattern=[A-Za-z]+$']">
+                   only Alphbate is required...!  
+                </div> -->
+               </div>
+              
+          </div>
+          <div class="form-group">
+              <label class="tcol"><b>Employee Type:</b></label>
+                  <select class="custom-select pl-2" formControlName="type"
+                  [ngClass]="{'is-invalid': subBtn && f['type'].errors}">
+                      <option [disabled]="true" [selected]="true"> Select</option>
+                      <option>Fresher</option>
+                      <option>Junior Software Engineer</option>
+                      <option>Senior Software Engineer</option>
+                  </select>
+                   <div *ngIf="subBtn && f['type'].errors" class="invalid-feedback">
+  
+                  <div *ngIf="f['type'].errors['required']">
+                    Employee type is required!
+                  </div>
+                 </div>
+          </div>
+      </form>
+  </div>
+
+  <div class="modal-footer">
+    <button  type="button"  class="btn  btn-secondary " (click)="closeModal()">
+      Close
+    </button>
+    <button *ngIf="editbtn==false" type="button" class="btn   btn-success" (click)="Submit()">
+      Submit
+    </button>
+    <button *ngIf="editbtn==true" type="button" class="btn   btn-success" (click)="Update()">
+      Update
+    </button>
+  </div>
+</ng-template>
+
+<!-- <div class="fluid-container">
 <div class="row">
         <div class=" col-lg-8 col-md-6 col-sm-12"> 
           <h4 class="size mt-4" style="margin-left:3%;"><b>Position</b></h4>
@@ -112,10 +245,10 @@
                   Employee position is required...!                
                 </div>
                 
-                <!-- <div *ngIf="f['employeePosition'].errors['pattern=[A-Za-z]+$']">
+              --------  <!-- <div *ngIf="f['employeePosition'].errors['pattern=[A-Za-z]+$']">
                    only Alphbate is required...!  
-                </div> -->
-              </div>
+                </div> 
+              <!-- </div>
               
           </div>
           <div class="form-group">
@@ -150,7 +283,7 @@
   </div>
 </ng-template>
 
-</div>
+</div> -->
 <!-- 
       <
 

@@ -4,6 +4,7 @@ import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import Swal from 'sweetalert2';
 import { ToastrService } from 'ngx-toastr';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-position',
   templateUrl: './position.component.html',
@@ -32,10 +33,11 @@ export class PositionComponent implements OnInit {
 //   loaDing = false;
 //   types=['Fresher','Junior Software Engineer','Senior Software Engineer'] 
 
-   constructor(private FormBuilder: FormBuilder,private modalService: BsModalService,private ngxService: NgxUiLoaderService,private toastr: ToastrService) {
+   constructor(private FormBuilder: FormBuilder,private modalService: BsModalService,private ngxService: NgxUiLoaderService,private toastr: ToastrService,private http: HttpClient) {
     this.employeeForm=this.FormBuilder.group({
-      employeePosition:['',[Validators.required]],
-      type:['',[Validators.required]]
+      PositionID:['',[Validators.required]],
+      positionName:['',[Validators.required]],
+      positionStatus:['',[Validators.required]]
     })
     let data= localStorage.getItem("Employee_LIST");
     if(data){
@@ -54,7 +56,19 @@ export class PositionComponent implements OnInit {
 //    }
 
  ngOnInit(): void {
+  this.getAllemployee();
   }
+  getAllemployee() {
+    this.http.get("https://hrms-dev-server.herokuapp.com/api/position").subscribe(
+        (response: any) => {
+          this.employeeList = response.data;
+        },
+        (error) => {
+          console.log("error", error);
+        }
+      );
+  }
+
   openModal(template: TemplateRef<any>) {
     this.subBtn=false;
     this.clear();
