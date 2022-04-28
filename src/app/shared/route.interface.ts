@@ -22,7 +22,7 @@ export const ADMIN_ROUTES: RouteInfo[] = [
   { path: "grade-level", title: "Grade Level", icon: "equalizer", class: "", apiStatus:1},
   { path: "position", title: "Position", icon: "star_border", class: "", apiStatus:1 },
   { path: "technology", title: "Technology", icon: "biotech", class: "", apiStatus:1 },
-  { path: "qualification", title: "Qualification", icon: "school", class: "", apiStatus:1 }
+  { path: "qualification", title: "Qualification", icon: "school", class: "", apiStatus:2 }
 ];
 
 export const TELECALLER_ROUTES: RouteInfo[] = [

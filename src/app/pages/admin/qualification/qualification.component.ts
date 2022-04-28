@@ -4,6 +4,7 @@ import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -17,7 +18,8 @@ export class QualificationComponent implements OnInit {
   qualificationlist:any=[''];
   subBtn=false;
   editbtn=false;
-  selectobj:any;
+  selectId='';
+  newIndex='';
   searchitem='';
   
   modalRef: BsModalRef;
@@ -27,10 +29,19 @@ export class QualificationComponent implements OnInit {
     ignoreBackdropClick: true, 
     animated: true, 
   };
-  
-  constructor(private modalService: BsModalService , private FormBuilder:FormBuilder , private toastr: ToastrService ,private ngxService: NgxUiLoaderService) { 
+  baseurl="https://hrms-dev-server.herokuapp.com/api/";
+
+  constructor(private modalService: BsModalService ,
+     private FormBuilder:FormBuilder ,
+      private toastr: ToastrService ,
+      private ngxService: NgxUiLoaderService,
+      private httpClient:HttpClient
+
+      ) { 
     this.qualificationForm=this.FormBuilder.group({
-      qualification:['',[Validators.required]]
+      qualificationName:['',[Validators.required]],
+      qualificationID:['',[Validators.required]]
+
     })
 
     let data= localStorage.getItem("Qualification_LIST");
@@ -41,7 +52,21 @@ export class QualificationComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.getAllQualification()
+
   }
+  getAllQualification(){
+    this.httpClient.get(this.baseurl + 'qualification').subscribe(
+      (response)=>{
+        console.log('response', response);
+        this.qualificationlist = response["data"];
+      },
+      (error)=>{
+        console.log('error', error);     
+     },
+    )
+     }
+
   openModal(template: TemplateRef<any>) {
     this.subBtn=false;
     this.clear();
@@ -63,6 +88,17 @@ export class QualificationComponent implements OnInit {
       setTimeout(() => {
         this.qualificationForm.value.id=this.randomID();
     this.qualificationlist.push(this.qualificationForm.value);
+
+    this.httpClient.post(this.baseurl + 'qualification' , this.qualificationForm.value).subscribe(
+      (response)=>{
+        console.log('response', response);
+        this.getAllQualification();
+      },
+      (error)=>{
+        console.log('error', error);     
+     },
+    )
+
     localStorage.setItem("Qualification_LIST" , JSON.stringify(this.qualificationlist));
       this.clear();
       this.toastr.success('Submitted Successfully!', 'Details Valid!');
@@ -87,7 +123,19 @@ export class QualificationComponent implements OnInit {
     this.closeModal();
    this.ngxService.start(); 
    setTimeout(() => {
-    this.qualificationlist[this.selectobj].qualification=this.qualificationForm.value.qualification; 
+    let sendUrl = this.baseurl + 'qualification/' + this.selectId;
+    this.httpClient.put(sendUrl, this.qualificationForm.value).subscribe(
+      (response)=>{
+        console.log('response', response)
+        this.getAllQualification();
+      },
+      (error)=>{
+        console.log('error', error)
+      },
+     )
+    // this.qualificationlist[this.selectId].qualificationName=this.qualificationForm.value.qualificationName; 
+    // this.qualificationlist[this.selectId].qualificationID=this.qualificationForm.value.qualificationID; 
+
     localStorage.setItem("Qualification_LIST" , JSON.stringify(this.qualificationlist));
     this.toastr.success('Updated Successfully!', 'Details Valid!');
     
@@ -106,19 +154,34 @@ export class QualificationComponent implements OnInit {
   }
 
 
-  edit(obj:any , template: TemplateRef<any>){
-    
+  edit(i,data, template1:TemplateRef<any>){
+    this.selectId=data._id;
+    console.log('selectId', this.selectId)
+    this.newIndex=i;
     this.editbtn=true;
-    this.modalRef = this.modalService.show(template, this.config);
-
-    this.selectobj=this.qualificationlist.findIndex((x: any) => x.id === obj.id);
+    this.modalRef = this.modalService.show(template1, this.config);
     this.qualificationForm.patchValue({
-      qualification:obj.qualification
+      qualificationName:this.qualificationlist[i].qualificationName,
+      qualificationID: this.qualificationlist[i].qualificationID
     })
   }
 
+  // edit(obj:any , template1: TemplateRef<any> , data){
+    
+  //   this.editbtn=true;
+  //   this.modalRef = this.modalService.show(template1, this.config);
 
-  delqual(id:any){
+  //   this.selectId=data._id;
+  //   // this.qualificationlist.findIndex((x: any) => x.id === obj.id);
+  //   this.qualificationForm.patchValue({
+  //     qualificationName:obj.qualificationName,
+  //     qualificationID: obj.qualificationID
+  //   })
+  // }
+
+
+  delqual(data){
+
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -134,8 +197,21 @@ export class QualificationComponent implements OnInit {
       if (result.isConfirmed) {
         this.ngxService.start(); 
    setTimeout(() => {
-    this.selectobj=this.qualificationlist.findIndex((x: any) => x.id === id);
-    this.qualificationlist.splice(this.selectobj,1);
+
+    // this.selectId=this.qualificationlist.findIndex((x: any) => x.id === id);
+    // this.qualificationlist.splice(this.selectId,1);
+    let sendUrl = this.baseurl + 'qualification/' + data._id;
+
+    this.httpClient.delete(sendUrl).subscribe(
+      (response)=>{
+        console.log('response', response)
+        this.getAllQualification();
+      },
+      (error)=>{
+        console.log('error', error)
+      },
+     )
+
 localStorage.setItem("Qualification_LIST" , JSON.stringify(this.qualificationlist));
     this.ngxService.stop(); 
     Swal.fire(
