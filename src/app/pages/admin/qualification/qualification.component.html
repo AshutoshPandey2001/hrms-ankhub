@@ -23,7 +23,7 @@
   <div class="col-lg-12 p-3">
     <div class="row">
       <div class="col-lg-12 col-md-12 col-12 my-auto">
-        <button type="button" class="btn btn-info float-right">
+        <!-- <button type="button" class="btn btn-info float-right">
           <i class="bi bi-info"></i> 
         </button>
         <button type="button" class="btn btn-success float-right">
@@ -31,7 +31,7 @@
         </button>
         <button type="button" class="btn btn-danger float-right">
           <i class="bi bi-envelope"></i> 
-        </button>
+        </button> -->
         <button type="button" class="btn btn-primary float-right" (click)="openModal(template)">
           <i class="bi bi-plus"></i> Add Qualification
         </button>
@@ -43,7 +43,7 @@
     <div class="card-body"> -->
       <div class="row">
         <div class="col-lg-12 bg-white border border-white rounded p-3">
-      <div class="line">
+      <!-- <div class="line">
         <h4 class="hheader"><b>Qualification Summary</b></h4>
     </div>
       <div class="row  md-form active-pink active-pink-2 mb-3 mt-0 ">
@@ -62,10 +62,10 @@
          <input class=" search" type="search" placeholder="Search..." aria-label="Search"
             [(ngModel)]="searchitem">
        
-       </div>
-      <div class="table-responsive table-bordered " style="height: 300px; width: auto;">
+       </div> -->
+      <div class="table-responsive" style="height: 300px; width: auto;">
         <table class="table table-hove   ">
-          <thead class="text tcol">
+          <thead class="text-primary">
            <th class="col-lg-1 col-md-1 col-4">ID</th>
             <th class="col-lg-8 col-md-8 col-4">Qualification</th>
            <th class="col-lg-3 col-md-3 col-4">Action</th>
@@ -75,12 +75,12 @@
               <td>#0{{qual.qualificationID}}</td>
               <td>{{qual.qualificationName}}</td>             
               <td>
-                <button class="btn btn-warning btn-link btn-just-icon" (click)="edit(qual, template)">
-                  <i class="bi bi-pencil-square edit" style="font-size:16px"></i>
+                <button class="btn btn-warning btn-link btn-just-icon" (click)="edit(i,qual,template1)">
+                  <i class="bi bi-pencil" style="font-size:16px"></i>
                 </button>
             
-                <button  class="btn btn-danger btn-link btn-just-icon" (click)="delqual(qual.id)">
-                  <i class="bi bi-trash3-fill delete" style="font-size:16px"></i>
+                <button  class="btn btn-danger btn-link btn-just-icon" (click)="delqual(qual)">
+                  <i class="bi bi-trash3-fill " style="font-size:16px"></i>
                 </button>
               </td>
             </tr>
@@ -88,7 +88,7 @@
           </tbody>
         </table>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-lg-9 col-md-8 col-sm-12">
             <p style="padding-left: 20px;"><b>Showing 1 to 8 of 8 entries</b></p>
         </div>
@@ -97,7 +97,7 @@
            <button type="button" class="btn btn-sm" style="background-color: #3366FF;padding-left: 15px; padding-right: 15px;">1</button>
            <button type="button" class="btn btn-sm" style="background-color: white; color: black;">Next</button>
         </div>
-    </div>
+    </div> -->
     </div>
   </div>
 </div>
@@ -149,6 +149,60 @@
       <button *ngIf="editbtn==false" type="button" class="btn btn-success" (click)="submitData()">
         Submit
       </button>
+      <!-- <button *ngIf="editbtn==true" type="button" class="btn btn-success" (click)="UpdateData()">
+        Update
+      </button> -->
+    </div>
+  </ng-template>
+
+
+  <ng-template #template1>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left tcol">Edit Qualification</h4>
+      <button
+        type="button"
+        class="btn btn-danger pull-right"
+        aria-label="Close"
+        (click)="closeModal()"
+      >Close
+      
+        <!-- <span aria-hidden="true" class="visually-hidden">&times;</span> -->
+      </button>
+    </div>
+  
+    <div class="modal-body">
+        <form [formGroup]="qualificationForm">
+          <div class="form-group">
+            <label class="tcol"><b>ID:</b></label>
+            <input type="number" class="form-control" placeholder="Enter Qualification" formControlName="qualificationID" [ngClass]="{'is-invalid': subBtn && f['qualificationID'].errors}">
+            <div *ngIf="subBtn && f['qualificationID'].errors"  class="invalid-feedback">
+              <div *ngIf="f['qualificationID'].errors['required']">
+                Id Is required
+              </div>
+              
+            </div>
+          </div>
+            <div class="form-group">
+                <label class="tcol"><b>Qualification:</b></label>
+                <input type="text" class="form-control" placeholder="Enter Qualification" formControlName="qualificationName" [ngClass]="{'is-invalid': subBtn && f['qualificationName'].errors}">
+                <div *ngIf="subBtn && f['qualificationName'].errors"  class="invalid-feedback">
+                  <div *ngIf="f['qualificationName'].errors['required']">
+                    Qualification Is required
+                  </div>
+                  
+                </div>
+              </div>
+        </form>
+    </div>
+    
+  
+    <div class="modal-footer">
+      <button  type="button"  class="btn btn-secondary" (click)="closeModal()">
+        Close
+      </button>
+      <!-- <button *ngIf="editbtn==false" type="button" class="btn btn-success" (click)="submitData()">
+        Submit
+      </button> -->
       <button *ngIf="editbtn==true" type="button" class="btn btn-success" (click)="UpdateData()">
         Update
       </button>
