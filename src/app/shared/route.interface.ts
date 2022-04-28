@@ -22,22 +22,24 @@ export const ADMIN_ROUTES: RouteInfo[] = [
   { path: "grade-level", title: "Grade Level", icon: "equalizer", class: "", apiStatus:1},
   { path: "position", title: "Position", icon: "star_border", class: "", apiStatus:1 },
   { path: "technology", title: "Technology", icon: "biotech", class: "", apiStatus:2 },
-  { path: "qualification", title: "Qualification", icon: "school", class: "", apiStatus:1 }
+  { path: "qualification", title: "Qualification", icon: "school", class: "", apiStatus:1 },
+  { path: "technology", title: "Technology", icon: "biotech", class: "", apiStatus:1 },
+  { path: "qualification", title: "Qualification", icon: "school", class: "", apiStatus:2 }
 ];
 
 export const TELECALLER_ROUTES: RouteInfo[] = [
-  { path: "candidate-list", title: "Candidate List", icon: "contact_phone", class: "", apiStatus:3 },
-  { path: "scheduled", title: "Scheduled", icon: "add_ic_call", class: "", apiStatus:0 },
-  { path: "intrested", title: "Intrested", icon: "thumb_up", class: "", apiStatus:0 },
-  { path: "not-intrested", title: "Not Intrested", icon: "thumb_down", class: "", apiStatus:0 },
-  { path: "on-hold", title: "On Hold", icon: "phone_paused", class: "", apiStatus:0 },
-  { path: "not-recived", title: "Not Recived", icon: "phone_missed", class: "", apiStatus:0 },
+  { path: "candidate-list", title: "Candidate List", icon: "contact_phone", class: "", apiStatus:1 },
+  { path: "scheduled", title: "Scheduled", icon: "add_ic_call", class: "", apiStatus:1 },
+  { path: "intrested", title: "Intrested", icon: "thumb_up", class: "", apiStatus:1 },
+  { path: "not-intrested", title: "Not Intrested", icon: "thumb_down", class: "", apiStatus:1 },
+  { path: "on-hold", title: "On Hold", icon: "phone_paused", class: "", apiStatus:1 },
+  { path: "not-recived", title: "Not Recived", icon: "phone_missed", class: "", apiStatus:1 },
 ];
 
 export const HR_ROUTES: RouteInfo[] = [
-  { path: "payslip", title: "Payslip", icon: "receipt", class: "", apiStatus:0 },
-  { path: "leave-request", title: "Leave Request", icon: "touch_app", class: "", apiStatus:0 },
-  { path: "event-organization", title: "Event Organization", icon: "celebration", class: "", apiStatus:0 }
+  { path: "payslip", title: "Payslip", icon: "receipt", class: "", apiStatus:3 },
+  { path: "leave-request", title: "Leave Request", icon: "touch_app", class: "", apiStatus:3 },
+  { path: "event-organization", title: "Event Organization", icon: "celebration", class: "", apiStatus:3 }
 ];
 
 export const FINANCE_ROUTES: RouteInfo[] = [
