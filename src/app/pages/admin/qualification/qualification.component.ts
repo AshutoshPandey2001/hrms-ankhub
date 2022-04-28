@@ -4,6 +4,7 @@ import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -27,10 +28,19 @@ export class QualificationComponent implements OnInit {
     ignoreBackdropClick: true, 
     animated: true, 
   };
-  
-  constructor(private modalService: BsModalService , private FormBuilder:FormBuilder , private toastr: ToastrService ,private ngxService: NgxUiLoaderService) { 
+  baseurl="https://hrms-dev-server.herokuapp.com/api/";
+
+  constructor(private modalService: BsModalService ,
+     private FormBuilder:FormBuilder ,
+      private toastr: ToastrService ,
+      private ngxService: NgxUiLoaderService,
+      private httpClient:HttpClient
+
+      ) { 
     this.qualificationForm=this.FormBuilder.group({
-      qualification:['',[Validators.required]]
+      qualificationName:['',[Validators.required]],
+      qualificationID:['',[Validators.required]]
+
     })
 
     let data= localStorage.getItem("Qualification_LIST");
@@ -41,7 +51,21 @@ export class QualificationComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.getAllEmployees()
+
   }
+  getAllEmployees(){
+    this.httpClient.get(this.baseurl + 'qualification').subscribe(
+      (response)=>{
+        console.log('response', response);
+        this.qualificationlist = response["data"];
+      },
+      (error)=>{
+        console.log('error', error);     
+     },
+    )
+     }
+
   openModal(template: TemplateRef<any>) {
     this.subBtn=false;
     this.clear();
@@ -87,7 +111,9 @@ export class QualificationComponent implements OnInit {
     this.closeModal();
    this.ngxService.start(); 
    setTimeout(() => {
-    this.qualificationlist[this.selectobj].qualification=this.qualificationForm.value.qualification; 
+    this.qualificationlist[this.selectobj].qualificationName=this.qualificationForm.value.qualificationName; 
+    this.qualificationlist[this.selectobj].qualificationID=this.qualificationForm.value.qualificationID; 
+
     localStorage.setItem("Qualification_LIST" , JSON.stringify(this.qualificationlist));
     this.toastr.success('Updated Successfully!', 'Details Valid!');
     
@@ -113,7 +139,8 @@ export class QualificationComponent implements OnInit {
 
     this.selectobj=this.qualificationlist.findIndex((x: any) => x.id === obj.id);
     this.qualificationForm.patchValue({
-      qualification:obj.qualification
+      qualificationName:obj.qualificationName,
+      qualificationID: obj.qualificationID
     })
   }
 
