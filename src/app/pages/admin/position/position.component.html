@@ -30,31 +30,30 @@
         </div>
       </div>
     </div>
-  
+  </div>
 
   <div class="row">
     <div class="col-lg-12 bg-white border border-white rounded p-3">
       <!-- <app-sdk-crud></app-sdk-crud> -->
-      <div class=" table-responsive " style="height:300px" >
-        <table class="table table-hove  ">
+      <div class="table-responsive" style="height:300px;width: auto;">
+        <table class="table table-hove">
           <thead class="text-primary">
-           <th><b>#ID</b></th>
-            <th><b>Position</b></th>
-            <th><b>Type</b></th>
+           <th><b>ID</b></th>
+            <th><b>Employee Position</b></th>
+            <th><b>Employee Type</b></th>
            <th ><b>Action</b></th>
           </thead>
           <tbody>
-            <!-- |filter:searchitem -->
-            <tr *ngFor="let list of positionList; let i=index">
-              <td>{{ list.positionID}}</td>
-              <td>{{ list. positionName}}</td>
-              <td>{{ list.positionStatus}}</td>   
+            <tr *ngFor="let employee of employeeList  |filter:searchitem; let i=index">
+              <td>#{{employee.positionID}}</td>
+              <td>{{employee.positionName}}</td>
+              <td>{{employee.positionType}}</td>   
               <td class="td-actions text-left">
-                <button type="button" class="btn btn-warning btn-link btn-just-icon" (click)="Edit(i,list._id, template1)">
+                <button type="button" class="btn btn-warning btn-link btn-just-icon" (click)="Edit(i,employee, template1)">
                   <i class="bi bi-pencil-fill" style="font-size:16px"></i>
                 </button>
             
-                <button type="button" class="btn btn-danger btn-link btn-just-icon"(click)="Delete(list._id)">
+                <button type="button" class="btn btn-danger btn-link btn-just-icon"(click)="Delete(employee)">
                   <i class="bi bi-trash3-fill" style="font-size:16px"></i>
                 </button>
                 <!-- <button type="button" class="btn btn btn-link btn-just-icon" (click)="Edit(employee, template)">
@@ -89,44 +88,47 @@
   </div>
 
   <div class="modal-body">
-      <form [formGroup]="positionData">
+      <form [formGroup]="employeeForm">
           
-           <div class="form-group">
-              <label class="tcol"><b>Employee ID:</b></label>
-              <input type="number" class="mod-input form-control" placeholder="Employee Position Name" formControlName="positionID">
-                  <!-- [ngClass]="{'is-invalid': subBtn && f['PositionID'].errors}">
-              <div *ngIf="subBtn && f['PositionID'].errors" class="invalid-feedback">
+            <div class="form-group">
+              <label class="tcol"><b>Employee Id:</b></label>
+              <input type="number" class="mod-input" placeholder="Employee Position ID" formControlName="positionID"
+                  [ngClass]="{'is-invalid': subBtn && f['positionID'].errors}">
+              <div *ngIf="subBtn && f['positionID'].errors" class="invalid-feedback">
 
-                <div *ngIf="f['employeePosition'].errors['required']">
-                  Employee position is required...!                
+                <div *ngIf="f['positionID'].errors['required']">
+                  Employee ID is required...!                
                 </div>
-                
+              </div>
+              
+            </div>
                 <!-- <div *ngIf="f['employeePosition'].errors['pattern=[A-Za-z]+$']">
                    only Alphbate is required...!  
                 </div> -->
-               </div>  
                
-            <div class="form-group">
+          <div class="form-group">
               <label class="tcol"><b>Employee Position:</b></label>
-              <input type="text" class="mod-input  form-control" placeholder="Employee Position Name" formControlName="positionName">
-                  <!-- [ngClass]="{'is-invalid': subBtn && f['positionName'].errors}">
+              <input type="text" class="mod-input" placeholder="Employee Position Name" formControlName="positionName"
+                  [ngClass]="{'is-invalid': subBtn && f['positionName'].errors}">
               <div *ngIf="subBtn && f['positionName'].errors" class="invalid-feedback">
 
-                <div *ngIf="f['employeePosition'].errors['required']">
+                <div *ngIf="f['positionName'].errors['required']">
                   Employee position is required...!                
                 </div>
-                
-                <!-- <div *ngIf="f['employeePosition'].errors['pattern=[A-Za-z]+$']">
-                   only Alphbate is required...!  
-                </div> -->
-               <!-- </div> -->
-              
-          </div>
-          <div class="form-group">
-              <label class="tcol"><b>Employee Type:</b></label>
-              <input type="text" class="mod-input  form-control" placeholder="Employee Position Name" formControlName="positionStatus">
-             
-                  <!-- <select class="custom-select pl-2" formControlName="positionStatus"
+              </div>
+              </div>
+              <div class="form-group">
+                <label class="tcol"><b>Employee Type:</b></label>
+                <input type="text" class="mod-input" placeholder="Employee Type" formControlName="positionType"
+                    [ngClass]="{'is-invalid': subBtn && f['positionType'].errors}">
+                <div *ngIf="subBtn && f['positionType'].errors" class="invalid-feedback">
+  
+                  <div *ngIf="f['positionType'].errors['required']">
+                    Employee Type is required...!                
+                  </div>
+                </div>
+                </div>
+                  <!-- <select class="custom-select pl-2" formControlName="type"
                   [ngClass]="{'is-invalid': subBtn && f['type'].errors}">
                       <option [disabled]="true" [selected]="true"> Select</option>
                       <option>Fresher</option>
@@ -139,7 +141,7 @@
                     Employee type is required!
                   </div>
                  </div> -->
-          </div>
+          
       </form>
   </div>
 
@@ -147,14 +149,13 @@
     <button  type="button"  class="btn  btn-secondary " (click)="closeModal()">
       Close
     </button>
-    <button  type="button" class="btn   btn-success" (click)="Submit()">
+    <button *ngIf="editbtn==false" type="button" class="btn   btn-success" (click)="Submit()">
       Submit
     </button>
-    <!-- <button *ngIf="editbtn==true" type="button" class="btn   btn-success" (click)="Update()">
-      Update
-    </button> -->
   </div>
 </ng-template>
+
+
 <ng-template #template1>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Add Employee Deatails</h4>
@@ -169,32 +170,72 @@
   </div>
 
   <div class="modal-body">
-    <form [formGroup]="positionData">
-      <div class="form-group">
-        <label class="tcol"><b>Employee ID:</b></label>
-        <input type="number" class="mod-input form-control" placeholder="Employee Position Name" formControlName="positionID">
-               </div>
-      <div class="form-group">
-        <label class="tcol"><b>Employee Position:</b></label>
-        <input type="text" class="mod-input form-control" placeholder="Employee Position Name" formControlName="positionName">
-        </div>
-      <div class="form-group">
-        <label class="tcol"><b>Employee Type:</b></label>
-        <input type="text" class="mod-input form-control" placeholder="Employee Position Name" formControlName="positionStatus">
-       </div>
+      <form [formGroup]="employeeForm">
+          
+            <div class="form-group">
+              <label class="tcol"><b>Employee Id:</b></label>
+              <input type="number" class="mod-input" placeholder="Employee Position ID" formControlName="positionID"
+                  [ngClass]="{'is-invalid': subBtn && f['positionID'].errors}">
+              <div *ngIf="subBtn && f['positionID'].errors" class="invalid-feedback">
+
+                <div *ngIf="f['positionID'].errors['required']">
+                  Employee position is required...!                
+                </div>
+              </div>
+              
+            </div>
+                <!-- <div *ngIf="f['employeePosition'].errors['pattern=[A-Za-z]+$']">
+                   only Alphbate is required...!  
+                </div> -->
+               
+          <div class="form-group">
+              <label class="tcol"><b>Employee Position:</b></label>
+              <input type="text" class="mod-input" placeholder="Employee Position Name" formControlName="positionName"
+                  [ngClass]="{'is-invalid': subBtn && f['positionName'].errors}">
+              <div *ngIf="subBtn && f['positionName'].errors" class="invalid-feedback">
+
+                <div *ngIf="f['positionName'].errors['required']">
+                  Employee position is required...!                
+                </div>
+              </div>
+              </div>
+              <div class="form-group">
+                <label class="tcol"><b>Employee Type:</b></label>
+                <input type="text" class="mod-input" placeholder="Employee Type" formControlName="positionType"
+                    [ngClass]="{'is-invalid': subBtn && f['positionType'].errors}">
+                <div *ngIf="subBtn && f['positionType'].errors" class="invalid-feedback">
+  
+                  <div *ngIf="f['positionType'].errors['required']">
+                    Employee position is required...!                
+                  </div>
+                </div>
+                </div>
+                  <!-- <select class="custom-select pl-2" formControlName="type"
+                  [ngClass]="{'is-invalid': subBtn && f['type'].errors}">
+                      <option [disabled]="true" [selected]="true"> Select</option>
+                      <option>Fresher</option>
+                      <option>Junior Software Engineer</option>
+                      <option>Senior Software Engineer</option>
+                  </select>
+                   <div *ngIf="subBtn && f['type'].errors" class="invalid-feedback">
+  
+                  <div *ngIf="f['type'].errors['required']">
+                    Employee type is required!
+                  </div>
+                 </div> -->
+          
       </form>
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="closeModal()">
+    <button  type="button"  class="btn  btn-secondary " (click)="closeModal()">
       Close
     </button>
-    <button type="button" class="btn btn-success" (click)=" Update()">
+    <button *ngIf="editbtn==true" type="button" class="btn   btn-success" (click)="Update()">
       Update
     </button>
   </div>
 </ng-template>
-
 <!-- <div class="fluid-container">
 <div class="row">
         <div class=" col-lg-8 col-md-6 col-sm-12"> 

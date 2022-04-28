@@ -63,9 +63,9 @@ export class AccountingreportComponent implements OnInit {
     this.modalRef.hide();
   }
 
-  edit(i,_id,template1){
+  edit(i,id,template1){
    
-    this.selectedId = _id;
+    this.selectedId = id;
     this.newIndex = i;
     this.modalRef = this.modalService.show(template1, this.config);
     this.empolyeeData.patchValue({

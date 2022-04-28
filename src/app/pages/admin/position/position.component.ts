@@ -11,7 +11,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./position.component.scss']
 })
 export class PositionComponent implements OnInit {
- 
+  employeeForm:FormGroup;
+  employeeList:any=[''];
+  subBtn=false;
+  editbtn=false;
+  newId='';
+  doneIndex='';
+  // selectobj:any;
+  searchitem='';
   modalRef: BsModalRef;
   config: ModalOptions = {
     backdrop: true, //backgroud color as dark
@@ -19,15 +26,7 @@ export class PositionComponent implements OnInit {
     ignoreBackdropClick: true, //Close on outside click
     animated: true, //Add animation on open close
   };
- 
-  positionList:any = [];
-  positionData:FormGroup;
-  newID ='';
-  newIndex = '';
-  // subBtn=false;
-  // editbtn=false;
-  // selectobj:any;
-  // searchitem='';
+  baseurl="https://hrms-dev-server.herokuapp.com/api/"
 //   isUpdate = false;
 // employeeList : any = [];
 //   selectIndex:any;
@@ -37,19 +36,23 @@ export class PositionComponent implements OnInit {
 //   loaDing = false;
 //   types=['Fresher','Junior Software Engineer','Senior Software Engineer'] 
 
-   constructor(private FormBuilder: FormBuilder,private modalService: BsModalService,private ngxService: NgxUiLoaderService,private toastr: ToastrService,private http: HttpClient) {
-    this.positionData=this.FormBuilder.group({
-      positionID:"",
-      positionName:"",
-      positionStatus:""
-    
+   constructor(private FormBuilder: FormBuilder,
+    private modalService: BsModalService,
+    private ngxService: NgxUiLoaderService,
+    private toastr: ToastrService,
+    private httpClient: HttpClient) {
+    this.employeeForm=this.FormBuilder.group({
+      positionID:['',[Validators.required]],
+      positionName:['',[Validators.required]],
+      positionType:['',[Validators.required]]
+   
     })
+    let data= localStorage.getItem("Employee_LIST");
+    if(data){
+      this.employeeList=JSON.parse(data);
+    }
   }
-    // let data= localStorage.getItem("Employee_LIST");
-    // if(data){
-    //   this.employeeList=JSON.parse(data);
-    // }
- 
+
 //     this.employeeForm = FormBuilder.group({
 //       employeePosition : ['',[Validators .required]],
 //       type:['',[Validators .required]]
@@ -62,183 +65,176 @@ export class PositionComponent implements OnInit {
 //    }
 
  ngOnInit(): void {
-  this.getAllposition();
+   this.getAllposition();
   }
-     getAllposition() {
-    this.http.get("https://hrms-dev-server.herokuapp.com/api/position").subscribe(
-        (response: any) => {
-          this.positionList = response.data;
-        },
-        (error) => {
-          console.log("error", error);
-        }
-      );
-  }
+  getAllposition(){
+    this.httpClient.get(this.baseurl + 'position').subscribe(
+      (response)=>{
+        console.log('response', response);
+        this.employeeList = response["data"];
+      },
+      (error)=>{
+        console.log('error', error);     
+     },
+    )
+     }
 
   openModal(template: TemplateRef<any>) {
-   
+    this.subBtn=false;
+    this.clear();
     this.modalRef = this.modalService.show(template, this.config);
-    
 
   }
- // this.subBtn=false;
-    // this.clear();
- Submit() {
-    this.http.post("https://hrms-dev-server.herokuapp.com/api/position",this.positionData.value).subscribe(
-        (response: any) => {
-          this.getAllposition();
-        },
-        (error) => {
-          console.log("error", error);
-        }
-      );
-      this.positionData.reset();
+
+  closeModal() {
     this.modalRef.hide();
-  }
-
-    // this.subBtn=true;
-    // if(this.employeeForm.valid){
-    
-    //  this.closeModal();
-    //   this.ngxService.start(); 
-    //   setTimeout(() => {
-    //     this.employeeForm.value.id=this.randomID();
-    // this.employeeList.push(this.employeeForm.value);
-    // localStorage.setItem("Employee_LIST" , JSON.stringify(this.employeeList));
-    //   this.clear();
-    //   this.toastr.success('Submitted Successfully!', 'Details Valid!');
-
-    //     this.ngxService.stop(); 
-    //   }, 2000);
-     
-    // }else {
-    //    this.toastr.error("Please try again..!", "Invalid  Data !");
-    //     }
-      
-  // }
-
-
- 
-
-  // obj:any , template: TemplateRef<any>
-  Edit(i,_id,template1){
-    this.newID = _id;
-    this.newIndex = i;
-    this.modalRef = this.modalService.show(template1, this.config);
-    this.positionData.patchValue({
-      positionID: this. positionList[i]. positionID,
-      positionName: this.positionList[i].positionName,
-      positionStatus: this.positionList[i].positionStatus
-    })
-    console.log("edit");
+    this.editbtn=false;
     
   }
-  // this.editbtn=true;   
-    //       this.modalRef = this.modalService.show(template, this.config);      
-    // this.selectobj=this.employeeList.findIndex((x: any) => x.id === obj.id);
-    //   this.employeeForm.patchValue({
-    //     employeePosition:obj.employeePosition,
-    //     type:obj.type
-      // })
-  Update(){
-    this.http.put("https://hrms-dev-server.herokuapp.com/api/position"+this.newID,this.positionData).subscribe(
-      (response: any) => {
+
+
+  Submit() {
+    this.subBtn=true;
+    if(this.employeeForm.valid){
+    
+     this.closeModal();
+      this.ngxService.start(); 
+      setTimeout(() => {
+        this.employeeForm.value.id=this.randomID();
+    this.employeeList.push(this.employeeForm.value);
+    this.httpClient.post(this.baseurl + 'position' , this.employeeForm.value).subscribe(
+      (response)=>{
+        console.log('response', response);
         this.getAllposition();
       },
-      (error) => {
-        console.log("error", error);
-      }
-    );
-    this.positionData.reset();
-  this.modalRef.hide();
+      (error)=>{
+        console.log('error', error);     
+     },
+    )
+
+    localStorage.setItem("Employee_LIST" , JSON.stringify(this.employeeList));
+      this.clear();
+      this.toastr.success('Submitted Successfully!', 'Details Valid!');
+
+        this.ngxService.stop(); 
+      }, 2000);
+     
+    }else {
+       this.toastr.error("Please try again..!", "Invalid  Data !");
+        }
+      
   }
-  //   this.subBtn=true;
-  //   if(this.employeeForm.valid){
-  //   this.editbtn=false;
-  //   this.closeModal();
-  //  this.ngxService.start(); 
-  //  setTimeout(() => {
+
+
+  Update(){
+    this.subBtn=true;
+    if(this.employeeForm.valid){
+    this.editbtn=false;
+    this.closeModal();
+   this.ngxService.start(); 
+   setTimeout(() => {
+    let sendUrl = this.baseurl + 'position/' + this.newId;
+    this.httpClient.put(sendUrl, this.employeeForm.value).subscribe(
+      (response)=>{
+        console.log('response', response)
+        this.getAllposition();
+      },
+      (error)=>{
+        console.log('error', error)
+      },
+     )
   //   this.employeeList[this.selectobj].employeePosition=this.employeeForm.value.employeePosition; 
   //  this.employeeList[this.selectobj].type=this.employeeForm.value.type; 
 
-  //   localStorage.setItem("Employee_LIST" , JSON.stringify(this.employeeList));
-  //   this.toastr.success('Updated Successfully!', 'Details Valid!');
+    localStorage.setItem("Employee_LIST" , JSON.stringify(this.employeeList));
+    this.toastr.success('Updated Successfully!', 'Details Valid!');
     
-  //   this.clear();
-  //    this.ngxService.stop(); 
-  //  }, 2000);
-  // }else {
-  //   this.toastr.error("Please try again..!", "Invalid  Data !");
-  //    }
+    this.clear();
+     this.ngxService.stop(); 
+   }, 2000);
+  }else {
+    this.toastr.error("Please try again..!", "Invalid  Data !");
+     }
    
   
-  // }
-
-  Delete(_id){
-    this.http.delete("https://hrms-dev-server.herokuapp.com/api/position"+_id).subscribe(
-      (response: any) => {
-        this.getAllposition();
-      },
-      (error) => {
-        console.log("error", error);
-      }
-    );
   }
- 
-  closeModal() {
-    this.modalRef.hide();
 
+
+  Edit( i,data, template1: TemplateRef<any>){
+    this.newId=data._id;
+    console.log('newId', this.newId)
+    this.doneIndex=i; 
+    this.editbtn=true;  
+    this.modalRef = this.modalService.show(template1, this.config);      
+      this.employeeForm.patchValue({
+        positionID:this.employeeList[i].positionID,
+        positionName: this.employeeList[i].positionName,
+        positionType: this.employeeList[i].positionType
+      })
   }
-    // this.editbtn=false;
-    
-    // Swal.fire({
-    //   title: 'Are you sure?',
-    //   text: "You won't be able to revert this!",
-    //   icon: 'warning',
-    //   allowEscapeKey: false,
-    //   allowOutsideClick: false,
-    //   confirmButtonColor: '#3085d6',
-    //   confirmButtonText: 'Yes, delete it!',
-    //   showCancelButton: true,
-    //   cancelButtonColor: '#d33',
-    //   cancelButtonText:'Cancle'
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     this.ngxService.start(); 
-    //     setTimeout(() => {
-    //       this.selectobj=this.employeeList.findIndex((x: any) => x.id === id);
-    //       this.employeeList.splice(this.selectobj,1);
-    //   localStorage.setItem("Employee_LIST" , JSON.stringify(this.employeeList));
-    //   Swal.fire(
+  // this.selectobj=this.employeeList.findIndex((x: any) => x.id === obj.id);
+  // employeePosition:obj.employeePosition,
+  // type:obj.type
+  Delete(data){
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      cancelButtonText:'Cancle'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.ngxService.start(); 
+        setTimeout(() => {
+          let sendUrl = this.baseurl + 'position/' + data._id;
+          this.httpClient.delete(sendUrl).subscribe(
+            (response)=>{
+              console.log('response', response)
+              this.getAllposition();
+            },
+            (error)=>{
+              console.log('error', error)
+            },
+           )
+
+      localStorage.setItem("Employee_LIST" , JSON.stringify(this.employeeList));
+      Swal.fire(
           
-    //     'Deleted!',
-    //     'Your file has been deleted.',
-    //     'success'
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
         
-    //   )
-    //   this.toastr.success('Successfully!', 'Entry Deleted !');
+      )
+      this.toastr.success('Successfully!', 'Entry Deleted !');
 
-    //       this.ngxService.stop(); 
-    //     }, 2000);
+          this.ngxService.stop(); 
+        }, 2000);
        
         
-    //   }
-    // })
+      }
+    })
     
 
-  // }
-//  randomID() {
-//   return '_' + Math.random().toString(36).substr(2, 9);
-// }
+  }
+  // this.selectobj=this.employeeList.findIndex((x: any) => x.id === id);
+  //         this.employeeList.splice(this.selectobj,1);
+ randomID() {
+  return '_' + Math.random().toString(36).substr(2, 9);
+}
 
-//   get f(){
-//     return this.employeeForm.controls;
-//   }
+  get f(){
+    return this.employeeForm.controls;
+  }
 
-//   clear(){
-//     this.employeeForm.reset();
-//   }
-// }
+  clear(){
+    this.employeeForm.reset();
+  }
+}
 
 
 //   url="./assets/img/img_avatar.png"
@@ -365,4 +361,3 @@ export class PositionComponent implements OnInit {
 
 
 // }
-}
