@@ -1,5 +1,6 @@
 .sub-menu-div {
-  padding-left: 30px;
+  /* padding-left: 30px; */
+  padding-left: 10px;
 }
 
 .sub-menu-div > li > a:hover {

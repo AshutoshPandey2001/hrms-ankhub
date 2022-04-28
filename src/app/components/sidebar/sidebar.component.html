@@ -17,12 +17,10 @@
         class="nav-link open-menu"
         [routerLink]="[menuItem.path]"
         (click)="openSubMenu(menuItem)"
-        [ngClass]="menuItem.showChildren  ? 'open-menu' : 'close-menu'"
-
+        [ngClass]="menuItem.showChildren ? 'open-menu' : 'close-menu'"
       >
         <i class="material-icons">{{ menuItem.icon }}</i>
         <p>{{ menuItem.title }}</p>
-        
       </a>
       <div *ngIf="menuItem.showChildren" class="sub-menu-div">
         <li
@@ -36,7 +34,20 @@
             (click)="displaySublist = !displaySublist"
           >
             <i class="material-icons">{{ subMenu.icon }}</i>
-            <p>{{ subMenu.title }}</p>
+            <p class="d-inline-block">
+              {{ subMenu.title }}
+            </p>
+            <span
+              class="badge bg-success ms-2"
+              [ngClass]="{
+                'bg-secondary': subMenu.apiStatus === 0,
+                'bg-primary': subMenu.apiStatus === 1,
+                'bg-success': subMenu.apiStatus === 2,
+                'bg-warning': subMenu.apiStatus === 3,
+                'bg-danger': subMenu.apiStatus === 4
+              }"
+              >API</span
+            >
           </a>
         </li>
       </div>
