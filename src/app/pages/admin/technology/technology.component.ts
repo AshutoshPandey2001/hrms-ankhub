@@ -5,6 +5,8 @@ import { BsModalRef, BsModalService, ModalOptions } from "ngx-bootstrap/modal";
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import Swal from 'sweetalert2'
 import { ToastrService } from 'ngx-toastr';
+import { HttpClient } from '@angular/common/http';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-technology',
@@ -23,46 +25,69 @@ export class TechnologyComponent implements OnInit {
 
   isUpdate = false;
   technoList : any = [];
-  selectIndex:any;
-  searchKey = '';
+ 
+
   technoForm : FormGroup;
   dataSub = false;
-  loaDing = false;
+ 
+  technoId = '';
 
+  Index = '';
+  
 
+  baseUrl = "https://hrms-dev-server.herokuapp.com/api/";
 
   
-  constructor(private formbuilder:FormBuilder ,private modalService: BsModalService , private ngxService: NgxUiLoaderService , private toastr: ToastrService) {
+  constructor(private formbuilder:FormBuilder,
+    private modalService: BsModalService,
+    private ngxService: NgxUiLoaderService, 
+    private toastr: ToastrService,
+    private httpClient: HttpClient
+    ) {
     
     this.technoForm = formbuilder.group({
-      technoText : ['',[Validators .required]],
    
+      technologyID:['',[Validators .required]],
+      technologyName:['',[Validators .required]],
+
     })
 
-    let data1 = localStorage.getItem('TECHNOLOGY');
-    if(data1){
-      this.technoList = JSON.parse(data1);
-    }
+  
 
     }
+   
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  this.getAlltechnology();
+  }   
 
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, this.config);
-  }
+getAlltechnology() {
+  this.httpClient.get(this.baseUrl + 'technology').subscribe(
+      (response: any) => {
+        this.technoList = response.data;
+      },
+      (error) => {
+        console.log("error", error);
+      }
+    );
+}
+openModal(template: TemplateRef<any>) {
+  this.modalRef = this.modalService.show(template, this.config);
+}
 
-  closeModal() {
-    this.modalRef.hide();
-    this.technoClear()
-  }
+closeModal() {
+  this.modalRef.hide();
+  this.isUpdate = false;
+ 
+}
 
-  submitData(){
-  this.dataSub = true;
-
+submitData() {
+  
+    this.dataSub = true;
+   
   if (this.technoForm.valid){
-    this.modalRef.hide();
+    
    
     this.ngxService.start();
 
@@ -70,91 +95,133 @@ export class TechnologyComponent implements OnInit {
       this.ngxService.stop();
       this.technoForm.value.id = this.randomID();
       this.technoList.push(this.technoForm.value)
-      localStorage.setItem("TECHNOLOGY", JSON.stringify(this.technoList));
-      console.log('table', this.technoList);
-     
-      this.technoClear()
-      this.toastr.success('sucessfully', ' Technology submitted');
+    
+
+      this.createTechnology(this.technoForm.value)
+      
+      
+      this.toastr.success('Sucessfully', 'Submitted');
     }, 2000);
-   
+  
 }
 else {
  
-  Swal.fire(
-    'Invalid!',
-    'Pleasr Enter Correct Details!!!.',
-    'warning'
-  )
+  
+  this.toastr.error('Pleasr Enter Correct Details!!!', 'Invalid input');
  }
-
+ this.modalRef.hide();
 }
 
-editData(obj:any , template: TemplateRef<any>){
+createTechnology(value){
+    console.log('value',value);
+    let sendData ={
+      technologyID: value.technologyID,
+      technologyName: value.technologyName 
+     
+    }
+    console.log(value);
+    
+    this.httpClient.post(this.baseUrl + 'technology',sendData).subscribe(
+      (response)=>{
+        console.log("response",response);
+        
+      },
+      (error)=>{
+        console.log('error',error);  
+      }
+    )
+      }
 
-
-    this.modalRef = this.modalService.show(template, this.config);
-
-  this.selectIndex= this.technoList.findIndex((x : any )=> x.id === obj.id);
+edit(i,_id,template){
+  this.isUpdate = true;
+  this.technoId = _id;
+  this.Index = i;
+  this.modalRef = this.modalService.show(template, this.config);
   this.technoForm.patchValue({
-    technoText : obj.technoText ,
+    
+    technologyID: this.technoList[i].technologyID,
+    technologyName: this.technoList[i].technologyName,
    
   })
-
-      this.isUpdate = true;
+  console.log("edit");
+ 
 }
 
-updateData(){
+updateData(i){
  
-  this.closeModal();
+
+
+this.modalRef.hide();
     this.ngxService.start();
     setTimeout(() => { 
-      this.technoList[this.selectIndex].technoText = this.technoForm.value.technoText;
-      localStorage.setItem("TECHNOLOGY", JSON.stringify(this.technoList));
+   
+      this.httpClient.put(this.baseUrl + 'technology/'+this.technoId,this.technoForm.value).subscribe(
+        (response: any) => {
+          this.getAlltechnology();
+        },
+        (error) => {
+          console.log("error", error);
+        }
+      );
+                   
       this.technoClear()
       this.ngxService.stop();
       this.isUpdate = false ;
-      this.toastr.success('Successfully', 'Technology updated');
+      this.toastr.success('Successfully', ' Updated');
     }, 2000);
 }
 
-deleteData(id:any){
 
-  Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
-    icon: 'warning',
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    confirmButtonColor: '#3085d6',
-    confirmButtonText: 'Yes, delete it!',
-    showCancelButton: true,
-    cancelButtonColor: '#d33',
-    cancelButtonText:'Cancle'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      this.ngxService.start();
-      setTimeout(() => {  
- 
+
+
+
+delete(_id){
+      
+        let sendUrl = this.baseUrl + "employee/" + this.technoId;
+  
+      
+  
+        
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      cancelButtonText:'Cancle'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.ngxService.start();
         setTimeout(() => {  
-        Swal.fire(
-        'Deleted!',
-        'Your file has been deleted.',
-        'success'
-      )
-    }, 1000);
    
-      this.ngxService.stop();
-      this.selectIndex= this.technoList.findIndex((x : any )=> x.id === id);    
-      this.technoList.splice(this.selectIndex,1);
-      localStorage.setItem("TECHNOLOGY", JSON.stringify(this.technoList));
-      this.toastr.success('Successfully', 'Deleted');
-      }, 2000);
-    
-    }
-  }) 
-}
-
-
+          setTimeout(() => {  
+          Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }, 1000);
+     
+        this.ngxService.stop();
+   
+        this.httpClient.delete(this.baseUrl + 'technology/'+_id).subscribe(
+              (response: any) => {
+                this.getAlltechnology();
+              },
+              (error) => {
+                console.log("error", error);
+              }
+            );
+                this.toastr.success('Successfully', 'Deleted');
+              }, 2000);
+            
+            }
+          }) 
+      }
 technoClear(){
 this.technoForm.reset();
 }
