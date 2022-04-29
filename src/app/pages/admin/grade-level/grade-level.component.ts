@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NgxUiLoaderService } from "ngx-ui-loader";
 import Swal from "sweetalert2";
 import { ToastrService } from "ngx-toastr";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-grade-level",
@@ -15,9 +16,11 @@ export class GradeLevelComponent implements OnInit {
   submitted: any = false;
   editoperation = false;
   selectedobj: any;
+  newIndex='';
   selectedindex: any;
-  GradeList: any = [];
   terms = "";
+  apiDataGrade: any = [];
+  baseURL = "https://hrms-dev-server.herokuapp.com/api/";
 
   modalRef: BsModalRef;
   config: ModalOptions = {
@@ -31,21 +34,33 @@ export class GradeLevelComponent implements OnInit {
     private formBuilder: FormBuilder,
     private modalService: BsModalService,
     private ngxService: NgxUiLoaderService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private httpClient:HttpClient
   ) {
     this.GradeForm = this.formBuilder.group({
-      id: ["", [Validators.required]],
+      gradeID: ["", [Validators.required]],
       gradeName: ["", [Validators.required]],
       gradeValue: ["", [Validators.required]],
-      tech: ["", [Validators.required]],
+      gradeTechnology: ["", [Validators.required]],
     });
-    let data = localStorage.getItem("GRADE_LIST");
-    if (data) {
-      this.GradeList = JSON.parse(data);
-    }
+    
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllGrades()
+  }
+
+  getAllGrades() {
+    this.httpClient.get(this.baseURL + 'grade').subscribe(
+      (response) => {
+        console.log("response", response);
+        this.apiDataGrade = response["data"];
+      },
+      (error) => {
+        console.log("error", error);
+      },
+    )
+  }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);
@@ -53,6 +68,7 @@ export class GradeLevelComponent implements OnInit {
 
   closeModal() {
     this.modalRef.hide();
+    this.editoperation=false;
     this.clear();
     this.submitted=true;
   }
@@ -60,90 +76,121 @@ export class GradeLevelComponent implements OnInit {
     this.submitted = true;
 
     if (this.GradeForm.valid) {
-      this.GradeList.push(this.GradeForm.value);
+      this.apiDataGrade.push(this.GradeForm.value)
       console.log("Submit Sucessfully", this.GradeForm.value);
+      // this.createEmployee(this.CandidateForm.value)
+      this.httpClient.post(this.baseURL + 'grade' , this.GradeForm.value).subscribe(
+        (response)=>{
+          console.log('response', response);
+          this.getAllGrades();
+        },
+        (error)=>{
+          console.log('error', error);     
+       },
+      )
       {
         this.ngxService.start();
         setTimeout(() => {
           this.ngxService.stop();
 
-          this.toastr.success("Thank you !", "Data Submitted Sucessfully..!");
-          let ref = document.getElementById("cancel");
+          this.toastr.success('Thank you !', 'Submitted Sucessfully..!');
+          let ref = document.getElementById('cancel')
           ref?.click();
         }, 2000);
       }
-    } else {
-      this.toastr.error("Please try again..!", "Invalid input data !");
     }
+    else {
+      this.toastr.error('Please try again !', 'Inavalid input data !');
+    }
+    console.log("data",this.apiDataGrade.value)
     this.clear();
-    localStorage.setItem("GRADE_LIST", JSON.stringify(this.GradeList));
+    this.closeModal();
+    localStorage.setItem("Not-received", JSON.stringify(this.apiDataGrade))
   }
 
-  Update() {
-    this.editoperation = false;
-    {
-      this.ngxService.start();
-      setTimeout(() => {
-        this.ngxService.stop();
-        this.toastr.success("Thank you !", " Update Data Sucessfully..!");
-        let ref = document.getElementById("cancel");
-        ref?.click();
-      }, 2000);
-      this.GradeList[this.selectedindex].id = this.GradeForm.value.id;
-      this.GradeList[this.selectedindex].gradeName =
-        this.GradeForm.value.gradeName;
-      this.GradeList[this.selectedindex].gradeValue =
-        this.GradeForm.value.gradeValue;
-      this.GradeList[this.selectedindex].tech = this.GradeForm.value.tech;
-      console.log("updated successfully..", this.GradeForm.value);
-    }
-    localStorage.setItem("GRADE_LIST", JSON.stringify(this.GradeList));
-    this.clear();
-  }
-
-  edit(index: any, obj: any) {
-    this.editoperation = true;
-    this.selectedindex = index;
-    this.selectedobj = obj;
-    console.log("this.selectedobject", this.selectedobj);
+  editGrade(i,data,template2:TemplateRef<any>){
+    this.selectedindex=data._id;
+    console.log('selectedindex', this.selectedindex)
+    this.selectedobj=i;
+    this.editoperation=true;
+    this.modalRef = this.modalService.show(template2, this.config);
     this.GradeForm.patchValue({
-      id: obj.id,
-      gradeName: obj.gradeName,
-      gradeValue: obj.gradeValue,
-      tech: obj.tech,
-    });
-    localStorage.setItem("GRADE_LIST", JSON.stringify(this.GradeList));
+      gradeID:this.apiDataGrade[i].gradeID,
+      gradeName: this.apiDataGrade[i].gradeName,
+      gradeValue: this.apiDataGrade[i].gradeValue,
+      gradeTechnology: this.apiDataGrade[i].gradeTechnology
+    })
+   
   }
+  
+  Update() {
+   
+    this.modalRef.hide();
+    this.ngxService.start();
+    setTimeout(() => { 
+   
+      this.httpClient.put(this.baseURL + 'grade/'+this.selectedindex,this.GradeForm.value).subscribe(
+        (response: any) => {
+          this.getAllGrades();
+        },
+        (error) => {
+          console.log("error", error);
+        }
+      );
+                   
+      this.clear()
+      this.ngxService.stop();
+      this.editoperation = false ;
+      this.toastr.success('Successfully', ' Updated');
+    }, 2000);
+    }
+  
 
-  delete(index: any) {
-    console.log("Delete", index);
+  deleteGrade(data){
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       allowEscapeKey: false,
       allowOutsideClick: false,
-      confirmButtonColor: "#3085d6",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
       showCancelButton: true,
-      cancelButtonColor: "#d33",
-      cancelButtonText: "Cancle",
+      cancelButtonColor: '#d33',
+      cancelButtonText:'Cancle'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.ngxService.start();
-        setTimeout(() => {
-          setTimeout(() => {
-            Swal.fire("Deleted!", "Your file has been deleted.", "success");
-            this.toastr.success(" Deleted Sucessfully..!");
-          }, 1000);
-          this.ngxService.stop();
-          this.GradeList.splice(index, 1);
-        }, 2000);
-      }
-    });
+        this.ngxService.start(); 
+   setTimeout(() => {
+    let sendUrl = this.baseURL + 'grade/' + data._id;
 
-    localStorage.setItem("GRADE_LIST", JSON.stringify(this.GradeList));
+    this.httpClient.delete(sendUrl).subscribe(
+      (response)=>{
+        console.log('response', response)
+        this.getAllGrades();
+      },
+      (error)=>{
+        console.log('error', error)
+      },
+     )
+
+localStorage.setItem("GRADE_LIST" , JSON.stringify(this.apiDataGrade));
+    this.ngxService.stop(); 
+    Swal.fire(
+          
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+    this.toastr.success('Deleted Successfully!', 'Entry!');
+
+  }, 2000); 
+      }
+    })
   }
+  
+
+ 
 
   get f() {
     return this.GradeForm.controls;
@@ -152,4 +199,6 @@ export class GradeLevelComponent implements OnInit {
   clear() {
     this.GradeForm.reset();
   }
+
+  
 }

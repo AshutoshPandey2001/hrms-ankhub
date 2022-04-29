@@ -8,6 +8,7 @@ import { QualificationComponent } from './qualification/qualification.component'
 import { GradeLevelComponent } from './grade-level/grade-level.component';
 import { TechnologyComponent } from './technology/technology.component';
 import { PositionComponent } from './position/position.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,13 +18,14 @@ import { PositionComponent } from './position/position.component';
     QualificationComponent,
     GradeLevelComponent,
     TechnologyComponent,
-    PositionComponent
+    PositionComponent,
   ],
 
   imports: [
     AllModule,
     AdminRoutingModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    HttpClientModule
    
   ]
 })
