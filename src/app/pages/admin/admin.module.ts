@@ -18,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     QualificationComponent,
     GradeLevelComponent,
     TechnologyComponent,
-    PositionComponent
+    PositionComponent,
   ],
 
   imports: [

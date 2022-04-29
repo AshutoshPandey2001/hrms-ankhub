@@ -19,7 +19,7 @@ declare interface RouteInfo {
 export const ADMIN_ROUTES: RouteInfo[] = [
   { path: "courses", title: "Courses", icon: "dvr", class: "", apiStatus:1 },
   { path: "employee", title: "Employee", icon: "group", class: "", apiStatus:1 },
-  { path: "grade-level", title: "Grade Level", icon: "equalizer", class: "", apiStatus:1},
+  { path: "grade-level", title: "Grade Level", icon: "equalizer", class: "", apiStatus:2},
   { path: "position", title: "Position", icon: "star_border", class: "", apiStatus:2 },
   { path: "technology", title: "Technology", icon: "biotech", class: "", apiStatus:2 },
   { path: "qualification", title: "Qualification", icon: "school", class: "", apiStatus:2 }
