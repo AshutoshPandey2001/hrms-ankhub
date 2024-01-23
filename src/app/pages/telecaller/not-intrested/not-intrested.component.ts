@@ -66,10 +66,10 @@ public imagePath;
    this.getAllEmployees()
   }
   getAllEmployees(){
- this.httpClient.get(this.baseurl + 'employee').subscribe(
+ this.httpClient.get(this.baseurl + 'candidate/notIntrested').subscribe(
    (response)=>{
      console.log('response', response);
-     this.apiDataEmployee = response["data"];
+    //  this.apiDataEmployee = response["data"];
    },
    (error)=>{
      console.log('error', error);     
